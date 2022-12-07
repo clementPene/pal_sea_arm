@@ -47,6 +47,8 @@
   </link>
 
   <!-- ARM -->
-  <xacro:tiago_sea_arm name="arm" parent="base_link" reflect="1" arm_1_offset="0" arm_2_offset="0" arm_3_offset="0" arm_4_offset="0" arm_5_offset="0" arm_6_offset="0" arm_7_offset="0" />
+  <xacro:tiago_sea_arm name="arm" parent="base_link" reflect="1" arm_1_offset="0" arm_2_offset="0" arm_3_offset="0" arm_4_offset="0" arm_5_offset="0" arm_6_offset="0" arm_7_offset="0">
+    <origin xyz="0 0 0.01991" rpy="0 0 3.1416" />
+  </xacro:tiago_sea_arm>
 
 </robot>

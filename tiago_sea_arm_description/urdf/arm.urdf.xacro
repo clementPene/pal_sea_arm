@@ -39,7 +39,7 @@
 <xacro:property name="arm_6_max_effort"   value="26" />
 <xacro:property name="arm_7_max_effort"   value="26" />
 
-<xacro:macro name="tiago_sea_arm" params="name parent reflect arm_1_offset arm_2_offset arm_3_offset arm_4_offset arm_5_offset arm_6_offset arm_7_offset no_safety_eps:=False">
+<xacro:macro name="tiago_sea_arm" params="name parent reflect *origin arm_1_offset arm_2_offset arm_3_offset arm_4_offset arm_5_offset arm_6_offset arm_7_offset no_safety_eps:=False">
   <xacro:property name="arm_eps"       value="${0.00 if no_safety_eps else 0.07}"/>
 
     <!-- ARM 1 LINK -->
@@ -73,7 +73,7 @@
       </collision>
     </link>
     <joint name="${name}_1_joint" type="revolute">
-      <origin xyz="0 0 0.01991" rpy="0 0 3.1416" />
+      <xacro:insert_block name="origin"/>
       <parent link="${parent}" />
       <child link="${name}_1_link" />
       <axis xyz="0 0 1" />
