@@ -1,0 +1,7 @@
+collision_model_parameters:
+  padding: 0
+  links_with_padding: []
+  blacklist:
+    default:
+      - first: ground_plane
+        second: base_link

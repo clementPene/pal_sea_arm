@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+  Copyright (c) 2022 PAL Robotics S.L. All rights reserved.
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+      http://www.apache.org/licenses/LICENSE-2.0
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="tiago_sea_arm">
+  <xacro:include filename="$(find tiago_sea_arm_description)/urdf/arm.urdf.xacro"/>
+
+  <!-- BASE LINK -->
+  <link name="base_link">
+    <inertial>
+      <origin xyz="2.601E-19 4.0232E-18 -0.015448" rpy="0 0 0" />
+      <mass value="0.28971" />
+      <inertia
+        ixx="0.00022379"
+        ixy="1.5836E-20"
+        ixz="5.2063E-21"
+        iyy="0.00022379"
+        iyz="-5.1333E-21"
+        izz="0.00019673" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://tiago_sea_arm_description/meshes/base_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://tiago_sea_arm_description/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- ARM -->
+  <xacro:tiago_sea_arm name="arm" parent="base_link" reflect="1" arm_1_offset="0" arm_2_offset="0" arm_3_offset="0" arm_4_offset="0" arm_5_offset="0" arm_6_offset="0" arm_7_offset="0" />
+
+</robot>
