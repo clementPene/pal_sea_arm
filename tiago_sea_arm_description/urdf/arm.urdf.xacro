@@ -18,6 +18,9 @@
 <!-- Transmissions file -->
 <xacro:include filename="$(find tiago_sea_arm_description)/urdf/arm.transmission.xacro"/>
 
+<!-- Joint Limits file -->
+<xacro:include filename="$(find tiago_sea_arm_description)/urdf/arm.limits.xacro"/>
+
 
 <!-- Constant parameters -->
 <xacro:property name="arm_friction"       value="1.0" />
@@ -77,7 +80,7 @@
       <parent link="${parent}" />
       <child link="${name}_1_link" />
       <axis xyz="0 0 1" />
-      <limit lower="-2.6" upper="2.6" effort="${arm_1_max_effort}" velocity="${arm_1_max_velocity}" />
+      <limit lower="${arm_1_joint_lb}" upper="${arm_1_joint_ub}" effort="${arm_1_max_effort}" velocity="${arm_1_max_velocity}" />
     </joint>
   
     <!-- ARM 2 LINK -->
@@ -116,7 +119,7 @@
       <parent link="${name}_1_link" />
       <child link="${name}_2_link" />
       <axis xyz="0 0 -1" />
-      <limit lower="-1.05" upper="2.45" effort="${arm_2_max_effort}" velocity="${arm_2_max_velocity}" />
+      <limit lower="${arm_2_joint_lb}" upper="${arm_2_joint_ub}" effort="${arm_2_max_effort}" velocity="${arm_2_max_velocity}" />
     </joint>
   
     <!-- ARM 3 LINK -->
@@ -151,13 +154,13 @@
   
     <!-- ARM 3 JOINT -->
     <joint name="${name}_3_joint" type="revolute">
-      <origin xyz="-0.02 0.16991 -0.04491" rpy="-1.5707 0 0" />
+      <!-- Mechanics provided {r p y} = {-1.5707 0 0} -->
+      <origin xyz="-0.02 0.16991 -0.04491" rpy="${reflect * 1.5707} 0 ${(reflect + 1) * 0.5 * 3.1415}" />
       <parent link="${name}_2_link" />
       <child link="${name}_3_link" />
       <axis xyz="0 0 1" />
-      <limit lower="-2.6" upper="2.6" effort="${arm_3_max_effort}" velocity="${arm_3_max_velocity}" />
+      <limit lower="${arm_3_joint_lb}" upper="${arm_3_joint_ub}" effort="${arm_3_max_effort}" velocity="${arm_3_max_velocity}" />
     </joint>
-  
   
     <!-- ARM 4 LINK -->
     <link name="${name}_4_link">
@@ -195,7 +198,7 @@
       <parent link="${name}_3_link" />
       <child link="${name}_4_link" />
       <axis xyz="0 0 -1" />
-      <limit lower="-1.05" upper="2.45" effort="${arm_4_max_effort}" velocity="${arm_4_max_velocity}" />
+      <limit lower="${arm_4_joint_lb}" upper="${arm_4_joint_ub}" effort="${arm_4_max_effort}" velocity="${arm_4_max_velocity}" />
     </joint>
   
     <!-- ARM 5 LINK -->
@@ -234,7 +237,7 @@
       <parent link="${name}_4_link" />
       <child link="${name}_5_link" />
       <axis xyz="0 0 1" />
-      <limit lower="-2.6" upper="2.6" effort="${arm_5_max_effort}" velocity="${arm_5_max_velocity}" />
+      <limit lower="${arm_5_joint_lb}" upper="${arm_5_joint_ub}" effort="${arm_5_max_effort}" velocity="${arm_5_max_velocity}" />
     </joint>
   
     <!-- ARM 6 LINK -->
@@ -273,7 +276,7 @@
       <parent link="${name}_5_link" />
       <child link="${name}_6_link" />
       <axis xyz="0 0 1" />
-      <limit lower="-2" upper="2" effort="${arm_6_max_effort}" velocity="${arm_6_max_velocity}" />
+      <limit lower="${arm_6_joint_lb}" upper="${arm_6_joint_ub}" effort="${arm_6_max_effort}" velocity="${arm_6_max_velocity}" />
     </joint>
   
     <!-- ARM 7 LINK -->
@@ -312,7 +315,7 @@
       <parent link="${name}_6_link" />
       <child link="${name}_7_link" />
       <axis xyz="0 0 1" />
-      <limit lower="-2.6" upper="2.6" effort="${arm_7_max_effort}" velocity="${arm_7_max_velocity}" />
+      <limit lower="${arm_7_joint_lb}" upper="${arm_7_joint_ub}" effort="${arm_7_max_effort}" velocity="${arm_7_max_velocity}" />
     </joint>
   
     <!-- TRANSMISSIONS -->
