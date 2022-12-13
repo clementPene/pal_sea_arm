@@ -155,7 +155,7 @@
     <!-- ARM 3 JOINT -->
     <joint name="${name}_3_joint" type="revolute">
       <!-- Mechanics provided {r p y} = {-1.5707 0 0} -->
-      <origin xyz="-0.02 0.16991 -0.04491" rpy="${reflect * 1.5707} 0 ${(reflect + 1) * 0.5 * 3.1415}" />
+      <origin xyz="-0.02 0.16991 -0.04491" rpy="${reflect * 1.5707} 1.5707 ${(reflect + 1) * 0.5 * 3.1415}" />
       <parent link="${name}_2_link" />
       <child link="${name}_3_link" />
       <axis xyz="0 0 1" />
@@ -233,7 +233,7 @@
   
     <!-- ARM 5 JOINT -->
     <joint name="${name}_5_joint" type="revolute">
-      <origin xyz="-0.02 0.16991 -0.04491" rpy="-1.5708 0 0" />
+      <origin xyz="-0.02 0.16991 -0.04491" rpy="-1.5708 1.5707 0" />
       <parent link="${name}_4_link" />
       <child link="${name}_5_link" />
       <axis xyz="0 0 1" />
