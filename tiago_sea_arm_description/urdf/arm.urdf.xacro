@@ -311,7 +311,7 @@
   
     <!-- ARM 7 JOINT -->
     <joint name="${name}_7_joint" type="revolute">
-      <origin xyz="0 0.135 -0.0431" rpy="1.5708 1.5708 0" />
+      <origin xyz="0 0.135 -0.0431" rpy="-1.5708 1.5708 0" />
       <parent link="${name}_6_link" />
       <child link="${name}_7_link" />
       <axis xyz="0 0 1" />
