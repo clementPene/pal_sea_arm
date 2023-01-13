@@ -344,7 +344,7 @@
     <joint name="${name}_tool_joint" type="fixed">
       <parent link="${name}_7_link" />
       <child link="${name}_tool_link" />
-        <origin xyz="0 0 -0.07" rpy="3.1415 0 0" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
     </joint>
 
   
