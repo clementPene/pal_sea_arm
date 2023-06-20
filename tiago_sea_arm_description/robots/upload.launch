@@ -14,11 +14,12 @@
 -->
 <launch>
   <arg name="robot_description" default="robot_description"/>
+  <arg name="end_effector" default="false"/>
+  <arg name="ft_sensor" default="false"/>
 
   <!-- robot description -->
   <param name="$(arg robot_description)" 
-         command="rosrun xacro xacro --inorder 
-         '$(find tiago_sea_arm_description)/robots/tiago_sea_arm.urdf.xacro'"/>
+         command="rosrun xacro xacro --inorder '$(find tiago_sea_arm_description)/robots/tiago_sea_arm.urdf.xacro' end_effector:=$(arg end_effector) ft_sensor:=$(arg ft_sensor)"/>
 
   <rosparam command="load" file="$(find tiago_sea_arm_description)/config/collision/collision_parameters.yaml" />
 </launch>

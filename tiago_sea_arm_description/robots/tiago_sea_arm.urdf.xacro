@@ -14,21 +14,16 @@
 -->
 
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="tiago_sea_arm">
-  <xacro:include filename="$(find tiago_sea_arm_description)/urdf/arm.urdf.xacro"/>
+  <xacro:include filename="$(find tiago_sea_arm_description)/urdf/arm/arm.urdf.xacro"/>
+  <xacro:include filename="$(find tiago_sea_arm_description)/urdf/end_effector/end_effector.urdf.xacro"/>
+
+  <xacro:arg name="end_effector" default="false"/>
+  <xacro:arg name="ft_sensor" default="false"/>
+  <xacro:property name="end_effector" value="$(arg end_effector)" />
+  <xacro:property name="ft_sensor" value="$(arg ft_sensor)" />
 
   <!-- BASE LINK -->
   <link name="base_link">
-    <inertial>
-      <origin xyz="2.601E-19 4.0232E-18 -0.015448" rpy="0 0 0" />
-      <mass value="0.28971" />
-      <inertia
-        ixx="0.00022379"
-        ixy="1.5836E-20"
-        ixz="5.2063E-21"
-        iyy="0.00022379"
-        iyz="-5.1333E-21"
-        izz="0.00019673" />
-    </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
@@ -47,8 +42,8 @@
   </link>
 
   <!-- ARM -->
-  <xacro:tiago_sea_arm name="arm" parent="base_link" reflect="1" arm_1_offset="0" arm_2_offset="0" arm_3_offset="0" arm_4_offset="0" arm_5_offset="0" arm_6_offset="0" arm_7_offset="0">
-    <origin xyz="0 0 0.01991" rpy="0 0 3.1416" />
-  </xacro:tiago_sea_arm>
+  <xacro:tiago_sea_arm name="arm_right" parent="base_link" reflect="1" ft_sensor="${ft_sensor}" arm_1_offset="0" arm_2_offset="0" arm_3_offset="0" arm_4_offset="0" arm_5_offset="0" arm_6_offset="0" arm_7_offset="0"/>
+
+  <xacro:tiago_sea_arm_end_effector name="gripper" parent="arm_right_7_link" type="${end_effector}"/>
 
 </robot>
