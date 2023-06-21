@@ -1,0 +1,336 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <!-- File includes -->
+  <xacro:include filename="$(find tiago_sea_arm_description)/urdf/arm/arm.transmission.xacro" />
+  <xacro:include filename="$(find tiago_sea_arm_description)/urdf/calibration_constants.urdf.xacro" />
+  <xacro:include filename="$(find tiago_sea_arm_description)/gazebo/gazebo.urdf.xacro" />
+  <!-- Constants -->
+
+  <!-- ARM MACRO -->
+  <!-- reflect: Set to 1 for a right arm, or to -1 for a left arm -->
+  <xacro:macro name="tiago_sea_arm"
+    params="name parent *origin reflect ft_sensor tiago_dual arm_1_offset arm_2_offset arm_3_offset arm_4_offset arm_5_offset arm_6_offset arm_7_offset no_safety_eps:=False">
+    <xacro:property name="arm_eps" value="${0.00 if no_safety_eps else 0.07}" />
+
+
+    <!-- BASE LINK -->
+    <link name="${name}_base_link">
+      <inertial>
+        <origin xyz="0.010252 -2.0895E-06 -0.010085" rpy="0 0 0" />
+        <mass value="0.41717" />
+        <inertia
+          ixx="0.00020772" ixy="6.9296E-09" ixz="3.5124E-08"
+          iyy="0.00033949" iyz="-5.2354E-09"
+          izz="0.00046362" />
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://tiago_sea_arm_description/meshes/base_link.STL" />
+        </geometry>
+        <material name="">
+          <color rgba="0.75294 0.75294 0.75294 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://tiago_sea_arm_description/meshes/base_link.STL" />
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="${name}_base_joint" type="fixed">
+      <xacro:insert_block name="origin" />
+      <parent link="${parent}" />
+      <child link="${name}_base_link" />
+    </joint>
+
+
+    <!-- Arm link macro -->
+    <link name="${name}_1_link">
+      <inertial>
+        <origin xyz="0.1046 -0.0136 ${-0.0310 * reflect}" rpy="0 0 0" />
+        <mass value="0.8770" />
+        <inertia ixx="1.8531E-03" ixy="8.3565E-05" ixz="${2.5620E-05 * reflect}"
+          iyy="6.0021E-04" iyz="${-3.3154E-04 * reflect}"
+          izz="1.6564E-03" />
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://tiago_sea_arm_description/meshes/arm/arm_right_1_link.STL"
+            scale="1 1 ${reflect}" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://tiago_sea_arm_description/meshes/arm/arm_right_1_link_convex.STL"
+            scale="1 1 ${reflect}" />
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="${name}_1_joint" type="revolute">
+      <origin xyz="0.0 0.0 0.02" rpy=" 0 ${(90 - 90 * reflect) * deg_to_rad } ${-90 * deg_to_rad}" />
+      <parent link="${name}_base_link" />
+      <child link="${name}_1_link" />
+      <axis xyz="0 0 ${1}" />
+      <limit lower="-0.8480" upper="1.5639" effort="50" velocity="1.95" />
+      <safety_controller k_position="20" k_velocity="20" soft_lower_limit="${-0.8480  + arm_eps}"
+        soft_upper_limit="${1.5639 - arm_eps}" />
+    </joint>
+
+
+    <link name="${name}_2_link">
+      <inertial>
+        <origin xyz="-0.1032 0 ${0.0403 * reflect}" rpy="0 0 0" />
+        <mass value="0.7941" />
+        <inertia ixx="7.8558E-04" ixy="-2.0052E-07" ixz="${-2.8139E-04 * reflect}"
+          iyy="1.2374E-03" iyz="${-9.5016E-07 * reflect}"
+          izz="1.2876E-03" />
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://tiago_sea_arm_description/meshes/arm/arm_right_2_link.STL"
+            scale="1 1 ${reflect}" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://tiago_sea_arm_description/meshes/arm/arm_right_2_link_convex.STL"
+            scale="1 1 ${reflect}" />
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="${name}_2_joint" type="revolute">
+      <origin xyz="0.13 -0.0483 ${-0.04* reflect}" rpy="${90 * reflect * deg_to_rad} 0 ${180 * deg_to_rad}" />
+      <parent link="${name}_1_link" />
+      <child link="${name}_2_link" />
+      <axis xyz="0 0 ${1}" />
+      <limit lower="-1.5922" upper="1.5922" effort="50" velocity="1.95" />
+      <safety_controller k_position="20" k_velocity="20" soft_lower_limit="${-1.5922  + arm_eps}"
+        soft_upper_limit="${1.5922 - arm_eps}" />
+    </joint>
+
+       <link name="${name}_3_link">
+      <inertial>
+        <origin xyz="0.0141106542132395 0.0147731157720475 ${-0.129722816418797 * reflect}" rpy="0 0 0" />
+        <mass value="0.926307323067338" />
+        <inertia ixx="2.6873E-03" ixy="5.9313E-06" ixz="${6.9808E-05 * reflect}"
+          iyy="2.2624E-03" iyz="${2.1739E-04 * reflect}"
+          izz="7.2820E-04" />
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://tiago_sea_arm_description/meshes/arm/arm_right_3_link.STL"
+            scale="1 1 ${reflect}" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://tiago_sea_arm_description/meshes/arm/arm_right_3_link_convex.STL"
+            scale="1 1 ${reflect}" />
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="${name}_3_joint" type="revolute">`
+      <origin xyz="-0.1549 0 ${0.05 * reflect}" rpy="0 ${90 * reflect * deg_to_rad} 0" />
+      <parent link="${name}_2_link" />
+      <child link="${name}_3_link" />
+      <axis xyz="0 0 1" />
+      <limit lower="-2.53135" upper="2.53135" effort="50" velocity="1.95" />
+      <safety_controller k_position="20" k_velocity="20" soft_lower_limit="${-2.53135  + arm_eps}"
+        soft_upper_limit="${2.53135 - arm_eps}" />
+    </joint>
+
+       <link name="${name}_4_link">
+      <inertial>
+        <origin xyz="-0.02709 -0.0989 ${reflect * 0.0405}" rpy="0 0 0" />
+        <mass value="0.8229" />
+        <inertia ixx="1.3428E-03" ixy="1.0575E-04" ixz="${8.8477E-05 * reflect}"
+          iyy="8.2512E-04" iyz="${3.0671E-04 * reflect}"
+          izz="1.3987E-03" />
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://tiago_sea_arm_description/meshes/arm/arm_right_4_link.STL"
+            scale="1 1 ${reflect}" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://tiago_sea_arm_description/meshes/arm/arm_right_4_link_convex.STL"
+            scale="1 1 ${reflect}" />
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="${name}_4_joint" type="revolute">`
+      <origin xyz="0.05 0.02 ${-0.1651 * reflect}" rpy="${90 * reflect * deg_to_rad} ${-25 * reflect * deg_to_rad} ${-90 * deg_to_rad}" />
+      <parent link="${name}_3_link" />
+      <child link="${name}_4_link" />
+      <axis xyz="0 0 1" />
+      <limit lower="-2.41302" upper="1.60868" effort="50" velocity="1.95" />
+      <safety_controller k_position="20" k_velocity="20" soft_lower_limit="${-2.41302  + arm_eps}"
+        soft_upper_limit="${1.60868 - arm_eps}" />
+    </joint>
+
+       <link name="${name}_5_link">
+      <inertial>
+        <origin xyz="0 -0.0085 ${-0.1222 * reflect}" rpy="0 0 0" />
+        <mass value="0.7489" />
+        <inertia ixx="1.6544E-03" ixy="7.1315E-08" ixz="${5.9434E-07 * reflect}"
+          iyy="1.8866E-03" iyz="${-1.9988E-05 * reflect}"
+          izz="4.8515E-04" />
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://tiago_sea_arm_description/meshes/arm/arm_right_5_link.STL"
+            scale="1 1 ${reflect}" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://tiago_sea_arm_description/meshes/arm/arm_right_5_link_convex.STL"
+            scale="1 1 ${reflect}" />
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="${name}_5_joint" type="revolute">`
+      <origin xyz="-0.04738 -0.1489 ${0.05 * reflect}" rpy="${90 * reflect * deg_to_rad} 0 ${155 * deg_to_rad}" />
+      <parent link="${name}_4_link" />
+      <child link="${name}_5_link" />
+      <axis xyz="0 0 1" />
+      <limit lower="-2.54185" upper="2.54185" effort="50" velocity="1.95" />
+      <safety_controller k_position="20" k_velocity="20" soft_lower_limit="${-2.54185  + arm_eps}"
+        soft_upper_limit="${2.54185 - arm_eps}" />
+    </joint>
+
+       <link name="${name}_6_link">
+      <inertial>
+        <origin xyz="0 -0.0996 ${0.0325 * reflect}" rpy="0 0 0" />
+        <mass value="0.5745" />
+        <inertia ixx="6.4972E-04" ixy="-2.8856E-07" ixz="${7.2616E-07 * reflect}"
+          iyy="3.5431E-04" iyz="${1.3010E-04 * reflect}"
+          izz="6.7431E-04" />
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://tiago_sea_arm_description/meshes/arm/arm_right_6_link.STL"
+            scale="1 1 ${reflect}" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://tiago_sea_arm_description/meshes/arm/arm_right_6_link_convex.STL"
+            scale="1 1 ${reflect}" />
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="${name}_6_joint" type="revolute">`
+      <origin xyz="0 -0.0395 ${-0.1651 * reflect}" rpy="${90 * reflect * deg_to_rad} 0 ${180 * deg_to_rad}" />
+      <parent link="${name}_5_link" />
+      <child link="${name}_6_link" />
+      <axis xyz="0 0 1" />
+      <limit lower="-2.1562" upper="2.1562" effort="50" velocity="1.95" />
+      <safety_controller k_position="20" k_velocity="20" soft_lower_limit="${-2.1562  + arm_eps}"
+        soft_upper_limit="${2.1562 - arm_eps}" />
+    </joint>
+
+       <link name="${name}_7_link">
+      <inertial>
+        <origin xyz="0 0 0.0074" rpy="0 0 0" />
+        <mass value="0.0465" />
+        <inertia ixx="1.5042E-05" ixy="1.8536E-15" ixz="${1.2043E-14 * reflect}"
+          iyy="1.5042E-05" iyz="${-2.3203E-14 * reflect}"
+          izz="1.4089E-05" />
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://tiago_sea_arm_description/meshes/arm/arm_right_7_link.STL"
+            scale="1 1 ${reflect}" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://tiago_sea_arm_description/meshes/arm/arm_right_7_link_convex.STL"
+            scale="1 1 ${reflect}" />
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="${name}_7_joint" type="revolute">`
+      <origin xyz="0 -0.146 ${0.039 * reflect}" rpy="0 ${90 * reflect * deg_to_rad} ${90 * deg_to_rad}" />
+      <parent link="${name}_6_link" />
+      <child link="${name}_7_link" />
+      <axis xyz="0 0 1" />
+      <limit lower="-3.6" upper="1.3701" effort="50" velocity="1.95" />
+      <safety_controller k_position="20" k_velocity="20" soft_lower_limit="${-3.6  + arm_eps}"
+        soft_upper_limit="${1.3701 - arm_eps}" />
+    </joint>
+
+  </xacro:macro>
+
+</robot>

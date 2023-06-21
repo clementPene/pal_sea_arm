@@ -58,7 +58,7 @@
 
   <!-- ARM MACRO -->
   <!-- reflect: Set to 1 for a right arm, or to -1 for a left arm -->
-  <xacro:macro name="tiago_sea_arm" params="name parent reflect ft_sensor arm_1_offset arm_2_offset arm_3_offset arm_4_offset arm_5_offset arm_6_offset arm_7_offset no_safety_eps:=False">
+  <xacro:macro name="tiago_sea_arm" params="name parent *origin reflect ft_sensor tiago_dual arm_1_offset arm_2_offset arm_3_offset arm_4_offset arm_5_offset arm_6_offset arm_7_offset no_safety_eps:=False">
     <xacro:property name="arm_eps"       value="${0.00 if no_safety_eps else 0.07}"/>
    
     <!--  arm 1  -->
