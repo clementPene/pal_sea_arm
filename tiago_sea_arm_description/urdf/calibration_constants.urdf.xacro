@@ -37,4 +37,5 @@
   	<xacro:property name="arm_right_6_joint_offset" value="0.0" />
   	<xacro:property name="arm_right_7_joint_offset" value="0.0" />
 
+
 </robot>

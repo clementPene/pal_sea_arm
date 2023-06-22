@@ -22,9 +22,41 @@
   <xacro:property name="end_effector" value="$(arg end_effector)" />
   <xacro:property name="ft_sensor" value="$(arg ft_sensor)" />
 
-  <!-- ARM -->
-  <xacro:tiago_sea_arm name="arm_right" parent="base_link" reflect="1" ft_sensor="${ft_sensor}" arm_1_offset="0" arm_2_offset="0" arm_3_offset="0" arm_4_offset="0" arm_5_offset="0" arm_6_offset="0" arm_7_offset="0"/>
+   <link name="world"/>
+    <joint name="world_fixed" type="fixed">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <parent link="world"/>
+        <child link="arm_root_link"/>
+    </joint>
 
-  <xacro:tiago_sea_arm_end_effector name="gripper" parent="arm_right_7_link" type="${end_effector}"/>
+    <link name="arm_root_link">
+        <visual>
+            <origin xyz="0 0 0.5" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.1 0.1 1.0"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0.5" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.1 0.1 1.0"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="1e2" />
+            <origin xyz="0.0 0.0 0.0" />
+            <inertia ixx = "0.000001" ixy = "0.000000" ixz = "0.000000"
+                     iyx = "0.000000" iyy = "0.000001" iyz = "0.000000"
+                     izx = "0.000000" izy = "0.000000" izz = "0.000001" />
+        </inertial>
+    </link>
+    
+
+  <!-- ARM -->
+  <xacro:tiago_sea_arm name="arm" parent="arm_root_link" reflect="1" ft_sensor="${ft_sensor}" tiago_dual="-1" arm_1_offset="0" arm_2_offset="0" arm_3_offset="0" arm_4_offset="0" arm_5_offset="0" arm_6_offset="0" arm_7_offset="0">
+          <origin xyz="0.05 0 0.85" rpy="0 1.5708 0"/>
+  </xacro:tiago_sea_arm>
+
+  <xacro:tiago_sea_arm_end_effector name="gripper" parent="arm_7_link" type="${end_effector}"/>
 
 </robot>
