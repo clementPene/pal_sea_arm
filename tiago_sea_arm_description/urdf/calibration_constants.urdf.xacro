@@ -9,7 +9,13 @@
 
  	<xacro:include filename="$(find tiago_sea_arm_description)/urdf/deg_to_rad.xacro" />
 	<!--Constant parameters-->
-	
+	<xacro:property name="camera_position_x" value="0.0908" />
+	<xacro:property name="camera_position_y" value="0.08" />
+	<xacro:property name="camera_position_z" value="0.0" />
+	<xacro:property name="camera_orientation_r" value="${-90 * deg_to_rad}" />
+	<xacro:property name="camera_orientation_p" value="0.0" />
+	<xacro:property name="camera_orientation_y" value="0.0" />
+
 	<xacro:property name="head_2_joint_offset" value="0" />
 	
 	<xacro:property name="head_1_joint_offset" value="0" />
@@ -31,6 +37,4 @@
   	<xacro:property name="arm_right_6_joint_offset" value="0.0" />
   	<xacro:property name="arm_right_7_joint_offset" value="0.0" />
 
-
 </robot>
-
