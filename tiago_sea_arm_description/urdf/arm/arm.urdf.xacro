@@ -125,7 +125,7 @@
       </collision>
     </link>
 
-    <xacro:property name="arm_2_upper_limit"       value="${90.0 if tiago_dual == 1 else 62.5}"/>
+    <xacro:property name="arm_2_upper_limit"       value="${90.0 if tiago_dual == 1 else 90}"/>
     <xacro:property name="arm_2_lower_limit"       value="${-67.5 if tiago_dual == 1 else -90.0}"/>
 
     <joint name="${name}_2_joint" type="revolute">
@@ -171,8 +171,8 @@
       </collision>
     </link>
 
-    <xacro:property name="arm_3_lower_limit"       value="${-45 if tiago_dual == 1 else -148}"/>
-    <xacro:property name="arm_3_upper_limit"       value="${225 if tiago_dual == 1 else 148}"/>
+    <xacro:property name="arm_3_lower_limit"       value="${-45 if tiago_dual == 1 else -170}"/>
+    <xacro:property name="arm_3_upper_limit"       value="${225 if tiago_dual == 1 else 170}"/>
 
     <joint name="${name}_3_joint" type="revolute">
      <origin xyz="-0.1549 0 ${0.05 * reflect}"
