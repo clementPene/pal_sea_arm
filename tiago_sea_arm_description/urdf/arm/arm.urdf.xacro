@@ -86,6 +86,7 @@
       <child link="${name}_1_link" />
       <axis xyz="0 0 ${1}" />
       <limit lower="-0.8480" upper="1.5639" effort="${arm_1_max_effort}" velocity="${arm_1_max_velocity}" />
+      <dynamics friction="${arm_friction}" damping="${arm_damping}"/>
       <safety_controller k_position="${arm_k_position}" k_velocity="${arm_k_velocity}" soft_lower_limit="${-0.8480  + arm_eps}"
         soft_upper_limit="${1.5639 - arm_eps}" />
     </joint>
@@ -128,6 +129,7 @@
       <child link="${name}_2_link" />
       <axis xyz="0 0 ${1}" />
       <limit lower="-1.5922" upper="1.5922" effort="${arm_2_max_effort}" velocity="${arm_2_max_velocity}" />
+      <dynamics friction="${arm_friction}" damping="${arm_damping}"/>
       <safety_controller k_position="${arm_k_position}" k_velocity="${arm_k_velocity}" soft_lower_limit="${-1.5922  + arm_eps}"
         soft_upper_limit="${1.5922 - arm_eps}" />
     </joint>
@@ -172,6 +174,7 @@
       <axis xyz="0 0 1" />
       <limit lower="-2.53135" upper="2.53135"
         effort="${arm_3_max_effort}" velocity="${arm_3_max_velocity}" />
+       <dynamics friction="${arm_friction}" damping="${arm_damping}"/>
       <safety_controller k_position="${arm_k_position}" k_velocity="${arm_k_velocity}"
         soft_lower_limit="${-2.53135  + arm_eps}"
         soft_upper_limit="${2.53135 - arm_eps}" />
@@ -216,6 +219,8 @@
       <axis xyz="0 0 1" />
       <limit
         lower="${arm_4_joint_lb}" upper="${arm_4_joint_ub}" effort="${arm_4_max_effort}" velocity="${arm_4_max_velocity}" />
+       <dynamics friction="${arm_friction}" damping="${arm_damping}"/>
+
       <safety_controller
         k_position="${arm_k_position}" k_velocity="${arm_k_velocity}" soft_lower_limit="${arm_4_joint_lb  + arm_eps}"
         soft_upper_limit="${arm_4_joint_ub - arm_eps}" />
@@ -260,6 +265,8 @@
       <axis xyz="0 0 1" />
       <limit
         lower="${arm_5_joint_lb}" upper="${arm_5_joint_ub}" effort="${arm_5_max_effort}" velocity="${arm_5_max_velocity}" />
+       <dynamics friction="${arm_friction}" damping="${arm_damping}"/>
+
       <safety_controller
         k_position="${arm_k_position}" k_velocity="${arm_k_velocity}" soft_lower_limit="${arm_5_joint_lb  + arm_eps}"
         soft_upper_limit="${arm_5_joint_ub - arm_eps}" />
@@ -304,6 +311,8 @@
       <axis xyz="0 0 1" />
       <limit
         lower="${arm_6_joint_lb}" upper="${arm_6_joint_ub}" effort="${arm_6_max_effort}" velocity="${arm_6_max_velocity}" />
+       <dynamics friction="${arm_friction}" damping="${arm_damping}"/>
+
       <safety_controller
         k_position="${arm_k_position}" k_velocity="${arm_k_velocity}" soft_lower_limit="${arm_6_joint_lb  + arm_eps}"
         soft_upper_limit="${arm_6_joint_ub - arm_eps}" />
@@ -348,6 +357,8 @@
       <axis xyz="0 0 1" />
       <limit
         lower="${arm_7_joint_lb}" upper="${arm_7_joint_ub}" effort="${arm_7_max_effort}" velocity="${arm_7_max_velocity}" />
+       <dynamics friction="${arm_friction}" damping="${arm_damping}"/>
+
       <safety_controller
         k_position="${arm_k_position}" k_velocity="${arm_k_velocity}" soft_lower_limit="${arm_7_joint_lb  + arm_eps}"
         soft_upper_limit="${arm_7_joint_ub - arm_eps}" />
@@ -385,6 +396,71 @@
     </joint>
 
     
+   <gazebo reference="${name}_1_link">
+     <mu1>0.9</mu1>
+     <mu2>0.9</mu2>
+     <material>Gazebo/DarkGrey</material>
+   </gazebo>
+   <gazebo reference="${name}_2_link">
+     <mu1>0.9</mu1>
+     <mu2>0.9</mu2>
+     <material>Gazebo/DarkGrey</material>
+   </gazebo>
+   <gazebo reference="${name}_3_link">
+     <mu1>0.9</mu1>
+     <mu2>0.9</mu2>
+     <material>Gazebo/DarkGrey</material>
+   </gazebo>
+   <gazebo reference="${name}_4_link">
+     <mu1>0.9</mu1>
+     <mu2>0.9</mu2>
+     <material>Gazebo/DarkGrey</material>
+   </gazebo>
+    <gazebo reference="${name}_5_link">
+     <mu1>0.9</mu1>
+     <mu2>0.9</mu2>
+     <material>Gazebo/DarkGrey</material>
+   </gazebo>
+    <gazebo reference="${name}_6_link">
+     <mu1>0.9</mu1>
+     <mu2>0.9</mu2>
+     <material>Gazebo/DarkGrey</material>
+   </gazebo>
+    <gazebo reference="${name}_7_link">
+     <mu1>0.9</mu1>
+     <mu2>0.9</mu2>
+     <material>Gazebo/DarkGrey</material>
+   </gazebo>
+
+   <gazebo reference="${name}_1_joint">
+      <implicitSpringDamper>1</implicitSpringDamper>
+   </gazebo>
+   <gazebo reference="${name}_2_joint">
+      <implicitSpringDamper>1</implicitSpringDamper>
+   </gazebo>
+   <gazebo reference="${name}_3_joint">
+      <implicitSpringDamper>1</implicitSpringDamper>
+   </gazebo>
+   <gazebo reference="${name}_4_joint">
+      <implicitSpringDamper>1</implicitSpringDamper>
+   </gazebo>
+   <gazebo reference="${name}_5_joint">
+      <implicitSpringDamper>1</implicitSpringDamper>
+   </gazebo>
+   <gazebo reference="${name}_6_joint">
+      <implicitSpringDamper>1</implicitSpringDamper>
+   </gazebo>
+   <gazebo reference="${name}_7_joint">
+      <implicitSpringDamper>1</implicitSpringDamper>
+   </gazebo>
+    
+    <xacro:arm_simple_transmission name="${name}" number="1" reduction="1.0" offset_value="${arm_1_offset}"/>
+    <xacro:arm_simple_transmission name="${name}" number="2" reduction="1.0" offset_value="${arm_2_offset}"/>
+    <xacro:arm_simple_transmission name="${name}" number="3" reduction="1.0" offset_value="${arm_3_offset}"/>
+    <xacro:arm_simple_transmission name="${name}" number="4" reduction="1.0" offset_value="${arm_4_offset}"/>
+    <xacro:arm_simple_transmission name="${name}" number="5" reduction="1.0" offset_value="${arm_4_offset}"/>
+    <xacro:arm_simple_transmission name="${name}" number="6" reduction="1.0" offset_value="${arm_4_offset}"/>
+    <xacro:arm_simple_transmission name="${name}" number="7" reduction="1.0" offset_value="${arm_4_offset}"/>
 
   </xacro:macro>
 
