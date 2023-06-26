@@ -11,17 +11,17 @@
   <!-- TODO: Check these values -->
 
 
-  <xacro:property name="arm_4_joint_ub" value="1.60868" />
-  <xacro:property name="arm_4_joint_lb" value="-2.41302" />
+  <xacro:property name="arm_4_joint_ub" value="60" />
+  <xacro:property name="arm_4_joint_lb" value="-130" />
 
-  <xacro:property name="arm_5_joint_ub" value="2.54185" />
-  <xacro:property name="arm_5_joint_lb" value="-2.54185" />
+  <xacro:property name="arm_5_joint_ub" value="145" />
+  <xacro:property name="arm_5_joint_lb" value="-145" />
 
-  <xacro:property name="arm_6_joint_ub" value="2.1562" />
-  <xacro:property name="arm_6_joint_lb" value="-2.1562" />
+  <xacro:property name="arm_6_joint_ub" value="114" />
+  <xacro:property name="arm_6_joint_lb" value="-114" />
 
-  <xacro:property name="arm_7_joint_ub" value="1.3701" />
-  <xacro:property name="arm_7_joint_lb" value="-3.6" />
+  <xacro:property name="arm_7_joint_ub" value="145" />
+  <xacro:property name="arm_7_joint_lb" value="-145" />
 
   <xacro:property name="arm_1_max_velocity"      value="1.95" />
   <xacro:property name="arm_2_max_velocity"      value="1.95" />
