@@ -11,8 +11,8 @@
   <!-- TODO: Check these values -->
 
 
-  <xacro:property name="arm_4_joint_ub" value="60" />
-  <xacro:property name="arm_4_joint_lb" value="-130" />
+  <xacro:property name="arm_4_joint_ub" value="90" />
+  <xacro:property name="arm_4_joint_lb" value="-140" />
 
   <xacro:property name="arm_5_joint_ub" value="145" />
   <xacro:property name="arm_5_joint_lb" value="-145" />
