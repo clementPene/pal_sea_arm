@@ -16,50 +16,69 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="tiago_sea_arm">
   <xacro:include filename="$(find tiago_sea_arm_description)/urdf/arm/arm.urdf.xacro"/>
   <xacro:include filename="$(find tiago_sea_arm_description)/urdf/end_effector/end_effector.urdf.xacro"/>
+  <xacro:include filename="$(find tiago_sea_arm_description)/urdf/sensors/ft_sensor.urdf.xacro" />
+  <!-- Materials for visualization -->
+  <xacro:include filename="$(find tiago_description)/urdf/materials.urdf.xacro" />
 
   <xacro:arg name="end_effector" default="false"/>
   <xacro:arg name="ft_sensor" default="false"/>
   <xacro:property name="end_effector" value="$(arg end_effector)" />
   <xacro:property name="ft_sensor" value="$(arg ft_sensor)" />
 
-   <link name="world"/>
-    <joint name="world_fixed" type="fixed">
-        <origin xyz="0 0 0" rpy="0 0 0"/>
-        <parent link="world"/>
-        <child link="arm_root_link"/>
-    </joint>
+  <xacro:if value="${end_effector not in ['false', False, 'pal-pro-gripper']}">
+    <xacro:wrong_end_effector/>
+  </xacro:if>
+  <xacro:if value="${ft_sensor not in ['false', False, 'ati']}">
+    <xacro:wrong_ft_sensor/>
+  </xacro:if>
 
-    <link name="arm_root_link">
-        <visual>
-            <origin xyz="0 0 0.5" rpy="0 0 0"/>
-            <geometry>
-                <box size="0.1 0.1 1.0"/>
-            </geometry>
-        </visual>
-        <collision>
-            <origin xyz="0 0 0.5" rpy="0 0 0"/>
-            <geometry>
-                <box size="0.1 0.1 1.0"/>
-            </geometry>
-        </collision>
-        <inertial>
-            <mass value="1e2" />
-            <origin xyz="0.0 0.0 0.0" />
-            <inertia ixx = "0.000001" ixy = "0.000000" ixz = "0.000000"
-                     iyx = "0.000000" iyy = "0.000001" iyz = "0.000000"
-                     izx = "0.000000" izy = "0.000000" izz = "0.000001" />
-        </inertial>
-    </link>
+  <xacro:property name="has_ft_sensor"           value="${ft_sensor in ['ati']}"/>
+  <xacro:property name="has_end_effector"        value="${end_effector not in ['false', False, 'no-ee']}"/>
+  <xacro:property name="end_effector_link"       value="${'arm_ft_tool_link' if has_ft_sensor else 'arm_tool_link'}"/>
+
+  <link name="world"/>
+
+  <joint name="world_fixed" type="fixed">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <parent link="world"/>
+      <child link="arm_root_link"/>
+  </joint>
+
+  <link name="arm_root_link">
+      <visual>
+          <origin xyz="0 0 0.5" rpy="0 0 0"/>
+          <geometry>
+              <box size="0.1 0.1 1.0"/>
+          </geometry>
+      </visual>
+      <collision>
+          <origin xyz="0 0 0.5" rpy="0 0 0"/>
+          <geometry>
+              <box size="0.1 0.1 1.0"/>
+          </geometry>
+      </collision>
+      <inertial>
+          <mass value="1e2" />
+          <origin xyz="0.0 0.0 0.0" />
+          <inertia ixx = "0.000001" ixy = "0.000000" ixz = "0.000000"
+                   iyx = "0.000000" iyy = "0.000001" iyz = "0.000000"
+                   izx = "0.000000" izy = "0.000000" izz = "0.000001" />
+      </inertial>
+  </link>
     
   <!-- Generic simulator_gazebo plugins -->
-  <xacro:include filename="$(find tiago_sea_description)/gazebo/gazebo.urdf.xacro" />
+  <xacro:include filename="$(find tiago_sea_arm_description)/gazebo/gazebo.urdf.xacro" />
 
 
   <!-- ARM -->
   <xacro:tiago_sea_arm name="arm" parent="arm_root_link" reflect="1" ft_sensor="${ft_sensor}" tiago_dual="-1" arm_1_offset="0" arm_2_offset="0" arm_3_offset="0" arm_4_offset="0" arm_5_offset="0" arm_6_offset="0" arm_7_offset="0">
-          <origin xyz="0.05 0 0.85" rpy="0 1.5708 0"/>
+          <origin xyz="0 0 1.0" rpy="0 0 0"/>
   </xacro:tiago_sea_arm>
 
-  <xacro:tiago_sea_arm_end_effector name="gripper" parent="arm_7_link" type="${end_effector}"/>
+  <xacro:tiago_sea_arm_end_effector name="gripper" parent="${end_effector_link}" type="${end_effector}" has_end_effector="${has_end_effector}" reflect="1"/>
+
+  <xacro:if value="${ft_sensor == 'ati'}">
+    <xacro:ft_sensor name="arm" parent="arm_tool_link" reflect="1"/>
+  </xacro:if>
 
 </robot>
