@@ -15,7 +15,7 @@
 
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
-  <xacro:macro name="ft_sensor" params="name parent reflect">
+  <xacro:macro name="ft_sensor" params="name parent">
     <!--************************-->
     <!--        ft sensor       -->
     <!--************************-->
@@ -27,7 +27,7 @@
         <visual>
           <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
           <geometry>
-            <mesh filename="package://tiago_sea_arm_description/meshes/sensors/ati_ft_sensor.STL"/>
+            <mesh filename="package://tiago_sea_arm_description/meshes/sensors/rokubi_ft_sensor.STL"/>
           </geometry>
           <material name="">
             <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />

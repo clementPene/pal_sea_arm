@@ -28,11 +28,11 @@
   <xacro:if value="${end_effector not in ['false', False, 'pal-pro-gripper']}">
     <xacro:wrong_end_effector/>
   </xacro:if>
-  <xacro:if value="${ft_sensor not in ['false', False, 'ati']}">
+  <xacro:if value="${ft_sensor not in ['false', False, 'rokubi']}">
     <xacro:wrong_ft_sensor/>
   </xacro:if>
 
-  <xacro:property name="has_ft_sensor"           value="${ft_sensor in ['ati']}"/>
+  <xacro:property name="has_ft_sensor"           value="${ft_sensor in ['rokubi']}"/>
   <xacro:property name="has_end_effector"        value="${end_effector not in ['false', False, 'no-ee']}"/>
   <xacro:property name="end_effector_link"       value="${'arm_ft_tool_link' if has_ft_sensor else 'arm_tool_link'}"/>
 
@@ -77,8 +77,8 @@
 
   <xacro:tiago_sea_arm_end_effector name="gripper" parent="${end_effector_link}" type="${end_effector}" has_end_effector="${has_end_effector}" reflect="1"/>
 
-  <xacro:if value="${ft_sensor == 'ati'}">
-    <xacro:ft_sensor name="arm" parent="arm_tool_link" reflect="1"/>
+  <xacro:if value="${has_ft_sensor}">
+    <xacro:ft_sensor name="arm" parent="arm_tool_link"/>
   </xacro:if>
 
 </robot>
