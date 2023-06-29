@@ -34,7 +34,6 @@
   </xacro:if>
 
 
-  <!-- TODO: Get correct transform for new gripper -->
   <!-- PAL Pro Gripper -->
   <xacro:if value="${type == 'pal-pro-gripper'}">
     <xacro:include filename="$(find pal_pro_gripper_description)/urdf/pro_gripper.urdf.xacro" />
