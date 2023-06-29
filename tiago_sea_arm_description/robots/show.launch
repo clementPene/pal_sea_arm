@@ -14,8 +14,8 @@
 -->
 <launch>
   <arg name="rvizconfig" default="$(find tiago_sea_arm_description)/config/show.rviz" />
-  <arg name="end_effector" default="false"/>
-  <arg name="ft_sensor" default="false"/>
+  <arg name="end_effector" default="pal-pro-gripper"/>
+  <arg name="ft_sensor" default="ati"/>
 
   <include file="$(find tiago_sea_arm_description)/robots/upload.launch">
     <arg name="end_effector"  value="$(arg end_effector)"/>
