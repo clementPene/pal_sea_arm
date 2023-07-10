@@ -2,8 +2,8 @@
 Changelog for package tiago_sea_arm_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.1 (2023-07-10)
+------------------
 * Merge branch 'dtk/description' into 'master'
   Update TIAGo sea arm to work as a standalone robot
   See merge request robots/tiago_sea_arm_robot!4
