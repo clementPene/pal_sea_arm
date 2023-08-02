@@ -18,11 +18,11 @@
     <!-- BASE LINK -->
     <link name="${name}_base_link">
       <inertial>
-        <origin xyz="3.2628E-04 -3.2799E-03 -0.0322" rpy="0 0 0" />
+        <origin xyz="-3.2799E-03 -3.2628E-04 -0.0322" rpy="0 0 0" />
         <mass value="0.8021" />
         <inertia
-          ixx="5.5663E-04" ixy="-5.9227E-06" ixz="5.7113E-06"
-          iyy="5.3024E-04" iyz="1.0828E-06"
+          ixx="5.3024E-04" ixy="5.9227E-06" ixz="1.0828E-06"
+          iyy="5.5663E-04" iyz="-5.7113E-06"
           izz="6.8971E-04" />
       </inertial>
       <visual>
@@ -52,11 +52,11 @@
     <!-- Arm link macro -->
     <link name="${name}_1_link">
       <inertial>
-        <origin xyz="0.0106 0.1082 ${-0.0328 * reflect}" rpy="0 0 0" />
+        <origin xyz="0.1082 -0.0106 ${-0.0328 * reflect}" rpy="0 0 0" />
         <mass value="1.0267" />
       <inertia
-        ixx="1.9301E-03" ixy="-8.52034E-05" ixz="${1.9426E-05 * reflect}"
-        iyy="8.0603E-04" iyz="${3.0124E-04 * reflect}"
+        ixx="8.0603E-04" ixy="8.52034E-05" ixz="${3.0124E-04 * reflect}"
+        iyy="1.9301E-03" iyz="${-1.9426E-05 * reflect}"
         izz="1.8484E-03" />
       </inertial>
       <visual>
@@ -98,11 +98,11 @@
 
     <link name="${name}_2_link">
       <inertial>
-        <origin xyz="-8.2340E-03 -0.0941 ${0.0414 * reflect}" rpy="0 0 0" />
+        <origin xyz="-0.0941 2.6612E-04  ${0.0414 * reflect}" rpy="0 0 0" />
         <mass value="0.9496" />
         <inertia
-          ixx="1.4185E-03" ixy="5.7830E-06" ixz="${-5.8148E-06 * reflect}"
-          iyy="8.4202E-04" iyz="${-2.6145E-04 * reflect}"
+          ixx="8.4202E-04" ixy="-5.7830E-06" ixz="${2.6145E-04 * reflect}"
+          iyy="1.4185E-03" iyz="${-5.8148E-06 * reflect}"
           izz="1.4729E-03" />
       </inertial>
       <visual>
@@ -144,7 +144,7 @@
 
     <link name="${name}_3_link">
       <inertial>
-        <origin xyz="0.0151 0.0121 ${0.1344 * reflect}"
+        <origin xyz="0.0121 0.0151 ${-0.1344 * reflect}"
           rpy="0 0 0" />
         <mass value="1.0676" />
         <inertia
@@ -194,7 +194,7 @@
 
     <link name="${name}_4_link">
       <inertial>
-        <origin xyz="-0.018 -0.1025 ${-0.0419 * reflect}" rpy="0 0 0" />
+        <origin xyz="0.018 -0.1025 ${0.0419 * reflect}" rpy="0 0 0" />
         <mass value="0.9494" />
       <inertia
         ixx="1.3967E-03" ixy="-1.0609E-04" ixz="${-4.2876E-05 * reflect}"
@@ -241,7 +241,7 @@
 
     <link name="${name}_5_link">
       <inertial>
-        <origin xyz="0 2.5984E-03 ${0.1278 * reflect}" rpy="0 0 0" />
+        <origin xyz="2.5984E-03 0 ${-0.1278 * reflect}" rpy="0 0 0" />
         <mass value="0.7489" />
         <inertia
           ixx="1.9033E-03" ixy="-4.8338E-07" ixz="${1.5833E-06 * reflect}"
@@ -288,7 +288,7 @@
 
     <link name="${name}_6_link">
       <inertial>
-        <origin xyz="0 -0.0939 ${-0.0329 * reflect}" rpy="0 0 0" />
+        <origin xyz="0 -0.0939 ${0.0329 * reflect}" rpy="0 0 0" />
         <mass value="0.7078" />
         <inertia
           ixx="8.7604E-04" ixy="1.8688E-07" ixz="${1.8174E-07 * reflect}"
