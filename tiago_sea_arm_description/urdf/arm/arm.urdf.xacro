@@ -18,12 +18,12 @@
     <!-- BASE LINK -->
     <link name="${name}_base_link">
       <inertial>
-        <origin xyz="0.010252 -2.0895E-06 -0.010085" rpy="0 0 0" />
-        <mass value="0.41717" />
+        <origin xyz="3.2628E-04 -3.2799E-03 -0.0322" rpy="0 0 0" />
+        <mass value="0.8021" />
         <inertia
-          ixx="0.00020772" ixy="6.9296E-09" ixz="3.5124E-08"
-          iyy="0.00033949" iyz="-5.2354E-09"
-          izz="0.00046362" />
+          ixx="5.5663E-04" ixy="-5.9227E-06" ixz="5.7113E-06"
+          iyy="5.3024E-04" iyz="1.0828E-06"
+          izz="6.8971E-04" />
       </inertial>
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
@@ -52,11 +52,12 @@
     <!-- Arm link macro -->
     <link name="${name}_1_link">
       <inertial>
-        <origin xyz="0.1046 -0.0136 ${-0.0310 * reflect}" rpy="0 0 0" />
-        <mass value="0.8770" />
-        <inertia ixx="6.0149E-04" ixy="8.3434E-05" ixz="${3.1716E-04 * reflect}"
-                 iyy="1.8511E-03" iyz="${-2.4871E-05 * reflect}"
-                 izz="1.6552E-03" />
+        <origin xyz="0.0106 0.1082 ${-0.0328 * reflect}" rpy="0 0 0" />
+        <mass value="1.0267" />
+      <inertia
+        ixx="1.9301E-03" ixy="-8.52034E-05" ixz="${1.9426E-05 * reflect}"
+        iyy="8.0603E-04" iyz="${3.0124E-04 * reflect}"
+        izz="1.8484E-03" />
       </inertial>
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
@@ -84,7 +85,7 @@
     <xacro:property name="arm_1_lower_limit"       value="${-90 if tiago_dual == 1 else 0.0}"/>
 
     <joint name="${name}_1_joint" type="revolute">
-      <origin xyz="0.0 0.0 0.0" rpy=" 0 ${(90 - 90 * reflect) * deg_to_rad } 0" />
+      <origin xyz="0.0 0.0 0.0" rpy=" 0 ${(90 - 90 * reflect) * deg_to_rad } ${(90 + 90 * reflect) * deg_to_rad}" />
       <parent link="${name}_base_link" />
       <child link="${name}_1_link" />
       <axis xyz="0 0 ${1}" />
@@ -97,11 +98,12 @@
 
     <link name="${name}_2_link">
       <inertial>
-        <origin xyz="-0.1032 0 ${0.0403 * reflect}" rpy="0 0 0" />
-        <mass value="0.7941" />
-        <inertia ixx="7.8558E-04" ixy="-2.0052E-07" ixz="${2.8139E-04 * reflect}"
-          iyy="1.2374E-03" iyz="${-9.5016E-07 * reflect}"
-          izz="1.2876E-03" />
+        <origin xyz="-8.2340E-03 -0.0941 ${0.0414 * reflect}" rpy="0 0 0" />
+        <mass value="0.9496" />
+        <inertia
+          ixx="1.4185E-03" ixy="5.7830E-06" ixz="${-5.8148E-06 * reflect}"
+          iyy="8.4202E-04" iyz="${-2.6145E-04 * reflect}"
+          izz="1.4729E-03" />
       </inertial>
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
@@ -129,8 +131,8 @@
     <xacro:property name="arm_2_lower_limit"       value="${-90 if tiago_dual == 1 else -62.5}"/>
 
     <joint name="${name}_2_joint" type="revolute">
-      <origin xyz="0 0.13 ${-0.01989* reflect}"
-        rpy="${90 * reflect * deg_to_rad} 0 -1.5708" />
+      <origin xyz="0.13 -0.0483 ${-0.04* reflect}"
+        rpy="${90 * reflect * deg_to_rad} 0 ${180 * deg_to_rad}" />
       <parent link="${name}_1_link" />
       <child link="${name}_2_link" />
       <axis xyz="0 0 ${1}" />
@@ -142,12 +144,13 @@
 
     <link name="${name}_3_link">
       <inertial>
-        <origin xyz="0.0141106542132395 0.0147731157720475 ${-0.129722816418797 * reflect}"
+        <origin xyz="0.0151 0.0121 ${0.1344 * reflect}"
           rpy="0 0 0" />
-        <mass value="0.926307323067338" />
-        <inertia ixx="2.6873E-03" ixy="5.9313E-06" ixz="${6.9808E-05 * reflect}"
-                 iyy="2.2624E-03" iyz="${2.1739E-04 * reflect}"
-                 izz="7.2820E-04" />
+        <mass value="1.0676" />
+        <inertia
+          ixx="2.4587E-03" ixy="-1.2107E-05" ixz="${-2.1354E-04 * reflect}"
+          iyy="2.7652E-03" iyz="${-6.0550E-05 * reflect}"
+          izz="9.3005E-04" />
       </inertial>
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
@@ -175,8 +178,8 @@
     <xacro:property name="arm_3_upper_limit"       value="${225 if tiago_dual == 1 else 170}"/>
 
     <joint name="${name}_3_joint" type="revolute">
-     <origin xyz="-0.13455 0 ${-0.0019939 * reflect}"
-        rpy="3.1416 ${90 * reflect * deg_to_rad} 0" />
+     <origin xyz="-0.1549 0 ${0.05 * reflect}"
+        rpy="0 ${90 * reflect * deg_to_rad} 0" />
       <parent link="${name}_2_link" />
       <child
         link="${name}_3_link" />
@@ -191,11 +194,12 @@
 
     <link name="${name}_4_link">
       <inertial>
-        <origin xyz="-0.02709 -0.0989 ${reflect * 0.0405}" rpy="0 0 0" />
-        <mass value="0.8229" />
-        <inertia ixx="1.3428E-03" ixy="-1.0575E-04" ixz="${8.8477E-05 * reflect}"
-          iyy="8.2512E-04" iyz="${3.0671E-04 * reflect}"
-          izz="1.3987E-03" />
+        <origin xyz="-0.018 -0.1025 ${-0.0419 * reflect}" rpy="0 0 0" />
+        <mass value="0.9494" />
+      <inertia
+        ixx="1.3967E-03" ixy="-1.0609E-04" ixz="${-4.2876E-05 * reflect}"
+        iyy="8.5657E-04" iyz="${-2.5436E-04 * reflect}"
+        izz="1.4862E-03" />
       </inertial>
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
@@ -220,8 +224,8 @@
     </link>
 
     <joint name="${name}_4_joint" type="revolute">
-     <origin xyz="0.0019939 0.02 ${0.18521 * reflect}"
-        rpy="0 ${90 * reflect * deg_to_rad} 0" />
+     <origin xyz="0.05 0.02 ${-0.1651 * reflect}"
+        rpy="${90 * reflect * deg_to_rad} ${-0 * reflect * deg_to_rad} ${-90 * deg_to_rad}" />
       <parent
         link="${name}_3_link" />
       <child link="${name}_4_link" />
@@ -237,11 +241,12 @@
 
     <link name="${name}_5_link">
       <inertial>
-        <origin xyz="0 -0.0085 ${-0.1222 * reflect}" rpy="0 0 0" />
+        <origin xyz="0 2.5984E-03 ${0.1278 * reflect}" rpy="0 0 0" />
         <mass value="0.7489" />
-        <inertia ixx="1.6544E-03" ixy="7.1315E-08" ixz="${5.9434E-07 * reflect}"
-          iyy="1.8866E-03" iyz="${-1.9988E-05 * reflect}"
-          izz="4.8515E-04" />
+        <inertia
+          ixx="1.9033E-03" ixy="-4.8338E-07" ixz="${1.5833E-06 * reflect}"
+          iyy="1.9678E-03" iyz="${-2.6173E-05 * reflect}"
+          izz="7.0997E-04" />
       </inertial>
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
@@ -266,8 +271,8 @@
     </link>
 
     <joint name="${name}_5_joint" type="revolute">
-     <origin xyz="-0.1345 -0.02 ${-0.0022914 * reflect}"
-        rpy="3.1416 ${90 * reflect * deg_to_rad}  0" />
+     <origin xyz="0.02 -0.1546 ${0.05 * reflect}"
+        rpy="${90 * reflect * deg_to_rad} 0 ${180 * deg_to_rad}" />
       <parent link="${name}_4_link" />
       <child
         link="${name}_5_link" />
@@ -283,11 +288,12 @@
 
     <link name="${name}_6_link">
       <inertial>
-        <origin xyz="0 -0.0996 ${0.0325 * reflect}" rpy="0 0 0" />
-        <mass value="0.5745" />
-        <inertia ixx="6.4972E-04" ixy="-2.8856E-07" ixz="${7.2616E-07 * reflect}"
-          iyy="3.5431E-04" iyz="${1.3010E-04 * reflect}"
-          izz="6.7431E-04" />
+        <origin xyz="0 -0.0939 ${-0.0329 * reflect}" rpy="0 0 0" />
+        <mass value="0.7078" />
+        <inertia
+          ixx="8.7604E-04" ixy="1.8688E-07" ixz="${1.8174E-07 * reflect}"
+          iyy="4.0580E-04" iyz="${-1.3224E-04 * reflect}"
+          izz="9.0318E-04" />
       </inertial>
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
@@ -312,8 +318,8 @@
     </link>
 
     <joint name="${name}_6_joint" type="revolute">
-     <origin xyz="0.0022914 0 ${0.18516 * reflect}"
-        rpy="0 ${90 * reflect * deg_to_rad} 0" />
+     <origin xyz="0 -0.0395 ${-0.1651 * reflect}"
+        rpy="${90 * reflect * deg_to_rad} 0 ${180 * deg_to_rad}" />
       <parent link="${name}_5_link" />
       <child
         link="${name}_6_link" />
@@ -329,11 +335,12 @@
 
     <link name="${name}_7_link">
       <inertial>
-        <origin xyz="0 0 0.0074" rpy="0 0 0" />
-        <mass value="0.0465" />
-        <inertia ixx="1.5042E-05" ixy="1.8536E-15" ixz="${1.2043E-14 * reflect}"
-          iyy="1.5042E-05" iyz="${-2.3203E-14 * reflect}"
-          izz="1.4089E-05" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <mass value="0.0933" />
+        <inertia
+          ixx="5.0821E-05" ixy="2.1963E-09" ixz="${-2.9579E-20 * reflect}"
+          iyy="4.4927E-05" iyz="${-2.9712E-19 * reflect}"
+          izz="9.1085E-05" />
       </inertial>
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
@@ -358,8 +365,8 @@
     </link>
 
     <joint name="${name}_7_joint" type="revolute">
-     <origin xyz="-0.1278 0 ${-0.001497 * reflect}"
-        rpy="3.1416 ${90 * reflect * deg_to_rad} 0" />
+     <origin xyz="0 -0.146 ${0.039 * reflect}"
+        rpy="0 ${90 * reflect * deg_to_rad} ${90 * deg_to_rad}" />
       <parent link="${name}_6_link" />
       <child
         link="${name}_7_link" />
@@ -399,7 +406,7 @@
     <joint name="${name}_tool_joint" type="fixed">
       <parent link="${name}_7_link" />
       <child link="${name}_tool_link" />
-      <origin xyz="0 0 0" rpy="${0.0 * deg_to_rad} ${-90.0 * reflect * deg_to_rad} ${0 * deg_to_rad}" />
+      <origin xyz="0 0 0" rpy="${0.0 * deg_to_rad} ${90.0 * reflect * deg_to_rad} ${0 * deg_to_rad}" />
     </joint>
 
     
