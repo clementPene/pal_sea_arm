@@ -81,8 +81,8 @@
       </collision>
     </link>
 
-    <xacro:property name="arm_1_upper_limit"       value="${90.0 if tiago_dual == 1 else 180}"/>
-    <xacro:property name="arm_1_lower_limit"       value="${-90 if tiago_dual == 1 else 0.0}"/>
+    <xacro:property name="arm_1_upper_limit"       value="90"/>
+    <xacro:property name="arm_1_lower_limit"       value="-90"/>
 
     <joint name="${name}_1_joint" type="revolute">
       <origin xyz="0.0 0.0 0.0" rpy=" 0 ${(90 - 90 * reflect) * deg_to_rad } ${(90 + 90 * reflect) * deg_to_rad}" />
