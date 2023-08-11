@@ -376,7 +376,25 @@
     <!--***********************-->
     <!--        TOOL           -->
     <!--***********************-->
-    <link name="${name}_tool_link"/>
+    <link name="${name}_tool_link">
+      <inertial>
+        <mass value="0.1" />
+        <inertia ixx="8.33E-07" ixy="0.0" ixz="0.0" iyy="8.33E-07" iyz="0.0" izz="1.25E-06" />
+      </inertial>
+      <visual>
+        <origin xyz="0.001 0 0" rpy="0 ${90.0 * deg_to_rad} 0" />
+        <geometry>
+          <cylinder radius="0.005" length="0.005"/>
+        </geometry>
+        <material name="LightGrey" />
+      </visual>
+      <collision>
+        <origin xyz="0.001 0 0" rpy="0 ${90.0 * deg_to_rad} 0" />
+        <geometry>
+          <cylinder radius="0.005" length="0.005"/>
+        </geometry>
+      </collision>
+    </link>
 
     <joint name="${name}_tool_joint" type="fixed">
       <parent link="${name}_7_link" />
