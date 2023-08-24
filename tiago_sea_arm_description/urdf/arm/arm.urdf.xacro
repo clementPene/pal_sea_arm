@@ -18,10 +18,10 @@
     <!-- BASE LINK -->
     <link name="${name}_base_link">
       <inertial>
-        <origin xyz="-3.2799E-03 -3.2628E-04 -0.0322" rpy="0 0 0" />
+        <origin xyz="3.2799E-03 -3.2628E-04 -0.0322" rpy="0 0 0" />
         <mass value="0.8021" />
         <inertia
-          ixx="5.3024E-04" ixy="5.9227E-06" ixz="1.0828E-06"
+          ixx="5.3024E-04" ixy="-5.9227E-06" ixz="-1.0828E-06"
           iyy="5.5663E-04" iyz="-5.7113E-06"
           izz="6.8971E-04" />
       </inertial>
@@ -52,11 +52,11 @@
     <!-- Arm link macro -->
     <link name="${name}_1_link">
       <inertial>
-        <origin xyz="0.1082 -0.0106 ${-0.0328 * reflect}" rpy="0 0 0" />
+        <origin xyz="0.1082 -0.0106 ${0.0328 * reflect}" rpy="0 0 0" />
         <mass value="1.0267" />
       <inertia
-        ixx="8.0603E-04" ixy="8.52034E-05" ixz="${3.0124E-04 * reflect}"
-        iyy="1.9301E-03" iyz="${1.9426E-05 * reflect}"
+        ixx="8.0603E-04" ixy="8.52034E-05" ixz="${-3.0124E-04 * reflect}"
+        iyy="1.9301E-03" iyz="${-1.9426E-05 * reflect}"
         izz="1.8484E-03" />
       </inertial>
       <visual>
@@ -85,7 +85,7 @@
     <xacro:property name="arm_1_lower_limit"       value="-90"/>
 
     <joint name="${name}_1_joint" type="revolute">
-      <origin xyz="0.0 0.0 0.0" rpy=" 0 ${(90 - 90 * reflect) * deg_to_rad } ${(90 + 90 * reflect) * deg_to_rad}" />
+      <origin xyz="0.0 0.0 0.0" rpy=" 0 ${(90 + 90 * reflect) * deg_to_rad } ${(90 + 90 * reflect) * deg_to_rad}" />
       <parent link="${name}_base_link" />
       <child link="${name}_1_link" />
       <axis xyz="0 0 ${1}" />
@@ -131,7 +131,7 @@
     <xacro:property name="arm_2_lower_limit"       value="${-90 if tiago_dual == 1 else -62.5}"/>
 
     <joint name="${name}_2_joint" type="revolute">
-      <origin xyz="0.13 -0.0483 ${-0.04* reflect}"
+      <origin xyz="0.13 -0.0483 ${0.04* reflect}"
         rpy="${90 * reflect * deg_to_rad} 0 ${180 * deg_to_rad}" />
       <parent link="${name}_1_link" />
       <child link="${name}_2_link" />
