@@ -2,6 +2,27 @@
 Changelog for package tiago_sea_arm_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'add_new_meshes' into 'master'
+  Add new meshes of the arm
+  See merge request robots/tiago_sea_arm_robot!5
+* move joint limits to special xacro file and remove tiago_dual arg
+* Update stl origins of arm
+* Fix arm_7_link
+* Update collision meshes
+* Update joint angles for tiago-single
+* Update inertia matrices
+* Update center of mass for the links
+* New set of updated meshes with orientation same as the previous
+* Update faulty arm_1_link mesh that contained part of arm_base mesh
+* Add new meshes of the arm
+* Merge branch 'collision-arm-tool-link' into 'master'
+  added collision and description values of the tool link
+  See merge request robots/tiago_sea_arm_robot!6
+* added collision and description values of the tool link
+* Contributors: David ter Kuile, Sai Kishor Kothakota, davidterkuile, ileniaperrella, thomaspeyrucain
+
 0.0.1 (2023-07-10)
 ------------------
 * Merge branch 'dtk/description' into 'master'
