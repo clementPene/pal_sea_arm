@@ -2,8 +2,8 @@
 Changelog for package tiago_sea_arm_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.2 (2023-08-31)
+------------------
 * Merge branch 'add_new_meshes' into 'master'
   Add new meshes of the arm
   See merge request robots/tiago_sea_arm_robot!5
