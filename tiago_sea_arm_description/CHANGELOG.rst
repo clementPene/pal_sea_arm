@@ -2,8 +2,8 @@
 Changelog for package tiago_sea_arm_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.4 (2023-09-13)
+------------------
 * Merge branch 'fix-urdf' into 'master'
   Fix urdf
   See merge request robots/tiago_sea_arm_robot!8
