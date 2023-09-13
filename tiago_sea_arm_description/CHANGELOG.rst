@@ -2,6 +2,16 @@
 Changelog for package tiago_sea_arm_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'fix-urdf' into 'master'
+  Fix urdf
+  See merge request robots/tiago_sea_arm_robot!8
+* Update arm limits
+* Change meshes orientation according to the robot
+* Add material urdf
+* Contributors: David ter Kuile, davidterkuile
+
 0.0.2 (2023-08-31)
 ------------------
 * Merge branch 'add_new_meshes' into 'master'
