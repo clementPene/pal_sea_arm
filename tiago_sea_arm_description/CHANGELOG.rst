@@ -2,8 +2,8 @@
 Changelog for package tiago_sea_arm_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.5 (2023-09-18)
+------------------
 * Update mirror arm_1 link
 * Contributors: David ter Kuile
 
