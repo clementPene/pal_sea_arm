@@ -2,6 +2,11 @@
 Changelog for package tiago_sea_arm_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Update mirror arm_1 link
+* Contributors: David ter Kuile
+
 0.0.4 (2023-09-13)
 ------------------
 * Merge branch 'fix-urdf' into 'master'
