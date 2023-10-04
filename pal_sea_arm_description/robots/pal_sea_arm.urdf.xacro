@@ -20,7 +20,7 @@
   <xacro:include filename="$(find pal_sea_arm_description)/gazebo/gazebo.urdf.xacro" />
   <xacro:arg name="end_effector" default="false"/>
   <xacro:arg name="ft_sensor" default="false"/>
-  <xacro:arg name="arm_model" default="tiago-pro"/>
+  <xacro:arg name="arm_model" default="pal-sea-arm-standalone"/>
   <xacro:property name="end_effector" value="$(arg end_effector)" />
   <xacro:property name="ft_sensor" value="$(arg ft_sensor)" />
   <xacro:property name="arm_model" value="$(arg arm_model)" />
