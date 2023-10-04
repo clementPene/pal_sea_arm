@@ -369,40 +369,6 @@
 
     <xacro:if value="${arm_model in ['tiago-sea', 'tiago-sea-dual']}">
 
-      <!-- BASE LINK -->
-      <link name="${name}_base_link">
-        <inertial>
-          <origin xyz="3.2799E-03 -3.2628E-04 -0.0322" rpy="0 0 0" />
-          <mass value="0.8021" />
-          <inertia
-            ixx="5.3024E-04" ixy="-5.9227E-06" ixz="-1.0828E-06"
-            iyy="5.5663E-04" iyz="-5.7113E-06"
-            izz="6.8971E-04" />
-        </inertial>
-        <visual>
-          <origin xyz="0 0 0" rpy="0 0 0" />
-          <geometry>
-            <mesh filename="package://pal_sea_arm_description/meshes/arm_tiago_sea/base_link.stl" />
-          </geometry>
-          <material name="">
-            <color rgba="0.75294 0.75294 0.75294 1" />
-          </material>
-        </visual>
-        <collision>
-          <origin xyz="0 0 0" rpy="0 0 0" />
-          <geometry>
-            <mesh filename="package://pal_sea_arm_description/meshes/arm_tiago_sea/base_link.stl" />
-          </geometry>
-        </collision>
-      </link>
-
-      <joint name="${name}_base_joint" type="fixed">
-        <xacro:insert_block name="origin" />
-        <parent link="${parent}" />
-        <child link="${name}_base_link" />
-      </joint>
-
-
       <!-- ARM 1 LINK -->
       <link name="${name}_1_link">
         <inertial>
@@ -437,9 +403,8 @@
 
       <!-- ARM 1 JOINT -->
       <joint name="${name}_1_joint" type="revolute">
-        <!-- <origin xyz="0.0 0.0 0.0" rpy=" 0 ${(90 - 90 * reflect) * deg_to_rad } ${(90 - 90 * reflect) * deg_to_rad}" /> -->
-        <origin xyz="0.0 0.0 0.0" rpy=" ${(90 + 90 * reflect) * deg_to_rad } 0 0" />
-        <parent link="${name}_base_link" />
+        <xacro:insert_block name="origin" />
+        <parent link="${parent}" />
         <child link="${name}_1_link" />
         <axis xyz="0 0 ${1}" />
         <limit lower="${arm_1_joint_lb * deg_to_rad}" upper="${arm_1_joint_ub * deg_to_rad}" effort="${arm_1_max_effort}" velocity="${arm_1_max_velocity}" />
