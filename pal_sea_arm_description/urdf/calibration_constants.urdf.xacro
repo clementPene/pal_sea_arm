@@ -7,7 +7,6 @@
 -->
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
- 	<xacro:include filename="$(find pal_sea_arm_description)/urdf/deg_to_rad.xacro" />
 	<!--Constant parameters-->
 	
 	<xacro:property name="arm_1_joint_offset" value="0.0" />

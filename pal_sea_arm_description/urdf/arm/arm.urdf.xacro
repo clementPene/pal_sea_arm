@@ -48,9 +48,7 @@
             filename="package://pal_sea_arm_description/meshes/${mesh_folder}/arm_1_link.stl"
             scale="1 1 ${reflect}" />
         </geometry>
-        <material name="">
-          <color rgba="0.29804 0.29804 0.29804 1" />
-        </material>
+        <material name="pal/DarkGrey"/>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
@@ -82,9 +80,7 @@
           <mesh filename="package://pal_sea_arm_description/meshes/${mesh_folder}/arm_2_link.stl"
           scale="1 1 ${reflect}" />
         </geometry>
-        <material name="">
-          <color rgba="0.29804 0.29804 0.29804 1" />
-        </material>
+        <material name="pal/DarkGrey"/>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
@@ -116,9 +112,7 @@
           <mesh filename="package://pal_sea_arm_description/meshes/${mesh_folder}/arm_3_link.stl"
           scale="1 1 ${reflect}" />
         </geometry>
-        <material name="">
-          <color rgba="0.29804 0.29804 0.29804 1" />
-        </material>
+        <material name="pal/DarkGrey"/>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
@@ -152,9 +146,7 @@
           <mesh filename="package://pal_sea_arm_description/meshes/${mesh_folder}/arm_4_link.stl"
           scale="1 1 ${reflect}" />
         </geometry>
-        <material name="">
-          <color rgba="0.29804 0.29804 0.29804 1" />
-        </material>
+        <material name="pal/DarkGrey"/>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
@@ -187,9 +179,7 @@
           <mesh filename="package://pal_sea_arm_description/meshes/${mesh_folder}/arm_5_link.stl"
           scale="1 1 ${reflect}" />
         </geometry>
-        <material name="">
-          <color rgba="0.29804 0.29804 0.29804 1" />
-        </material>
+        <material name="pal/DarkGrey"/>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
@@ -223,9 +213,7 @@
           <mesh filename="package://pal_sea_arm_description/meshes/${mesh_folder}/arm_6_link.stl"
           scale="1 1 ${reflect}" />
         </geometry>
-        <material name="">
-          <color rgba="0.29804 0.29804 0.29804 1" />
-        </material>
+        <material name="pal/DarkGrey"/>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
@@ -259,9 +247,7 @@
           <mesh filename="package://pal_sea_arm_description/meshes/${mesh_folder}/arm_7_link.stl"
           scale="1 1 ${reflect}" />
         </geometry>
-        <material name="">
-          <color rgba="0.29804 0.29804 0.29804 1" />
-        </material>
+        <material name="pal/DarkGrey"/>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
@@ -296,9 +282,7 @@
         <geometry>
           <cylinder radius="0.005" length="0.005"/>
         </geometry>
-        <material name="">
-          <color rgba="0.29804 0.29804 0.29804 1" />
-        </material>
+        <material name="pal/DarkGrey"/>
       </visual>
       <collision>
         <origin xyz="0.001 0 0" rpy="0 ${90.0 * deg_to_rad} 0" />

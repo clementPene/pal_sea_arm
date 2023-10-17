@@ -14,6 +14,11 @@
 -->
 
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="pal_sea_arm">
+
+  <!--File includes-->
+  <xacro:include filename="$(find pal_urdf_utils)/urdf/deg_to_rad.xacro" />
+  <xacro:include filename="$(find pal_urdf_utils)/urdf/materials.urdf.xacro" />
+
   <xacro:include filename="$(find pal_sea_arm_description)/urdf/arm/arm.urdf.xacro"/>
   <xacro:include filename="$(find pal_sea_arm_description)/urdf/end_effector/end_effector.urdf.xacro"/>
   <xacro:include filename="$(find pal_sea_arm_description)/urdf/sensors/ft_sensor.urdf.xacro" />
@@ -63,9 +68,7 @@
       <geometry>
         <mesh filename="package://pal_sea_arm_description/meshes/arm_tiago_pro/base_link.stl" />
       </geometry>
-      <material name="">
-        <color rgba="0.29804 0.29804 0.29804 1" />
-      </material>
+      <material name="pal/DarkGrey"/>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
@@ -74,6 +77,12 @@
       </geometry>
     </collision>
   </link>
+
+  <gazebo reference="arm_root_link">
+    <material>Gazebo/DarkGrey</material>
+    <mu1>0.9</mu1>
+    <mu2>0.9</mu2>
+  </gazebo>
 
   <!-- ARM -->
   <xacro:pal_sea_arm name="arm" parent="arm_root_link" arm_model="${arm_model}" reflect="1" arm_1_offset="0" arm_2_offset="0" arm_3_offset="0" arm_4_offset="0" arm_5_offset="0" arm_6_offset="0" arm_7_offset="0">

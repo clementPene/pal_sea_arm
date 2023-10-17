@@ -47,6 +47,12 @@
         </collision>
     </link>
 
+    <gazebo reference="${name}_ft_link">
+      <material>Gazebo/DarkGrey</material>
+      <mu1>0.9</mu1>
+      <mu2>0.9</mu2>
+    </gazebo>
+
     <joint name="${name}_ft_joint" type="fixed">
       <parent link="${parent}" />
       <child link="${name}_ft_link" />
