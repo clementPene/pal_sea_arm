@@ -39,7 +39,7 @@
 
   <xacro:property name="has_ft_sensor"           value="${ft_sensor in ['rokubi']}"/>
   <xacro:property name="has_end_effector"        value="${end_effector not in ['false', False, 'no-ee']}"/>
-  <xacro:property name="end_effector_link"       value="${'arm_ft_tool_link' if has_ft_sensor else 'arm_tool_link'}"/>
+  <xacro:property name="end_effector_link"       value="${'wrist_ft_tool_link' if has_ft_sensor else 'arm_tool_link'}"/>
 
 
   <link name="world"/>
@@ -92,7 +92,7 @@
   <xacro:pal_sea_arm_end_effector name="gripper" parent="${end_effector_link}" type="${end_effector}" has_end_effector="${has_end_effector}" reflect="1"/>
 
   <xacro:if value="${has_ft_sensor}">
-    <xacro:ft_sensor name="arm" parent="arm_tool_link"/>
+    <xacro:ft_sensor name="wrist" parent="arm_tool_link"/>
   </xacro:if>
 
 </robot>
