@@ -2,8 +2,8 @@
 Changelog for package pal_sea_arm_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.1.0 (2023-10-20)
+------------------
 * Merge branch 'new_name' into 'master'
   Change tiago_pro_arm ro pal_sea_arm and combine both urdf
   See merge request robots/pal_sea_arm!9

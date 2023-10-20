@@ -2,8 +2,8 @@
 Changelog for package pal_sea_arm_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.1.0 (2023-10-20)
+------------------
 * Merge branch 'fix/ft_naming' into 'master'
   Change arm_ft\_ to wrist_ft to match TIAGo
   See merge request robots/pal_sea_arm!12
