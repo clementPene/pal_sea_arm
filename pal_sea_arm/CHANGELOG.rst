@@ -1,0 +1,12 @@
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Changelog for package pal_sea_arm
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Forthcoming
+-----------
+* Merge branch 'new_name' into 'master'
+  Change tiago_pro_arm ro pal_sea_arm and combine both urdf
+  See merge request robots/pal_sea_arm!9
+* Fix package name
+* Change tiago_pro_arm ro pal_sea_arm and combine both urdf
+* Contributors: Jordan Palacios, thomaspeyrucain
