@@ -17,4 +17,7 @@
   <exec_depend>pal_pro_gripper_description</exec_depend>
   <exec_depend>pal_urdf_utils</exec_depend>
 
+  <test_depend>rostest</test_depend>
+  <test_depend>urdf_test</test_depend>
+
 </package>
