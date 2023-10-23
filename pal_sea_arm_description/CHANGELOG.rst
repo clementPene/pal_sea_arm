@@ -2,8 +2,8 @@
 Changelog for package pal_sea_arm_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.1.1 (2023-10-23)
+------------------
 * Merge branch 'update-joints-limits' into 'master'
   Updated joint limits to match real robot
   See merge request robots/pal_sea_arm!13
