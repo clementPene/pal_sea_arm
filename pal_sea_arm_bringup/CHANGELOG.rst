@@ -2,6 +2,9 @@
 Changelog for package pal_sea_arm_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 0.1.0 (2023-10-20)
 ------------------
 * Merge branch 'new_name' into 'master'

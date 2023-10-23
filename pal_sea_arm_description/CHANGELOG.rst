@@ -2,6 +2,14 @@
 Changelog for package pal_sea_arm_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'update-joints-limits' into 'master'
+  Updated joint limits to match real robot
+  See merge request robots/pal_sea_arm!13
+* updated joint limits to match real robot
+* Contributors: Jordan Palacios, danielcostanzi
+
 0.1.0 (2023-10-20)
 ------------------
 * Merge branch 'fix/ft_naming' into 'master'
