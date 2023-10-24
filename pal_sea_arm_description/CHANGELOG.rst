@@ -2,6 +2,15 @@
 Changelog for package pal_sea_arm_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'add_sea_transmissions' into 'master'
+  add the SEA simple transmissions for all the arm joints
+  See merge request robots/pal_sea_arm!10
+* rename the macro to arm_pro_simple_transmission and fix a minor bug
+* add the SEA simple transmissions for all the arm joints
+* Contributors: Sai Kishor Kothakota
+
 0.1.1 (2023-10-23)
 ------------------
 * Merge branch 'update-joints-limits' into 'master'
