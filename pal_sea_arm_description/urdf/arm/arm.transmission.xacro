@@ -18,7 +18,7 @@
     </transmission>
   </xacro:macro>
   
-  <xacro:macro name="arm_sea_simple_transmission" params="name number reduction offset_value" >
+  <xacro:macro name="arm_pro_simple_transmission" params="name number reduction offset_value" >
     <transmission name="${name}_${number}_trans">
       <type>sea_transmissions/SeaSimpleTransmission</type>
       <actuator name="${name}_${number}_motor" >
