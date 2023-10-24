@@ -358,12 +358,13 @@
     </gazebo>
 
     <!-- TRANSMISSIONS -->
-    <xacro:arm_simple_transmission name="${name}" number="1" reduction="1.0" offset_value="${arm_1_offset}"/>
-    <xacro:arm_simple_transmission name="${name}" number="2" reduction="1.0" offset_value="${arm_2_offset}"/>
-    <xacro:arm_simple_transmission name="${name}" number="3" reduction="1.0" offset_value="${arm_3_offset}"/>
-    <xacro:arm_simple_transmission name="${name}" number="4" reduction="1.0" offset_value="${arm_4_offset}"/>
-    <xacro:arm_simple_transmission name="${name}" number="5" reduction="1.0" offset_value="${arm_5_offset}"/>
-    <xacro:arm_simple_transmission name="${name}" number="6" reduction="1.0" offset_value="${arm_6_offset}"/>
-    <xacro:arm_simple_transmission name="${name}" number="7" reduction="1.0" offset_value="${arm_7_offset}"/>
+    <xacro:arm_pro_simple_transmission name="${name}" number="1" reduction="121.0" offset_value="${arm_1_offset}"/>
+    <xacro:arm_pro_simple_transmission name="${name}" number="2" reduction="121.0" offset_value="${arm_2_offset}"/>
+    <xacro:arm_pro_simple_transmission name="${name}" number="3" reduction="101.0" offset_value="${arm_3_offset}"/>
+    <xacro:arm_pro_simple_transmission name="${name}" number="4" reduction="101.0" offset_value="${arm_4_offset}"/>
+    <xacro:arm_pro_simple_transmission name="${name}" number="5" reduction="101.0" offset_value="${arm_5_offset}"/>
+    <xacro:arm_pro_simple_transmission name="${name}" number="6" reduction="101.0" offset_value="${arm_6_offset}"/>
+    <xacro:arm_pro_simple_transmission name="${name}" number="7" reduction="101.0" offset_value="${arm_7_offset}"/>
+
   </xacro:macro>
 </robot>
