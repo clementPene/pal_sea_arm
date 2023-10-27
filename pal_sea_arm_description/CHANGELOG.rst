@@ -2,6 +2,14 @@
 Changelog for package pal_sea_arm_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'add/missing_folder' into 'master'
+  Add gazebo folder to the install rules
+  See merge request robots/pal_sea_arm!14
+* Add gazebo folder to the install rules
+* Contributors: Jordan Palacios, thomas.peyrucain
+
 0.1.2 (2023-10-24)
 ------------------
 * Merge branch 'add_sea_transmissions' into 'master'
