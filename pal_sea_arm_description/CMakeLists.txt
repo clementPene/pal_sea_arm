@@ -1,31 +1,14 @@
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 3.5)
 project(pal_sea_arm_description)
 
-find_package(catkin REQUIRED)
+find_package(ament_cmake_auto REQUIRED)
 
-catkin_package(
-#  INCLUDE_DIRS include
-#  LIBRARIES canopies_description
-#  CATKIN_DEPENDS other_catkin_pkg
-#  DEPENDS system_lib
-)
-foreach(dir config gazebo meshes robots urdf)
-    install(DIRECTORY ${dir}/
-        DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/${dir})
-endforeach(dir)
+ament_auto_find_build_dependencies()
 
-#############
-## Testing ##
-#############
+if(BUILD_TESTING)
+  find_package(ament_lint_auto REQUIRED)
+  ament_lint_auto_find_test_dependencies()
 
-if(CATKIN_ENABLE_TESTING)
-  find_package(rostest REQUIRED)
-  foreach(arm_model pal-sea-arm-standalone tiago-pro tiago-sea tiago-sea-dual)
-      foreach(end_effector false pal-pro-gripper custom)
-          foreach(ft_sensor false rokubi)
-                      add_rostest(test/test_pal_sea_arm.test ARGS arm_model:=${arm_model}
-                          end_effector:=${end_effector} ft_sensor:=${ft_sensor})
-          endforeach(ft_sensor)
-      endforeach(end_effector)
-  endforeach(arm_model)
 endif()
+
+ament_auto_package(INSTALL_TO_SHARE)

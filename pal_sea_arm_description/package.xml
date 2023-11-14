@@ -1,23 +1,26 @@
 <?xml version="1.0"?>
-<package format="2">
+<package format="3">
   <name>pal_sea_arm_description</name>
   <version>0.1.3</version>
   <description>The pal_sea_arm_description package</description>
 
   <maintainer email="narcis.miguel@pal-robotics.com">Narcis Miguel</maintainer>
+  <maintainer email="ilenia.perrella@pal-robotics.com">Ilenia Perrella</maintainer>
 
   <license>Propietary</license>
 
-  <buildtool_depend>catkin</buildtool_depend>
+  <license>Apache License 2.0</license>
 
-  <!--exec_depend>gazebo_plugins</exec_depend>
-  <exec_depend>gazebo_ros_control</exec_depend-->
-  <exec_depend>joint_state_publisher_gui</exec_depend>
-  <exec_depend>xacro</exec_depend>
-  <exec_depend>pal_pro_gripper_description</exec_depend>
-  <exec_depend>pal_urdf_utils</exec_depend>
+  <buildtool_depend>ament_cmake_auto</buildtool_depend>
+  <buildtool_depend>ament_cmake_python</buildtool_depend>
 
-  <test_depend>rostest</test_depend>
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+  <test_depend>launch_testing_ament_cmake</test_depend>
   <test_depend>urdf_test</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
 
 </package>
