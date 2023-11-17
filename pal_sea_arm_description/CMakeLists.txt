@@ -11,4 +11,4 @@ if(BUILD_TESTING)
 
 endif()
 
-ament_auto_package(INSTALL_TO_SHARE)
+ament_auto_package(INSTALL_TO_SHARE config gazebo launch meshes robots ros2_control urdf) #test
