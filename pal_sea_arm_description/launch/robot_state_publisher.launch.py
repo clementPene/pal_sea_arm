@@ -37,8 +37,15 @@ def declare_args(context, *args, **kwargs):
         description='End effector model of the pal-sea-arm.',
         choices=['pal-pro-gripper', 'no-ee'])
 
+    ft_sensor = DeclareLaunchArgument(
+        'ft_sensor',
+        default_value='rokubi',
+        description='Force torque model of the pal-sea-arm.',
+        choices=['rokubi', 'no-ft-sensor'])
+
     return [sim_time_arg,
-            end_effector]
+            end_effector,
+            ft_sensor]
 
 
 def launch_setup(context, *args, **kwargs):
@@ -49,6 +56,7 @@ def launch_setup(context, *args, **kwargs):
         {
             'use_sim': read_launch_argument('use_sim_time', context),
             'end_effector': read_launch_argument('end_effector', context),
+            'ft_sensor': read_launch_argument('ft_sensor', context),
         }
     )}
 

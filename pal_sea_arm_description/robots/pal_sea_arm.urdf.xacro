@@ -52,7 +52,7 @@
  <!-- Force Torque sensor -->
   <xacro:if value="${has_ft_sensor}">
     <xacro:include filename="$(find pal_sea_arm_description)/urdf/sensors/ft_sensor.urdf.xacro" />
-    <xacro:include filename="$(find pal_sea_arm_description)/urdf/sensors/ftsensor.gazebo.xacro" />
+    <xacro:include filename="$(find pal_sea_arm_description)/urdf/sensors/ft_sensor.gazebo.xacro" />
   </xacro:if>
 
   <link name="world"/>
