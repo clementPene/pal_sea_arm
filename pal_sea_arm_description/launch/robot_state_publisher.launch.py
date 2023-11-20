@@ -23,6 +23,8 @@ from launch.substitutions import LaunchConfiguration
 from launch_param_builder import load_xacro
 from launch_ros.actions import Node
 from launch_pal.arg_utils import read_launch_argument
+from launch_pal.robot_utils import (get_end_effector)
+from launch.actions import DeclareLaunchArgument
 
 
 def declare_args(context, *args, **kwargs):
@@ -31,7 +33,14 @@ def declare_args(context, *args, **kwargs):
         'use_sim_time', default_value='False',
         description='Use simulation time')
 
-    return [sim_time_arg]
+    end_effector = DeclareLaunchArgument(
+        'end_effector',
+        default_value='pal-pro-gripper',
+        description='End effector model of the pal-sea-arm.',
+        choices=['pal-pro-gripper', 'no-ee'])
+
+    return [sim_time_arg,
+            end_effector]
 
 
 def launch_setup(context, *args, **kwargs):
@@ -41,6 +50,7 @@ def launch_setup(context, *args, **kwargs):
             get_package_share_directory('pal_sea_arm_description'), 'robots', 'pal_sea_arm.urdf.xacro')),
         {
             'use_sim': read_launch_argument('use_sim_time', context),
+            'end_effector': read_launch_argument('end_effector', context),
         }
     )}
 
@@ -57,8 +67,6 @@ def generate_launch_description():
 
     ld = LaunchDescription()
 
-    # Declare arguments
-    # we use OpaqueFunction so the callbacks have access to the context
     ld.add_action(OpaqueFunction(function=declare_args))
 
     # Execute robot_state_publisher node

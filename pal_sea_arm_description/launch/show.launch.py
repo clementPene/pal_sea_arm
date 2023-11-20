@@ -14,7 +14,9 @@
 
 from launch import LaunchDescription
 from launch_pal.include_utils import include_launch_py_description
+from launch.substitutions import PathJoinSubstitution
 from launch_ros.actions import Node
+from launch_ros.substitutions import FindPackageShare
 
 
 def generate_launch_description():
@@ -28,11 +30,14 @@ def generate_launch_description():
         name='joint_state_publisher_gui',
         output='screen')
 
+    rviz_config_file = PathJoinSubstitution(
+        [FindPackageShare('pal_sea_arm_description'), 'config', 'show.rviz'])
+
     start_rviz_cmd = Node(
         package='rviz2',
         executable='rviz2',
         name='rviz2',
-        #       arguments=['-d', rviz_config_file],
+        arguments=['-d', rviz_config_file],
         output='screen')
 
     ld = LaunchDescription()
