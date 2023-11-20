@@ -23,8 +23,6 @@ from launch.substitutions import LaunchConfiguration
 from launch_param_builder import load_xacro
 from launch_ros.actions import Node
 from launch_pal.arg_utils import read_launch_argument
-from launch_pal.robot_utils import (get_end_effector)
-from launch.actions import DeclareLaunchArgument
 
 
 def declare_args(context, *args, **kwargs):
