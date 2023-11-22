@@ -15,7 +15,7 @@
   limitations under the License.
  -->
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
-  <xacro:macro name="ros2_control_arm" params="name number reduction offset_value" >
+  <xacro:macro name="ros2_control_arm" params="name reduction offset_value" >
     <joint name="${name}_joint">
       <command_interface name="position" />
       <command_interface name="velocity" />
@@ -27,7 +27,7 @@
     </joint>
 
   <xacro:include filename="$(find pal_sea_arm_description)/ros2_control/transmissions.urdf.xacro" />
-  <xacro:arm_pro_simple_transmission name="${name}" number="${number}" reduction="${reduction}" offset_value="${offset_value}" />
+  <xacro:arm_pro_simple_transmission name="${name}" reduction="${reduction}" offset_value="${offset_value}" />
 
   </xacro:macro>
 </robot>
