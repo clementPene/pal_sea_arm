@@ -27,7 +27,7 @@
     </joint>
 
   <xacro:include filename="$(find pal_sea_arm_description)/ros2_control/transmissions.urdf.xacro" />
-  <xacro:arm_pro_simple_transmission name="${name}" reduction="${reduction}" offset_value="${offset_value}" />
+  <xacro:pal_sea_arm_simple_transmission name="${name}" reduction="${reduction}" offset_value="${offset_value}" />
 
   </xacro:macro>
 </robot>
