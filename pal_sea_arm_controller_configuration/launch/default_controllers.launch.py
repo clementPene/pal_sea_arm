@@ -1,4 +1,4 @@
-# Copyright (c) 2022 PAL Robotics S.L. All rights reserved.
+# Copyright (c) 2023 PAL Robotics S.L. All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,72 +12,121 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from typing import Dict
+import os
+
+from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument, OpaqueFunction
-from launch.substitutions import LaunchConfiguration
-from launch_pal.arg_utils import read_launch_argument
-from launch_pal.include_utils import include_launch_py_description
-
-
-def declare_args(context, *args, **kwargs):
-
-    sim_time_arg = DeclareLaunchArgument(
-        'use_sim_time', default_value='False',
-        description='Use simulation time')
-
-    end_effector = DeclareLaunchArgument(
-        'end_effector',
-        default_value='pal-pro-gripper',
-        description='End effector model of the pal-sea-arm.',
-        choices=['pal-pro-gripper', 'no-ee'])
-
-    ft_sensor = DeclareLaunchArgument(
-        'ft_sensor',
-        default_value='rokubi',
-        description='Force torque model of the pal-sea-arm.',
-        choices=['rokubi', 'no-ft-sensor'])
-
-    return [sim_time_arg,
-            end_effector,
-            ft_sensor]
-
-
-def launch_end_effector_controller(context, *args, **kwargs):
-
-    if (read_launch_argument('end_effector', context) == 'no-ee'):
-        return []
-
-    end_effector_launcher = read_launch_argument(
-        'end_effector_controller_launch', context)
-    end_effector_controller_launch = include_launch_py_description(
-        'pal_sea_arm_controller_configuration',
-        ['launch', end_effector_launcher])
-
-    return [end_effector_controller_launch]
+from launch.actions import DeclareLaunchArgument, GroupAction
+from controller_manager.launch_utils import generate_load_controller_launch_description
+from launch.conditions import IfCondition
+from launch.substitutions import LaunchConfiguration, PythonExpression
 
 
 def generate_launch_description():
 
-    end_effector_controller = DeclareLaunchArgument(
-        'end_effector_controller_launch',
-        default_value=[LaunchConfiguration(
-            'end_effector'), '_controller.launch.py'],
-        description='end effector controller launch file')
-
-    joint_state_broadcaster_launch = include_launch_py_description(
-        'pal_sea_arm_controller_configuration',
-        ['launch', 'joint_state_broadcaster.launch.py'])
-
-    arm_controller_launch = include_launch_py_description(
-        'pal_sea_arm_controller_configuration',
-        ['launch', 'arm_controller.launch.py'])
-
+    # Create the launch description and populate
     ld = LaunchDescription()
 
-    ld.add_action(OpaqueFunction(function=declare_args))
-    ld.add_action(joint_state_broadcaster_launch)
-    ld.add_action(end_effector_controller)
-    ld.add_action(arm_controller_launch)
-    ld.add_action(OpaqueFunction(function=launch_end_effector_controller))
+    launch_args = declare_launch_arguments()
+
+    for arg in launch_args.values():
+        ld.add_action(arg)
+
+    declare_actions(ld, launch_args)
 
     return ld
+
+
+def declare_launch_arguments() -> Dict:
+
+    arg_dict = {}
+
+    sim_time_arg = DeclareLaunchArgument(
+        'use_sim_time', default_value='false',
+        description='Use sim time. ')
+
+    arg_dict[sim_time_arg.name] = sim_time_arg
+
+    robot_name = DeclareLaunchArgument(
+        'robot_name',
+        default_value='pal_sea_arm',
+        description='Name of the robot. ',
+        choices=['pmb2', 'tiago', 'pmb3', 'tiago_dual', 'pal_sea_arm', 'tiago_pro'])
+
+    arg_dict[robot_name.name] = robot_name
+
+    end_effector = DeclareLaunchArgument(
+        'end_effector',
+        default_value='pal-pro-gripper',
+        description='End effector model of the arm.',
+        choices=['pal-pro-gripper', 'no-ee'])
+
+    arg_dict[end_effector.name] = end_effector
+
+    ft_sensor = DeclareLaunchArgument(
+        'ft_sensor',
+        default_value='rokubi',
+        description='FT sensor model. ',
+        choices=['rokubi', 'no-ft-sensor'])
+
+    arg_dict[ft_sensor.name] = ft_sensor
+
+    namespace = DeclareLaunchArgument(
+        'namespace',
+        default_value='',
+        description='Define namespace of the robot. ')
+
+    arg_dict[namespace.name] = namespace
+
+    return arg_dict
+
+
+def declare_actions(launch_description: LaunchDescription, launch_args: Dict):
+
+    pkg_share_folder = get_package_share_directory(
+        'pal_sea_arm_controller_configuration')
+
+    joint_state_broadcaster = GroupAction(
+        [generate_load_controller_launch_description(
+            controller_name='joint_state_broadcaster',
+            controller_type='joint_state_broadcaster/JointStateBroadcaster',
+            controller_params_file=os.path.join(
+                pkg_share_folder,
+                'config', 'joint_state_broadcaster.yaml'))
+         ],
+        forwarding=False)
+
+    launch_description.add_action(joint_state_broadcaster)
+
+    arm_controller = GroupAction(
+        [generate_load_controller_launch_description(
+            controller_name='arm_controller',
+            controller_type='joint_trajectory_controller/JointTrajectoryController',
+            controller_params_file=os.path.join(
+                pkg_share_folder,
+                'config', 'arm_controller.yaml'))
+         ],
+        forwarding=False)
+
+    launch_description.add_action(arm_controller)
+
+    end_effector_controller = GroupAction(
+        [generate_load_controller_launch_description(
+            controller_name='gripper_controller',
+            controller_type='joint_trajectory_controller/JointTrajectoryController',
+            controller_params_file=os.path.join(
+                get_package_share_directory(
+                    'pal_pro_gripper_controller_configuration'),
+                'config', 'gripper_controller.yaml'))
+         ],
+        forwarding=False,
+        condition=IfCondition(
+            PythonExpression(
+                ["'", LaunchConfiguration(
+                    'end_effector'), "' != 'no-ee'"]
+            )
+        ))
+    launch_description.add_action(end_effector_controller)
+
+    return

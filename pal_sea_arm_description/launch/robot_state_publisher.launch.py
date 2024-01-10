@@ -52,7 +52,8 @@ def launch_setup(context, *args, **kwargs):
 
     robot_description = {'robot_description': load_xacro(
         Path(os.path.join(
-            get_package_share_directory('pal_sea_arm_description'), 'robots', 'pal_sea_arm.urdf.xacro')),
+            get_package_share_directory('pal_sea_arm_description'),
+            'robots', 'pal_sea_arm.urdf.xacro')),
         {
             'use_sim': read_launch_argument('use_sim_time', context),
             'end_effector': read_launch_argument('end_effector', context),
