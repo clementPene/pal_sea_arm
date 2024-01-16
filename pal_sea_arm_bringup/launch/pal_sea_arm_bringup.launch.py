@@ -28,10 +28,6 @@ def generate_launch_description():
         'pal_sea_arm_description',
         ['launch', 'robot_state_publisher.launch.py'])
 
-    # @TODO: robot pose publisher
-    # @TODO: tf lookup
-    # @TODO: dynamic footprint
-
     ld = LaunchDescription()
 
     ld.add_action(default_controllers)

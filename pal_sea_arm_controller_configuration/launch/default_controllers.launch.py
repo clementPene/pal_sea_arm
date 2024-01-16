@@ -48,14 +48,6 @@ def declare_launch_arguments() -> Dict:
 
     arg_dict[sim_time_arg.name] = sim_time_arg
 
-    robot_name = DeclareLaunchArgument(
-        'robot_name',
-        default_value='pal_sea_arm',
-        description='Name of the robot. ',
-        choices=['pmb2', 'tiago', 'pmb3', 'tiago_dual', 'pal_sea_arm', 'tiago_pro'])
-
-    arg_dict[robot_name.name] = robot_name
-
     end_effector = DeclareLaunchArgument(
         'end_effector',
         default_value='pal-pro-gripper',
@@ -63,14 +55,6 @@ def declare_launch_arguments() -> Dict:
         choices=['pal-pro-gripper', 'no-ee'])
 
     arg_dict[end_effector.name] = end_effector
-
-    ft_sensor = DeclareLaunchArgument(
-        'ft_sensor',
-        default_value='rokubi',
-        description='FT sensor model. ',
-        choices=['rokubi', 'no-ft-sensor'])
-
-    arg_dict[ft_sensor.name] = ft_sensor
 
     namespace = DeclareLaunchArgument(
         'namespace',
@@ -104,7 +88,8 @@ def declare_actions(launch_description: LaunchDescription, launch_args: Dict):
             controller_name='arm_controller',
             controller_type='joint_trajectory_controller/JointTrajectoryController',
             controller_params_file=os.path.join(
-                pkg_share_folder,
+                get_package_share_directory(
+                    'pal_sea_arm_controller_configuration'),
                 'config', 'arm_controller.yaml'))
          ],
         forwarding=False)
