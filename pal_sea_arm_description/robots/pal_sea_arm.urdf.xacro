@@ -18,7 +18,7 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="pal_sea_arm">
 
   <!--File includes-->
-  <xacro:include filename="$(find pal_urdf_utils)/urdf/deg_to_rad.xacro" />
+  <xacro:include filename="$(find pal_urdf_utils)/urdf/deg_to_rad.urdf.xacro" />
   <xacro:include filename="$(find pal_urdf_utils)/urdf/materials.urdf.xacro" />
 
   <xacro:include filename="$(find pal_sea_arm_description)/urdf/arm/arm.urdf.xacro"/>
