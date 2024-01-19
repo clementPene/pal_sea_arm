@@ -22,8 +22,7 @@ from launch.actions import DeclareLaunchArgument, OpaqueFunction
 from launch.substitutions import LaunchConfiguration
 from launch_pal.arg_utils import read_launch_argument
 from launch_pal.robot_utils import (get_arm,
-                                    get_end_effector,
-                                    get_ft_sensor)
+                                    get_end_effector)
 from launch_ros.actions import Node
 
 from pal_sea_arm_description.pal_sea_arm_utils import get_pal_sea_arm_hw_suffix
@@ -34,22 +33,19 @@ def declare_args(context, *args, **kwargs):
     robot_name = read_launch_argument('robot_name', context)
 
     return [get_arm(robot_name),
-            get_end_effector(robot_name),
-            get_ft_sensor(robot_name)]
+            get_end_effector(robot_name)]
 
 
 def launch_setup(context, *args, **kwargs):
 
     arm = read_launch_argument('arm', context)
     end_effector = read_launch_argument('end_effector', context)
-    ft_sensor = read_launch_argument('ft_sensor', context)
 
     joy_teleop_path = os.path.join(
         get_package_share_directory(
             'pal_sea_arm_bringup'), 'config', 'joy_teleop',
         'joy_teleop' + get_pal_sea_arm_hw_suffix(arm=arm,
-                                                 end_effector=end_effector,
-                                                 ft_sensor=ft_sensor + '.yaml'))
+                                                 end_effector=end_effector + '.yaml'))
 
     declare_teleop_config = DeclareLaunchArgument(
         'teleop_config', default_value=joy_teleop_path,
