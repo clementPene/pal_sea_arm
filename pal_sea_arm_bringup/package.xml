@@ -15,8 +15,10 @@
   <exec_depend>joy_teleop</exec_depend>
   <exec_depend>launch_pal</exec_depend>
   <exec_depend>play_motion2</exec_depend>
+  <exec_depend>joint_trajectory_controllers</exec_depend>
+  <exec_depend>joint_state_broadcaster</exec_depend>
 
-<!-- TODO -->
+
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
 
