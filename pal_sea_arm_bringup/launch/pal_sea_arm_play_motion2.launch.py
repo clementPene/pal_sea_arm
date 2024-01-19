@@ -16,30 +16,21 @@ def declare_args(context, *args, **kwargs):
         description='End effector model of the pal-sea-arm.',
         choices=['pal-pro-gripper', 'no-ee'])
 
-    ft_sensor = DeclareLaunchArgument(
-        'ft_sensor',
-        default_value='rokubi',
-        description='Force torque model of the pal-sea-arm.',
-        choices=['rokubi', 'no-ft-sensor'])
-
-    return [end_effector,
-            ft_sensor]
+    return [end_effector]
 
 
 def launch_setup(context, *args, **kwargs):
 
     end_effector = read_launch_argument('end_effector', context)
-    ft_sensor = read_launch_argument('ft_sensor', context)
 
-    approach_planner_file = 'approach_planner' + get_pal_sea_arm_hw_suffix(end_effector=end_effector,
-                                                                           ft_sensor=ft_sensor) + '.yaml'
+    approach_planner_file = 'approach_planner' + get_pal_sea_arm_hw_suffix(end_effector=end_effector) + '.yaml'
     approach_planner_file_path = os.path.join(
         get_package_share_directory("pal_sea_arm_bringup"),
         "config", "approach_planner", approach_planner_file
     )
 
-    motions_file = 'pal_sea_arm_motions' + get_pal_sea_arm_hw_suffix(end_effector=end_effector,
-                                                                     ft_sensor=ft_sensor) + '.yaml'
+    motions_file = 'pal_sea_arm_motions' + get_pal_sea_arm_hw_suffix(end_effector=end_effector) + '.yaml'
+    
     motions_file_path = os.path.join(
         get_package_share_directory(
             "pal_sea_arm_bringup"), "config", "motions", motions_file
