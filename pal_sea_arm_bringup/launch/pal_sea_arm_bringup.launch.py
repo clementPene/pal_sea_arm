@@ -21,9 +21,6 @@ def generate_launch_description():
         'pal_sea_arm_controller_configuration',
         ['launch', 'default_controllers.launch.py'])
 
-    play_motion2 = include_launch_py_description(
-        'pal_sea_arm_bringup', ['launch', 'pal_sea_arm_play_motion2.launch.py'])
-
     pal_sea_arm_state_publisher = include_launch_py_description(
         'pal_sea_arm_description',
         ['launch', 'robot_state_publisher.launch.py'])
@@ -31,7 +28,6 @@ def generate_launch_description():
     ld = LaunchDescription()
 
     ld.add_action(default_controllers)
-    ld.add_action(play_motion2)
     ld.add_action(pal_sea_arm_state_publisher)
 
     return ld
