@@ -2,6 +2,30 @@
 Changelog for package pal_sea_arm_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'fix-dep' into 'humble-devel'
+  fix depend.
+  See merge request robots/pal_sea_arm!18
+* fix depend joint_trajectory_controller
+* Merge branch 'ros2-migration' into 'humble-devel'
+  Ros2 migration
+  See merge request robots/pal_sea_arm!17
+* delete configs file that are already defined in the TIAGo PRO pkgs
+* add jtc jsb exec_depend
+* clean the yaml file for play_motion2 deleting ft_sensor param
+* fix typo
+* delete the ft_sensor param in the joyteleop bc not necessary
+* uncomment the gripper in the joytelop config files
+* update to 3.8 the cmake_minimum_required Version
+* clean default controller + playmotion2 added
+* update motions files
+* add launch files foor bringup
+* fix motion file indentation
+* enable regen_em_file to generate the configs file in the bringup
+* migration of CMakeLists.txt and package.xml to ros2
+* Contributors: Adria Roig, ileniaperrella
+
 0.1.3 (2023-10-27)
 ------------------
 

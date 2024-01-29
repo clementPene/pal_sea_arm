@@ -2,6 +2,28 @@
 Changelog for package pal_sea_arm_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'ros2-migration' into 'humble-devel'
+  Ros2 migration
+  See merge request robots/pal_sea_arm!17
+* fix name of the ros2_control gripper
+* update to 3.8 the cmake_minimum_required Version
+* added ament_python_install_package for pal_sea_arm_description
+* fix deg_to_rad extension
+* update limits for joint 4 + weights
+* change with simple transmission
+* update launch files
+* number arg deleted
+* impl. node pal_sea_arm_utils
+* delete number element in the arm transmission
+* integration of the ft
+* clean robot_state_publisheclean robot_state_publisherr
+* spawn the arm in rviz with pal-pro-gripper
+* migration of pal_sea_arm_description folder
+* migration of CMakeLists.txt and package.xml to ros2
+* Contributors: Adria Roig, ileniaperrella
+
 0.1.3 (2023-10-27)
 ------------------
 * Merge branch 'add/missing_folder' into 'master'
