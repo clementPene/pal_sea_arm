@@ -13,6 +13,7 @@
 
   <exec_depend>pal_sea_arm_controller_configuration</exec_depend>
   <exec_depend>pal_sea_arm_description</exec_depend>
+  <exec_depend>pal_sea_arm_bringup</exec_depend>
 
   <export>
     <build_type>ament_cmake</build_type>
