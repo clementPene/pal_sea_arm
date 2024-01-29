@@ -2,6 +2,14 @@
 Changelog for package pal_sea_arm
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'ros2_fixes' into 'humble-devel'
+  Add pal_sea_arm_bringup in package.xml
+  See merge request robots/pal_sea_arm!20
+* Add pal_sea_arm_bringup in package.xml
+* Contributors: Adria Roig
+
 1.0.0 (2024-01-29)
 ------------------
 * Merge branch 'ros2-migration' into 'humble-devel'
