@@ -2,8 +2,8 @@
 Changelog for package pal_sea_arm_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.0 (2024-01-29)
+------------------
 * Merge branch 'fix-dep' into 'humble-devel'
   fix depend.
   See merge request robots/pal_sea_arm!18
