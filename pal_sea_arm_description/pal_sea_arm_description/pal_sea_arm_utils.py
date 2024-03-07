@@ -16,13 +16,13 @@ def get_pal_sea_arm_hw_suffix(
         end_effector=None,
         ft_sensor=None):
     """
-    Generate a substitution that creates a text suffix combining the specified pal_sea_arm 
-    arguments.
 
-    The arguments are read as string
+    Generate a substitution that creates a text suffix combining the specified pal_sea_arm args.
+
+    The arguments are read as string.
 
     For instance, the suffix for: end_effector='pal-gripper', ft_sensor='robuki'
-    would be 'pal-gripper_schunk-ft'
+    would be 'pal-gripper_schunk-ft'.
     """
     suffix = '_'
     if end_effector is not None:
