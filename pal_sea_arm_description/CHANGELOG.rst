@@ -2,8 +2,8 @@
 Changelog for package pal_sea_arm_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.2 (2024-03-07)
+------------------
 * Merge branch 'dtk/fix/add-linter-tests' into 'humble-devel'
   Add linter tests and update linting
   See merge request robots/pal_sea_arm!21
