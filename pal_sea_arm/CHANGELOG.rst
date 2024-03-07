@@ -2,6 +2,9 @@
 Changelog for package pal_sea_arm
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 1.0.1 (2024-01-29)
 ------------------
 * Merge branch 'ros2_fixes' into 'humble-devel'

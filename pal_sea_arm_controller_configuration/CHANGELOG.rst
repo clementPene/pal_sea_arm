@@ -2,6 +2,9 @@
 Changelog for package pal_sea_arm_controller_configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 1.0.1 (2024-01-29)
 ------------------
 
