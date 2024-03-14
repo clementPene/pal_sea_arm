@@ -33,10 +33,14 @@
   <xacro:arg name="ft_sensor" default="rokubi"/> <!-- no-ft-sensor, rokubi-->
   <xacro:arg name="arm_model" default="pal-sea-arm-standalone"/>
   <xacro:arg name="use_sim" default="false"/>
-  
+  <xacro:arg name="namespace" default=""/>
+
+
   <xacro:property name="end_effector" value="$(arg end_effector)" />
   <xacro:property name="ft_sensor" value="$(arg ft_sensor)" />
   <xacro:property name="arm_model" value="$(arg arm_model)" />
+  <xacro:property name="nsp" value="$(arg namespace)" />
+
 
   <xacro:if value="${end_effector not in ['no-ee', 'pal-pro-gripper']}">
     <xacro:wrong_end_effector/>
