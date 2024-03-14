@@ -15,8 +15,7 @@
 import os
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
-from launch.substitutions import LaunchConfiguration
-from launch.actions import LogInfo, GroupAction, OpaqueFunction
+from launch.actions import GroupAction, OpaqueFunction
 from launch.conditions import LaunchConfigurationNotEquals
 from launch.actions import DeclareLaunchArgument
 from controller_manager.launch_utils import generate_load_controller_launch_description
