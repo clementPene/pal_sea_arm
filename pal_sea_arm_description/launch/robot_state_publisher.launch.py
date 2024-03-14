@@ -24,7 +24,7 @@ from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
 from launch_param_builder import load_xacro
 from launch_pal.arg_utils import read_launch_argument
-from launch_pal.arg_utils import LaunchArgumentsBase
+from launch_pal.arg_utils import LaunchArgumentsBase, CommonArgs
 from dataclasses import dataclass
 
 from launch_pal.robot_arguments import TiagoSEAArgs
@@ -44,15 +44,8 @@ class LaunchArguments(LaunchArgumentsBase):
         choices=['pal-sea-arm-standalone', 'tiago-pro', 'tiago-sea', 'tiago-sea-dual'],
         description='The arm model')
 
-    sim_time: DeclareLaunchArgument = DeclareLaunchArgument(
-        'use_sim_time', default_value='False',
-        choices=['True', 'False'],
-        description='Use simulation time')
-
-    namespace: DeclareLaunchArgument = DeclareLaunchArgument(
-        name='namespace',
-        default_value='',
-        description='Define namespace of the robot. ')
+    use_sim_time: DeclareLaunchArgument = CommonArgs.use_sim_time
+    namespace: DeclareLaunchArgument = CommonArgs.namespace
 
 
 def declare_actions(launch_description: LaunchDescription, launch_args: LaunchArguments):

@@ -15,7 +15,7 @@
 
 from launch import LaunchDescription
 from launch.substitutions import PathJoinSubstitution, LaunchConfiguration
-from launch.actions import DeclareLaunchArgument
+from launch.actions import DeclareLaunchArgument, SetLaunchConfiguration
 from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
 from launch_pal.include_utils import include_scoped_launch_py_description
@@ -38,13 +38,12 @@ class LaunchArguments(LaunchArgumentsBase):
         choices=['pal-sea-arm-standalone', 'tiago-pro', 'tiago-sea', 'tiago-sea-dual'],
         description='The arm model')
 
-    sim_time: DeclareLaunchArgument = DeclareLaunchArgument(
-        'use_sim_time', default_value='False',
-        choices=['True', 'False'],
-        description='Use simulation time')
-
 
 def declare_actions(launch_description: LaunchDescription, launch_args: LaunchArguments):
+
+    set_sim_time = SetLaunchConfiguration('use_sim_time', 'True')
+    launch_description.add_action(set_sim_time)
+
     robot_state_publisher = include_scoped_launch_py_description(
         pkg_name='pal_sea_arm_description',
         paths=['launch', 'robot_state_publisher.launch.py'],
@@ -52,7 +51,7 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
                           "ft_sensor": launch_args.ft_sensor,
                           "wrist_model": launch_args.wrist_model,
                           "arm_model": launch_args.arm_model,
-                          "use_sim_time": launch_args.sim_time
+                          "use_sim_time": LaunchConfiguration('use_sim_time')
                           })
 
     launch_description.add_action(robot_state_publisher)
@@ -61,9 +60,7 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
         package='joint_state_publisher_gui',
         executable='joint_state_publisher_gui',
         name='joint_state_publisher_gui',
-        output='screen',
-        parameters=[{'use_sim_time': LaunchConfiguration('use_sim_time')
-                     }])
+        output='screen')
 
     launch_description.add_action(joint_state_pub_gui)
 
@@ -76,8 +73,7 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
         name='rviz2',
         arguments=['-d', rviz_config_file],
         output='screen',
-        parameters=[{'use_sim_time': LaunchConfiguration('use_sim_time')
-                     }])
+        parameters=[{'use_sim_time': LaunchConfiguration('use_sim_time')}])
 
     launch_description.add_action(rviz)
 
