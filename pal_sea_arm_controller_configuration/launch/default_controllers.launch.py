@@ -36,9 +36,9 @@ class LaunchArguments(LaunchArgumentsBase):
 
 
 def declare_actions(launch_description: LaunchDescription, launch_args: LaunchArguments):
-
+    pkg_name = 'pal_sea_arm_controller_configuration'
     pkg_share_folder = get_package_share_directory(
-        'pal_sea_arm_controller_configuration')
+        pkg_name)
 
     joint_state_broadcaster = GroupAction(
         [generate_load_controller_launch_description(
@@ -51,36 +51,22 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
         forwarding=False)
     launch_description.add_action(joint_state_broadcaster)
 
-    arm_controller = GroupAction(
-        [generate_load_controller_launch_description(
-            controller_name='arm_controller',
-            controller_type='joint_trajectory_controller/JointTrajectoryController',
-            controller_params_file=os.path.join(
-                pkg_share_folder,
-                'config', 'arm_controller.yaml'))
-         ],
-        forwarding=False)
+    arm_controller = include_scoped_launch_py_description(
+        pkg_name=pkg_name,
+        paths=['launch', 'arm_controller.launch.py'])
 
     launch_description.add_action(arm_controller)
 
-    launch_description.add_action(OpaqueFunction(function=configure_end_effector_controller))
-    launch_description.add_action(OpaqueFunction(function=configure_ft_sensor_controller))
-
-    return
-
-
-def configure_ft_sensor_controller(context, *args, **kwargs):
-
-    # Load ft sensor controller
-    ft_pkg_name = 'pal_sea_arm_controller_configuration'
-    ft_launch_file = 'ft_sensor_controller.launch.py'
-
     ft_sensor_controller = include_scoped_launch_py_description(
-        pkg_name=ft_pkg_name,
-        paths=['launch', ft_launch_file],
+        pkg_name=pkg_name,
+        paths=['launch', 'ft_sensor_controller.launch.py'],
         condition=LaunchConfigurationNotEquals('ft_sensor', 'no-ft-sensor'))
 
-    return [ft_sensor_controller]
+    launch_description.add_action(ft_sensor_controller)
+
+    launch_description.add_action(OpaqueFunction(function=configure_end_effector_controller))
+
+    return
 
 
 def configure_end_effector_controller(context, *args, **kwargs):
@@ -94,8 +80,7 @@ def configure_end_effector_controller(context, *args, **kwargs):
 
     end_effector_controller = include_scoped_launch_py_description(
         pkg_name=ee_pkg_name,
-        paths=['launch', ee_launch_file],
-        condition=LaunchConfigurationNotEquals('end_effector', 'no-end-effector'))
+        paths=['launch', ee_launch_file])
 
     return [end_effector_controller]
 
