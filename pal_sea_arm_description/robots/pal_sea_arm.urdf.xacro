@@ -25,9 +25,6 @@
   <xacro:include filename="$(find pal_sea_arm_description)/urdf/end_effector/end_effector.urdf.xacro"/>
   <xacro:include filename="$(find pal_sea_arm_description)/gazebo/gazebo.urdf.xacro" />
 
-    <!-- ros2_control -->
-  <xacro:include filename="$(find pal_sea_arm_description)/ros2_control/ros2_control.urdf.xacro" />
-  <xacro:pal_sea_arm_ros2_control use_sim="$(arg use_sim)" />
 
   <xacro:arg name="end_effector" default="pal-pro-gripper"/> <!-- no-end-effector, pal-pro-gripper -->
   <xacro:arg name="ft_sensor" default="rokubi"/> <!-- no-ft-sensor, rokubi-->
@@ -35,6 +32,9 @@
   <xacro:arg name="use_sim" default="False"/>
   <xacro:arg name="namespace" default=""/>
 
+    <!-- ros2_control -->
+  <xacro:include filename="$(find pal_sea_arm_description)/ros2_control/ros2_control.urdf.xacro" />
+  <xacro:pal_sea_arm_ros2_control use_sim="$(arg use_sim)" />
 
   <xacro:property name="end_effector" value="$(arg end_effector)" />
   <xacro:property name="ft_sensor" value="$(arg ft_sensor)" />
