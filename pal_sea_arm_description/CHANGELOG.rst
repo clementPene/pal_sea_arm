@@ -23,6 +23,28 @@ Changelog for package pal_sea_arm_description
 * Add arm model check in urdf
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
+Forthcoming
+-----------
+* Remove unused tags and add offset tag
+* Fix correct actuator name in transmission macro
+* 1.0.3
+* Update Changelog
+* update copyright year
+* Update copyright year
+* Add missing robot_state_publisher dependency
+* Add missing pal_sea_arm_controller_configuration dependency
+* fix order of loading urdf args and ros2_control macro
+* Comment custom end effector for now
+* Use common sim time arg and set it to True by default for simulation laucnh files
+* Change all occurences of no-ee to no-end-effector
+* Migrate tests
+* Change urdf-check to no-end-effector
+* Restructure launch files
+* Add namespace to urdf file
+* Remove space after colon in urdf to avoid this issue: https://github.com/ros2/launch_ros/issues/214
+* Add arm model check in urdf
+* Contributors: David ter Kuile, Noel Jimenez, davidterkuile
+
 1.0.2 (2024-03-07)
 ------------------
 * Merge branch 'dtk/fix/add-linter-tests' into 'humble-devel'

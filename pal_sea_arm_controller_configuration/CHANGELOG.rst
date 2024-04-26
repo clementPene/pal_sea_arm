@@ -15,6 +15,18 @@ Changelog for package pal_sea_arm_controller_configuration
 * Restructure launch files
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
+Forthcoming
+-----------
+* 1.0.3
+* Update Changelog
+* Update copyright year
+* Remove unused imports for flake test
+* Refactor arm_controller
+* Remove unused default_safety_parameters
+* Create force-torque sensor related launch file
+* Restructure launch files
+* Contributors: David ter Kuile, Noel Jimenez
+
 1.0.2 (2024-03-07)
 ------------------
 
