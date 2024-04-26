@@ -5,8 +5,8 @@ Changelog for package pal_sea_arm
 1.0.3 (2024-03-22)
 ------------------
 
-Forthcoming
------------
+1.0.4 (2024-04-26)
+------------------
 * 1.0.3
 * Update Changelog
 * Contributors: David ter Kuile

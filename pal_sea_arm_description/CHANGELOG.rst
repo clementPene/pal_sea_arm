@@ -23,8 +23,8 @@ Changelog for package pal_sea_arm_description
 * Add arm model check in urdf
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
-Forthcoming
------------
+1.0.4 (2024-04-26)
+------------------
 * Remove unused tags and add offset tag
 * Fix correct actuator name in transmission macro
 * 1.0.3
