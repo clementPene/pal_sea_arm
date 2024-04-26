@@ -18,8 +18,7 @@
       <plugin>sea_transmissions/SeaSimpleTransmission</plugin>
       <actuator name="${name}_actuator" role="actuator1"/>
       <joint name="${name}_joint" role="joint1">
-        <actuators_data_ns>/actuators_data/${name}_motor</actuators_data_ns>
-        <joint_offset_ns>/${name}_motor/output_offset</joint_offset_ns>
+        <offset>${offset_value}</offset>
         <mechanical_reduction>${reduction}</mechanical_reduction>
       </joint>
     </transmission>
