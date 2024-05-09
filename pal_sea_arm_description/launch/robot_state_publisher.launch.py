@@ -39,8 +39,8 @@ class LaunchArguments(LaunchArgumentsBase):
     # For future changes in the wrist
     wrist_model: DeclareLaunchArgument = TiagoSEAArgs.wrist_model
 
-    arm_model: DeclareLaunchArgument = DeclareLaunchArgument(
-        'arm_model', default_value='pal-sea-arm-standalone',
+    arm_type: DeclareLaunchArgument = DeclareLaunchArgument(
+        'arm_type', default_value='pal-sea-arm-standalone',
         choices=['pal-sea-arm-standalone', 'tiago-pro', 'tiago-sea', 'tiago-sea-dual'],
         description='The arm model')
 
@@ -72,7 +72,7 @@ def create_robot_description_param(context, *args, **kwargs):
     mappings = {
         'end_effector': read_launch_argument('end_effector', context),
         'ft_sensor': read_launch_argument('ft_sensor', context),
-        'arm_model': read_launch_argument('arm_model', context),
+        'arm_type': read_launch_argument('arm_type', context),
         'use_sim': read_launch_argument('use_sim_time', context),
         'namespace': read_launch_argument('namespace', context),
     }

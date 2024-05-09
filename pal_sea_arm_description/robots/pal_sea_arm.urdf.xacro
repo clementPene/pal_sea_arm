@@ -26,19 +26,21 @@
   <xacro:include filename="$(find pal_sea_arm_description)/gazebo/gazebo.urdf.xacro" />
 
 
-  <xacro:arg name="end_effector" default="pal-pro-gripper"/> <!-- no-end-effector, pal-pro-gripper -->
-  <xacro:arg name="ft_sensor" default="rokubi"/> <!-- no-ft-sensor, rokubi-->
-  <xacro:arg name="arm_model" default="pal-sea-arm-standalone"/>
+  <xacro:arg name="end_effector" default="pal-pro-gripper"/>
+  <!-- no-end-effector, pal-pro-gripper -->
+  <xacro:arg name="ft_sensor" default="rokubi"/>
+  <!-- no-ft-sensor, rokubi-->
+  <xacro:arg name="arm_type" default="pal-sea-arm-standalone"/>
   <xacro:arg name="use_sim" default="False"/>
   <xacro:arg name="namespace" default=""/>
 
-    <!-- ros2_control -->
+  <!-- ros2_control -->
   <xacro:include filename="$(find pal_sea_arm_description)/ros2_control/ros2_control.urdf.xacro" />
   <xacro:pal_sea_arm_ros2_control use_sim="$(arg use_sim)" />
 
   <xacro:property name="end_effector" value="$(arg end_effector)" />
   <xacro:property name="ft_sensor" value="$(arg ft_sensor)" />
-  <xacro:property name="arm_model" value="$(arg arm_model)" />
+  <xacro:property name="arm_type" value="$(arg arm_type)" />
   <xacro:property name="nsp" value="$(arg namespace)" />
 
 
@@ -48,15 +50,15 @@
   <xacro:if value="${ft_sensor not in ['no-ft-sensor', 'rokubi']}">
     <xacro:wrong_ft_sensor/>
   </xacro:if>
-  <xacro:if value="${arm_model not in ['pal-sea-arm-standalone', 'tiago-pro', 'tiago-sea', 'tiago-sea-dual']}">
-    <xacro:wrong_arm_model/>
+  <xacro:if value="${arm_type not in ['pal-sea-arm-standalone', 'tiago-pro', 'tiago-sea', 'tiago-sea-dual']}">
+    <xacro:wrong_arm_type/>
   </xacro:if>
 
-  <xacro:property name="has_ft_sensor"           value="${ft_sensor != 'no-ft-sensor'}"/>
-  <xacro:property name="has_end_effector"        value="${end_effector not in ['no-end-effector']}"/>
-  <xacro:property name="end_effector_link"       value="${'wrist_ft_tool_link' if has_ft_sensor else 'arm_tool_link'}"/>
+  <xacro:property name="has_ft_sensor" value="${ft_sensor != 'no-ft-sensor'}"/>
+  <xacro:property name="has_end_effector" value="${end_effector not in ['no-end-effector']}"/>
+  <xacro:property name="end_effector_link" value="${'wrist_ft_tool_link' if has_ft_sensor else 'arm_tool_link'}"/>
 
- <!-- Force Torque sensor -->
+  <!-- Force Torque sensor -->
   <xacro:if value="${has_ft_sensor}">
     <xacro:include filename="$(find pal_sea_arm_description)/urdf/sensors/ft_sensor.urdf.xacro" />
     <xacro:include filename="$(find pal_sea_arm_description)/urdf/sensors/ft_sensor.gazebo.xacro" />
@@ -65,9 +67,9 @@
   <link name="world"/>
 
   <joint name="world_fixed" type="fixed">
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <parent link="world"/>
-      <child link="arm_root_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="world"/>
+    <child link="arm_root_link"/>
   </joint>
 
   <!-- BASE LINK -->
@@ -75,13 +77,7 @@
     <inertial>
       <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
       <mass value="0.28971" />
-      <inertia
-        ixx="0.00022379"
-        ixy="1.5836E-20"
-        ixz="5.2063E-21"
-        iyy="0.00022379"
-        iyz="-5.1333E-21"
-        izz="0.00019673" />
+      <inertia ixx="0.00022379" ixy="1.5836E-20" ixz="5.2063E-21" iyy="0.00022379" iyz="-5.1333E-21" izz="0.00019673" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
@@ -105,7 +101,7 @@
   </gazebo>
 
   <!-- ARM -->
-  <xacro:pal_sea_arm name="arm" parent="arm_root_link" arm_model="${arm_model}" reflect="1" arm_1_offset="0" arm_2_offset="0" arm_3_offset="0" arm_4_offset="0" arm_5_offset="0" arm_6_offset="0" arm_7_offset="0">
+  <xacro:pal_sea_arm name="arm" parent="arm_root_link" arm_type="${arm_type}" reflect="1" arm_1_offset="0" arm_2_offset="0" arm_3_offset="0" arm_4_offset="0" arm_5_offset="0" arm_6_offset="0" arm_7_offset="0">
     <origin xyz="0 0 0" rpy="0 0 3.1416" />
   </xacro:pal_sea_arm>
 
@@ -114,7 +110,7 @@
   <!-- Force Torque sensor-->
   <xacro:if value="${has_ft_sensor}">
     <xacro:ft_sensor name="wrist" parent="arm_tool_link"/>
-   <!-- <xacro:force_torque_sensor_gazebo name="wrist_ft" update_rate="100"/>-->
+    <!-- <xacro:force_torque_sensor_gazebo name="wrist_ft" update_rate="100"/>-->
   </xacro:if>
 
 </robot>

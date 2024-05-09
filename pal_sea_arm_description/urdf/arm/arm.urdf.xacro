@@ -18,10 +18,8 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
   <!-- Transmissions file -->
-  <xacro:macro name="pal_sea_arm" params="name parent *origin arm_model reflect:=1 arm_1_offset arm_2_offset arm_3_offset arm_4_offset arm_5_offset arm_6_offset arm_7_offset
-                                          no_safety_eps:=False joint_limits_file:='$(find pal_sea_arm_description)/urdf/arm/limits/arm_${arm_model}.limits.xacro'
-                                          arm_properties_file:='$(find pal_sea_arm_description)/urdf/arm/arm_properties/arm_${arm_model}.properties.xacro'">
-    <xacro:property name="arm_eps"       value="${0.00 if no_safety_eps else 0.07}"/>
+  <xacro:macro name="pal_sea_arm" params="name parent *origin arm_type reflect:=1 arm_1_offset arm_2_offset arm_3_offset arm_4_offset arm_5_offset arm_6_offset arm_7_offset no_safety_eps:=False joint_limits_file:='$(find pal_sea_arm_description)/urdf/arm/limits/arm_${arm_type}.limits.xacro' arm_properties_file:='$(find pal_sea_arm_description)/urdf/arm/arm_properties/arm_${arm_type}.properties.xacro'">
+    <xacro:property name="arm_eps" value="${0.00 if no_safety_eps else 0.07}"/>
 
     <!-- Joint Limits file -->
     <xacro:include filename="${joint_limits_file}"/>
@@ -30,12 +28,12 @@
 
     <xacro:property name="mesh_folder"/>
 
-    <xacro:if value="${arm_model in ['tiago-pro', 'pal-sea-arm-standalone']}">
-      <xacro:property name="mesh_folder"       value="arm_tiago_pro"/>
+    <xacro:if value="${arm_type in ['tiago-pro', 'pal-sea-arm-standalone']}">
+      <xacro:property name="mesh_folder" value="arm_tiago_pro"/>
     </xacro:if>
 
-    <xacro:if value="${arm_model in ['tiago-sea', 'tiago-sea-dual']}">
-      <xacro:property name="mesh_folder"       value="arm_tiago_sea"/>
+    <xacro:if value="${arm_type in ['tiago-sea', 'tiago-sea-dual']}">
+      <xacro:property name="mesh_folder" value="arm_tiago_sea"/>
     </xacro:if>
 
     <!-- ARM 1 LINK -->
@@ -44,17 +42,14 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh
-            filename="package://pal_sea_arm_description/meshes/${mesh_folder}/arm_1_link.stl"
-            scale="1 1 ${reflect}" />
+          <mesh filename="package://pal_sea_arm_description/meshes/${mesh_folder}/arm_1_link.stl" scale="1 1 ${reflect}" />
         </geometry>
         <material name="pal/DarkGrey"/>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pal_sea_arm_description/meshes/${mesh_folder}/arm_1_link_collision.stl"
-          scale="1 1 ${reflect}" />
+          <mesh filename="package://pal_sea_arm_description/meshes/${mesh_folder}/arm_1_link_collision.stl" scale="1 1 ${reflect}" />
         </geometry>
       </collision>
     </link>
@@ -67,8 +62,7 @@
       <axis xyz="0 0 1" />
       <limit lower="${arm_1_joint_lb * deg_to_rad}" upper="${arm_1_joint_ub * deg_to_rad}" effort="${arm_1_max_effort}" velocity="${arm_1_max_velocity}" />
       <dynamics friction="${arm_friction}" damping="${arm_damping}"/>
-      <safety_controller k_position="${arm_k_position}" k_velocity="${arm_k_velocity}" soft_lower_limit="${arm_1_joint_lb  + arm_eps}"
-        soft_upper_limit="${arm_1_joint_ub - arm_eps}" />
+      <safety_controller k_position="${arm_k_position}" k_velocity="${arm_k_velocity}" soft_lower_limit="${arm_1_joint_lb  + arm_eps}" soft_upper_limit="${arm_1_joint_ub - arm_eps}" />
     </joint>
 
     <!-- ARM 2 LINK -->
@@ -77,16 +71,14 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pal_sea_arm_description/meshes/${mesh_folder}/arm_2_link.stl"
-          scale="1 1 ${reflect}" />
+          <mesh filename="package://pal_sea_arm_description/meshes/${mesh_folder}/arm_2_link.stl" scale="1 1 ${reflect}" />
         </geometry>
         <material name="pal/DarkGrey"/>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pal_sea_arm_description/meshes/${mesh_folder}/arm_2_link_collision.stl"
-          scale="1 1 ${reflect}" />
+          <mesh filename="package://pal_sea_arm_description/meshes/${mesh_folder}/arm_2_link_collision.stl" scale="1 1 ${reflect}" />
         </geometry>
       </collision>
     </link>
@@ -99,8 +91,7 @@
       <axis xyz="0 0 1" />
       <limit lower="${arm_2_joint_lb * deg_to_rad}" upper="${arm_2_joint_ub * deg_to_rad}" effort="${arm_2_max_effort}" velocity="${arm_2_max_velocity}" />
       <dynamics friction="${arm_friction}" damping="${arm_damping}"/>
-      <safety_controller k_position="${arm_k_position}" k_velocity="${arm_k_velocity}" soft_lower_limit="${arm_2_joint_lb * deg_to_rad  + arm_eps}"
-        soft_upper_limit="${arm_2_joint_ub * deg_to_rad - arm_eps}" />
+      <safety_controller k_position="${arm_k_position}" k_velocity="${arm_k_velocity}" soft_lower_limit="${arm_2_joint_lb * deg_to_rad  + arm_eps}" soft_upper_limit="${arm_2_joint_ub * deg_to_rad - arm_eps}" />
     </joint>
 
     <!-- ARM 3 LINK -->
@@ -109,16 +100,14 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pal_sea_arm_description/meshes/${mesh_folder}/arm_3_link.stl"
-          scale="1 1 ${reflect}" />
+          <mesh filename="package://pal_sea_arm_description/meshes/${mesh_folder}/arm_3_link.stl" scale="1 1 ${reflect}" />
         </geometry>
         <material name="pal/DarkGrey"/>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pal_sea_arm_description/meshes/${mesh_folder}/arm_3_link_collision.stl"
-          scale="1 1 ${reflect}" />
+          <mesh filename="package://pal_sea_arm_description/meshes/${mesh_folder}/arm_3_link_collision.stl" scale="1 1 ${reflect}" />
         </geometry>
       </collision>
     </link>
@@ -129,12 +118,9 @@
       <parent link="${name}_2_link" />
       <child link="${name}_3_link" />
       <axis xyz="0 0 1" />
-      <limit lower="${arm_3_joint_lb * deg_to_rad}" upper="${arm_3_joint_ub * deg_to_rad}"
-        effort="${arm_3_max_effort}" velocity="${arm_3_max_velocity}" />
+      <limit lower="${arm_3_joint_lb * deg_to_rad}" upper="${arm_3_joint_ub * deg_to_rad}" effort="${arm_3_max_effort}" velocity="${arm_3_max_velocity}" />
       <dynamics friction="${arm_friction}" damping="${arm_damping}"/>
-      <safety_controller k_position="${arm_k_position}" k_velocity="${arm_k_velocity}"
-        soft_lower_limit="${arm_3_joint_lb * deg_to_rad  + arm_eps}"
-        soft_upper_limit="${arm_3_joint_ub * deg_to_rad - arm_eps}" />
+      <safety_controller k_position="${arm_k_position}" k_velocity="${arm_k_velocity}" soft_lower_limit="${arm_3_joint_lb * deg_to_rad  + arm_eps}" soft_upper_limit="${arm_3_joint_ub * deg_to_rad - arm_eps}" />
     </joint>
 
     <!-- ARM 4 LINK -->
@@ -143,16 +129,14 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pal_sea_arm_description/meshes/${mesh_folder}/arm_4_link.stl"
-          scale="1 1 ${reflect}" />
+          <mesh filename="package://pal_sea_arm_description/meshes/${mesh_folder}/arm_4_link.stl" scale="1 1 ${reflect}" />
         </geometry>
         <material name="pal/DarkGrey"/>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pal_sea_arm_description/meshes/${mesh_folder}/arm_4_link_collision.stl"
-          scale="1 1 ${reflect}" />
+          <mesh filename="package://pal_sea_arm_description/meshes/${mesh_folder}/arm_4_link_collision.stl" scale="1 1 ${reflect}" />
         </geometry>
       </collision>
     </link>
@@ -165,9 +149,7 @@
       <axis xyz="0 0 1" />
       <limit lower="${arm_4_joint_lb * deg_to_rad}" upper="${arm_4_joint_ub * deg_to_rad}" effort="${arm_4_max_effort}" velocity="${arm_4_max_velocity}" />
       <dynamics friction="${arm_friction}" damping="${arm_damping}"/>
-      <safety_controller
-        k_position="${arm_k_position}" k_velocity="${arm_k_velocity}" soft_lower_limit="${arm_4_joint_lb * deg_to_rad  + arm_eps}"
-        soft_upper_limit="${arm_4_joint_ub * deg_to_rad - arm_eps}" />
+      <safety_controller k_position="${arm_k_position}" k_velocity="${arm_k_velocity}" soft_lower_limit="${arm_4_joint_lb * deg_to_rad  + arm_eps}" soft_upper_limit="${arm_4_joint_ub * deg_to_rad - arm_eps}" />
     </joint>
 
     <!-- ARM 5 LINK -->
@@ -176,16 +158,14 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pal_sea_arm_description/meshes/${mesh_folder}/arm_5_link.stl"
-          scale="1 1 ${reflect}" />
+          <mesh filename="package://pal_sea_arm_description/meshes/${mesh_folder}/arm_5_link.stl" scale="1 1 ${reflect}" />
         </geometry>
         <material name="pal/DarkGrey"/>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pal_sea_arm_description/meshes/${mesh_folder}/arm_5_link_collision.stl"
-          scale="1 1 ${reflect}" />
+          <mesh filename="package://pal_sea_arm_description/meshes/${mesh_folder}/arm_5_link_collision.stl" scale="1 1 ${reflect}" />
         </geometry>
       </collision>
     </link>
@@ -196,12 +176,9 @@
       <parent link="${name}_4_link" />
       <child link="${name}_5_link" />
       <axis xyz="0 0 1" />
-      <limit
-        lower="${arm_5_joint_lb * deg_to_rad}" upper="${arm_5_joint_ub * deg_to_rad}" effort="${arm_5_max_effort}" velocity="${arm_5_max_velocity}" />
+      <limit lower="${arm_5_joint_lb * deg_to_rad}" upper="${arm_5_joint_ub * deg_to_rad}" effort="${arm_5_max_effort}" velocity="${arm_5_max_velocity}" />
       <dynamics friction="${arm_friction}" damping="${arm_damping}"/>
-      <safety_controller
-        k_position="${arm_k_position}" k_velocity="${arm_k_velocity}" soft_lower_limit="${arm_5_joint_lb * deg_to_rad  + arm_eps}"
-        soft_upper_limit="${arm_5_joint_ub * deg_to_rad - arm_eps}" />
+      <safety_controller k_position="${arm_k_position}" k_velocity="${arm_k_velocity}" soft_lower_limit="${arm_5_joint_lb * deg_to_rad  + arm_eps}" soft_upper_limit="${arm_5_joint_ub * deg_to_rad - arm_eps}" />
     </joint>
 
     <!-- ARM 6 LINK -->
@@ -210,16 +187,14 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pal_sea_arm_description/meshes/${mesh_folder}/arm_6_link.stl"
-          scale="1 1 ${reflect}" />
+          <mesh filename="package://pal_sea_arm_description/meshes/${mesh_folder}/arm_6_link.stl" scale="1 1 ${reflect}" />
         </geometry>
         <material name="pal/DarkGrey"/>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pal_sea_arm_description/meshes/${mesh_folder}/arm_6_link_collision.stl"
-          scale="1 1 ${reflect}" />
+          <mesh filename="package://pal_sea_arm_description/meshes/${mesh_folder}/arm_6_link_collision.stl" scale="1 1 ${reflect}" />
         </geometry>
       </collision>
     </link>
@@ -230,12 +205,9 @@
       <parent link="${name}_5_link" />
       <child link="${name}_6_link" />
       <axis xyz="0 0 1" />
-      <limit
-        lower="${arm_6_joint_lb * deg_to_rad}" upper="${arm_6_joint_ub * deg_to_rad}" effort="${arm_6_max_effort}" velocity="${arm_6_max_velocity}" />
+      <limit lower="${arm_6_joint_lb * deg_to_rad}" upper="${arm_6_joint_ub * deg_to_rad}" effort="${arm_6_max_effort}" velocity="${arm_6_max_velocity}" />
       <dynamics friction="${arm_friction}" damping="${arm_damping}"/>
-      <safety_controller
-        k_position="${arm_k_position}" k_velocity="${arm_k_velocity}" soft_lower_limit="${arm_6_joint_lb * deg_to_rad  + arm_eps}"
-        soft_upper_limit="${arm_6_joint_ub * deg_to_rad - arm_eps}" />
+      <safety_controller k_position="${arm_k_position}" k_velocity="${arm_k_velocity}" soft_lower_limit="${arm_6_joint_lb * deg_to_rad  + arm_eps}" soft_upper_limit="${arm_6_joint_ub * deg_to_rad - arm_eps}" />
     </joint>
 
     <!-- ARM 7 LINK -->
@@ -244,16 +216,14 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pal_sea_arm_description/meshes/${mesh_folder}/arm_7_link.stl"
-          scale="1 1 ${reflect}" />
+          <mesh filename="package://pal_sea_arm_description/meshes/${mesh_folder}/arm_7_link.stl" scale="1 1 ${reflect}" />
         </geometry>
         <material name="pal/DarkGrey"/>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pal_sea_arm_description/meshes/${mesh_folder}/arm_7_link_collision.stl"
-          scale="1 1 ${reflect}" />
+          <mesh filename="package://pal_sea_arm_description/meshes/${mesh_folder}/arm_7_link_collision.stl" scale="1 1 ${reflect}" />
         </geometry>
       </collision>
     </link>
@@ -264,12 +234,9 @@
       <parent link="${name}_6_link" />
       <child link="${name}_7_link" />
       <axis xyz="0 0 1" />
-      <limit
-        lower="${arm_7_joint_lb * deg_to_rad}" upper="${arm_7_joint_ub * deg_to_rad}" effort="${arm_7_max_effort}" velocity="${arm_7_max_velocity}" />
+      <limit lower="${arm_7_joint_lb * deg_to_rad}" upper="${arm_7_joint_ub * deg_to_rad}" effort="${arm_7_max_effort}" velocity="${arm_7_max_velocity}" />
       <dynamics friction="${arm_friction}" damping="${arm_damping}"/>
-      <safety_controller
-        k_position="${arm_k_position}" k_velocity="${arm_k_velocity}" soft_lower_limit="${arm_7_joint_lb * deg_to_rad  + arm_eps}"
-        soft_upper_limit="${arm_7_joint_ub * deg_to_rad - arm_eps}" />
+      <safety_controller k_position="${arm_k_position}" k_velocity="${arm_k_velocity}" soft_lower_limit="${arm_7_joint_lb * deg_to_rad  + arm_eps}" soft_upper_limit="${arm_7_joint_ub * deg_to_rad - arm_eps}" />
     </joint>
 
     <!--***********************-->
