@@ -11,6 +11,9 @@ Changelog for package pal_sea_arm_bringup
 * Restructure launch files pal-sea-arm-bringup
 * Contributors: David ter Kuile, davidterkuile
 
+Forthcoming
+-----------
+
 1.0.4 (2024-04-26)
 ------------------
 * 1.0.3
