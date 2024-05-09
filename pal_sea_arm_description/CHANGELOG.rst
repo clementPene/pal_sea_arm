@@ -23,8 +23,8 @@ Changelog for package pal_sea_arm_description
 * Add arm model check in urdf
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
-Forthcoming
------------
+1.0.5 (2024-05-09)
+------------------
 * Merge branch 'omm/feat/arm_name_std' into 'humble-devel'
   Changed arm_model to arm_type in the URDF
   See merge request robots/pal_sea_arm!25
