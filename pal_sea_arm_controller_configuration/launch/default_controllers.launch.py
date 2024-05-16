@@ -16,9 +16,10 @@ import os
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
 from launch.actions import GroupAction, OpaqueFunction
-from launch.conditions import LaunchConfigurationNotEquals
+from launch.conditions import LaunchConfigurationNotEquals, IfCondition
 from launch.actions import DeclareLaunchArgument
 from controller_manager.launch_utils import generate_load_controller_launch_description
+from launch.substitutions import LaunchConfiguration, PythonExpression
 
 from launch_pal.include_utils import include_scoped_launch_py_description
 from launch_pal.arg_utils import LaunchArgumentsBase, CommonArgs, read_launch_argument
@@ -70,19 +71,21 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
 
 
 def configure_end_effector_controller(context, *args, **kwargs):
-
     # Load end_effector controller
     end_effector = read_launch_argument('end_effector', context)
     end_effector_underscore = end_effector.replace('-', '_')
+    
+    if end_effector != "no-end-effector":
+        ee_pkg_name = f'{end_effector_underscore}_controller_configuration'
+        ee_launch_file = f'{end_effector_underscore}_controller.launch.py'
 
-    ee_pkg_name = f'{end_effector_underscore}_controller_configuration'
-    ee_launch_file = f'{end_effector_underscore}_controller.launch.py'
-
-    end_effector_controller = include_scoped_launch_py_description(
-        pkg_name=ee_pkg_name,
-        paths=['launch', ee_launch_file])
-
-    return [end_effector_controller]
+        end_effector_controller = include_scoped_launch_py_description(
+            pkg_name=ee_pkg_name,
+            paths=['launch', ee_launch_file],
+        )
+        return [end_effector_controller]
+    else:
+        pass
 
 
 def generate_launch_description():
