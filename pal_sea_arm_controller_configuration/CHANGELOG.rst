@@ -15,8 +15,8 @@ Changelog for package pal_sea_arm_controller_configuration
 * Restructure launch files
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
-Forthcoming
------------
+1.0.6 (2024-05-22)
+------------------
 * Merge branch 'feat/auto-generated_srdf_files' into 'humble-devel'
   add no-end-effector condition in controllers
   See merge request robots/pal_sea_arm!26
