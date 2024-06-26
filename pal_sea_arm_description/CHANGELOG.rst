@@ -23,8 +23,8 @@ Changelog for package pal_sea_arm_description
 * Add arm model check in urdf
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
-Forthcoming
------------
+1.0.7 (2024-06-26)
+------------------
 * Merge branch 'dtk/move-robot-args' into 'humble-devel'
   Change import for launch args
   See merge request robots/pal_sea_arm!30

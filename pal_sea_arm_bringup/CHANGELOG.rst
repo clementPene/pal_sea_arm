@@ -11,8 +11,8 @@ Changelog for package pal_sea_arm_bringup
 * Restructure launch files pal-sea-arm-bringup
 * Contributors: David ter Kuile, davidterkuile
 
-Forthcoming
------------
+1.0.7 (2024-06-26)
+------------------
 * Merge branch 'dtk/move-robot-args' into 'humble-devel'
   Change import for launch args
   See merge request robots/pal_sea_arm!30
