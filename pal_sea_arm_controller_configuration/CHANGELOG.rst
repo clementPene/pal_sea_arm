@@ -15,6 +15,14 @@ Changelog for package pal_sea_arm_controller_configuration
 * Restructure launch files
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
+Forthcoming
+-----------
+* Merge branch 'dtk/move-robot-args' into 'humble-devel'
+  Change import for launch args
+  See merge request robots/pal_sea_arm!30
+* Create standalone robot args for sea arms
+* Contributors: David ter Kuile, davidterkuile
+
 1.0.6 (2024-05-22)
 ------------------
 * Merge branch 'feat/auto-generated_srdf_files' into 'humble-devel'
