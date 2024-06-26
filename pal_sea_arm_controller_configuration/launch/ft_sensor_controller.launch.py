@@ -25,12 +25,12 @@ from launch.actions import OpaqueFunction, GroupAction
 from launch.conditions import LaunchConfigurationNotEquals
 from launch.substitutions import LaunchConfiguration
 from launch import LaunchDescription, LaunchContext
-from launch_pal.robot_arguments import TiagoSEAArgs
+from pal_sea_arm_description.launch_arguments import SEAArmArgs
 
 
 @dataclass(frozen=True)
 class LaunchArguments(LaunchArgumentsBase):
-    ft_sensor: DeclareLaunchArgument = TiagoSEAArgs.ft_sensor
+    ft_sensor: DeclareLaunchArgument = SEAArmArgs.ft_sensor
     side: DeclareLaunchArgument = DeclareLaunchArgument(
         name='side',
         default_value='',
