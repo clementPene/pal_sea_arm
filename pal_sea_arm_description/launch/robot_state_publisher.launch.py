@@ -24,20 +24,21 @@ from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
 from launch_param_builder import load_xacro
 from launch_pal.arg_utils import read_launch_argument
-from launch_pal.arg_utils import LaunchArgumentsBase, CommonArgs
+from launch_pal.arg_utils import LaunchArgumentsBase
+from launch_pal.robot_arguments import CommonArgs
 from dataclasses import dataclass
 
-from launch_pal.robot_arguments import TiagoSEAArgs
+from pal_sea_arm_description.launch_arguments import SEAArmArgs
 
 
 @dataclass(frozen=True)
 class LaunchArguments(LaunchArgumentsBase):
 
-    end_effector: DeclareLaunchArgument = TiagoSEAArgs.end_effector
-    ft_sensor: DeclareLaunchArgument = TiagoSEAArgs.ft_sensor
+    end_effector: DeclareLaunchArgument = SEAArmArgs.end_effector
+    ft_sensor: DeclareLaunchArgument = SEAArmArgs.ft_sensor
 
     # For future changes in the wrist
-    wrist_model: DeclareLaunchArgument = TiagoSEAArgs.wrist_model
+    wrist_model: DeclareLaunchArgument = SEAArmArgs.wrist_model
 
     arm_type: DeclareLaunchArgument = DeclareLaunchArgument(
         'arm_type', default_value='pal-sea-arm-standalone',
