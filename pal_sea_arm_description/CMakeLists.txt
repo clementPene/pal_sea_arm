@@ -4,6 +4,11 @@ project(pal_sea_arm_description)
 find_package(ament_cmake_auto REQUIRED)
 
 ament_auto_find_build_dependencies()
+if(pal_module_cmake_FOUND)
+  pal_register_modules(
+    module/10_robot_state_publisher.yaml
+  )
+endif()
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)

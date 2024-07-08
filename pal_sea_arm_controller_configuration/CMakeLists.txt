@@ -3,6 +3,11 @@ project(pal_sea_arm_controller_configuration)
 
 find_package(ament_cmake_auto REQUIRED)
 ament_auto_find_build_dependencies()
+if(pal_module_cmake_FOUND)
+  pal_register_modules(
+    module/10_default_controllers.yaml
+  )
+endif()
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
