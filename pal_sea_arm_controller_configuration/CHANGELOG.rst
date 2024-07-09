@@ -15,6 +15,12 @@ Changelog for package pal_sea_arm_controller_configuration
 * Restructure launch files
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
+Forthcoming
+-----------
+* Add warning for pal_module_cmake not found
+* add modules for description and controller*
+* Contributors: Aina, Noel Jimenez
+
 1.0.7 (2024-06-26)
 ------------------
 * Merge branch 'dtk/move-robot-args' into 'humble-devel'
