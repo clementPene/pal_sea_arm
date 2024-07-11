@@ -23,6 +23,11 @@ Changelog for package pal_sea_arm_description
 * Add arm model check in urdf
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
+Forthcoming
+-----------
+* Add degree to radian conversion in joint 1 soft limit
+* Contributors: David ter Kuile
+
 1.0.8 (2024-07-09)
 ------------------
 * Add warning for pal_module_cmake not found

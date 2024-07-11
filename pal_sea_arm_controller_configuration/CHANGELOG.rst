@@ -15,6 +15,9 @@ Changelog for package pal_sea_arm_controller_configuration
 * Restructure launch files
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
+Forthcoming
+-----------
+
 1.0.8 (2024-07-09)
 ------------------
 * Add warning for pal_module_cmake not found
