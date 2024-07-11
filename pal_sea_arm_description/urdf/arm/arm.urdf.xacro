@@ -62,7 +62,7 @@
       <axis xyz="0 0 1" />
       <limit lower="${arm_1_joint_lb * deg_to_rad}" upper="${arm_1_joint_ub * deg_to_rad}" effort="${arm_1_max_effort}" velocity="${arm_1_max_velocity}" />
       <dynamics friction="${arm_friction}" damping="${arm_damping}"/>
-      <safety_controller k_position="${arm_k_position}" k_velocity="${arm_k_velocity}" soft_lower_limit="${arm_1_joint_lb  + arm_eps}" soft_upper_limit="${arm_1_joint_ub - arm_eps}" />
+      <safety_controller k_position="${arm_k_position}" k_velocity="${arm_k_velocity}" soft_lower_limit="${arm_1_joint_lb * deg_to_rad  + arm_eps}" soft_upper_limit="${arm_1_joint_ub * deg_to_rad  - arm_eps}" />
     </joint>
 
     <!-- ARM 2 LINK -->
