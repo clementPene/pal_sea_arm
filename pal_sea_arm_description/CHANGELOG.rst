@@ -23,6 +23,11 @@ Changelog for package pal_sea_arm_description
 * Add arm model check in urdf
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
+Forthcoming
+-----------
+* Update robot_state_publisher_model
+* Contributors: davidterkuile
+
 1.0.9 (2024-07-11)
 ------------------
 * Add degree to radian conversion in joint 1 soft limit
