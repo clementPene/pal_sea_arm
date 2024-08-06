@@ -44,7 +44,6 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
     joint_state_broadcaster = GroupAction(
         [generate_load_controller_launch_description(
             controller_name='joint_state_broadcaster',
-            controller_type='joint_state_broadcaster/JointStateBroadcaster',
             controller_params_file=os.path.join(
                 pkg_share_folder,
                 'config', 'joint_state_broadcaster.yaml'))
