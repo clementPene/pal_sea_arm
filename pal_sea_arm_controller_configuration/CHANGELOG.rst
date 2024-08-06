@@ -15,8 +15,8 @@ Changelog for package pal_sea_arm_controller_configuration
 * Restructure launch files
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
-Forthcoming
------------
+1.10.0 (2024-08-06)
+-------------------
 * Use controller_type from the controllers config
 * Contributors: Noel Jimenez
 
