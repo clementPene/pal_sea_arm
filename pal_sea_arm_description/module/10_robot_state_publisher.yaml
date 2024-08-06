@@ -3,5 +3,5 @@ robot_state_publisher:
            arm_type:=@arm_type@
            end_effector:=@end_effector@
            ft_sensor:=@ft_sensor@
-           wrist_model:=@wrist_model@
+           wrist_model:=@wrist_model@"
 
