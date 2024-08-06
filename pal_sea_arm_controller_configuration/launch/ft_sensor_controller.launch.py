@@ -46,7 +46,6 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
 
     launch_controller = GroupAction([generate_load_controller_launch_description(
         controller_name=LaunchConfiguration("controller_name"),
-        controller_type='force_torque_sensor_broadcaster/ForceTorqueSensorBroadcaster',
         controller_params_file=LaunchConfiguration("controller_config"))],
         condition=LaunchConfigurationNotEquals('ft_sensor', 'no-ft-sensor'))
 
