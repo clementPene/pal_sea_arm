@@ -1,6 +1,6 @@
 arm_type:
   description: 'Arm type'
-  choices: ['tiago-sea', 'no-arm']
+  choices: ['tiago-sea', 'tiago-pro', 'no-arm']
   default_value: 'tiago-sea'
 end_effector:
   description: 'End effector model'
@@ -12,6 +12,9 @@ ft_sensor:
   default_value: 'rokubi'
 wrist_model:
   description: "Wrist model"
-  choices: ['spherical-wrist']
+  choices: ['straight-wrist', 'spherical-wrist']
   default_value: 'spherical-wrist'
-
+tool_changer:
+  description: 'The arm has a tool changer'
+  choices: ['False', 'True']
+  default_value: 'False'

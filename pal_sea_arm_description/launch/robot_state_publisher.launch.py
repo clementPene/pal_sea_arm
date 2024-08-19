@@ -39,11 +39,8 @@ class LaunchArguments(LaunchArgumentsBase):
 
     # For future changes in the wrist
     wrist_model: DeclareLaunchArgument = SEAArmArgs.wrist_model
-
-    arm_type: DeclareLaunchArgument = DeclareLaunchArgument(
-        'arm_type', default_value='pal-sea-arm-standalone',
-        choices=['pal-sea-arm-standalone', 'tiago-pro', 'tiago-sea', 'tiago-sea-dual'],
-        description='The arm model')
+    tool_changer: DeclareLaunchArgument = SEAArmArgs.tool_changer
+    arm_type: DeclareLaunchArgument = SEAArmArgs.arm_type
 
     use_sim_time: DeclareLaunchArgument = CommonArgs.use_sim_time
     namespace: DeclareLaunchArgument = CommonArgs.namespace
@@ -70,15 +67,17 @@ def create_robot_description_param(context, *args, **kwargs):
         get_package_share_directory('pal_sea_arm_description'),
         'robots', 'pal_sea_arm.urdf.xacro'))
 
-    mappings = {
+    xacro_input_args = {
         'end_effector': read_launch_argument('end_effector', context),
+        'wrist_model': read_launch_argument('wrist_model', context),
         'ft_sensor': read_launch_argument('ft_sensor', context),
         'arm_type': read_launch_argument('arm_type', context),
+        'tool_changer': read_launch_argument('tool_changer', context),
         'use_sim': read_launch_argument('use_sim_time', context),
         'namespace': read_launch_argument('namespace', context),
     }
-    robot_description = load_xacro(
-        xacro_file_path, mappings)
+    robot_description = load_xacro(xacro_file_path, xacro_input_args)
+
     return [SetLaunchConfiguration('robot_description', robot_description)]
 
 

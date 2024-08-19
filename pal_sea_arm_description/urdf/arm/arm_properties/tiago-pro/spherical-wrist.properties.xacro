@@ -1,0 +1,47 @@
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+    <xacro:macro name="inertial_link_5" params="reflect">
+        <inertial>
+            <origin xyz="-1.1035E-05 -0.027586 0.067845" rpy="0 0 0" />
+            <mass value="0.31076" />
+            <inertia ixx="0.0014015" ixy="9.1728E-08" ixz="-9.3079E-08" iyy="0.0014" iyz="0.00032771" izz="0.00040201" />
+        </inertial>
+    </xacro:macro>
+
+    <xacro:macro name="inertial_link_6" params="reflect">
+        <inertial>
+            <origin xyz="0.031759 -0.0065118 -0.0408" rpy="0 0 0" />
+            <mass value="1.3455" />
+            <inertia ixx="0.0010983" ixy="-0.00012999" ixz="-5.9554E-06" iyy="0.0011642" iyz="-4.7964E-07" izz="0.0011896" />
+        </inertial>
+    </xacro:macro>
+
+    <xacro:macro name="origin_joint_6" params="reflect">
+        <origin xyz="0 -0.0422 0.1654" rpy="-1.5708 0 3.14" />
+    </xacro:macro>
+
+    <xacro:macro name="inertial_link_7" params="reflect">
+        <inertial>
+            <origin xyz="0.0019481 0.0017558 0.0085066" rpy="0 0 0" />
+            <mass value="0.12272" />
+            <inertia ixx="5.1385E-05" ixy="8.5364E-07" ixz="-9.0329E-08" iyy="4.7962E-05" iyz="-1.8035E-07" izz="9.2935E-05" />
+        </inertial>
+    </xacro:macro>
+
+    <xacro:macro name="origin_joint_7" params="reflect">
+        <origin xyz="0.07 -0.0534 -0.0422" rpy="1.5708 0 0" />
+    </xacro:macro>
+
+    <xacro:macro name="inertial_tool_link" params="reflect">
+        <inertial>
+            <origin xyz="5.0493E-18 -4.4892E-17 -0.0068514" rpy="0 0 0" />
+            <mass value="0.10189" />
+            <inertia ixx="5.1076E-05" ixy="-1.0374E-21" ixz="-5.9164E-21" iyy="5.0882E-05" iyz="-8.5211E-21" izz="9.705E-05" />
+        </inertial>
+    </xacro:macro>
+
+    <xacro:macro name="origin_joint_tool" params="reflect">
+        <origin xyz="0 0 0.0184" rpy="0 ${-90.0 * deg_to_rad} ${90.0 * deg_to_rad}" />
+    </xacro:macro>
+
+</robot>

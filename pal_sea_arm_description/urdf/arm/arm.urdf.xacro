@@ -18,23 +18,31 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
   <!-- Transmissions file -->
-  <xacro:macro name="pal_sea_arm" params="name parent *origin arm_type reflect:=1 arm_1_offset arm_2_offset arm_3_offset arm_4_offset arm_5_offset arm_6_offset arm_7_offset no_safety_eps:=False joint_limits_file:='$(find pal_sea_arm_description)/urdf/arm/limits/arm_${arm_type}.limits.xacro' arm_properties_file:='$(find pal_sea_arm_description)/urdf/arm/arm_properties/arm_${arm_type}.properties.xacro'">
+  <xacro:macro name="pal_sea_arm" params="name parent *origin arm_type wrist_model reflect:=1 arm_1_offset arm_2_offset arm_3_offset arm_4_offset arm_5_offset arm_6_offset arm_7_offset no_safety_eps:=False">
+
+    <!-- PROPERTIES -->
+
     <xacro:property name="arm_eps" value="${0.00 if no_safety_eps else 0.07}"/>
-
-    <!-- Joint Limits file -->
-    <xacro:include filename="${joint_limits_file}"/>
-
-    <xacro:include filename="${arm_properties_file}"/>
-
     <xacro:property name="mesh_folder"/>
 
-    <xacro:if value="${arm_type in ['tiago-pro', 'pal-sea-arm-standalone']}">
+    <!-- Tiago Pro -->
+    <xacro:if value="${arm_type in ['tiago-pro']}">
       <xacro:property name="mesh_folder" value="arm_tiago_pro"/>
     </xacro:if>
 
+    <!-- Tiago SEA -->
     <xacro:if value="${arm_type in ['tiago-sea', 'tiago-sea-dual']}">
       <xacro:property name="mesh_folder" value="arm_tiago_sea"/>
     </xacro:if>
+
+    <!-- INCLUDES -->
+
+    <xacro:include filename="$(find pal_sea_arm_description)/urdf/arm/limits/arm_${arm_type}.limits.xacro"/>
+    <xacro:include filename="$(find pal_sea_arm_description)/urdf/arm/arm_properties/${arm_type}/arm.properties.xacro"/>
+    <xacro:include filename="$(find pal_sea_arm_description)/urdf/arm/arm_properties/${arm_type}/arm.properties.xacro"/>
+    <xacro:include filename="$(find pal_sea_arm_description)/urdf/arm/arm_properties/${arm_type}/${wrist_model}.properties.xacro"/>
+
+    <!-- ARM DEFINITION -->
 
     <!-- ARM 1 LINK -->
     <link name="${name}_1_link">
@@ -158,14 +166,14 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pal_sea_arm_description/meshes/${mesh_folder}/arm_5_link.stl" scale="1 1 ${reflect}" />
+          <mesh filename="package://pal_sea_arm_description/meshes/${mesh_folder}/${wrist_model}/arm_5_link.stl" scale="1 1 ${reflect}" />
         </geometry>
         <material name="pal/DarkGrey"/>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pal_sea_arm_description/meshes/${mesh_folder}/arm_5_link_collision.stl" scale="1 1 ${reflect}" />
+          <mesh filename="package://pal_sea_arm_description/meshes/${mesh_folder}/${wrist_model}/arm_5_link_collision.stl" scale="1 1 ${reflect}" />
         </geometry>
       </collision>
     </link>
@@ -187,14 +195,14 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pal_sea_arm_description/meshes/${mesh_folder}/arm_6_link.stl" scale="1 1 ${reflect}" />
+          <mesh filename="package://pal_sea_arm_description/meshes/${mesh_folder}/${wrist_model}/arm_6_link.stl" scale="1 1 ${reflect}" />
         </geometry>
         <material name="pal/DarkGrey"/>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pal_sea_arm_description/meshes/${mesh_folder}/arm_6_link_collision.stl" scale="1 1 ${reflect}" />
+          <mesh filename="package://pal_sea_arm_description/meshes/${mesh_folder}/${wrist_model}/arm_6_link_collision.stl" scale="1 1 ${reflect}" />
         </geometry>
       </collision>
     </link>
@@ -216,14 +224,14 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pal_sea_arm_description/meshes/${mesh_folder}/arm_7_link.stl" scale="1 1 ${reflect}" />
+          <mesh filename="package://pal_sea_arm_description/meshes/${mesh_folder}/${wrist_model}/arm_7_link.stl" scale="1 1 ${reflect}" />
         </geometry>
         <material name="pal/DarkGrey"/>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pal_sea_arm_description/meshes/${mesh_folder}/arm_7_link_collision.stl" scale="1 1 ${reflect}" />
+          <mesh filename="package://pal_sea_arm_description/meshes/${mesh_folder}/${wrist_model}/arm_7_link_collision.stl" scale="1 1 ${reflect}" />
         </geometry>
       </collision>
     </link>
@@ -296,6 +304,11 @@
       <mu2>0.9</mu2>
     </gazebo>
     <gazebo reference="${name}_7_link">
+      <material>Gazebo/DarkGrey</material>
+      <mu1>0.9</mu1>
+      <mu2>0.9</mu2>
+    </gazebo>
+    <gazebo reference="${name}_tool_link">
       <material>Gazebo/DarkGrey</material>
       <mu1>0.9</mu1>
       <mu2>0.9</mu2>

@@ -32,3 +32,4 @@ class SEAArmArgs:
     end_effector: DLA = __arg_creator.get_argument("end_effector")
     ft_sensor: DLA = __arg_creator.get_argument("ft_sensor")
     wrist_model: DLA = __arg_creator.get_argument("wrist_model")
+    tool_changer: DLA = __arg_creator.get_argument("tool_changer")
