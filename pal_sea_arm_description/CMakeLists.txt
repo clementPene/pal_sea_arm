@@ -16,16 +16,27 @@ if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   ament_lint_auto_find_test_dependencies()
 
-  foreach(arm_type pal-sea-arm-standalone tiago-pro tiago-sea tiago-sea-dual)
-    # Separated to speed up tests, otherwise it's over 13min
+  foreach(arm_type tiago-pro tiago-sea tiago-sea-dual)
     foreach(end_effector no-end-effector pal-pro-gripper)
-        foreach(ft_sensor no-ft-sensor rokubi)
+      foreach(ft_sensor no-ft-sensor rokubi)
+
+        if(arm_type STREQUAL "tiago-pro")
+          # Supports both wrists
           add_launch_test(
             test/test_description.launch.py
             TARGET "pal_sea_arm_description_${arm_type}_${end_effector}_${ft_sensor}"
             ARGS "arm_type:=${arm_type}" "end_effector:=${end_effector}" "ft_sensor:=${ft_sensor}"
           )
-        endforeach()
+        else()
+          # Hardcoded straight-wrist for other arm types
+          add_launch_test(
+            test/test_description.launch.py
+            TARGET "pal_sea_arm_description_${arm_type}_${end_effector}_${ft_sensor}"
+            ARGS "wrist_model:=straight-wrist" "arm_type:=${arm_type}" "end_effector:=${end_effector}" "ft_sensor:=${ft_sensor}"
+          )
+        endif()
+
+      endforeach()
     endforeach()
   endforeach()
 
