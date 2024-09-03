@@ -41,7 +41,7 @@
     </xacro:macro>
 
     <xacro:macro name="origin_joint_tool" params="reflect">
-        <origin xyz="0 0 0.0184" rpy="0 ${-90.0 * deg_to_rad} ${90.0 * deg_to_rad}" />
+        <origin xyz="0 0 0.0184" rpy="0 0 ${-90.0 * deg_to_rad}" />
     </xacro:macro>
 
 </robot>

@@ -8,7 +8,7 @@ end_effector:
   default_value: 'pal-pro-gripper'
 ft_sensor:
   description: 'FT sensor model'
-  choices: ['rokubi', 'no-ft-sensor']
+  choices: ['ati-tc', 'rokubi', 'no-ft-sensor']
   default_value: 'rokubi'
 wrist_model:
   description: "Wrist model"

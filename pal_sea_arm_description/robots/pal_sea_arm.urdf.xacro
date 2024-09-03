@@ -25,7 +25,7 @@
   <!-- spherical-wrist, straight-wrist -->
   <xacro:arg name="wrist_model" default="spherical-wrist"/>
 
-  <!-- no-ft-sensor, rokubi-->
+  <!-- no-ft-sensor, rokubi, ati-tc -->
   <xacro:arg name="ft_sensor" default="rokubi"/>
 
   <!-- pal-sea-arm-standalone, tiago-pro, tiago-sea, tiago-sea-dual -->
@@ -52,7 +52,7 @@
   <xacro:if value="${wrist_model not in ['straight-wrist', 'spherical-wrist']}">
     <xacro:wrong_wrist_model/>
   </xacro:if>
-  <xacro:if value="${ft_sensor not in ['no-ft-sensor', 'rokubi']}">
+  <xacro:if value="${ft_sensor not in ['no-ft-sensor', 'rokubi', 'ati-tc']}">
     <xacro:wrong_ft_sensor/>
   </xacro:if>
   <xacro:if value="${arm_type not in ['pal-sea-arm-standalone', 'tiago-pro', 'tiago-sea', 'tiago-sea-dual']}">
@@ -75,8 +75,8 @@
 
   <!-- Force Torque sensor -->
   <xacro:if value="${has_ft_sensor}">
-    <xacro:include filename="$(find pal_sea_arm_description)/urdf/sensors/ft_sensor.urdf.xacro" />
-    <xacro:include filename="$(find pal_sea_arm_description)/urdf/sensors/ft_sensor.gazebo.xacro" />
+    <xacro:include filename="$(find pal_sea_arm_description)/urdf/sensors/ft_sensor/${ft_sensor}.urdf.xacro" />
+    <xacro:include filename="$(find pal_sea_arm_description)/urdf/sensors/ft_sensor/ft_sensor.gazebo.xacro" />
   </xacro:if>
 
   <!-- ROBOT DEFINITION -->
@@ -123,7 +123,7 @@
   </xacro:pal_sea_arm>
 
   <!-- End effector -->
-  <xacro:pal_sea_arm_end_effector name="gripper" parent="${end_effector_link}" type="${end_effector}" tool_changer="${tool_changer}" reflect="1"/>
+  <!-- <xacro:pal_sea_arm_end_effector name="gripper" parent="${end_effector_link}" type="${end_effector}" tool_changer="${tool_changer}" reflect="1"/> -->
 
   <!-- Force Torque sensor-->
   <xacro:if value="${has_ft_sensor}">
