@@ -28,7 +28,7 @@
     <xacro:if value="${type == 'pal-pro-gripper'}">
       <xacro:include filename="$(find pal_pro_gripper_description)/urdf/gripper.urdf.xacro" />
       <xacro:pal_pro_gripper name="${name}" parent="${parent}" tool_changer="${tool_changer}">
-        <origin xyz="0.0 0.0 -0.01" rpy="0 0 0"/>
+        <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
       </xacro:pal_pro_gripper>
     </xacro:if>
 
