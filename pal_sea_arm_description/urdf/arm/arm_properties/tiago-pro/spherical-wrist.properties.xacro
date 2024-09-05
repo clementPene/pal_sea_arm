@@ -32,17 +32,4 @@
         <origin xyz="0.07 -0.0534 -0.0422" rpy="1.5708 0 0" />
     </xacro:macro>
 
-    <!-- Tool changer -->
-    <xacro:macro name="inertial_tool_link" params="reflect">
-        <inertial>
-            <origin xyz="0.0019481 0.0017558 -0.0084934" rpy="0 0 0" />
-            <mass value="0.12272" />
-            <inertia ixx="5.1385E-05" ixy="8.5364E-07" ixz="-9.0329E-08" iyy="4.7962E-05" iyz="-1.8035E-07" izz="9.2935E-05" />
-        </inertial>
-    </xacro:macro>
-
-    <xacro:macro name="origin_joint_tool" params="reflect">
-        <origin xyz="0 0 0.017" rpy="0 0 0" />
-    </xacro:macro>
-
 </robot>

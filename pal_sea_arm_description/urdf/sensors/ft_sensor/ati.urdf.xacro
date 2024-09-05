@@ -31,7 +31,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pal_sea_arm_description/meshes/sensors/ati_tc/base_link.stl"/>
+          <mesh filename="package://pal_sea_arm_description/meshes/sensors/ati/base_link.stl"/>
         </geometry>
         <material name="">
           <color rgba="0.75294 0.75294 0.75294 1" />
@@ -40,7 +40,7 @@
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pal_sea_arm_description/meshes/sensors/ati_tc/base_link.stl"/>
+          <mesh filename="package://pal_sea_arm_description/meshes/sensors/ati/base_link.stl"/>
         </geometry>
       </collision>
     </link>
@@ -61,7 +61,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pal_sea_arm_description/meshes/sensors/ati_tc/ft_sensor_link.stl"/>
+          <mesh filename="package://pal_sea_arm_description/meshes/sensors/ati/ft_sensor_link.stl"/>
         </geometry>
         <material name="">
           <color rgba="0.89412 0.91373 0.92941 1" />
@@ -70,13 +70,13 @@
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pal_sea_arm_description/meshes/sensors/ati_tc/ft_sensor_link.stl"/>
+          <mesh filename="package://pal_sea_arm_description/meshes/sensors/ati/ft_sensor_link.stl"/>
         </geometry>
       </collision>
     </link>
 
     <joint name="ft_sensor_joint" type="fixed">
-      <origin xyz="0 0 0.033998" rpy="0 0 0" />
+      <!-- <origin xyz="0 0 0.033998" rpy="0 0 0" /> -->
       <parent link="${name}_ft_sensor_base_link" />
       <child link="${name}_ft_sensor_link" />
       <axis xyz="0 0 0" />
@@ -92,7 +92,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pal_sea_arm_description/meshes/sensors/ati_tc/ft_out_link.stl"/>
+          <mesh filename="package://pal_sea_arm_description/meshes/sensors/ati/ft_out_link.stl"/>
         </geometry>
         <material name="">
           <color rgba="0.75294 0.75294 0.75294 1" />
@@ -101,7 +101,7 @@
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pal_sea_arm_description/meshes/sensors/ati_tc/ft_out_link.stl"/>
+          <mesh filename="package://pal_sea_arm_description/meshes/sensors/ati/ft_out_link.stl"/>
         </geometry>
       </collision>
     </link>

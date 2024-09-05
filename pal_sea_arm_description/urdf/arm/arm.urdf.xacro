@@ -259,10 +259,11 @@
     <!--        TOOL           -->
     <!--***********************-->
 
+    <!-- With tool changer (the tool link is the tool changer)-->
     <xacro:if value="${tool_changer}">
 
       <link name="${name}_tool_link">
-        <xacro:inertial_tool_link reflect="${reflect}"/>
+        <xacro:inertial_tool_changer_link reflect="${reflect}"/>
         <visual>
           <origin xyz="0 0 0" rpy="0 0 0" />
           <geometry>
@@ -280,20 +281,26 @@
         </collision>
       </link>
 
+      <joint name="${name}_tool_joint" type="fixed">
+        <parent link="${name}_7_link" />
+        <child link="${name}_tool_link" />
+        <xacro:origin_joint_tool_changer reflect="${reflect}"/>
+      </joint>
+
     </xacro:if>
 
+    <!-- Without tool changer (tool link just on top of link 7)-->
     <xacro:unless value="${tool_changer}">
 
       <link name="${name}_tool_link">
       </link>
 
-    </xacro:unless>
+      <joint name="${name}_tool_joint" type="fixed">
+        <parent link="${name}_7_link" />
+        <child link="${name}_tool_link" />
+      </joint>
 
-    <joint name="${name}_tool_joint" type="fixed">
-      <parent link="${name}_7_link" />
-      <child link="${name}_tool_link" />
-      <xacro:origin_joint_tool reflect="${reflect}"/>
-    </joint>
+    </xacro:unless>
 
     <gazebo reference="${name}_1_link">
       <material>Gazebo/DarkGrey</material>
