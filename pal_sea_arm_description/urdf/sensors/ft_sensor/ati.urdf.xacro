@@ -21,6 +21,13 @@
 
     <!-- FT DEFINITION -->
 
+    <!-- Gazebo reference -->
+    <gazebo reference="${name}_ft_link">
+      <material>Gazebo/DarkGrey</material>
+      <mu1>0.9</mu1>
+      <mu2>0.9</mu2>
+    </gazebo>
+
     <!-- Base link -->
     <link name="${name}_ft_sensor_base_link">
       <inertial>
@@ -33,9 +40,7 @@
         <geometry>
           <mesh filename="package://pal_sea_arm_description/meshes/sensors/ati/base_link.stl"/>
         </geometry>
-        <material name="">
-          <color rgba="0.75294 0.75294 0.75294 1" />
-        </material>
+        <material name="pal/DarkGrey"/>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
@@ -63,9 +68,7 @@
         <geometry>
           <mesh filename="package://pal_sea_arm_description/meshes/sensors/ati/ft_sensor_link.stl"/>
         </geometry>
-        <material name="">
-          <color rgba="0.89412 0.91373 0.92941 1" />
-        </material>
+        <material name="pal/DarkGrey"/>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
@@ -94,9 +97,7 @@
         <geometry>
           <mesh filename="package://pal_sea_arm_description/meshes/sensors/ati/ft_out_link.stl"/>
         </geometry>
-        <material name="">
-          <color rgba="0.75294 0.75294 0.75294 1" />
-        </material>
+        <material name="pal/DarkGrey"/>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
@@ -112,13 +113,6 @@
       <child link="${name}_ft_tool_link" />
       <axis xyz="0 0 0" />
     </joint>
-
-    <!-- Gazebo reference -->
-    <gazebo reference="${name}_ft_link">
-      <material>Gazebo/DarkGrey</material>
-      <mu1>0.9</mu1>
-      <mu2>0.9</mu2>
-    </gazebo>
 
   </xacro:macro>
 
