@@ -89,7 +89,7 @@
 
   <!-- Force Torque sensor -->
   <xacro:if value="${has_ft_sensor}">
-    <xacro:include filename="$(find pal_sea_arm_description)/urdf/sensors/ft_sensor/${ft_sensor}.urdf.xacro" />
+    <xacro:include filename="$(find pal_sea_arm_description)/urdf/sensors/ft_sensor/ft_sensor.urdf.xacro" />
     <xacro:include filename="$(find pal_sea_arm_description)/urdf/sensors/ft_sensor/ft_sensor.gazebo.xacro" />
   </xacro:if>
 
@@ -138,7 +138,7 @@
 
   <!-- Force Torque sensor-->
   <xacro:if value="${has_ft_sensor}">
-    <xacro:ft_sensor name="wrist" parent="arm_tool_link"/>
+    <xacro:ft_sensor type="${ft_sensor}" name="wrist" parent="arm_tool_link"/>
     <!-- <xacro:force_torque_sensor_gazebo name="wrist_ft" update_rate="100"/>-->
   </xacro:if>
 

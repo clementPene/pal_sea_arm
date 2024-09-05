@@ -1,0 +1,10 @@
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+    <xacro:macro name="ft_sensor" params="name parent type">
+
+        <xacro:include filename="$(find pal_sea_arm_description)/urdf/sensors/ft_sensor/${type}.urdf.xacro" />
+        <xacro:ft_sensor name="${name}" parent="${parent}"/>
+
+    </xacro:macro>
+
+</robot>
