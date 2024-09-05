@@ -35,7 +35,7 @@
       <xacro:property name="mesh_folder" value="arm_tiago_sea"/>
     </xacro:if>
 
-    <!-- Compatibility check -->
+    <!-- Compatibility check with wrist model -->
     <xacro:if value="${arm_type == 'tiago-sea' and wrist_model=='spherical-wrist'}">
       <xacro:error_wrist_not_supported />
     </xacro:if>
@@ -262,6 +262,22 @@
     <xacro:if value="${tool_changer}">
 
       <link name="${name}_tool_link">
+        <xacro:inertial_tool_link reflect="${reflect}"/>
+        <visual>
+          <origin xyz="0 0 0" rpy="0 0 0" />
+          <geometry>
+            <mesh filename="package://pal_sea_arm_description/meshes/${mesh_folder}/tool_changer_link.stl" scale="1 1 ${reflect}" />
+          </geometry>
+          <material name="">
+            <color rgba="0.29804 0.29804 0.29804 1" />
+          </material>
+        </visual>
+        <collision>
+          <origin xyz="0 0 0" rpy="0 0 0" />
+          <geometry>
+            <mesh filename="package://pal_sea_arm_description/meshes/${mesh_folder}/tool_changer_link_collision.stl" scale="1 1 ${reflect}" />
+          </geometry>
+        </collision>
       </link>
 
     </xacro:if>
@@ -269,20 +285,6 @@
     <xacro:unless value="${tool_changer}">
 
       <link name="${name}_tool_link">
-        <xacro:inertial_tool_link reflect="${reflect}"/>
-        <visual>
-          <origin xyz="0.001 0 0" rpy="0 ${90.0 * deg_to_rad} 0" />
-          <geometry>
-            <cylinder radius="0.032" length="0.01"/>
-          </geometry>
-          <material name="pal/DarkGrey"/>
-        </visual>
-        <collision>
-          <origin xyz="0.001 0 0" rpy="0 ${90.0 * deg_to_rad} 0" />
-          <geometry>
-            <cylinder radius="0.032" length="0.01"/>
-          </geometry>
-        </collision>
       </link>
 
     </xacro:unless>
@@ -356,5 +358,6 @@
       <implicitSpringDamper>1</implicitSpringDamper>
       <provideFeedback>1</provideFeedback>
     </gazebo>
+
   </xacro:macro>
 </robot>
