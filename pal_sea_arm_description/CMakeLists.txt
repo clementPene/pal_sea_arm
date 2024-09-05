@@ -22,11 +22,13 @@ if(BUILD_TESTING)
 
         if(arm_type STREQUAL "tiago-pro")
           # Supports both wrists
-          add_launch_test(
-            test/test_description.launch.py
-            TARGET "pal_sea_arm_description_${arm_type}_${end_effector}_${ft_sensor}"
-            ARGS "arm_type:=${arm_type}" "end_effector:=${end_effector}" "ft_sensor:=${ft_sensor}"
-          )
+          foreach(spherical-wrist straight-wrist)
+            add_launch_test(
+              test/test_description.launch.py
+              TARGET "pal_sea_arm_description_${arm_type}_${end_effector}_${ft_sensor}"
+              ARGS "wrist_model:=${wrist_model}" "arm_type:=${arm_type}" "end_effector:=${end_effector}" "ft_sensor:=${ft_sensor}"
+            )
+          endforeach()
         else()
           # Hardcoded straight-wrist for other arm types
           add_launch_test(
