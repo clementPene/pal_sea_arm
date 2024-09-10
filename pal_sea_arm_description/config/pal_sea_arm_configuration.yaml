@@ -9,7 +9,7 @@ end_effector:
 ft_sensor:
   description: 'FT sensor model'
   choices: ['ati', 'rokubi', 'no-ft-sensor']
-  default_value: 'rokubi'
+  default_value: 'no-ft-sensor'
 wrist_model:
   description: "Wrist model"
   choices: ['straight-wrist', 'spherical-wrist']
@@ -17,4 +17,4 @@ wrist_model:
 tool_changer:
   description: 'The arm has a tool changer'
   choices: ['False', 'True']
-  default_value: 'False'
+  default_value: 'True'

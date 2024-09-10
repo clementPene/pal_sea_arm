@@ -29,19 +29,7 @@
     </xacro:macro>
 
     <xacro:macro name="origin_joint_7" params="reflect">
-        <origin xyz="0 -0.146 ${0.039 * reflect}" rpy="${-90 * reflect * deg_to_rad} 0 0" />
-    </xacro:macro>
-
-    <xacro:macro name="inertial_tool_link" params="reflect">
-        <inertial>
-            <origin xyz="0 0 0" rpy="0 0 0" />
-            <mass value="0.1" />
-            <inertia ixx="8.33E-07" ixy="0.0" ixz="0.0" iyy="8.33E-07" iyz="0.0" izz="1.25E-06" />
-        </inertial>
-    </xacro:macro>
-
-    <xacro:macro name="origin_joint_tool" params="reflect">
-        <origin xyz="0 0 0" rpy="${0.0 * deg_to_rad} ${90.0 * reflect * deg_to_rad} ${0 * deg_to_rad}" />
+        <origin xyz="0 -0.146 ${0.039 * reflect}" rpy="${-90 * reflect * deg_to_rad} 0 3.14" />
     </xacro:macro>
 
 </robot>
