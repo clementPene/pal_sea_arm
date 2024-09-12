@@ -303,6 +303,8 @@
       <joint name="${name}_tool_joint" type="fixed">
         <parent link="${name}_7_link" />
         <child link="${name}_tool_link" />
+        <!-- This is added so both grippers are oriented the same -->
+        <origin xyz="0 0 0" rpy="0 0 1.570796" />
       </joint>
 
     </xacro:unless>
