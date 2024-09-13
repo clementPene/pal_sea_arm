@@ -58,8 +58,9 @@
     </xacro:macro>
 
     <xacro:macro name="origin_joint_tool_changer" params="reflect">
-        <!-- @Lucien needs to fix -->
-        <origin xyz="0 0 0.017" rpy="0 0 0" />
+        <!-- @Lucien needs to fix, rotation remove to std gripper rotations -->
+        <!-- <origin xyz="0 0 0.017" rpy="0 0 1.570796" /> -->
+        <origin xyz="0 0 0.017" rpy="0 0 0.0" />
     </xacro:macro>
 
 </robot>

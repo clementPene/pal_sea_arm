@@ -86,6 +86,7 @@
     <joint name="${name}_ft_tool_joint" type="fixed">
       <parent link="${name}_ft_link" />
       <child link="${name}_ft_tool_link" />
+      <origin xyz="0 0 0.0052" rpy="0 0 0" />
     </joint>
 
   </xacro:macro>
