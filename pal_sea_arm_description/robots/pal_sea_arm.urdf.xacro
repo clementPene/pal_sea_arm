@@ -60,7 +60,7 @@
   </xacro:if>
 
   <!-- Compatibility check within TC and ft sensors-->
-  <xacro:if value="${ft_sensor == 'rokubi' and wrist_model=='spherical-wrist'}">
+  <!-- <xacro:if value="${ft_sensor == 'rokubi' and wrist_model=='spherical-wrist'}">
     <xacro:error_rokubi_not_compatible_with_spherical_wrist />
   </xacro:if>
   <xacro:if value="${ft_sensor == 'rokubi' and tool_changer}">
@@ -71,7 +71,7 @@
   </xacro:if>
   <xacro:if value="${not tool_changer and wrist_model=='spherical-wrist'}">
     <xacro:error_spherical_wrist_always_comes_with_tc />
-  </xacro:if>
+  </xacro:if> -->
 
   <xacro:property name="has_ft_sensor" value="${ft_sensor != 'no-ft-sensor'}"/>
   <xacro:property name="has_end_effector" value="${end_effector not in ['no-end-effector']}"/>

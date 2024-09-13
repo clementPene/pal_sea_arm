@@ -41,12 +41,12 @@
     </xacro:if>
 
     <!-- Compatibility check with wrist model -->
-    <xacro:if value="${arm_type == 'tiago-sea' and wrist_model=='spherical-wrist'}">
+    <!-- <xacro:if value="${arm_type == 'tiago-sea' and wrist_model=='spherical-wrist'}">
       <xacro:error_wrist_not_supported />
     </xacro:if>
     <xacro:if value="${arm_type == 'tiago-sea-dual' and wrist_model=='spherical-wrist'}">
       <xacro:error_wrist_not_supported />
-    </xacro:if>
+    </xacro:if> -->
 
     <!-- INCLUDES -->
 
@@ -304,7 +304,7 @@
         <parent link="${name}_7_link" />
         <child link="${name}_tool_link" />
         <!-- This is added so both grippers are oriented the same -->
-        <origin xyz="0 0 0" rpy="0 0 1.570796" />
+        <!-- <origin xyz="0 0 0.0" rpy="0 0 1.570796" /> -->
       </joint>
 
     </xacro:unless>
