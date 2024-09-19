@@ -16,18 +16,57 @@ if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   ament_lint_auto_find_test_dependencies()
 
-  foreach(arm_type pal-sea-arm-standalone tiago-pro tiago-sea tiago-sea-dual)
-    # Separated to speed up tests, otherwise it's over 13min
+  foreach(arm_type tiago-pro tiago-sea tiago-sea-dual)
     foreach(end_effector no-end-effector pal-pro-gripper)
-        foreach(ft_sensor no-ft-sensor rokubi)
-          add_launch_test(
-            test/test_description.launch.py
-            TARGET "pal_sea_arm_description_${arm_type}_${end_effector}_${ft_sensor}"
-            ARGS "arm_type:=${arm_type}" "end_effector:=${end_effector}" "ft_sensor:=${ft_sensor}"
-          )
-        endforeach()
+      foreach(tool_changer False True)
+
+        # No tool changer, only rokubi and straight-wrist compatible
+        if(tool_changer STREQUAL "False")
+
+          foreach(ft_sensor no-ft-sensor rokubi)
+
+            # All models support the straight wrist
+            add_launch_test(
+              test/test_description.launch.py
+              TARGET "pal_sea_arm_description_${arm_type}_${end_effector}_${ft_sensor}_straight_wrist_False"
+              ARGS "wrist_model:=straight-wrist" "arm_type:=${arm_type}"
+              "end_effector:=${end_effector}" "ft_sensor:=rokubi" "tool_changer:=False"
+            )
+
+          endforeach()
+
+        # Tool changer, both wrists but only ati compatible
+        else()
+
+          foreach(ft_sensor no-ft-sensor ati)
+
+            add_launch_test(
+              test/test_description.launch.py
+              TARGET "pal_sea_arm_description_${arm_type}_${end_effector}_${ft_sensor}_straight-wrist_True"
+              ARGS "wrist_model:=straight-wrist" "arm_type:=${arm_type}"
+              "end_effector:=${end_effector}" "ft_sensor:=${ft_sensor}" "tool_changer:=True"
+            )
+
+            # Also supports the spherical wrist
+            if(arm_type STREQUAL "tiago-pro")
+
+              add_launch_test(
+                test/test_description.launch.py
+                TARGET "pal_sea_arm_description_${arm_type}_${end_effector}_${ft_sensor}_spherical-wrist_True"
+                ARGS "wrist_model:=spherical-wrist" "arm_type:=${arm_type}"
+                "end_effector:=${end_effector}" "ft_sensor:=${ft_sensor}" "tool_changer:=True"
+              )
+
+            endif()
+
+          endforeach()
+
+        endif()
+
     endforeach()
   endforeach()
+endforeach()
+
 
 endif()
 
