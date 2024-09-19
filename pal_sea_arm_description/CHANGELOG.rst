@@ -23,6 +23,28 @@ Changelog for package pal_sea_arm_description
 * Add arm model check in urdf
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
+Forthcoming
+-----------
+* Set default wrist to straight
+* Gripper with rokubi position fixed
+* Removing checks
+* Orientation std
+* Fixed link 6 and tool_changer rotation
+* Standalone meshes
+* Updated tests
+* Suggested changes
+* Proper colors for ATI FT
+* Support for different FT models at the same time
+* Final checks
+* TC working for all combinations
+* No TC working for all combinations
+* Arms versions std
+* FT sensor std
+* Fixed straight wrist joint orientation
+* Initial support for all arms, with tests
+* Arm std with new wrist type arg
+* Contributors: David ter Kuile, oscarmartinez
+
 1.10.1 (2024-09-09)
 -------------------
 
