@@ -50,8 +50,8 @@
 
     <!-- INCLUDES -->
 
-    <xacro:include filename="$(find pal_sea_arm_description)/urdf/arm/limits/arm_${arm_type}.limits.xacro"/>
-    <xacro:include filename="$(find pal_sea_arm_description)/urdf/arm/arm_properties/${arm_type}/arm.properties.xacro"/>
+    <xacro:include filename="$(find pal_sea_arm_description)/urdf/arm/arm_limits/${arm_type}/arm.limits.xacro"/>
+    <xacro:include filename="$(find pal_sea_arm_description)/urdf/arm/arm_limits/${arm_type}/${wrist_model}.limits.xacro"/>
     <xacro:include filename="$(find pal_sea_arm_description)/urdf/arm/arm_properties/${arm_type}/arm.properties.xacro"/>
     <xacro:include filename="$(find pal_sea_arm_description)/urdf/arm/arm_properties/${arm_type}/${wrist_model}.properties.xacro"/>
 
