@@ -56,10 +56,6 @@
         <origin xyz="0.0199999999999993 -0.0371100000000008 0.15989" rpy="1.57079632679489 0 0" />
     </xacro:macro>
 
-    <xacro:macro name="origin_joint_5" params="reflect">
-        <origin xyz="-0.0199999999999971 0.17011 -0.037110000000002" rpy="-1.5707963267949 0 0" />
-    </xacro:macro>
-
     <!-- Tool changer (can be present in both wrists)-->
     <xacro:macro name="inertial_tool_changer_link" params="reflect">
         <inertial>
@@ -71,8 +67,8 @@
 
     <xacro:macro name="origin_joint_tool_changer" params="reflect">
         <!-- @Lucien needs to fix, rotation remove to std gripper rotations -->
-        <!-- <origin xyz="0 0 0.017" rpy="0 0 1.570796" /> -->
-        <origin xyz="0 0 0.017" rpy="0 0 0.0" />
+        <origin xyz="0 0 0.017" rpy="0 0 1.570796" />
+        <!-- <origin xyz="0 0 0.017" rpy="0 0 0.0" /> -->
     </xacro:macro>
 
 </robot>

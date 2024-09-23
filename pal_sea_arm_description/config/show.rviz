@@ -7,8 +7,6 @@ Panels:
         - /Global Options1
         - /Status1
         - /RobotModel1
-        - /RobotModel1/Links1
-        - /RobotModel1/Links1/gripper_base_link1
       Splitter Ratio: 0.7117646932601929
     Tree Height: 759
   - Class: rviz_common/Selection
@@ -112,8 +110,9 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+          Value: true
         gripper_base_link:
-          Alpha: 0.30000001192092896
+          Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
@@ -151,16 +150,6 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        wrist_ft_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        wrist_ft_tool_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
       Mass Properties:
         Inertia: false
         Mass: false
@@ -215,7 +204,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 0.4994252920150757
+      Distance: 2.587191343307495
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -230,10 +219,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.015398374758660793
+      Pitch: 0.07039853185415268
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 4.573586940765381
+      Yaw: 1.5435795783996582
     Saved: ~
 Window Geometry:
   Displays:
