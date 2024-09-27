@@ -23,6 +23,16 @@ Changelog for package pal_sea_arm_description
 * Add arm model check in urdf
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
+Forthcoming
+-----------
+* Merge branch 'omm/final_std' into 'humble-devel'
+  Final arm std
+  See merge request robots/pal_sea_arm!42
+* Update on link 7 + fix joint limits
+* Limits new structure
+* Proper orientation of 5th joint in spherical wrist
+* Contributors: oscarmartinez, thomas.peyrucain, thomaspeyrucain
+
 1.11.0 (2024-09-19)
 -------------------
 * Set default wrist to straight
