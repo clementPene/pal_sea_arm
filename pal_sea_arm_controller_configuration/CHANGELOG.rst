@@ -15,8 +15,8 @@ Changelog for package pal_sea_arm_controller_configuration
 * Restructure launch files
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
-Forthcoming
------------
+1.11.2 (2024-09-30)
+-------------------
 * Merge branch 'vmo/ati_controller' into 'humble-devel'
   Adding ati controller
   See merge request robots/pal_sea_arm!43
