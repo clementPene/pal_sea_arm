@@ -274,9 +274,7 @@
           <geometry>
             <mesh filename="package://pal_sea_arm_description/meshes/${mesh_folder}/tool_changer_link.stl" scale="1 1 ${reflect}" />
           </geometry>
-          <material name="">
-            <color rgba="0.29804 0.29804 0.29804 1" />
-          </material>
+          <material name="pal/DarkGrey"/>
         </visual>
         <collision>
           <origin xyz="0 0 0" rpy="0 0 0" />

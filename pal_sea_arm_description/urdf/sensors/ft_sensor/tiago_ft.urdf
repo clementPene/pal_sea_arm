@@ -14,9 +14,7 @@
       <geometry>
         <mesh filename="package://tiago_ft/meshes/base_link.STL" />
       </geometry>
-      <material name="">
-        <color rgba="0.75294 0.75294 0.75294 1" />
-      </material>
+      <material name="pal/DarkGrey"/>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
@@ -36,9 +34,7 @@
       <geometry>
         <mesh filename="package://tiago_ft/meshes/ft_sensor_link.STL" />
       </geometry>
-      <material name="">
-        <color rgba="0.89412 0.91373 0.92941 1" />
-      </material>
+      <material name="pal/DarkGrey"/>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
@@ -64,9 +60,7 @@
       <geometry>
         <mesh filename="package://tiago_ft/meshes/ft_out_link.STL" />
       </geometry>
-      <material name="">
-        <color rgba="0.75294 0.75294 0.75294 1" />
-      </material>
+      <material name="pal/DarkGrey"/>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />

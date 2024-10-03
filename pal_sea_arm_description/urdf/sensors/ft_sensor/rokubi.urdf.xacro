@@ -32,9 +32,7 @@
         <geometry>
           <mesh filename="package://pal_sea_arm_description/meshes/sensors/rokubi/rokubi_ft_sensor.stl"/>
         </geometry>
-        <material name="">
-          <color rgba="0.29804 0.29804 0.29804 1" />
-        </material>
+        <material name="pal/DarkGrey"/>
       </visual>
       <collision>
         <origin xyz="0 0 -0.030" rpy="0 0 0" />
