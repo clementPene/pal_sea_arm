@@ -23,8 +23,8 @@ Changelog for package pal_sea_arm_description
 * Add arm model check in urdf
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
-Forthcoming
------------
+1.11.4 (2024-10-08)
+-------------------
 * Merge branch 'dtk/fix/joint-limit-tiago-pro-7-joint' into 'humble-devel'
   reduce joint limits according to test with robot
   See merge request robots/pal_sea_arm!27
