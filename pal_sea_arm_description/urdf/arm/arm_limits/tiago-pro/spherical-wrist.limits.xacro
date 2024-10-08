@@ -3,8 +3,8 @@
   <!-- Joint limits -->
   <xacro:property name="arm_5_joint_ub" value="210" />
   <xacro:property name="arm_5_joint_lb" value="-90" />
-  <xacro:property name="arm_6_joint_ub" value="108" />
-  <xacro:property name="arm_6_joint_lb" value="-172" />
+  <xacro:property name="arm_6_joint_ub" value="172" />
+  <xacro:property name="arm_6_joint_lb" value="-108" />
   <xacro:property name="arm_7_joint_ub" value="148.97" />
   <xacro:property name="arm_7_joint_lb" value="-148.97" />
 

@@ -50,6 +50,12 @@
       </collision>
     </link>
 
+    <gazebo reference="${name}_ft_sensor_base_link">
+      <material>Gazebo/DarkGrey</material>
+      <mu1>0.9</mu1>
+      <mu2>0.9</mu2>
+    </gazebo>
+
     <joint name="${name}_ft_sensor_base_joint" type="fixed">
       <parent link="${parent}" />
       <child link="${name}_ft_sensor_base_link" />
@@ -77,6 +83,12 @@
         </geometry>
       </collision>
     </link>
+
+    <gazebo reference="${name}_ft_sensor_link">
+      <material>Gazebo/DarkGrey</material>
+      <mu1>0.9</mu1>
+      <mu2>0.9</mu2>
+    </gazebo>
 
     <joint name="${name}_ft_sensor_joint" type="fixed">
       <!-- <origin xyz="0 0 0.033998" rpy="0 0 0" /> -->
@@ -106,6 +118,12 @@
         </geometry>
       </collision>
     </link>
+
+    <gazebo reference="${name}_ft_tool_link">
+      <material>Gazebo/DarkGrey</material>
+      <mu1>0.9</mu1>
+      <mu2>0.9</mu2>
+    </gazebo>
 
     <joint name="${name}_ft_tool_joint" type="fixed">
       <origin xyz="0 0 0.039998" rpy="0 0 0" />
