@@ -23,6 +23,22 @@ Changelog for package pal_sea_arm_description
 * Add arm model check in urdf
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
+Forthcoming
+-----------
+* Merge branch 'dtk/fix/joint-limit-tiago-pro-7-joint' into 'humble-devel'
+  reduce joint limits according to test with robot
+  See merge request robots/pal_sea_arm!27
+* reduce joint limits according to test with robot
+* Merge branch 'vmo/fix_joint_6' into 'humble-devel'
+  Fixing the 6 axis joint
+  See merge request robots/pal_sea_arm!45
+* Fix to use same urdf for tiago sea and tiago pro
+* Adding meshes for tc
+* add material + fix 7th joint
+* Change joint limit
+* Fixing the 6 axis joint
+* Contributors: thomas.peyrucain, thomaspeyrucain, vivianamorlando
+
 1.11.3 (2024-10-02)
 -------------------
 * Merge branch 'tpe/fix_wrist' into 'humble-devel'
