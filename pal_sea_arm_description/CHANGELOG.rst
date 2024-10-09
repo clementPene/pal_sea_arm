@@ -23,6 +23,15 @@ Changelog for package pal_sea_arm_description
 * Add arm model check in urdf
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
+Forthcoming
+-----------
+* Merge branch 'fix/syntax_warning' into 'humble-devel'
+  Fix SyntaxWarning messages when comparing values
+  See merge request robots/pal_sea_arm!46
+* Fix SyntaxWarning messages when comparing values
+* Add reflect on the 5th joint
+* Contributors: Noel Jimenez, thomas.peyrucain, thomaspeyrucain
+
 1.11.4 (2024-10-08)
 -------------------
 * Merge branch 'dtk/fix/joint-limit-tiago-pro-7-joint' into 'humble-devel'
