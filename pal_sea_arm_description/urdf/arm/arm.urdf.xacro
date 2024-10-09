@@ -18,7 +18,7 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
   <!-- Transmissions file -->
-  <xacro:macro name="pal_sea_arm" params="name parent *origin arm_type tool_changer wrist_model reflect:=1 first_joint_reflect:=1 arm_1_offset arm_2_offset arm_3_offset arm_4_offset arm_5_offset arm_6_offset arm_7_offset no_safety_eps:=False">
+  <xacro:macro name="pal_sea_arm" params="name parent *origin arm_type tool_changer wrist_model reflect:=1 joint_reflect:=1 arm_1_offset arm_2_offset arm_3_offset arm_4_offset arm_5_offset arm_6_offset arm_7_offset no_safety_eps:=False">
 
     <!-- PROPERTIES -->
 
