@@ -59,9 +59,9 @@
     <!-- Tool changer (can be present in both wrists)-->
     <xacro:macro name="inertial_tool_changer_link" params="reflect">
         <inertial>
-            <origin xyz="0.0019481 0.0017558 -0.0084934" rpy="0 0 0" />
-            <mass value="0.12272" />
-            <inertia ixx="5.1385E-05" ixy="8.5364E-07" ixz="-9.0329E-08" iyy="4.7962E-05" iyz="-1.8035E-07" izz="9.2935E-05" />
+            <origin xyz="0.003414871500006 0.002458561521477 -0.001077004696741" rpy="0 0 0" />
+            <mass value="0.0655061851536" />
+            <inertia ixx="1.79461992752602E-05" ixy="1.70670100210845E-06" ixz="-2.54814948767968E-09" iyy="1.47274432150498E-05" iyz="1.09471559381518E-07" izz="3.12924968277541E-05" />
         </inertial>
     </xacro:macro>
 
