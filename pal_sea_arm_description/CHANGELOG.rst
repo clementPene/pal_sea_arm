@@ -23,8 +23,8 @@ Changelog for package pal_sea_arm_description
 * Add arm model check in urdf
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
-Forthcoming
------------
+1.11.6 (2024-10-21)
+-------------------
 * Merge branch 'tpe/fix_joint_limit' into 'humble-devel'
   Fix joint limit
   See merge request robots/pal_sea_arm!51
