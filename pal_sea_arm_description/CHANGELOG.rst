@@ -23,6 +23,27 @@ Changelog for package pal_sea_arm_description
 * Add arm model check in urdf
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
+Forthcoming
+-----------
+* Merge branch 'tpe/fix_joint_limit' into 'humble-devel'
+  Fix joint limit
+  See merge request robots/pal_sea_arm!51
+* Fix joint limit
+* Merge branch 'air/feat/add_camera' into 'humble-devel'
+  Add camera link
+  See merge request robots/pal_sea_arm!50
+* Adding real 5th mesh
+* Add camera link
+* Merge branch 'tpe/fix_inertia_wrist' into 'humble-devel'
+  Fix wrist inertia
+  See merge request robots/pal_sea_arm!48
+* Fix wrist inertia
+* Merge branch 'ipe/update-vel-lim' into 'humble-devel'
+  update joint max velocity limit for tiago pro
+  See merge request robots/pal_sea_arm!49
+* update joint max velocity limit for tiago pro
+* Contributors: Aina, ileniaperrella, thomas.peyrucain, thomaspeyrucain, vivianamorlando
+
 1.11.5 (2024-10-09)
 -------------------
 * Merge branch 'fix/syntax_warning' into 'humble-devel'
