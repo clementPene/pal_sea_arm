@@ -1,6 +1,6 @@
 arm_type:
   description: 'Arm type'
-  choices: ['tiago-sea', 'tiago-sea-dual', 'tiago-pro', 'no-arm', 'pal-sea-arm-standalone']
+  choices: ['tiago-sea', 'tiago-sea-dual', 'tiago-pro', 'pal-sea-arm-standalone']
   default_value: 'tiago-sea'
 end_effector:
   description: 'End effector model'
