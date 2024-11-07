@@ -15,6 +15,11 @@ Changelog for package pal_sea_arm_controller_configuration
 * Restructure launch files
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
+Forthcoming
+-----------
+* Set update_rate for joint_state_broadcaster
+* Contributors: Noel Jimenez
+
 1.12.0 (2024-10-29)
 -------------------
 
