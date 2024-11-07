@@ -23,8 +23,8 @@ Changelog for package pal_sea_arm_description
 * Add arm model check in urdf
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
-Forthcoming
------------
+1.13.0 (2024-11-07)
+-------------------
 
 1.12.0 (2024-10-29)
 -------------------
