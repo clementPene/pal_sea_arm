@@ -56,15 +56,6 @@
         <origin xyz="0.0199999999999993 -0.0371100000000008 0.15989" rpy="1.57079632679489 0 0" />
     </xacro:macro>
 
-    <!-- Tool changer (can be present in both wrists)-->
-    <xacro:macro name="inertial_tool_changer_link" params="reflect">
-        <inertial>
-            <origin xyz="0.003414871500006 0.002458561521477 -0.001077004696741" rpy="0 0 0" />
-            <mass value="0.0655061851536" />
-            <inertia ixx="1.79461992752602E-05" ixy="1.70670100210845E-06" ixz="-2.54814948767968E-09" iyy="1.47274432150498E-05" iyz="1.09471559381518E-07" izz="3.12924968277541E-05" />
-        </inertial>
-    </xacro:macro>
-
     <xacro:macro name="origin_joint_tool_changer" params="reflect">
         <!-- Align with @Lucien -->
         <origin xyz="0 0 0.017" rpy="0 0 0" />
