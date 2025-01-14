@@ -55,7 +55,7 @@
   <xacro:if value="${ft_sensor not in ['no-ft-sensor', 'rokubi', 'ati']}">
     <xacro:wrong_ft_sensor/>
   </xacro:if>
-  <xacro:if value="${arm_type not in ['pal-sea-arm-standalone', 'tiago-pro', 'tiago-sea', 'tiago-sea-dual']}">
+  <xacro:if value="${arm_type not in ['pal-sea-arm-standalone', 'tiago-pro', 'tiago-pro-s',  'tiago-sea', 'tiago-sea-dual']}">
     <xacro:wrong_arm_type/>
   </xacro:if>
 
