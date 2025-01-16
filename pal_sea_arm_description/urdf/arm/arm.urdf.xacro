@@ -244,7 +244,7 @@
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pal_sea_arm_description/meshes/${mesh_folder}/${wrist_model}/arm_7_link_collision.stl" scale="1 1 ${reflect}" />
+          <cylinder radius="0.0375" length="0.0366"/>
         </geometry>
       </collision>
     </link>
@@ -267,22 +267,7 @@
     <!-- With tool changer (the tool link is the tool changer)-->
     <xacro:if value="${tool_changer}">
 
-      <link name="${name}_tool_link">
-        <xacro:inertial_tool_changer_link reflect="${reflect}"/>
-        <visual>
-          <origin xyz="0 0 0" rpy="0 0 0" />
-          <geometry>
-            <mesh filename="package://pal_sea_arm_description/meshes/${mesh_folder}/tool_changer_link.stl" scale="1 1 ${reflect}" />
-          </geometry>
-          <material name="pal/DarkGrey"/>
-        </visual>
-        <collision>
-          <origin xyz="0 0 0" rpy="0 0 0" />
-          <geometry>
-            <mesh filename="package://pal_sea_arm_description/meshes/${mesh_folder}/tool_changer_link_collision.stl" scale="1 1 ${reflect}" />
-          </geometry>
-        </collision>
-      </link>
+      <link name="${name}_tool_link"/>
 
       <joint name="${name}_tool_joint" type="fixed">
         <parent link="${name}_7_link" />

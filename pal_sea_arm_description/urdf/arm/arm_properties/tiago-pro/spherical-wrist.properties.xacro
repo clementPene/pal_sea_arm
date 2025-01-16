@@ -27,9 +27,9 @@
 
     <xacro:macro name="inertial_link_7" params="reflect">
         <inertial>
-            <origin xyz="0.00095120830852 -0.000268585760924 1.45881142001869E-05" rpy="0 0 0" />
-            <mass value="0.057209493908896" />
-            <inertia ixx="3.32348045580924E-05" ixy="8.53056519363846E-07" ixz="-2.89819873727239E-07" iyy="3.34386146857115E-05" iyz="8.77813050093602E-08" izz="6.16426730349172E-05" />
+            <origin xyz="0.00174 -0.00223 0.0083" rpy="0 0 0" />
+            <mass value="0.12399" />
+            <inertia ixx="0.00008" ixy="0.0" ixz="0.0" iyy="0.00006" iyz="0.0" izz="0.00012" />
         </inertial>
     </xacro:macro>
 
