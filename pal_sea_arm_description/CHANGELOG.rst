@@ -23,6 +23,16 @@ Changelog for package pal_sea_arm_description
 * Add arm model check in urdf
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
+Forthcoming
+-----------
+* Merge branch 'tpe/simplify-3d-model' into 'humble-devel'
+  Add simplyfied models
+  See merge request robots/pal_sea_arm!55
+* Remove comments
+* Simplify arm_7_link + update ATI meshes and inertia
+* Add simplyfied models
+* Contributors: thomas.peyrucain, thomaspeyrucain
+
 1.13.0 (2024-11-07)
 -------------------
 
