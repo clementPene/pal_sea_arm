@@ -23,6 +23,11 @@ Changelog for package pal_sea_arm_description
 * Add arm model check in urdf
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
+Forthcoming
+-----------
+* Rename ati mesh because of a mujoco bug if 2 meshes are called the same
+* Contributors: thomas.peyrucain
+
 1.14.0 (2025-01-16)
 -------------------
 * Merge branch 'tpe/simplify-3d-model' into 'humble-devel'
