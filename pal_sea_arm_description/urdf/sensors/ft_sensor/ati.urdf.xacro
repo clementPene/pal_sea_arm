@@ -38,7 +38,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pal_sea_arm_description/meshes/sensors/ati/base_link.stl"/>
+          <mesh filename="package://pal_sea_arm_description/meshes/sensors/ati/ati_ft_sensor.stl"/>
         </geometry>
         <material name="pal/DarkGrey"/>
       </visual>
