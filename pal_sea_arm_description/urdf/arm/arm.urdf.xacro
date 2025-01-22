@@ -186,7 +186,7 @@
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pal_sea_arm_description/meshes/${mesh_folder}/${wrist_model}/arm_5_link.stl" scale="1 1 ${reflect}" />
+          <mesh filename="package://pal_sea_arm_description/meshes/${mesh_folder}/${wrist_model}/arm_5_link_collision.stl" scale="1 1 ${reflect}" />
         </geometry>
       </collision>
     </link>
