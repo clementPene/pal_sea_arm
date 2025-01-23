@@ -23,6 +23,15 @@ Changelog for package pal_sea_arm_description
 * Add arm model check in urdf
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
+Forthcoming
+-----------
+* Merge branch 'tpe/update_collision_model' into 'humble-devel'
+  Update collision model to match the link5 specific shape
+  See merge request robots/pal_sea_arm!59
+* Rotate collision link
+* Update collision model to match the link5 specific shape
+* Contributors: thomas.peyrucain, thomaspeyrucain
+
 1.14.1 (2025-01-21)
 -------------------
 * Rename ati mesh because of a mujoco bug if 2 meshes are called the same
