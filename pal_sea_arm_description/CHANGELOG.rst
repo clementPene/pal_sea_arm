@@ -23,8 +23,8 @@ Changelog for package pal_sea_arm_description
 * Add arm model check in urdf
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
-Forthcoming
------------
+1.14.2 (2025-01-23)
+-------------------
 * Merge branch 'tpe/update_collision_model' into 'humble-devel'
   Update collision model to match the link5 specific shape
   See merge request robots/pal_sea_arm!59
