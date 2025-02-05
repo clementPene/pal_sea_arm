@@ -51,6 +51,16 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
         forwarding=False)
     launch_description.add_action(joint_state_broadcaster)
 
+    joint_torque_state_broadcaster = GroupAction(
+        [generate_load_controller_launch_description(
+            controller_name='joint_torque_state_broadcaster',
+            controller_params_file=os.path.join(
+                pkg_share_folder,
+                'config', 'joint_torque_state_broadcaster.yaml'))
+         ],
+        forwarding=False)
+    launch_description.add_action(joint_torque_state_broadcaster)
+
     arm_controller = include_scoped_launch_py_description(
         pkg_name=pkg_name,
         paths=['launch', 'arm_controller.launch.py'])
