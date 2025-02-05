@@ -15,6 +15,11 @@ Changelog for package pal_sea_arm_controller_configuration
 * Restructure launch files
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
+Forthcoming
+-----------
+* Use ft_sensor suffix for force-torque sensor name
+* Contributors: Noel Jimenez
+
 1.14.2 (2025-01-23)
 -------------------
 
