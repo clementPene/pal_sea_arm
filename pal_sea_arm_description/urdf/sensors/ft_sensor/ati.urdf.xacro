@@ -72,14 +72,14 @@
       <visual>
         <origin xyz="0 0 0.01" rpy="0 0 0" />
         <geometry>
-          <cylinder radius="0.03" length="0.02"/>
+          <cylinder radius="0.03" length="0.01"/>
         </geometry>
         <material name="pal/DarkGrey"/>
       </visual>
       <collision>
         <origin xyz="0 0 0.01" rpy="0 0 0" />
         <geometry>
-          <cylinder radius="0.03" length="0.02"/>
+          <cylinder radius="0.03" length="0.01"/>
         </geometry>
       </collision>
     </link>
@@ -91,7 +91,7 @@
     </gazebo>
 
     <joint name="${name}_ft_sensor_joint" type="fixed">
-      <!-- <origin xyz="0 0 0.033998" rpy="0 0 0" /> -->
+      <origin xyz="0 0 0.033998" rpy="0 0 0" />
       <parent link="${name}_ft_sensor_base_link" />
       <child link="${name}_ft_sensor_link" />
       <axis xyz="0 0 0" />
@@ -107,14 +107,14 @@
       <visual>
         <origin xyz="0 0 -0.01" rpy="0 0 0" />
         <geometry>
-          <cylinder radius="0.03" length="0.02"/>
+          <cylinder radius="0.03" length="0.01"/>
         </geometry>
         <material name="pal/DarkGrey"/>
       </visual>
       <collision>
         <origin xyz="0 0 -0.01" rpy="0 0 0" />
         <geometry>
-          <cylinder radius="0.03" length="0.02"/>
+          <cylinder radius="0.03" length="0.01"/>
         </geometry>
       </collision>
     </link>

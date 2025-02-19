@@ -11,19 +11,19 @@
 <robot name="pal_sea_arm" xmlns:xacro="http://ros.org/wiki/xacro">
 
 <xacro:macro name="pal_sea_arm_force_torque_sensor" params="name update_rate">
-  <gazebo reference="${name}">
-    <sensor name="${name}_contact_sensor" type="contact">
-      <pose>0.105 0.071 0 0 0 0</pose>
-      <always_on>1</always_on>
+
+  <gazebo reference="${name}_ft_sensor_joint">
+    <preserveFixedJoint>true</preserveFixedJoint>      <!-- in case this is in a fixed joint -->
+    <sensor name="${name}_ft_sensor" type="force_torque">
       <update_rate>${update_rate}</update_rate>
-      <contact>
-        <collision>${name}_collision</collision>
-      </contact>
+      <visualize>true</visualize>
+      <force_torque>
+        <frame>child</frame>
+        <measure_direction>child_to_parent</measure_direction>
+      </force_torque>
     </sensor>
   </gazebo>
-  <gazebo reference="${name}">
-    <provideFeedback>1</provideFeedback>
-  </gazebo>
+
 
 </xacro:macro>
 </robot>
