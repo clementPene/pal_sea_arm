@@ -15,6 +15,14 @@ Changelog for package pal_sea_arm_controller_configuration
 * Restructure launch files
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
+Forthcoming
+-----------
+* Merge branch 'tpe/fix_ft_sensor' into 'humble-devel'
+  Fix ATI sensor in gazebo simulation
+  See merge request robots/pal_sea_arm!62
+* Fix ATI sensor in gazebo simulation
+* Contributors: thomas.peyrucain, thomaspeyrucain
+
 1.14.3 (2025-02-05)
 -------------------
 * Use ft_sensor suffix for force-torque sensor name
