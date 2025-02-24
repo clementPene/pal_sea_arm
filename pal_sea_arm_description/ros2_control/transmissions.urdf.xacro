@@ -4,18 +4,21 @@
 
   <xacro:macro name="pal_sea_arm_simple_transmission" params="name reduction offset_value" >
     <transmission name="${name}_trans">
-      <plugin>transmission_interface/SimpleTransmission</plugin>
+      <plugin>sea_transmissions/SeaSimpleTransmission</plugin>
       <actuator name="${name}_actuator" role="actuator1"/>
       <joint name="${name}_joint" role="joint1">
         <offset>${offset_value}</offset>
         <mechanical_reduction>${reduction}</mechanical_reduction>
       </joint>
+      <param name="actuator_fingerprint_path">file:///etc/sea_data/${name}_actuator/fingerprint.csv</param>
+      <param name="actuator_metadata_path">file:///etc/sea_data/${name}_actuator/actuator_metadata.yaml</param>
+      <param name="actuator_data_path">file:///home/pal/.pal/rt_device_manager_cfg/actuators.yaml</param>
     </transmission>
   </xacro:macro>
   
   <xacro:macro name="arm_pro_simple_transmission" params="name reduction offset_value" >
     <transmission name="${name}_trans">
-      <plugin>sea_transmissions/SeaSimpleTransmission</plugin>
+      <plugin>transmission_interface/SimpleTransmission</plugin>
       <actuator name="${name}_actuator" role="actuator1"/>
       <joint name="${name}_joint" role="joint1">
         <offset>${offset_value}</offset>
