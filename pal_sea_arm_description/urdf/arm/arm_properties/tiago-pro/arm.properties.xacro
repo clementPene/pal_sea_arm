@@ -1,20 +1,11 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
     <xacro:macro name="inertial_base_link" params="reflect">
-        <xacro:if value="${inertia_version in ['tiago-pro-s']}">
-            <inertial>
-                <origin xyz="-0.00069 0.00053 -0.01258" rpy="0 0 0" />
-                <mass value="0.76084" />
-                <inertia ixx="0.00054" ixy="0.00001" ixz="-0.00001" iyy="0.00055" iyz="0.00001" izz="0.00055" />
-            </inertial>
-        </xacro:if>
-        <xacro:if value="${inertia_version in ['tiago-pro']}">
-            <inertial>
-                <origin xyz="-0.00069237 0.00052761 -0.012575" rpy="0 0 0" />
-                <mass value="0.76084" />
-                <inertia ixx="0.00052192" ixy="8.9882E-06" ixz="-6.4075E-06" iyy="0.00052523" iyz="8.9275E-06" izz="0.00054849" />
-            </inertial>
-        </xacro:if>
+        <inertial>
+            <origin xyz="-0.00069237 0.00052761 -0.012575" rpy="0 0 0" />
+            <mass value="0.76084" />
+            <inertia ixx="0.00052192" ixy="8.9882E-06" ixz="-6.4075E-06" iyy="0.00052523" iyz="8.9275E-06" izz="0.00054849" />
+        </inertial>
     </xacro:macro>
 
     <xacro:macro name="inertial_link_1" params="reflect">
