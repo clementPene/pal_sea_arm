@@ -26,8 +26,10 @@
     <xacro:property name="mesh_folder"/>
 
     <!-- Tiago Pro -->
-    <xacro:if value="${arm_type in ['tiago-pro', 'pal-sea-arm-standalone']}">
+    <xacro:if value="${arm_type in ['tiago-pro', 'tiago-pro-s']}">
       <xacro:property name="mesh_folder" value="arm_tiago_pro"/>
+      <xacro:property name="inertia_version" value="${arm_type}"/>
+      <xacro:property name="arm_type" value="tiago-pro"/>
     </xacro:if>
 
     <!-- Standalone arm -->
