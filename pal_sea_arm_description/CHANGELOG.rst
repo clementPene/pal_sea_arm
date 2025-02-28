@@ -23,6 +23,16 @@ Changelog for package pal_sea_arm_description
 * Add arm model check in urdf
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
+Forthcoming
+-----------
+* Merge branch 'tpe/add_inertia_version' into 'humble-devel'
+  Add Inertia version for the new arm
+  See merge request robots/pal_sea_arm!56
+* Update arm.properties.xacro
+* Address comments
+* Add Inertia version for the new arm
+* Contributors: davidterkuile, thomas.peyrucain, thomaspeyrucain
+
 1.14.4 (2025-02-19)
 -------------------
 * Merge branch 'tpe/fix_ft_sensor' into 'humble-devel'
