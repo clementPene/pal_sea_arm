@@ -50,7 +50,7 @@
   <xacro:property name="tool_changer" value="$(arg tool_changer)" />
   <xacro:property name="nsp" value="$(arg namespace)" />
 
-  <xacro:if value="${end_effector not in ['no-end-effector', 'pal-pro-gripper', 'custom']}">
+  <xacro:if value="${end_effector not in ['no-end-effector', 'pal-pro-gripper', 'allegro-hand', 'custom']}">
     <xacro:wrong_end_effector/>
   </xacro:if>
   <xacro:if value="${wrist_model not in ['straight-wrist', 'spherical-wrist']}">

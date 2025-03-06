@@ -32,6 +32,89 @@
       </xacro:pal_pro_gripper>
     </xacro:if>
 
+  <!--Allegro Hand-->
+  <xacro:if value="${type == 'allegro-hand'}">
+    <xacro:include filename="$(find allegro_hand_description)/urdf/allegro_hand.urdf.xacro" />
+    <link name="${name}_coupler_link">
+        <inertial>
+            <origin xyz="-7.7517E-05 -0.00017089 0.003965" rpy="0 0 0"/>
+            <mass value="0.033254"/>
+            <inertia
+                ixx="1.2371E-05" ixy="1.4319E-07" ixz="2.7745E-07"
+                iyy="1.5119E-05" iyz="-2.1946E-08"
+                izz="2.722E-05"/>
+        </inertial>
+        <visual>
+            <geometry>
+                <mesh filename="package://pal_sea_arm_description/meshes/arm_tiago_pro/allegro_coupler_link.STL" scale="${reflect} 1 1" />
+            </geometry>
+            <origin rpy="0 0 0" xyz="0 0 0 "/>
+            <material name="pal/DarkGrey"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0.004" rpy="0 0 0"/>
+            <geometry>
+              <cylinder radius="0.0375" length="0.008"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <gazebo reference="${name}_coupler_link">
+        <material>Gazebo/DarkGrey</material>
+        <mu1>0.9</mu1>
+        <mu2>0.9</mu2>
+    </gazebo>
+
+    <joint name="${name}_coupler_joint" type="fixed">
+        <parent link="${parent}" />
+        <child link="${name}_coupler_link" />
+        <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+        <axis xyz="0 0 0" />
+    </joint>
+
+    <link name="${name}_allegro_tc_out_link">
+        <inertial>
+            <origin xyz="-0.00052526 0.0003415 -0.0041487" rpy="0 0 0"/>
+            <mass value="0.03447"/>
+            <inertia
+                ixx="1.6829E-05" ixy="2.9746E-07" ixz="-4.1936E-08"
+                iyy="1.4935E-05" iyz="2.7742E-08"
+                izz="3.0915E-05"/>
+        </inertial>
+        <visual>
+            <geometry>
+                <mesh filename="package://pal_sea_arm_description/meshes/arm_tiago_pro/allegro_tc_out_link.STL" scale="${reflect} 1 1" />
+            </geometry>
+            <origin rpy="0 0 0" xyz="0 0 0 "/>
+            <material name="pal/DarkGrey"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 -0.006" rpy="0 0 0"/>
+            <geometry>
+              <cylinder radius="0.0375" length="0.012"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <gazebo reference="${name}_allegro_tc_out_link">
+        <material>Gazebo/DarkGrey</material>
+        <mu1>0.9</mu1>
+        <mu2>0.9</mu2>
+    </gazebo>
+
+    <joint name="${name}_tc_joint" type="fixed">
+        <parent link="${name}_coupler_link" />
+        <child link="${name}_allegro_tc_out_link" />
+        <origin xyz="0 0 0.018" rpy="0 0 0" />
+        <axis xyz="0 0 0" />
+    </joint>
+
+    <xacro:allegro_hand name="${name}" parent="${name}_allegro_tc_out_link" reflect="${reflect}">
+      <origin xyz="0.00956 0.001 0.094" rpy="0.0 0.0 0"/>
+    </xacro:allegro_hand>
+  </xacro:if>
+
+
     <!-- PAL Pro Prototype -->
     <!-- <xacro:if value="${type == 'pal-pro-gripper-prototype'}">
       <xacro:include filename="$(find pal_pro_gripper_description)/urdf/pro_gripper_prototype.urdf.xacro" />
