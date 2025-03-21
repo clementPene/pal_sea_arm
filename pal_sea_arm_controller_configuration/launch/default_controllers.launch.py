@@ -16,7 +16,7 @@ import os
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
 from launch.actions import GroupAction, OpaqueFunction
-from launch.conditions import LaunchConfigurationNotEquals
+from launch.conditions import LaunchConfigurationNotEquals, LaunchConfigurationEquals
 from launch.actions import DeclareLaunchArgument
 from controller_manager.launch_utils import generate_load_controller_launch_description
 
@@ -58,7 +58,9 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
                 pkg_share_folder,
                 'config', 'joint_torque_state_broadcaster.yaml'))
          ],
-        forwarding=False)
+        forwarding=False,
+        condition=LaunchConfigurationEquals("arm_type", "tiago-pro-s"),
+    )
     launch_description.add_action(joint_torque_state_broadcaster)
 
     arm_controller = include_scoped_launch_py_description(
