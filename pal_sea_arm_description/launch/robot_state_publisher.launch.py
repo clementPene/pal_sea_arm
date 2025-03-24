@@ -41,6 +41,7 @@ class LaunchArguments(LaunchArgumentsBase):
     wrist_model: DeclareLaunchArgument = SEAArmArgs.wrist_model
     tool_changer: DeclareLaunchArgument = SEAArmArgs.tool_changer
     arm_type: DeclareLaunchArgument = SEAArmArgs.arm_type
+    torque_estimation: DeclareLaunchArgument = SEAArmArgs.torque_estimation
 
     use_sim_time: DeclareLaunchArgument = CommonArgs.use_sim_time
     namespace: DeclareLaunchArgument = CommonArgs.namespace
@@ -72,6 +73,7 @@ def create_robot_description_param(context, *args, **kwargs):
         'wrist_model': read_launch_argument('wrist_model', context),
         'ft_sensor': read_launch_argument('ft_sensor', context),
         'arm_type': read_launch_argument('arm_type', context),
+        'torque_estimation': read_launch_argument('torque_estimation', context),
         'tool_changer': read_launch_argument('tool_changer', context),
         'use_sim': read_launch_argument('use_sim_time', context),
         'namespace': read_launch_argument('namespace', context),

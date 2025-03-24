@@ -33,3 +33,4 @@ class SEAArmArgs:
     ft_sensor: DLA = __arg_creator.get_argument("ft_sensor")
     wrist_model: DLA = __arg_creator.get_argument("wrist_model")
     tool_changer: DLA = __arg_creator.get_argument("tool_changer")
+    torque_estimation: DLA = __arg_creator.get_argument("torque_estimation")
