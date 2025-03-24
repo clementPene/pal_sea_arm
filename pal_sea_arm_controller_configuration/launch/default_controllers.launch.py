@@ -32,6 +32,7 @@ from dataclasses import dataclass
 class LaunchArguments(LaunchArgumentsBase):
     end_effector: DeclareLaunchArgument = SEAArmArgs.end_effector
     ft_sensor: DeclareLaunchArgument = SEAArmArgs.ft_sensor
+    torque_estimation: DeclareLaunchArgument = SEAArmArgs.torque_estimation
     use_sim_time: DeclareLaunchArgument = CommonArgs.use_sim_time
     namespace: DeclareLaunchArgument = CommonArgs.namespace
 
@@ -59,7 +60,7 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
                 'config', 'joint_torque_state_broadcaster.yaml'))
          ],
         forwarding=False,
-        condition=LaunchConfigurationEquals("arm_type", "tiago-pro-s"),
+        condition=LaunchConfigurationEquals("torque_estimation", "true"),
     )
     launch_description.add_action(joint_torque_state_broadcaster)
 
