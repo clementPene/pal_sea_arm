@@ -16,10 +16,10 @@ import os
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
 from launch.actions import GroupAction, OpaqueFunction
-from launch.conditions import LaunchConfigurationNotEquals, LaunchConfigurationEquals
+from launch.conditions import LaunchConfigurationNotEquals, IfCondition
 from launch.actions import DeclareLaunchArgument
 from controller_manager.launch_utils import generate_load_controller_launch_description
-
+from launch.substitutions import LaunchConfiguration
 from launch_pal.include_utils import include_scoped_launch_py_description
 from launch_pal.arg_utils import LaunchArgumentsBase, read_launch_argument
 from launch_pal.robot_arguments import CommonArgs
@@ -60,7 +60,7 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
                 'config', 'joint_torque_state_broadcaster.yaml'))
          ],
         forwarding=False,
-        condition=LaunchConfigurationEquals("torque_estimation", "true"),
+        condition=IfCondition(LaunchConfiguration("torque_estimation"))
     )
     launch_description.add_action(joint_torque_state_broadcaster)
 

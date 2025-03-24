@@ -28,6 +28,7 @@ from dataclasses import dataclass
 class LaunchArguments(LaunchArgumentsBase):
     end_effector: DeclareLaunchArgument = SEAArmArgs.end_effector
     ft_sensor: DeclareLaunchArgument = SEAArmArgs.ft_sensor
+    torque_estimation: DeclareLaunchArgument = SEAArmArgs.torque_estimation
     wrist_model: DeclareLaunchArgument = SEAArmArgs.wrist_model
     use_sim_time: DeclareLaunchArgument = CommonArgs.use_sim_time
     namespace: DeclareLaunchArgument = CommonArgs.namespace
@@ -45,6 +46,7 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
         paths=['launch', 'default_controllers.launch.py'],
         launch_arguments={"end_effector": launch_args.end_effector,
                           "ft_sensor": launch_args.ft_sensor,
+                          "torque_estimation": launch_args.torque_estimation,
                           "namespace": launch_args.namespace,
                           "use_sim_time": launch_args.use_sim_time,
                           })
@@ -58,6 +60,7 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
                           "ft_sensor": launch_args.ft_sensor,
                           "arm_model": launch_args.arm_model,
                           "wrist_model": launch_args.wrist_model,
+                          "torque_estimation": launch_args.torque_estimation,
                           "namespace": launch_args.namespace,
                           "use_sim_time": launch_args.use_sim_time,
                           })
