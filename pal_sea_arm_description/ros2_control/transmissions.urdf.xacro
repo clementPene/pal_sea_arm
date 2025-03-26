@@ -2,7 +2,7 @@
 
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
-  <xacro:macro name="pal_sea_arm_simple_transmission" params="name reduction offset_value">
+  <xacro:macro name="sea_transmission" params="name reduction offset_value">
     <transmission name="${name}_trans">
       <plugin>sea_transmissions/SeaSimpleTransmission</plugin>
       <actuator name="${name}_actuator" role="actuator1"/>
@@ -14,7 +14,7 @@
     </transmission>
   </xacro:macro>
 
-  <xacro:macro name="arm_pro_simple_transmission" params="name reduction offset_value">
+  <xacro:macro name="simple_transmission" params="name reduction offset_value">
     <transmission name="${name}_trans">
       <plugin>transmission_interface/SimpleTransmission</plugin>
       <actuator name="${name}_actuator" role="actuator1"/>

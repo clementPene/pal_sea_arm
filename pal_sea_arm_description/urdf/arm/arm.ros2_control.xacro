@@ -37,11 +37,11 @@
 
     <xacro:if value="${use_sea_transmission}">
       <!-- Reduction needed for the torque estimation -->
-      <xacro:pal_sea_arm_simple_transmission name="${name}" reduction="${reduction}" offset_value="${offset_value}" />
+      <xacro:sea_transmission name="${name}" reduction="${reduction}" offset_value="${offset_value}" />
     </xacro:if>
     <xacro:unless value="${use_sea_transmission}">
       <!-- Reduction already applied in the RT layer, harcoded here to 1.0 -->
-      <xacro:arm_pro_simple_transmission name="${name}" reduction="1.0" offset_value="${offset_value}" />
+      <xacro:simple_transmission name="${name}" reduction="1.0" offset_value="${offset_value}" />
     </xacro:unless>
 
 
