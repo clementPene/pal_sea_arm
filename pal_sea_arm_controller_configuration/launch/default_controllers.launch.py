@@ -16,10 +16,10 @@ import os
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
 from launch.actions import GroupAction, OpaqueFunction
-from launch.conditions import LaunchConfigurationNotEquals
+from launch.conditions import LaunchConfigurationNotEquals, IfCondition
 from launch.actions import DeclareLaunchArgument
 from controller_manager.launch_utils import generate_load_controller_launch_description
-
+from launch.substitutions import LaunchConfiguration
 from launch_pal.include_utils import include_scoped_launch_py_description
 from launch_pal.arg_utils import LaunchArgumentsBase, read_launch_argument
 from launch_pal.robot_arguments import CommonArgs
@@ -32,6 +32,7 @@ from dataclasses import dataclass
 class LaunchArguments(LaunchArgumentsBase):
     end_effector: DeclareLaunchArgument = SEAArmArgs.end_effector
     ft_sensor: DeclareLaunchArgument = SEAArmArgs.ft_sensor
+    torque_estimation: DeclareLaunchArgument = SEAArmArgs.torque_estimation
     use_sim_time: DeclareLaunchArgument = CommonArgs.use_sim_time
     namespace: DeclareLaunchArgument = CommonArgs.namespace
 
@@ -50,6 +51,18 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
          ],
         forwarding=False)
     launch_description.add_action(joint_state_broadcaster)
+
+    joint_torque_state_broadcaster = GroupAction(
+        [generate_load_controller_launch_description(
+            controller_name='joint_torque_state_broadcaster',
+            controller_params_file=os.path.join(
+                pkg_share_folder,
+                'config', 'joint_torque_state_broadcaster.yaml'))
+         ],
+        forwarding=False,
+        condition=IfCondition(LaunchConfiguration("torque_estimation"))
+    )
+    launch_description.add_action(joint_torque_state_broadcaster)
 
     arm_controller = include_scoped_launch_py_description(
         pkg_name=pkg_name,

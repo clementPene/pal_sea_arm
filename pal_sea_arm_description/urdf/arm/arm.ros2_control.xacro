@@ -15,7 +15,7 @@
   limitations under the License.
  -->
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
-  <xacro:macro name="ros2_control_arm" params="name reduction offset_value" >
+  <xacro:macro name="ros2_control_arm" params="name reduction offset_value use_sea_transmission:=false">
     <joint name="${name}_joint">
       <command_interface name="position" />
       <command_interface name="velocity" />
@@ -24,10 +24,26 @@
       <state_interface name="position" />
       <state_interface name="velocity" />
       <state_interface name="effort" />
+
+      <!-- SEA specific joint interfaces -->
+      <xacro:if value="${use_sea_transmission}">
+        <state_interface name="torque"/>
+        <state_interface name="absolute_position"/>
+      </xacro:if>
+
     </joint>
 
-  <xacro:include filename="$(find pal_sea_arm_description)/ros2_control/transmissions.urdf.xacro" />
-  <xacro:pal_sea_arm_simple_transmission name="${name}" reduction="${reduction}" offset_value="${offset_value}" />
+    <xacro:include filename="$(find pal_sea_arm_description)/ros2_control/transmissions.urdf.xacro" />
+
+    <xacro:if value="${use_sea_transmission}">
+      <!-- Reduction needed for the torque estimation -->
+      <xacro:sea_transmission name="${name}" reduction="${reduction}" offset_value="${offset_value}" />
+    </xacro:if>
+    <xacro:unless value="${use_sea_transmission}">
+      <!-- Reduction already applied in the RT layer, harcoded here to 1.0 -->
+      <xacro:simple_transmission name="${name}" reduction="1.0" offset_value="${offset_value}" />
+    </xacro:unless>
+
 
   </xacro:macro>
 </robot>

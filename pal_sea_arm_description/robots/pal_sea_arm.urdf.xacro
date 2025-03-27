@@ -32,6 +32,9 @@
   <xacro:arg name="arm_type" default="pal-sea-arm-standalone"/>
 
   <!-- False, True -->
+  <xacro:arg name="torque_estimation" default="False"/>
+
+  <!-- False, True -->
   <xacro:arg name="tool_changer" default="True"/>
 
   <!-- Common args -->
@@ -43,6 +46,7 @@
   <xacro:property name="wrist_model" value="$(arg wrist_model)" />
   <xacro:property name="ft_sensor" value="$(arg ft_sensor)" />
   <xacro:property name="arm_type" value="$(arg arm_type)" />
+  <xacro:property name="torque_estimation" value="$(arg torque_estimation)" />
   <xacro:property name="tool_changer" value="$(arg tool_changer)" />
   <xacro:property name="nsp" value="$(arg namespace)" />
 
@@ -146,6 +150,6 @@
   <xacro:pal_sea_arm_end_effector name="gripper" parent="${end_effector_link}" type="${end_effector}" tool_changer="${tool_changer}" reflect="1"/>
 
   <!-- ROS2 control -->
-  <xacro:pal_sea_arm_ros2_control use_sim="$(arg use_sim)" />
+  <xacro:pal_sea_arm_ros2_control use_sim="$(arg use_sim)" torque_estimation="${torque_estimation}"/>
 
 </robot>
