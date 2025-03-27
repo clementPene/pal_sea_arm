@@ -15,6 +15,14 @@ Changelog for package pal_sea_arm_controller_configuration
 * Restructure launch files
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
+Forthcoming
+-----------
+* Support in pal_sea_arm_bringup
+* Support in pal_sea_arm_controller_configuration
+* SEA transmission optional loading
+* added joint torque state broadcaster
+* Contributors: Daniel Costanzi, oscarmartinez
+
 1.14.5 (2025-02-28)
 -------------------
 

@@ -23,6 +23,18 @@ Changelog for package pal_sea_arm_description
 * Add arm model check in urdf
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
+Forthcoming
+-----------
+* Better transmissions names
+* Support in the pal_sea_arm_description
+* Adding missing dep
+* SEA transmission optional loading
+* Adding absolute_position joint state interface
+* Adapted to new data loading mechanism
+* added torque state interface
+* added paths to sea data
+* Contributors: Daniel Costanzi, oscarmartinez
+
 1.14.5 (2025-02-28)
 -------------------
 * Merge branch 'tpe/add_inertia_version' into 'humble-devel'
