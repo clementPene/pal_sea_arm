@@ -34,7 +34,6 @@ class LaunchArguments(LaunchArgumentsBase):
     side: DeclareLaunchArgument = DeclareLaunchArgument(
         name='side',
         default_value='',
-        choices=['', 'left', 'right'],
         description='side of the ft sensor')
 
 
