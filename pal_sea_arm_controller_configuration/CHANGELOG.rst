@@ -15,8 +15,8 @@ Changelog for package pal_sea_arm_controller_configuration
 * Restructure launch files
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
-Forthcoming
------------
+1.15.1 (2025-03-31)
+-------------------
 * Remove choices for ft-sensor side for triago compatibility
 * Contributors: David ter Kuile
 
