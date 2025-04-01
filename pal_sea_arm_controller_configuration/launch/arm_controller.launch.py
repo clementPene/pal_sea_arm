@@ -31,12 +31,7 @@ class LaunchArguments(LaunchArgumentsBase):
     side: DeclareLaunchArgument = DeclareLaunchArgument(
         name='side',
         default_value='',
-        choices=['', 'left', 'right'],
         description='side of the ft sensor')
-    arm_model: DeclareLaunchArgument = DeclareLaunchArgument(
-        'arm_model', default_value='pal-sea-arm-standalone',
-        choices=['pal-sea-arm-standalone', 'tiago-pro', 'tiago-sea', 'tiago-sea-dual'],
-        description='The arm model')
 
 
 def declare_actions(launch_description: LaunchDescription, launch_args: LaunchArguments):
