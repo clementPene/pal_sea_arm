@@ -11,19 +11,17 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 import os
-
-from dataclasses import dataclass
-
 from ament_index_python.packages import get_package_share_directory
 from controller_manager.launch_utils import generate_load_controller_launch_description
-from launch_pal.param_utils import parse_parametric_yaml
-from launch_pal.arg_utils import LaunchArgumentsBase, read_launch_argument
-from launch.actions import DeclareLaunchArgument, SetLaunchConfiguration
-from launch.actions import OpaqueFunction, GroupAction
+from launch.actions import GroupAction, OpaqueFunction
 from launch.substitutions import LaunchConfiguration
 from launch import LaunchDescription, LaunchContext
+
+from launch_pal.arg_utils import LaunchArgumentsBase, read_launch_argument
+from launch_pal.param_utils import parse_parametric_yaml
+from launch.actions import DeclareLaunchArgument, SetLaunchConfiguration
+from dataclasses import dataclass
 
 
 @dataclass(frozen=True)
@@ -31,7 +29,7 @@ class LaunchArguments(LaunchArgumentsBase):
     side: DeclareLaunchArgument = DeclareLaunchArgument(
         name='side',
         default_value='',
-        description='side of the ft sensor')
+        description='side of the arm')
 
 
 def declare_actions(launch_description: LaunchDescription, launch_args: LaunchArguments):
@@ -39,11 +37,12 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
     launch_description.add_action(OpaqueFunction(
         function=setup_controller_configuration))
 
-    launch_controller = GroupAction([generate_load_controller_launch_description(
+    gravity_compensation_controller = GroupAction([generate_load_controller_launch_description(
         controller_name=LaunchConfiguration("controller_name"),
-        controller_params_file=LaunchConfiguration("controller_config"))])
+        controller_params_file=LaunchConfiguration("controller_config"),
+        extra_spawner_args=["--inactive"])])
 
-    launch_description.add_action(launch_controller)
+    launch_description.add_action(gravity_compensation_controller)
 
     return
 
@@ -56,12 +55,12 @@ def setup_controller_configuration(context: LaunchContext):
     if side:
         arm_prefix = f"arm_{side}"
 
-    controller_name = f"{arm_prefix}_controller"
+    controller_name = f"{arm_prefix}_gravity_compensation_controller"
     remappings = {"ARM_SIDE_PREFIX": arm_prefix}
 
     param_file = os.path.join(
         get_package_share_directory('pal_sea_arm_controller_configuration'),
-        'config', 'arm_controller.yaml')
+        'config', 'arm_gravity_compensation_controller.yaml')
 
     parsed_yaml = parse_parametric_yaml(source_files=[param_file], param_rewrites=remappings)
 
