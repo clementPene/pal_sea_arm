@@ -15,8 +15,8 @@ Changelog for package pal_sea_arm_controller_configuration
 * Restructure launch files
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
-Forthcoming
------------
+1.15.2 (2025-04-03)
+-------------------
 * Create gravity compensation controller
 * Update launch args of arm_controller.launch.py
 * Contributors: David ter Kuile
