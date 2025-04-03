@@ -15,6 +15,12 @@ Changelog for package pal_sea_arm_controller_configuration
 * Restructure launch files
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
+Forthcoming
+-----------
+* Create gravity compensation controller
+* Update launch args of arm_controller.launch.py
+* Contributors: David ter Kuile
+
 1.15.1 (2025-03-31)
 -------------------
 * Remove choices for ft-sensor side for triago compatibility
