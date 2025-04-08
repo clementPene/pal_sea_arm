@@ -15,37 +15,30 @@ ${ARM_SIDE_PREFIX}_gravity_compensation_controller:
     torque_gain: 1.0
     parameters:
       ${ARM_SIDE_PREFIX}_1_joint:
-        motor_torque_constant: -0.103
-        reduction_ratio: 121.0
+        command_interface: "${ARM_SIDE_PREFIX}_1_joint/effort"
         static_friction: 0.05
         viscous_friction: 0.05
       ${ARM_SIDE_PREFIX}_2_joint:
-        motor_torque_constant: -0.103
-        reduction_ratio: 121.0
+        command_interface: "${ARM_SIDE_PREFIX}_2_joint/effort"
         static_friction: -1.0
         viscous_friction: 0.05
       ${ARM_SIDE_PREFIX}_3_joint:
-        motor_torque_constant: -0.06
-        reduction_ratio: 101.0
+        command_interface: "${ARM_SIDE_PREFIX}_3_joint/effort"
         static_friction: 0.05
         viscous_friction: 0.05
       ${ARM_SIDE_PREFIX}_4_joint:
-        motor_torque_constant: -0.06
-        reduction_ratio: 101.0
+        command_interface: "${ARM_SIDE_PREFIX}_4_joint/effort"
         static_friction: 0.05
         viscous_friction: 0.05
       ${ARM_SIDE_PREFIX}_5_joint:
-        motor_torque_constant: -1.0
-        reduction_ratio: 101.0
+        command_interface: "${ARM_SIDE_PREFIX}_5_joint/effort"
         static_friction: 0.05
         viscous_friction: 0.05
       ${ARM_SIDE_PREFIX}_6_joint:
-        motor_torque_constant: -0.06
-        reduction_ratio: 101.0
+        command_interface: "${ARM_SIDE_PREFIX}_6_joint/effort"
         static_friction: 0.05
         viscous_friction: 0.05
       ${ARM_SIDE_PREFIX}_7_joint:
-        motor_torque_constant: -0.06
-        reduction_ratio: 101.0
+        command_interface: "${ARM_SIDE_PREFIX}_7_joint/effort"
         static_friction: 0.05
         viscous_friction: 0.05
