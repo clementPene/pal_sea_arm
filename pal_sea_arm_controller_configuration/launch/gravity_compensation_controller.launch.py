@@ -22,14 +22,12 @@ from launch_pal.arg_utils import LaunchArgumentsBase, read_launch_argument
 from launch_pal.param_utils import parse_parametric_yaml
 from launch.actions import DeclareLaunchArgument, SetLaunchConfiguration
 from dataclasses import dataclass
+from launch_pal.robot_arguments import CommonArgs
 
 
 @dataclass(frozen=True)
 class LaunchArguments(LaunchArgumentsBase):
-    side: DeclareLaunchArgument = DeclareLaunchArgument(
-        name='side',
-        default_value='',
-        description='side of the arm')
+    side: DeclareLaunchArgument = CommonArgs.side
 
 
 def declare_actions(launch_description: LaunchDescription, launch_args: LaunchArguments):
