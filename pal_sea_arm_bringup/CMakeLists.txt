@@ -5,7 +5,7 @@ find_package(ament_cmake_auto REQUIRED)
 ament_auto_find_build_dependencies()
 
 install(
-  PROGRAMS scripts/regen_em_file.py
+  PROGRAMS scripts/regen_em_file.py scripts/calibrate_ft_sensor.sh
   DESTINATION lib/${PROJECT_NAME}
 )
 
