@@ -11,6 +11,13 @@ Changelog for package pal_sea_arm_bringup
 * Restructure launch files pal-sea-arm-bringup
 * Contributors: David ter Kuile, davidterkuile
 
+Forthcoming
+-----------
+* added installation calibrate_ft_sensor
+* edit - select slave from list
+* script for calibrating the ft sensor
+* Contributors: danielcostanzi
+
 1.15.2 (2025-04-03)
 -------------------
 
