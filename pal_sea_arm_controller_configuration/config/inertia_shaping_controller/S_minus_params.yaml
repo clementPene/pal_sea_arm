@@ -3,7 +3,7 @@ ${ARM_SIDE_PREFIX}_${JOINT_POSITION}_joint_inertia_shaping_controller:
     type: pal_local_joint_control/InertiaShapingEffortAnalyticDOBControl
     joint_name: ${ARM_SIDE_PREFIX}_${JOINT_POSITION}_joint
     control_params_file:
-      "${PARAMS_PATH}/arm_${JOINT_POSITION}_joint_analytic_params.yaml"
+      "${PARAMS_PATH}/${ACTUATOR_TYPE}_analytic_params.yaml"
     velocity_pid: false
 
     motor_inertia: 0.01

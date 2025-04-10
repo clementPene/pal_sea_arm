@@ -15,18 +15,20 @@
 import os
 from ament_index_python.packages import get_package_share_directory
 from controller_manager.launch_utils import (
-    generate_load_controller_launch_description,
     generate_controllers_spawner_launch_description_from_dict
 )
-from launch.actions import GroupAction, OpaqueFunction
-from launch.substitutions import LaunchConfiguration
+from launch.actions import OpaqueFunction
 from launch import LaunchDescription, LaunchContext
 
 from launch_pal.arg_utils import LaunchArgumentsBase, read_launch_argument
 from launch_pal.param_utils import parse_parametric_yaml
-from launch.actions import DeclareLaunchArgument, SetLaunchConfiguration
+from launch.actions import DeclareLaunchArgument
 from dataclasses import dataclass
 from launch_pal.robot_arguments import CommonArgs
+from launch_pal.calibration_utils import apply_master_calibration
+from ament_index_python.packages import get_package_share_path
+from ament_index_python.resources import get_resource, get_resources
+import yaml
 
 
 @dataclass(frozen=True)
@@ -61,18 +63,28 @@ def setup_inertia_shaping_controllers(context: LaunchContext):
 
         controller_name = f"{arm_prefix}_{i}_joint_inertia_shaping_controller"
 
-        # This is the ref for config, not the actual joint name
-        # e.g. both arm_right_1 and arm_left_1 would use the same config
-        config_ref = f'arm_{i}_joint'
+        # Get the config file based on the actuator type
+        actuator_positon = f"{arm_prefix}_{i}"
+        actuator_type = get_actuator_type(actuator_positon)
+
+        if not actuator_type:
+            raise RuntimeError(f"Failed to determine actuator type for {actuator_positon}. "
+                               f"Please ensure sea_data resources exist.")
+
         param_file = os.path.join(
-            params_path, f"{config_ref}_params.yaml"
+            params_path, f"{actuator_type}_params.yaml"
         )
+
+        # Calibrate and remap
+        calibrated_params = apply_master_calibration(param_file)
 
         remappings = {"ARM_SIDE_PREFIX": arm_prefix,
                       "JOINT_POSITION": i,
+                      "ACTUATOR_TYPE": actuator_type,
                       "PARAMS_PATH": params_path}
 
-        parsed_yaml = parse_parametric_yaml(source_files=[param_file], param_rewrites=remappings)
+        parsed_yaml = parse_parametric_yaml(
+            source_files=[calibrated_params], param_rewrites=remappings)
 
         inertia_shaping_controllers_dict.update(
             {controller_name: parsed_yaml}
@@ -83,7 +95,36 @@ def setup_inertia_shaping_controllers(context: LaunchContext):
         extra_spawner_args=['--inactive'],
     )
 
-    return inertia_shaping_controllers
+    return [inertia_shaping_controllers]
+
+
+def get_actuator_type(actuator_position: str) -> str:
+
+    resource_type = "sea_data"
+    resources = get_resources(resource_type)
+    if not resources:
+        return ""
+
+    # Take the first resource only
+    pkg = next(iter(resources.keys()))
+    pkg_share_path = get_package_share_path(pkg)
+    sea_data_path = pkg_share_path / get_resource(resource_type, pkg)[0]
+    actuator_sea_data_path = sea_data_path / f"{actuator_position}_actuator"
+    actuator_metadata_path = actuator_sea_data_path / "actuator_metadata.yaml"
+
+    if not actuator_metadata_path.exists():
+        return ""
+
+    try:
+        with open(actuator_metadata_path, 'r') as file:
+            metadata = yaml.safe_load(file)
+            # Extract the actuator type from the metadata
+            if metadata and 'actuator_type' in metadata:
+                return metadata['actuator_type']
+    except (yaml.YAMLError, IOError) as e:
+        print(f"Error reading actuator metadata: {e}")
+
+    return ""
 
 
 def generate_launch_description():

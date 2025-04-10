@@ -1,7 +1,0 @@
-PidGains:
-    p_gain:  100
-    d_gain:  10
-    i_gain: 0.01
-    i_max: 1
-    i_min: -1
-    antiwindup: true
