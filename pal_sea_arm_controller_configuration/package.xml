@@ -12,6 +12,9 @@
   <buildtool_depend>ament_cmake_auto</buildtool_depend>
   <build_depend condition="$PAL_DISTRO >= alum">pal_module_cmake</build_depend>
 
+  <exec_depend condition="$PAL_DISTRO >= alum">inertia_shaping_effort_control</exec_depend>
+
+
   <exec_depend>controller_manager</exec_depend>
   <exec_depend>joint_trajectory_controller</exec_depend>
   <exec_depend>pal_pro_gripper_controller_configuration</exec_depend>
