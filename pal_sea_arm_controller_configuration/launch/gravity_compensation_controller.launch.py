@@ -29,6 +29,12 @@ from launch_pal.robot_arguments import CommonArgs
 class LaunchArguments(LaunchArgumentsBase):
     side: DeclareLaunchArgument = CommonArgs.side
 
+    mode: DeclareLaunchArgument = DeclareLaunchArgument(
+        name='mode',
+        default_value='current',
+        choices=['current', 'torque'],
+        description='Mode of the gravity compensation controller.')
+
 
 def declare_actions(launch_description: LaunchDescription, launch_args: LaunchArguments):
 
@@ -48,6 +54,7 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
 def setup_controller_configuration(context: LaunchContext):
 
     side = read_launch_argument('side', context)
+    mode = read_launch_argument('mode', context)
 
     arm_prefix = "arm"
     if side:
@@ -58,7 +65,7 @@ def setup_controller_configuration(context: LaunchContext):
 
     param_file = os.path.join(
         get_package_share_directory('pal_sea_arm_controller_configuration'),
-        'config', 'arm_gravity_compensation_controller.yaml')
+        'config', f'arm_gravity_compensation_controller_{mode}.yaml')
 
     parsed_yaml = parse_parametric_yaml(source_files=[param_file], param_rewrites=remappings)
 
