@@ -15,6 +15,11 @@ Changelog for package pal_sea_arm_controller_configuration
 * Restructure launch files
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
+Forthcoming
+-----------
+* Renaming current of effort and proper launch mechanism
+* Contributors: oscarmartinez
+
 1.17.0 (2025-04-10)
 -------------------
 * Adding config and launching mechanism for GC in torque
