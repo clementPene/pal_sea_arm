@@ -31,8 +31,8 @@ class LaunchArguments(LaunchArgumentsBase):
 
     mode: DeclareLaunchArgument = DeclareLaunchArgument(
         name='mode',
-        default_value='current',
-        choices=['current', 'torque'],
+        default_value='effort',
+        choices=['effort', 'torque'],
         description='Mode of the gravity compensation controller.')
 
 
@@ -61,6 +61,9 @@ def setup_controller_configuration(context: LaunchContext):
         arm_prefix = f"arm_{side}"
 
     controller_name = f"{arm_prefix}_gravity_compensation_controller"
+    if mode == "torque":
+        controller_name += "_" + mode
+
     remappings = {"ARM_SIDE_PREFIX": arm_prefix}
 
     param_file = os.path.join(
