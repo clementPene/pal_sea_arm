@@ -23,6 +23,13 @@ Changelog for package pal_sea_arm_description
 * Add arm model check in urdf
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
+Forthcoming
+-----------
+* Replace use_sim
+* Fix param use_sim_time name
+* Add allegro hand as end effector
+* Contributors: Aina, davidterkuile
+
 1.17.1 (2025-04-11)
 -------------------
 
