@@ -38,7 +38,7 @@
   <xacro:arg name="tool_changer" default="True"/>
 
   <!-- Common args -->
-  <xacro:arg name="use_sim" default="False"/>
+  <xacro:arg name="use_sim_time" default="False"/>
   <xacro:arg name="namespace" default=""/>
 
   <!-- PROPERTIES -->
