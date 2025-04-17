@@ -75,7 +75,7 @@ def create_robot_description_param(context, *args, **kwargs):
         'arm_type': read_launch_argument('arm_type', context),
         'torque_estimation': read_launch_argument('torque_estimation', context),
         'tool_changer': read_launch_argument('tool_changer', context),
-        'use_sim': read_launch_argument('use_sim_time', context),
+        'use_sim_time': read_launch_argument('use_sim_time', context),
         'namespace': read_launch_argument('namespace', context),
     }
     robot_description = load_xacro(xacro_file_path, xacro_input_args)

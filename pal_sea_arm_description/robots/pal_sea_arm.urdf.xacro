@@ -38,7 +38,7 @@
   <xacro:arg name="tool_changer" default="True"/>
 
   <!-- Common args -->
-  <xacro:arg name="use_sim" default="False"/>
+  <xacro:arg name="use_sim_time" default="False"/>
   <xacro:arg name="namespace" default=""/>
 
   <!-- PROPERTIES -->
@@ -50,7 +50,7 @@
   <xacro:property name="tool_changer" value="$(arg tool_changer)" />
   <xacro:property name="nsp" value="$(arg namespace)" />
 
-  <xacro:if value="${end_effector not in ['no-end-effector', 'pal-pro-gripper', 'custom']}">
+  <xacro:if value="${end_effector not in ['no-end-effector', 'pal-pro-gripper', 'allegro-hand', 'custom']}">
     <xacro:wrong_end_effector/>
   </xacro:if>
   <xacro:if value="${wrist_model not in ['straight-wrist', 'spherical-wrist']}">
@@ -150,6 +150,6 @@
   <xacro:pal_sea_arm_end_effector name="gripper" parent="${end_effector_link}" type="${end_effector}" tool_changer="${tool_changer}" reflect="1"/>
 
   <!-- ROS2 control -->
-  <xacro:pal_sea_arm_ros2_control use_sim="$(arg use_sim)" torque_estimation="${torque_estimation}"/>
+  <xacro:pal_sea_arm_ros2_control use_sim_time="$(arg use_sim_time)" torque_estimation="${torque_estimation}"/>
 
 </robot>
