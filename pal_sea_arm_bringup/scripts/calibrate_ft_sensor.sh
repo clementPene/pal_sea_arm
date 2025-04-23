@@ -1,6 +1,16 @@
 #!/bin/bash
 
 FT_SLAVE_TYPE="FTSensor"
+ALL_FLAG=false
+
+# Parse optional arguments
+while [[ "$#" -gt 0 ]]; do
+    case $1 in
+        -a|--all) ALL_FLAG=true ;;
+        *) echo "Unknown parameter passed: $1"; exit 1 ;;
+    esac
+    shift
+done
 
 # Function to get the positions of slaves of a specific type
 get_slave_positions_from_type() {
@@ -13,9 +23,7 @@ check_calibration_status() {
     local slave_position=$1
     local status
     while true; do
-        # Extract the second field from the ethercat upload output
         status=$(ethercat upload -p "$slave_position" 0x6010 0 --type uint32 | awk '{print $2}')
-        
         if [ "$status" -eq 3 ]; then
             echo "Calibration ongoing for slave $slave_position..."
             sleep 1
@@ -24,6 +32,26 @@ check_calibration_status() {
             break
         fi
     done
+}
+
+# Function to calibrate a specific slave
+calibrate_slave() {
+    local slave_position=$1
+    echo "Setting EtherCAT slave $slave_position to PREOP state..."
+    ethercat states -p "$slave_position" PREOP
+    sleep 0.1
+
+    echo "Writing to register 0xFB01, subindex 1 on slave $slave_position..."
+    ethercat download -p "$slave_position" 0xFB01 1 --type uint16 1
+    sleep 0.1
+
+    echo "Setting EtherCAT slave $slave_position to OP state..."
+    ethercat states -p "$slave_position" OP
+
+    echo "Waiting for calibration to complete on slave $slave_position..."
+    check_calibration_status "$slave_position"
+
+    echo "Calibration process for slave $slave_position completed successfully."
 }
 
 # Main script
@@ -36,30 +64,19 @@ fi
 
 echo "Found slaves of type '$FT_SLAVE_TYPE' at positions: $SLAVE_POSITIONS"
 
-# Ask the user to select which slave to calibrate
-echo "Which slave do you want to calibrate?"
-select SLAVE_POSITION in $SLAVE_POSITIONS; do
-    if [ -n "$SLAVE_POSITION" ]; then
-        echo "You selected slave $SLAVE_POSITION for calibration."
-        break
-    else
-        echo "Invalid selection. Please try again."
-    fi
-done
-
-# Perform calibration for the selected slave
-echo "Setting EtherCAT slave $SLAVE_POSITION to PREOP state..."
-ethercat states -p "$SLAVE_POSITION" PREOP
-sleep 0.1
-
-echo "Writing to register 0xFB01, subindex 1 on slave $SLAVE_POSITION..."
-ethercat download -p "$SLAVE_POSITION" 0xFB01 1 --type uint16 1
-sleep 0.1
-
-echo "Setting EtherCAT slave $SLAVE_POSITION to OP state..."
-ethercat states -p "$SLAVE_POSITION" OP
-
-echo "Waiting for calibration to complete on slave $SLAVE_POSITION..."
-check_calibration_status "$SLAVE_POSITION"
-
-echo "Calibration process for slave $SLAVE_POSITION completed successfully."
+if [ "$ALL_FLAG" = true ]; then
+    for SLAVE_POSITION in $SLAVE_POSITIONS; do
+        calibrate_slave "$SLAVE_POSITION"
+    done
+else
+    echo "Which slave do you want to calibrate?"
+    select SLAVE_POSITION in $SLAVE_POSITIONS; do
+        if [ -n "$SLAVE_POSITION" ]; then
+            echo "You selected slave $SLAVE_POSITION for calibration."
+            calibrate_slave "$SLAVE_POSITION"
+            break
+        else
+            echo "Invalid selection. Please try again."
+        fi
+    done
+fi
