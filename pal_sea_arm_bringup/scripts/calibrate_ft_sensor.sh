@@ -24,11 +24,31 @@ check_calibration_status() {
     local status
     while true; do
         status=$(ethercat upload -p "$slave_position" 0x6010 0 --type uint32 | awk '{print $2}')
-        if [ "$status" -eq 3 ]; then
+
+        # Convert the status to binary and pad with leading zeros
+        status_binary=$(echo "obase=2; $status" | bc)
+        status_binary_32=$(printf "%032d" "$status_binary")
+
+        # Extract the relevant bits from the status binary
+        board_status_binary=${status_binary_32:30:2} # bits 0-1
+        gauge_status_binary=${status_binary_32:24:6} # bits 2-7, one bit for each gauge
+        reserved_status_binary=${status_binary_32:0:24} # bits 8-31
+
+        # Convert board_status_binary to decimal
+        board_status=$((2#$board_status_binary))
+        if [ "$board_status" -eq 3 ]; then
             echo "Calibration ongoing for slave $slave_position..."
             sleep 1
+        elif [ "$board_status" -eq 2 ]; then
+            echo "Calibration complete with warning for slave $slave_position."
+            break
+        elif [ "$board_status" -eq 1 ]; then
+            echo "Calibration complete with error for slave $slave_position."
+            break
+        elif [ "$board_status" -eq 0 ]; then
+            echo "Calibration complete successfully for slave $slave_position."
         else
-            echo "Calibration complete for slave $slave_position."
+            echo "Unknown board status for slave $slave_position."
             break
         fi
     done
