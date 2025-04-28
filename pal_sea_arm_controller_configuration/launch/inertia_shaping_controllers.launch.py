@@ -76,18 +76,18 @@ def setup_inertia_shaping_controllers(context: LaunchContext):
         )
 
         # Calibrate and remap
-        calibrated_params = apply_master_calibration(param_file)
-
         remappings = {"ARM_SIDE_PREFIX": arm_prefix,
                       "JOINT_POSITION": i,
                       "ACTUATOR_TYPE": actuator_type,
                       "PARAMS_PATH": params_path}
 
         parsed_yaml = parse_parametric_yaml(
-            source_files=[calibrated_params], param_rewrites=remappings)
+            source_files=[param_file], param_rewrites=remappings)
+
+        calibrated_yaml = apply_master_calibration(parsed_yaml)
 
         inertia_shaping_controllers_dict.update(
-            {controller_name: parsed_yaml}
+            {controller_name: calibrated_yaml}
         )
 
     inertia_shaping_controllers = generate_controllers_spawner_launch_description_from_dict(
