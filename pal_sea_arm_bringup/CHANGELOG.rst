@@ -11,6 +11,12 @@ Changelog for package pal_sea_arm_bringup
 * Restructure launch files pal-sea-arm-bringup
 * Contributors: David ter Kuile, davidterkuile
 
+Forthcoming
+-----------
+* fixed parsing of status code
+* added option to calibrate all FTs
+* Contributors: Daniel Costanzi
+
 1.17.2 (2025-04-17)
 -------------------
 
