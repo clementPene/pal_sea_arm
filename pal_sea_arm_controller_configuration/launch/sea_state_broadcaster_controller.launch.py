@@ -14,7 +14,7 @@
 import os
 from ament_index_python.packages import get_package_share_directory
 from controller_manager.launch_utils import generate_load_controller_launch_description
-from launch.actions import GroupAction, OpaqueFunction
+from launch.actions import OpaqueFunction
 from launch.substitutions import LaunchConfiguration
 from launch import LaunchDescription, LaunchContext
 
@@ -35,12 +35,11 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
     launch_description.add_action(OpaqueFunction(
         function=setup_controller_configuration))
 
-    sea_state_broadcaster_controller = GroupAction([generate_load_controller_launch_description(
+    sea_state_broadcaster_controller = generate_load_controller_launch_description(
         controller_name=LaunchConfiguration("controller_name"),
-        controller_params_file=LaunchConfiguration("controller_config"),
-        extra_spawner_args=["--inactive"])])
+        controller_params_file=LaunchConfiguration("controller_config"))
 
-    launch_description.add_action(sea_state_broadcaster_controller)
+    launch_description.add_entity(sea_state_broadcaster_controller)
 
     return
 

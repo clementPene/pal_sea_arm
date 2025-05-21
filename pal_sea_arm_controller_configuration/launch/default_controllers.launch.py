@@ -64,6 +64,13 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
     )
     launch_description.add_action(joint_torque_state_broadcaster)
 
+    sea_state_broadcaster = include_scoped_launch_py_description(
+        pkg_name='pal_sea_arm_controller_configuration',
+        paths=['launch', 'sea_state_broadcaster_controller.launch.py'],
+        launch_arguments={'side': 'arm'})
+
+    launch_description.add_action(sea_state_broadcaster)
+
     arm_controller = include_scoped_launch_py_description(
         pkg_name=pkg_name,
         paths=['launch', 'arm_controller.launch.py'])
