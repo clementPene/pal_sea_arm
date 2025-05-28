@@ -15,6 +15,12 @@ Changelog for package pal_sea_arm_controller_configuration
 * Restructure launch files
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
+Forthcoming
+-----------
+* increase trajectory tolerance to ~10deg
+* update arm_controller with trajectory constraint
+* Contributors: ileniaperrella
+
 1.17.4 (2025-04-29)
 -------------------
 * Fixing the parsing order for master calibration
