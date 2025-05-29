@@ -6,7 +6,7 @@
 
   <maintainer email="thomas.peyrucain@pal-robotics.com">Thomas Peyrucain</maintainer>
   <maintainer email="ilenia.perrella@pal-robotics.com">Ilenia Perrella</maintainer>
-  
+
   <license>Apache License 2.0</license>
 
   <buildtool_depend>ament_cmake_auto</buildtool_depend>
@@ -17,6 +17,7 @@
 
   <exec_depend>controller_manager</exec_depend>
   <exec_depend>joint_trajectory_controller</exec_depend>
+  <exec_depend>sea_state_broadcaster</exec_depend>
   <exec_depend>pal_pro_gripper_controller_configuration</exec_depend>
   <exec_depend>launch</exec_depend>
   <exec_depend>launch_pal</exec_depend>
