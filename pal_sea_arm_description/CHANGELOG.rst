@@ -23,8 +23,8 @@ Changelog for package pal_sea_arm_description
 * Add arm model check in urdf
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
-Forthcoming
------------
+1.18.1 (2025-06-06)
+-------------------
 * Use pal_urdf_utils meshes
 * Change path related to restructure path for pal_urdf_utils
 * Remove sensors from pal_sea_arm_description
