@@ -15,6 +15,9 @@ Changelog for package pal_sea_arm_controller_configuration
 * Restructure launch files
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
+Forthcoming
+-----------
+
 1.18.0 (2025-05-29)
 -------------------
 * Default controller launch and missing dep
