@@ -47,6 +47,7 @@ check_calibration_status() {
             break
         elif [ "$board_status" -eq 0 ]; then
             echo "Calibration complete successfully for slave $slave_position."
+            break
         else
             echo "Unknown board status for slave $slave_position."
             break
