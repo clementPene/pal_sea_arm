@@ -15,8 +15,8 @@ Changelog for package pal_sea_arm_controller_configuration
 * Restructure launch files
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
-Forthcoming
------------
+1.18.2 (2025-06-17)
+-------------------
 
 1.18.1 (2025-06-06)
 -------------------
