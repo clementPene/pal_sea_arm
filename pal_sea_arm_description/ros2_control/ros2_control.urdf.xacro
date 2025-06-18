@@ -39,8 +39,13 @@
     <ros2_control name="ros2_control_pal_sea_arm_system" type="system">
       <hardware>
         <xacro:if value="$(arg use_sim_time)">
-          <plugin>gazebo_ros2_control/GazeboSystem</plugin>
-        </xacro:if>
+          <xacro:if value="${mj_control}"> 
+            <plugin>mujoco_ros2_control/MujocoSystem</plugin>
+          </xacro:if>
+          <xacro:unless value="${mj_control}">
+            <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+          </xacro:unless>
+        </xacro:if> 
         <xacro:unless value="$(arg use_sim_time)">
           <plugin>robot_control/RobotControl</plugin>
         </xacro:unless>

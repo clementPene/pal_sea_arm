@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="pal_sea_arm">
+    <!--  -->
+    <xacro:macro name="mj_common">
+      <compiler strippath="false" discardvisual="false" balanceinertia="true" angle="radian" />
+        <option integrator="implicitfast" />
+        
+        <asset>
+            <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512"
+                height="3072" />
+            <texture type="2d" name="groundplane" builtin="checker" mark="edge" rgb1="0.2 0.3 0.4"
+                rgb2="0.1 0.2 0.3"
+                markrgb="0.8 0.8 0.8" width="300" height="300" />
+            <material name="groundplane" texture="groundplane" texuniform="true" texrepeat="5 5"
+                reflectance="0.2" />
+        </asset>
+
+        <worldbody>
+            <light name="spotlight" mode="targetbody" target="arm_1_link" pos="1 0 10" />
+            <geom name="floor" size="0 0 0.05" type="plane" material="groundplane" group="1" contype="1" conaffinity="1" friction="0.001 0.0 0.0"/>
+        </worldbody>
+    </xacro:macro>
+
+    <xacro:macro name="arm_mj_motor_actuators">
+      <motor group="0" name="arm_1_joint_torque" joint="arm_left_1_joint" ctrlrange="-46 46" />
+      <motor group="0" name="arm_2_joint_torque" joint="arm_left_2_joint" ctrlrange="-46 46" />
+      <motor group="0" name="arm_3_joint_torque" joint="arm_left_3_joint" ctrlrange="-46 46" />
+      <motor group="0" name="arm_4_joint_torque" joint="arm_left_4_joint" ctrlrange="-46 46" />
+      <motor group="0" name="arm_5_joint_torque" joint="arm_left_5_joint" ctrlrange="-46 46" />
+      <motor group="0" name="arm_6_joint_torque" joint="arm_left_6_joint" ctrlrange="-46 46" />
+      <motor group="0" name="arm_7_joint_torque" joint="arm_left_7_joint" ctrlrange="-46 46" />
+
+    </xacro:macro>
+
+    <xacro:macro name="arm_mj_position_actuators">
+      <position group="2" name="arm_1_joint_position" joint="arm_1_joint" ctrlrange="-0.523599 4.71239" kp="1000" kv="50"/>
+      <position group="2" name="arm_2_joint_position" joint="arm_2_joint" ctrlrange="-2.44346 1.13446" kp="1000" kv="60"/>
+      <position group="2" name="arm_3_joint_position" joint="arm_3_joint" ctrlrange="-2.61799 2.61799" kp="1000" kv="50"/>
+      <position group="2" name="arm_4_joint_position" joint="arm_4_joint" ctrlrange="-2.44346 1.13446" kp="500" kv="20"/>
+      <position group="2" name="arm_5_joint_position" joint="arm_5_joint" ctrlrange="-2.61799 2.61799" kp="1000" kv="20"/>
+      <position group="2" name="arm_6_joint_position" joint="arm_6_joint" ctrlrange="-2.00713 2.00713" kp="1000" kv="20"/>
+      <position group="2" name="arm_7_joint_position" joint="arm_7_joint" ctrlrange="-2.61799 2.61799" kp="500" kv="20"/>
+    </xacro:macro>
+    
+</robot>

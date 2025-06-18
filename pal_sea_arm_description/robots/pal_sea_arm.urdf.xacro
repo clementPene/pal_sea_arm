@@ -41,6 +41,13 @@
   <xacro:arg name="use_sim_time" default="False"/>
   <xacro:arg name="namespace" default=""/>
 
+  <!-- Mujoco args -->
+  <xacro:arg name="mujoco" default="false" />
+  <xacro:arg name="mj_motor" default="false" />
+  <xacro:arg name="mj_position" default="false" />
+  <xacro:arg name="mj_simulate" default="false" />
+  <xacro:arg name="mj_control" default="false" />
+
   <!-- PROPERTIES -->
   <xacro:property name="end_effector" value="$(arg end_effector)" />
   <xacro:property name="wrist_model" value="$(arg wrist_model)" />
@@ -49,6 +56,10 @@
   <xacro:property name="torque_estimation" value="$(arg torque_estimation)" />
   <xacro:property name="tool_changer" value="$(arg tool_changer)" />
   <xacro:property name="nsp" value="$(arg namespace)" />
+
+  <!-- Mujoco properties -->
+  <xacro:property name="mujoco" value="$(arg mujoco)" /> 
+  <xacro:property name="mj_control" value="$(arg mj_control)" />
 
   <xacro:if value="${end_effector not in ['no-end-effector', 'pal-pro-gripper', 'allegro-hand', 'custom']}">
     <xacro:wrong_end_effector/>
@@ -148,6 +159,24 @@
 
   <!-- End effector -->
   <xacro:pal_sea_arm_end_effector name="gripper" parent="${end_effector_link}" type="${end_effector}" tool_changer="${tool_changer}" reflect="1"/>
+
+   <!-- Mujoco Tags -->
+  <xacro:include filename="$(find pal_sea_arm_description)/mujoco/mj_tags.xacro" />
+  <xacro:if value="$(arg mujoco)">
+    <mujoco> 
+      <xacro:mj_common/>
+      <xacro:if value="$(arg mj_simulate)">
+        <actuator>
+          <xacro:if value="$(arg mj_motor)">
+            <xacro:arm_mj_motor_actuators/>
+          </xacro:if>
+          <xacro:if value="$(arg mj_position)">
+            <xacro:arm_mj_position_actuators/>
+          </xacro:if>
+        </actuator>
+      </xacro:if>
+    </mujoco>  
+  </xacro:if>
 
   <!-- ROS2 control -->
   <xacro:pal_sea_arm_ros2_control use_sim_time="$(arg use_sim_time)" torque_estimation="${torque_estimation}"/>

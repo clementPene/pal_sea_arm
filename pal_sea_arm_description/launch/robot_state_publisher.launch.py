@@ -46,6 +46,24 @@ class LaunchArguments(LaunchArgumentsBase):
     use_sim_time: DeclareLaunchArgument = CommonArgs.use_sim_time
     namespace: DeclareLaunchArgument = CommonArgs.namespace
 
+    mujoco_tags_arg = DeclareLaunchArgument(
+        "mujoco", default_value="False", description="Mujoco tags"
+    )
+
+    mujoco_motor_arg= DeclareLaunchArgument(
+        "mj_motor",default_value="false", description="Mujoco motor tag")
+    
+
+    mujoco_position_arg= DeclareLaunchArgument(
+        "mj_position",default_value="false", description="Mujoco position tag")
+    
+    mujoco_simulate_arg= DeclareLaunchArgument(
+        "mj_simulate",default_value="false", description="Mujoco simulation tool tag")
+    
+
+    mujoco_control_arg= DeclareLaunchArgument(
+        "mj_control",default_value="false", description="Mujoco ROS2 Control tag")
+
 
 def declare_actions(launch_description: LaunchDescription, launch_args: LaunchArguments):
 
@@ -77,6 +95,11 @@ def create_robot_description_param(context, *args, **kwargs):
         'tool_changer': read_launch_argument('tool_changer', context),
         'use_sim_time': read_launch_argument('use_sim_time', context),
         'namespace': read_launch_argument('namespace', context),
+        'mujoco': read_launch_argument('mujoco', context),
+        'mj_motor': read_launch_argument('mj_motor', context),
+        'mj_position': read_launch_argument('mj_position', context),
+        'mj_simulate': read_launch_argument('mj_simulate', context),
+        'mj_control': read_launch_argument('mj_control', context),
     }
     robot_description = load_xacro(xacro_file_path, xacro_input_args)
 
