@@ -64,6 +64,44 @@
     <xacro:include filename="$(find pal_sea_arm_description)/urdf/arm/arm_properties/${arm_type}/${wrist_model}.properties.xacro"/>
 
     <!-- ARM DEFINITION -->
+    <!-- BASE LINK -->
+    <link name="${name}_root_link">
+      <inertial>
+        <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+        <mass value="0.28971" />
+        <inertia ixx="0.00022379" ixy="1.5836E-20" ixz="5.2063E-21" iyy="0.00022379" iyz="-5.1333E-21" izz="0.00019673" />
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://pal_sea_arm_description/meshes/arm_tiago_pro/arm_base_link.stl" />
+        </geometry>
+        <material name="pal/DarkGrey"/>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://pal_sea_arm_description/meshes/arm_tiago_pro/arm_base_link.stl" />
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="${name}_root_joint" type="fixed">
+        <xacro:insert_block name="origin"/>
+        <parent link="${parent}" />
+        <child link="${name}_root_link" />
+        <axis xyz="0 0 1" />
+        <limit lower="${arm_1_joint_lb * deg_to_rad}" upper="${arm_1_joint_ub * deg_to_rad}" effort="${arm_1_max_effort}" velocity="${arm_1_max_velocity}" />
+        <dynamics friction="${arm_friction}" damping="${arm_damping}"/>
+        <safety_controller k_position="${arm_k_position}" k_velocity="${arm_k_velocity}" soft_lower_limit="${arm_1_joint_lb * deg_to_rad  + arm_eps}" soft_upper_limit="${arm_1_joint_ub * deg_to_rad  - arm_eps}" />
+      </joint>
+
+    <gazebo reference="arm_root_link">
+      <material>Gazebo/DarkGrey</material>
+      <mu1>0.9</mu1>
+      <mu2>0.9</mu2>
+    </gazebo>
+
 
     <!-- ARM 1 LINK -->
     <link name="${name}_1_link">
@@ -85,8 +123,8 @@
 
     <!-- ARM 1 JOINT -->
     <joint name="${name}_1_joint" type="revolute">
-      <xacro:insert_block name="origin"/>
-      <parent link="${parent}" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <parent link="${name}_root_link" />
       <child link="${name}_1_link" />
       <axis xyz="0 0 1" />
       <limit lower="${arm_1_joint_lb * deg_to_rad}" upper="${arm_1_joint_ub * deg_to_rad}" effort="${arm_1_max_effort}" velocity="${arm_1_max_velocity}" />

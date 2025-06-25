@@ -112,42 +112,8 @@
 
   <link name="world"/>
 
-  <joint name="world_fixed" type="fixed">
-    <origin xyz="0 0 0" rpy="0 0 0"/>
-    <parent link="world"/>
-    <child link="arm_root_link"/>
-  </joint>
-
-  <!-- BASE LINK -->
-  <link name="arm_root_link">
-    <inertial>
-      <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
-      <mass value="0.28971" />
-      <inertia ixx="0.00022379" ixy="1.5836E-20" ixz="5.2063E-21" iyy="0.00022379" iyz="-5.1333E-21" izz="0.00019673" />
-    </inertial>
-    <visual>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="package://pal_sea_arm_description/meshes/arm_tiago_pro/base_link.stl" />
-      </geometry>
-      <material name="pal/DarkGrey"/>
-    </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="package://pal_sea_arm_description/meshes/arm_tiago_pro/base_link.stl" />
-      </geometry>
-    </collision>
-  </link>
-
-  <gazebo reference="arm_root_link">
-    <material>Gazebo/DarkGrey</material>
-    <mu1>0.9</mu1>
-    <mu2>0.9</mu2>
-  </gazebo>
-
   <!-- ARM -->
-  <xacro:pal_sea_arm name="arm" parent="arm_root_link" arm_type="${arm_type}" tool_changer="${tool_changer}" wrist_model="${wrist_model}" reflect="1" arm_1_offset="0" arm_2_offset="0" arm_3_offset="0" arm_4_offset="0" arm_5_offset="0" arm_6_offset="0" arm_7_offset="0">
+  <xacro:pal_sea_arm name="arm" parent="world" arm_type="${arm_type}" tool_changer="${tool_changer}" wrist_model="${wrist_model}" reflect="1" arm_1_offset="0" arm_2_offset="0" arm_3_offset="0" arm_4_offset="0" arm_5_offset="0" arm_6_offset="0" arm_7_offset="0">
     <origin xyz="0 0 0" rpy="0 0 3.1416" />
   </xacro:pal_sea_arm>
 
@@ -168,10 +134,10 @@
       <xacro:if value="$(arg mj_simulate)">
         <actuator>
           <xacro:if value="$(arg mj_motor)">
-            <xacro:arm_mj_motor_actuators/>
+            <xacro:single_arm_mj_motor_actuators/>
           </xacro:if>
           <xacro:if value="$(arg mj_position)">
-            <xacro:arm_mj_position_actuators/>
+            <xacro:single_arm_mj_position_actuators/>
           </xacro:if>
         </actuator>
       </xacro:if>
