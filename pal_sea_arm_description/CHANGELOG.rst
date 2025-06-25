@@ -385,7 +385,7 @@ Changelog for package pal_sea_arm_description
 * Add dependency
 * Address comments + fix colors
 * Extract inertial and joints parameters to fusion both urdf
-* Remove base_link from arm urdf
+* Remove arm_base_link from arm urdf
 * Change parameter and naming
 * Change tiago_pro_arm ro pal_sea_arm and combine both urdf
 * Contributors: Jordan Palacios, thomaspeyrucain
