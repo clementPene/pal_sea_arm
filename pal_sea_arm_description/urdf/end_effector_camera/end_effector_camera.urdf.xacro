@@ -15,12 +15,13 @@
 
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
   <!--
-    Utiliy to create a tiago end effector (right or left).
+    Utiliy to create a tiago end effector camera (right or left).
 
     Parameters:
     - name: End effector name. The created links and joints are prepended with 'name_'
     - parent: Parent link
-    - reflect: Set to 1 for a right end effector, or to -1 for a left end effector
+    - type: Type of camera to be used. Options are 'realsense-d405' or 'realsense-d435'
+    - camera_position: Position of the camera. Options are 'up' or 'down'.
   -->
   <xacro:macro name="pal_sea_arm_end_effector_camera" params="name parent type camera_position">
 
@@ -52,17 +53,6 @@
           </geometry>
         </collision>
       </link>
-      <joint name="${name}_camera_joint" type="fixed">
-        <xacro:if value="${camera_position == 'up'}">
-          <origin xyz="0.0406 0 -0.003" rpy="3.1416 -1.5708 0" />
-        </xacro:if>
-        <xacro:if value="${camera_position == 'down'}">
-          <origin xyz="-0.0406 0 -0.003" rpy="0 -1.5708 0" />
-        </xacro:if>
-        <parent link="${parent}" />
-        <child link="${name}_camera_link" />
-        <axis xyz="0 0 0" />
-      </joint>    
     </xacro:if>
 
     <xacro:if value="${type == 'realsense-d435'}">
@@ -92,9 +82,11 @@
           </geometry>
         </collision>
       </link>
-      <joint name="${name}_camera_joint" type="fixed">
+    </xacro:if>
+
+          <joint name="${name}_camera_joint" type="fixed">
         <xacro:if value="${camera_position == 'up'}">
-          <origin xyz="0.0406 0 -0.03" rpy="3.1416 -1.5708 0" />
+          <origin xyz="0.0406 0 -0.003" rpy="3.1416 -1.5708 0" />
         </xacro:if>
         <xacro:if value="${camera_position == 'down'}">
           <origin xyz="-0.0406 0 -0.003" rpy="0 -1.5708 0" />
@@ -102,8 +94,7 @@
         <parent link="${parent}" />
         <child link="${name}_camera_link" />
         <axis xyz="0 0 0" />
-      </joint> 
-    </xacro:if>
+      </joint>    
 
 
   </xacro:macro>
