@@ -24,7 +24,7 @@
             <command_interface name="position" />
           </xacro:if>
           <xacro:unless value="$(arg mj_simulate)">
-            <param name="position_kp">1000</param>
+            <param name="position_kp">700</param>
             <param name="position_ki">0</param>
             <param name="position_kd">1</param>
             <param name="position_i_max">0</param>
