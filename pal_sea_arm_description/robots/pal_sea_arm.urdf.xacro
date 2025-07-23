@@ -114,7 +114,7 @@
 
   <!-- ARM -->
   <xacro:pal_sea_arm name="arm" parent="world" arm_type="${arm_type}" tool_changer="${tool_changer}" wrist_model="${wrist_model}" reflect="1" arm_1_offset="0" arm_2_offset="0" arm_3_offset="0" arm_4_offset="0" arm_5_offset="0" arm_6_offset="0" arm_7_offset="0">
-    <origin xyz="0 0 0" rpy="0 0 3.1416" />
+    <origin xyz="0 0 0" rpy="0 0 0" />
   </xacro:pal_sea_arm>
 
   <!-- Force Torque sensor-->
