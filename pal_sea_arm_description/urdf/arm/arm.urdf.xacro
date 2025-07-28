@@ -24,11 +24,17 @@
 
     <xacro:property name="arm_eps" value="${0.00 if no_safety_eps else 0.07}"/>
     <xacro:property name="mesh_folder"/>
+    <xacro:property name="inertia_version"/>
 
     <!-- Tiago Pro -->
     <xacro:if value="${arm_type in ['tiago-pro', 'tiago-pro-s']}">
       <xacro:property name="mesh_folder" value="arm_tiago_pro"/>
-      <xacro:property name="inertia_version" value="${arm_type}"/>
+      <xacro:if value="${arm_type == 'tiago-pro'}">
+        <xacro:property name="inertia_version" value="tiago-pro"/>
+      </xacro:if>
+      <xacro:if value="${arm_type == 'tiago-pro-s'}">
+        <xacro:property name="inertia_version" value="tiago-pro-s"/>
+      </xacro:if>
       <xacro:property name="arm_type" value="tiago-pro"/>
     </xacro:if>
 
