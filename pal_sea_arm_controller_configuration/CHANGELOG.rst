@@ -15,8 +15,8 @@ Changelog for package pal_sea_arm_controller_configuration
 * Restructure launch files
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
-Forthcoming
------------
+1.18.5 (2025-07-28)
+-------------------
 * Remove trajectory constraint
 * Contributors: Aina Irisarri
 
