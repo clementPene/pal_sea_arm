@@ -23,6 +23,9 @@ Changelog for package pal_sea_arm_description
 * Add arm model check in urdf
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
+Forthcoming
+-----------
+
 1.18.4 (2025-07-28)
 -------------------
 * Merge branch 'tpe/fix_tiago_pro_s' into 'humble-devel'
