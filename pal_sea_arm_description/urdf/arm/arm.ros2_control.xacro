@@ -16,29 +16,22 @@
  -->
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
   <xacro:macro name="ros2_control_arm" params="name reduction offset_value use_sea_transmission:=false">
-    
-    <xacro:if value="$(arg mujoco)">
+  
+    <xacro:if value="${mujoco}">
        <joint name="${name}_joint">
-        <xacro:if value="$(arg mj_position)">
-          <xacro:if value="$(arg mj_simulate)">
-            <command_interface name="position" />
-          </xacro:if>
-          <xacro:unless value="$(arg mj_simulate)">
+        <xacro:unless value="${mj_simulate}">
             <param name="position_kp">700</param>
-            <param name="position_ki">0</param>
-            <param name="position_kd">1</param>
+            <param name="position_ki">1</param>
+            <param name="position_kd">10</param>
             <param name="position_i_max">0</param>
             <command_interface name="position_pid" />
-          </xacro:unless>
-        </xacro:if>
-        <xacro:unless value="$(arg mj_position)">
-          <command_interface name="effort" />
-          <command_interface name="velocity" />
+            <!-- <command_interface name="effort" />
+            <command_interface name="velocity" /> -->
         </xacro:unless>
         <state_interface name="position" />
         <state_interface name="velocity" />
         <state_interface name="effort" />
-       </joint>
+      </joint>
     </xacro:if>
 
     <xacro:unless value="$(arg mujoco)">

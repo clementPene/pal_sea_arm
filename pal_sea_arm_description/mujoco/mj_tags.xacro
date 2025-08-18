@@ -1,7 +1,8 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="pal_sea_arm">
-    <!--  -->
-    <xacro:macro name="mj_common">
+    
+    <!-- Mujoco environment for arm mujoco simulation-->
+    <xacro:macro name="mj_arm_common">
       <compiler strippath="false" discardvisual="false" balanceinertia="true" angle="radian" />
         <option integrator="implicitfast" />
         
@@ -21,61 +22,31 @@
         </worldbody>
     </xacro:macro>
 
-    <xacro:macro name="single_arm_mj_motor_actuators">
-      <motor group="0" name="arm_1_joint_torque" joint="arm_1_joint" ctrlrange="-46 46" />
-      <motor group="0" name="arm_2_joint_torque" joint="arm_2_joint" ctrlrange="-46 46" />
-      <motor group="0" name="arm_3_joint_torque" joint="arm_3_joint" ctrlrange="-46 46" />
-      <motor group="0" name="arm_4_joint_torque" joint="arm_4_joint" ctrlrange="-46 46" />
-      <motor group="0" name="arm_5_joint_torque" joint="arm_5_joint" ctrlrange="-46 46" />
-      <motor group="0" name="arm_6_joint_torque" joint="arm_6_joint" ctrlrange="-46 46" />
-      <motor group="0" name="arm_7_joint_torque" joint="arm_7_joint" ctrlrange="-46 46" />
+    <!-- Actuators -->
+    <xacro:macro name="mj_arm_actuators" params="side joint_reflect:=1">
 
-    </xacro:macro>
+      <xacro:include filename="$(find pal_sea_arm_description)/urdf/arm/arm_limits/${arm_type}/arm.limits.xacro"/>
+      <xacro:include filename="$(find pal_sea_arm_description)/urdf/arm/arm_limits/${arm_type}/${wrist_model}.limits.xacro"/>
+      <xacro:include filename="$(find pal_sea_arm_description)/urdf/arm/arm_properties/${arm_type}/arm.properties.xacro"/>
+      <xacro:include filename="$(find pal_sea_arm_description)/urdf/arm/arm_properties/${arm_type}/${wrist_model}.properties.xacro"/>
 
-    <xacro:macro name="single_arm_mj_position_actuators">
-      <position group="2" name="arm_1_joint_position" joint="arm_1_joint" ctrlrange="-4.71239 0.523599"  kp="1000"/>
-      <position group="2" name="arm_2_joint_position" joint="arm_2_joint" ctrlrange="-2.44346 1.13446"   kp="1000" />
-      <position group="2" name="arm_3_joint_position" joint="arm_3_joint" ctrlrange="-2.61799 2.61799"   kp="1000" />
-      <position group="2" name="arm_4_joint_position" joint="arm_4_joint" ctrlrange="-2.44346 1.13446"   kp="500" />
-      <position group="2" name="arm_5_joint_position" joint="arm_5_joint" ctrlrange="-2.61799 2.61799"   kp="1000" />
-      <position group="2" name="arm_6_joint_position" joint="arm_6_joint" ctrlrange="-2.00713 2.00713"   kp="1000"/>
-      <position group="2" name="arm_7_joint_position" joint="arm_7_joint" ctrlrange="-2.61799 2.61799"   kp="500"/>
+      <xacro:if value="${mj_controller == 'motor'}">
+        <motor name="${side}_1_joint_torque" joint="${side}_1_joint" ctrlrange="-46 46" />
+        <motor name="${side}_2_joint_torque" joint="${side}_2_joint" ctrlrange="-46 46" />
+        <motor name="${side}_3_joint_torque" joint="${side}_3_joint" ctrlrange="-46 46" />
+        <motor name="${side}_4_joint_torque" joint="${side}_4_joint" ctrlrange="-46 46" />
+        <motor name="${side}_5_joint_torque" joint="${side}_5_joint" ctrlrange="-46 46" />
+        <motor name="${side}_6_joint_torque" joint="${side}_6_joint" ctrlrange="-46 46" />
+        <motor name="${side}_7_joint_torque" joint="${side}_7_joint" ctrlrange="-46 46" />
+      </xacro:if>
+      <xacro:if value="${mj_controller == 'position'}">
+        <position name="${side}_1_joint_position" joint="${side}_1_joint" ctrlrange="${arm_1_joint_lb * deg_to_rad} ${arm_1_joint_ub * deg_to_rad}" kp="1000" kv="50"/>
+        <position name="${side}_2_joint_position" joint="${side}_2_joint" ctrlrange="${arm_2_joint_lb * deg_to_rad} ${arm_2_joint_ub * deg_to_rad}" kp="1000" kv="60"/>
+        <position name="${side}_3_joint_position" joint="${side}_3_joint" ctrlrange="${arm_3_joint_lb * deg_to_rad} ${arm_3_joint_ub * deg_to_rad}" kp="1000" kv="50"/>
+        <position name="${side}_4_joint_position" joint="${side}_4_joint" ctrlrange="${arm_4_joint_lb * deg_to_rad} ${arm_4_joint_ub * deg_to_rad}" kp="500" kv="20"/>
+        <position name="${side}_5_joint_position" joint="${side}_5_joint" ctrlrange="${arm_5_joint_lb * deg_to_rad} ${arm_5_joint_ub * deg_to_rad}" kp="1000" kv="20"/>
+        <position name="${side}_6_joint_position" joint="${side}_6_joint" ctrlrange="${arm_6_joint_lb * deg_to_rad} ${arm_6_joint_ub * deg_to_rad}" kp="1000" kv="20"/>
+        <position name="${side}_7_joint_position" joint="${side}_7_joint" ctrlrange="${arm_7_joint_lb * deg_to_rad} ${arm_7_joint_ub * deg_to_rad}" kp="500" kv="20"/>
+      </xacro:if>
     </xacro:macro>
-
-    <xacro:macro name="both_arms_mj_motor_actuators">
-      <motor group="0" name="arm_left_1_joint_torque" joint="arm_left_1_joint" ctrlrange="-46 46" />
-      <motor group="0" name="arm_left_2_joint_torque" joint="arm_left_2_joint" ctrlrange="-46 46" />
-      <motor group="0" name="arm_left_3_joint_torque" joint="arm_left_3_joint" ctrlrange="-46 46" />
-      <motor group="0" name="arm_left_4_joint_torque" joint="arm_left_4_joint" ctrlrange="-46 46" />
-      <motor group="0" name="arm_left_5_joint_torque" joint="arm_left_5_joint" ctrlrange="-46 46" />
-      <motor group="0" name="arm_left_6_joint_torque" joint="arm_left_6_joint" ctrlrange="-46 46" />
-      <motor group="0" name="arm_left_7_joint_torque" joint="arm_left_7_joint" ctrlrange="-46 46" />
-      
-      <motor group="0" name="arm_right_1_joint_torque" joint="arm_right_1_joint" ctrlrange="-46 46" />
-      <motor group="0" name="arm_right_2_joint_torque" joint="arm_right_2_joint" ctrlrange="-46 46" />
-      <motor group="0" name="arm_right_3_joint_torque" joint="arm_right_3_joint" ctrlrange="-46 46" />
-      <motor group="0" name="arm_right_4_joint_torque" joint="arm_right_4_joint" ctrlrange="-46 46" />
-      <motor group="0" name="arm_right_5_joint_torque" joint="arm_right_5_joint" ctrlrange="-46 46" />
-      <motor group="0" name="arm_right_6_joint_torque" joint="arm_right_6_joint" ctrlrange="-46 46" />
-      <motor group="0" name="arm_right_7_joint_torque" joint="arm_right_7_joint" ctrlrange="-46 46" />
-    </xacro:macro>
-
-     <xacro:macro name="both_arms_mj_position_actuators">
-      <position group="2" name="arm_left_1_joint_position" joint="arm_left_1_joint" ctrlrange="-0.523599 4.71239" kp="1000" kv="50"/>
-      <position group="2" name="arm_left_2_joint_position" joint="arm_left_2_joint" ctrlrange="-2.44346 1.13446" kp="1000" kv="60"/>
-      <position group="2" name="arm_left_3_joint_position" joint="arm_left_3_joint" ctrlrange="-2.61799 2.61799" kp="1000" kv="50"/>
-      <position group="2" name="arm_left_4_joint_position" joint="arm_left_4_joint" ctrlrange="-2.44346 1.13446" kp="500" kv="20"/>
-      <position group="2" name="arm_left_5_joint_position" joint="arm_left_5_joint" ctrlrange="-2.61799 2.61799" kp="1000" kv="20"/>
-      <position group="2" name="arm_left_6_joint_position" joint="arm_left_6_joint" ctrlrange="-2.00713 2.00713" kp="1000" kv="20"/>
-      <position group="2" name="arm_left_7_joint_position" joint="arm_left_7_joint" ctrlrange="-2.61799 2.61799" kp="500" kv="20"/>
-      
-      <position group="2" name="arm_right_1_joint_position" joint="arm_right_1_joint" ctrlrange="-4.71239 0.523599"  kp="1000" kv="50"/>
-      <position group="2" name="arm_right_2_joint_position" joint="arm_right_2_joint" ctrlrange="-2.44346 1.13446"   kp="1000" kv="60"/>
-      <position group="2" name="arm_right_3_joint_position" joint="arm_right_3_joint" ctrlrange="-2.61799 2.61799"   kp="1000" kv="50"/>
-      <position group="2" name="arm_right_4_joint_position" joint="arm_right_4_joint" ctrlrange="-2.44346 1.13446"  kp="500" kv="20"/>
-      <position group="2" name="arm_right_5_joint_position" joint="arm_right_5_joint" ctrlrange="-2.61799 2.61799"   kp="1000" kv="20"/>
-      <position group="2" name="arm_right_6_joint_position" joint="arm_right_6_joint" ctrlrange="-2.00713 2.00713"   kp="1000" kv="20"/>
-      <position group="2" name="arm_right_7_joint_position" joint="arm_right_7_joint" ctrlrange="-2.61799 2.61799"   kp="500" kv="20"/>
-    </xacro:macro>
-    
 </robot>
