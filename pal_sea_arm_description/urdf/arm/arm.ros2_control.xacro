@@ -34,7 +34,7 @@
       </joint>
     </xacro:if>
 
-    <xacro:unless value="$(arg mujoco)">
+    <xacro:unless value="${mujoco}">
       <joint name="${name}_joint">
         <command_interface name="position" />
         <command_interface name="velocity" />
