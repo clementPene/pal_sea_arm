@@ -139,7 +139,7 @@
       <xacro:if value="${mj_simulate}">
         <actuator>
           <!-- Arm -->
-          <xacro:mj_arm_actuators side="arm" joint_reflect="1"/>
+          <xacro:mj_arm_actuators side="arm" arm_type="${arm_type}" wrist_model="${wrist_model}" joint_reflect="1"/>
           <xacro:if value="${has_end_effector}">
             <!-- End-effector -->
             <xacro:mj_gripper_actuators side="gripper" reflect="1"/>

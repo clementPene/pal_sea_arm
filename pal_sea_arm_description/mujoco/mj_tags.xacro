@@ -23,7 +23,7 @@
     </xacro:macro>
 
     <!-- Actuators -->
-    <xacro:macro name="mj_arm_actuators" params="side joint_reflect:=1">
+    <xacro:macro name="mj_arm_actuators" params="side arm_type wrist_model joint_reflect">
 
       <xacro:include filename="$(find pal_sea_arm_description)/urdf/arm/arm_limits/${arm_type}/arm.limits.xacro"/>
       <xacro:include filename="$(find pal_sea_arm_description)/urdf/arm/arm_limits/${arm_type}/${wrist_model}.limits.xacro"/>
