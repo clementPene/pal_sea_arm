@@ -1,27 +1,6 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="pal_sea_arm">
-    
-    <!-- Mujoco environment for arm mujoco simulation-->
-    <xacro:macro name="mj_arm_common">
-      <compiler strippath="false" discardvisual="false" balanceinertia="true" angle="radian" />
-        <option integrator="implicitfast" />
-        
-        <asset>
-            <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512"
-                height="3072" />
-            <texture type="2d" name="groundplane" builtin="checker" mark="edge" rgb1="0.2 0.3 0.4"
-                rgb2="0.1 0.2 0.3"
-                markrgb="0.8 0.8 0.8" width="300" height="300" />
-            <material name="groundplane" texture="groundplane" texuniform="true" texrepeat="5 5"
-                reflectance="0.2" />
-        </asset>
-
-        <worldbody>
-            <light name="spotlight" mode="targetbody" target="arm_1_link" pos="1 0 10" />
-            <geom name="floor" size="0 0 0.05" type="plane" material="groundplane" group="1" contype="1" conaffinity="1" friction="0.001 0.0 0.0"/>
-        </worldbody>
-    </xacro:macro>
-
+  
     <!-- Actuators -->
     <xacro:macro name="mj_arm_actuators" params="side arm_type wrist_model joint_reflect">
 
@@ -30,7 +9,7 @@
       <xacro:include filename="$(find pal_sea_arm_description)/urdf/arm/arm_properties/${arm_type}/arm.properties.xacro"/>
       <xacro:include filename="$(find pal_sea_arm_description)/urdf/arm/arm_properties/${arm_type}/${wrist_model}.properties.xacro"/>
 
-      <xacro:if value="${mj_controller == 'motor'}">
+      <xacro:if value="${mj_control == 'motor'}">
         <motor name="${side}_1_joint_torque" joint="${side}_1_joint" ctrlrange="-46 46" />
         <motor name="${side}_2_joint_torque" joint="${side}_2_joint" ctrlrange="-46 46" />
         <motor name="${side}_3_joint_torque" joint="${side}_3_joint" ctrlrange="-46 46" />
@@ -39,7 +18,7 @@
         <motor name="${side}_6_joint_torque" joint="${side}_6_joint" ctrlrange="-46 46" />
         <motor name="${side}_7_joint_torque" joint="${side}_7_joint" ctrlrange="-46 46" />
       </xacro:if>
-      <xacro:if value="${mj_controller == 'position'}">
+      <xacro:if value="${mj_control == 'position'}">
         <position name="${side}_1_joint_position" joint="${side}_1_joint" ctrlrange="${arm_1_joint_lb * deg_to_rad} ${arm_1_joint_ub * deg_to_rad}" kp="1000" kv="50"/>
         <position name="${side}_2_joint_position" joint="${side}_2_joint" ctrlrange="${arm_2_joint_lb * deg_to_rad} ${arm_2_joint_ub * deg_to_rad}" kp="1000" kv="60"/>
         <position name="${side}_3_joint_position" joint="${side}_3_joint" ctrlrange="${arm_3_joint_lb * deg_to_rad} ${arm_3_joint_ub * deg_to_rad}" kp="1000" kv="50"/>
