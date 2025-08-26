@@ -16,44 +16,36 @@
  -->
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
   <xacro:macro name="ros2_control_arm" params="name reduction offset_value use_sea_transmission:=false">
-  
-    <xacro:if value="${mujoco}">
-       <joint name="${name}_joint">
-        <xacro:unless value="${mj_simulate}">
-            <param name="position_kp">700</param>
-            <param name="position_ki">1</param>
-            <param name="position_kd">10</param>
-            <param name="position_i_max">0</param>
-            <command_interface name="position_pid" />
-            <!-- <command_interface name="effort" />
-            <command_interface name="velocity" /> -->
-        </xacro:unless>
-        <state_interface name="position" />
-        <state_interface name="velocity" />
-        <state_interface name="effort" />
-      </joint>
-    </xacro:if>
-
-    <xacro:unless value="${mujoco}">
-      <joint name="${name}_joint">
+    <joint name="${name}_joint">
+      <xacro:if value="${sim_type == 'mujoco-ros2-control'}">
+        <param name="position_kp">700</param>
+        <param name="position_ki">1</param>
+        <param name="position_kd">10</param>
+        <param name="position_i_max">0</param>
+        <command_interface name="position_pid" />
+      </xacro:if>
+      <xacro:if value="${sim_type == 'gazebo'}">
         <command_interface name="position" />
-        <command_interface name="velocity" />
-        <command_interface name="effort" />
+      </xacro:if>
+      
+      <command_interface name="velocity" />
+      <command_interface name="effort" />
 
-        <state_interface name="position" />
-        <state_interface name="velocity" />
-        <state_interface name="effort" />
+      <state_interface name="position" />
+      <state_interface name="velocity" />
+      <state_interface name="effort" />
 
-        <!-- SEA specific joint interfaces -->
-        <xacro:if value="${use_sea_transmission}">
-          <state_interface name="torque"/>
-          <state_interface name="absolute_position"/>
-        </xacro:if>
+      <!-- SEA specific joint interfaces -->
+      <xacro:if value="${use_sea_transmission and sim_type == 'gazebo'}">
+        <state_interface name="torque"/>
+        <state_interface name="absolute_position"/>
+      </xacro:if>
 
-      </joint>
+    </joint>
 
-      <xacro:include filename="$(find pal_sea_arm_description)/ros2_control/transmissions.urdf.xacro" />
+    <xacro:include filename="$(find pal_sea_arm_description)/ros2_control/transmissions.urdf.xacro" />
 
+    <xacro:if value="${sim_type == 'gazebo'}">
       <xacro:if value="${use_sea_transmission}">
         <!-- Reduction needed for the torque estimation -->
         <xacro:sea_transmission name="${name}" reduction="${reduction}" offset_value="${offset_value}" />
@@ -62,9 +54,6 @@
         <!-- Reduction already applied in the RT layer, harcoded here to 1.0 -->
         <xacro:simple_transmission name="${name}" reduction="1.0" offset_value="${offset_value}" />
       </xacro:unless>
-    </xacro:unless>
-    
-
-
+    </xacro:if>
   </xacro:macro>
 </robot>
