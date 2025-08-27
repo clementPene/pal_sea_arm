@@ -44,7 +44,7 @@
   <!-- Mujoco args -->
   <xacro:arg name="sim_type" default="gazebo" />
   <xacro:arg name="mj_control" default="false" />
-  <xacro:arg name="mj_world_name" default="floor" />
+  <xacro:arg name="world_name" default="floor" />
 
   <!-- PROPERTIES -->
   <xacro:property name="end_effector" value="$(arg end_effector)" />
@@ -57,7 +57,7 @@
 
   <xacro:property name="sim_type" value="$(arg sim_type)" /> 
   <xacro:property name="mj_control" value="$(arg mj_control)"/>
-  <xacro:property name="mj_world_name" value="$(arg mj_world_name)"/>
+  <xacro:property name="world_name" value="$(arg world_name)"/>
 
   <xacro:if value="${end_effector not in ['no-end-effector', 'pal-pro-gripper', 'allegro-hand', 'custom']}">
     <xacro:wrong_end_effector/>
@@ -131,7 +131,7 @@
       <!-- Mujoco Includes -->
       <xacro:include filename="$(find pal_sea_arm_description)/mujoco/mj_tags.xacro" />
       <xacro:include filename="$(find pal_pro_gripper_description)/mujoco/mj_tags.xacro" />
-      <xacro:include filename="$(find pal_mujoco_scenes)/scenes/${mj_world_name}.xacro" />
+      <xacro:include filename="$(find pal_mujoco_scenes)/scenes/${world_name}.xacro" />
 
        <!-- Mujoco environment -->
       <xacro:mj_common light_target="arm_1_link"/>
@@ -140,7 +140,7 @@
       <xacro:if value="${sim_type == 'mujoco'}">
         <actuator>
           <!-- Arm -->
-          <xacro:mj_arm_actuators side="arm" arm_type="${arm_type}" wrist_model="${wrist_model}" joint_reflect="1"/>
+          <xacro:mj_arm_actuators name="arm" arm_type="${arm_type}" wrist_model="${wrist_model}" joint_reflect="1"/>
           <xacro:if value="${has_end_effector}">
             <!-- End-effector -->
             <xacro:mj_gripper_actuators name="gripper"/>
@@ -152,12 +152,12 @@
       <xacro:if value="${has_end_effector}">
           <!-- Equality-->
         <equality>
-          <xacro:mj_gripper_equality side="gripper" anchor_r="0.014 -0.0015 0" anchor_l="0.014 -0.001 0"/>
+          <xacro:mj_gripper_equality name="gripper" anchor_r="0.014 -0.0015 0" anchor_l="0.014 -0.001 0"/>
         </equality>
         
         <!-- Contact-->
         <contact>
-          <xacro:mj_gripper_contact side="gripper"/>
+          <xacro:mj_gripper_contact name="gripper"/>
         </contact>
       </xacro:if>
     </mujoco>  
