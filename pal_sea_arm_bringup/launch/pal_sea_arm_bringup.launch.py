@@ -40,7 +40,7 @@ class LaunchArguments(LaunchArgumentsBase):
 
     sim_type: DeclareLaunchArgument = CommonArgs.sim_type
     mj_control: DeclareLaunchArgument = CommonArgs.mj_control
-    mj_world_name: DeclareLaunchArgument = CommonArgs.mj_world_name
+    world_name: DeclareLaunchArgument = CommonArgs.world_name
 
 
 def declare_actions(launch_description: LaunchDescription, launch_args: LaunchArguments):
@@ -69,7 +69,7 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
                           "use_sim_time": launch_args.use_sim_time,
                           "sim_type": launch_args.sim_type,
                           "mj_control": launch_args.mj_control,
-                          "mj_world_name": launch_args.mj_world_name,
+                          "world_name": launch_args.world_name,
                           })
 
     launch_description.add_action(robot_state_publisher)
