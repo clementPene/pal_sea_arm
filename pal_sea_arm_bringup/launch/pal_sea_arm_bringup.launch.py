@@ -33,8 +33,8 @@ class LaunchArguments(LaunchArgumentsBase):
     use_sim_time: DeclareLaunchArgument = CommonArgs.use_sim_time
     namespace: DeclareLaunchArgument = CommonArgs.namespace
 
-    arm_type: DeclareLaunchArgument = DeclareLaunchArgument(
-        'arm_type', default_value='pal-sea-arm-standalone',
+    arm_model: DeclareLaunchArgument = DeclareLaunchArgument(
+        'arm_model', default_value='pal-sea-arm-standalone',
         choices=['pal-sea-arm-standalone', 'tiago-pro', 'tiago-sea', 'tiago-sea-dual'],
         description='The arm model')
 
@@ -62,7 +62,7 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
         paths=['launch', 'robot_state_publisher.launch.py'],
         launch_arguments={"end_effector": launch_args.end_effector,
                           "ft_sensor": launch_args.ft_sensor,
-                          "arm_type": launch_args.arm_type,
+                          "arm_model": launch_args.arm_model,
                           "wrist_model": launch_args.wrist_model,
                           "torque_estimation": launch_args.torque_estimation,
                           "namespace": launch_args.namespace,

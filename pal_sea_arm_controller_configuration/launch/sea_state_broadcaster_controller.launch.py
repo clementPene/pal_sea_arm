@@ -50,7 +50,7 @@ def setup_controller_configuration(context: LaunchContext):
 
     arm_prefix = "arm"
     if side:
-        arm_prefix = f"{side}"
+        arm_prefix = f"arm_{side}"
 
     controller_name = f"{arm_prefix}_sea_state_broadcaster_controller"
     remappings = {"ARM_SIDE_PREFIX": arm_prefix}
