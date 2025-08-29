@@ -24,7 +24,7 @@
         <param name="position_i_max">0</param>
         <command_interface name="position_pid" />
       </xacro:if>
-      <xacro:if value="${sim_type == 'gazebo'}">
+      <xacro:if value="${sim_type != 'mujoco-ros2-control'}">
         <command_interface name="position" />
       </xacro:if>
       
@@ -36,7 +36,7 @@
       <state_interface name="effort" />
 
       <!-- SEA specific joint interfaces -->
-      <xacro:if value="${use_sea_transmission and sim_type == 'gazebo'}">
+      <xacro:if value="${use_sea_transmission and sim_type != 'mujoco-ros2-control'}">
         <state_interface name="torque"/>
         <state_interface name="absolute_position"/>
       </xacro:if>
@@ -45,7 +45,7 @@
 
     <xacro:include filename="$(find pal_sea_arm_description)/ros2_control/transmissions.urdf.xacro" />
 
-    <xacro:if value="${sim_type == 'gazebo'}">
+    <xacro:if value="${sim_type != 'mujoco-ros2-control'}">
       <xacro:if value="${use_sea_transmission}">
         <!-- Reduction needed for the torque estimation -->
         <xacro:sea_transmission name="${name}" reduction="${reduction}" offset_value="${offset_value}" />
