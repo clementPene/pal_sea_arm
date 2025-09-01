@@ -18,10 +18,10 @@
   <xacro:property name="arm_4_joint_lb" value="-140" />
 
   <!-- Velocity limits -->
-  <xacro:property name="arm_1_max_velocity" value="2.50" />
-  <xacro:property name="arm_2_max_velocity" value="2.50" />
-  <xacro:property name="arm_3_max_velocity" value="2.50" />
-  <xacro:property name="arm_4_max_velocity" value="2.50" />
+  <xacro:property name="arm_1_max_velocity" value="1.95" />
+  <xacro:property name="arm_2_max_velocity" value="1.95" />
+  <xacro:property name="arm_3_max_velocity" value="3.95" />
+  <xacro:property name="arm_4_max_velocity" value="3.95" />
 
   <!-- Effort limits -->
   <xacro:property name="arm_1_max_effort" value="43.0" />
