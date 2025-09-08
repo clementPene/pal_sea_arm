@@ -15,6 +15,16 @@ Changelog for package pal_sea_arm_controller_configuration
 * Restructure launch files
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
+Forthcoming
+-----------
+* Fixed arm controller configuration file
+* restored to original version
+* Fixed arm_prefix in sea_state_broadcaster
+* changed mujoco simulation update_rate argument
+* Added mujoco_controller_manager config file
+* Added mujoco tags
+* Contributors: Ortisa Poci
+
 1.18.7 (2025-08-01)
 -------------------
 

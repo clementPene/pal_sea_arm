@@ -23,6 +23,33 @@ Changelog for package pal_sea_arm_description
 * Add arm model check in urdf
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
+Forthcoming
+-----------
+* Add missing sim_type xacro args
+* Fixed arm controller configuration file
+* fixed real time simulation command interface
+* restored to original version
+* change xacro parameter and launch argument name
+* changed mujoco xacro parameter name
+* changed world launch argument name
+* added mujoco command interface
+* Improved mujoco model structure
+* Improved launch arguments
+* Added arm_type and wrist_model argument
+* Imporved argument
+* Improved logic for the mujoco robot description
+* Changed default arm_type
+* reduced number of arguments
+* Changed arm kp value
+* Fixed frame orientation
+* Fixed arm joint names
+* changed kp value
+* changed mesh name
+* changed link definition
+* changed macro name
+* Added mujoco tags
+* Contributors: David ter Kuile, Ortisa Poci
+
 1.18.7 (2025-08-01)
 -------------------
 * Fixing link 5, 6 & 7

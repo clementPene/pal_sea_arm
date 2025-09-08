@@ -11,6 +11,16 @@ Changelog for package pal_sea_arm_bringup
 * Restructure launch files pal-sea-arm-bringup
 * Contributors: David ter Kuile, davidterkuile
 
+Forthcoming
+-----------
+* fixed argument
+* restored to original version
+* changed world launch argument name
+* Improved launch arguments
+* reduced number of arguments
+* Added mujoco tags
+* Contributors: Ortisa Poci
+
 1.18.7 (2025-08-01)
 -------------------
 
