@@ -9,9 +9,9 @@
   <xacro:property name="arm_7_joint_lb" value="-150" />
 
   <!-- Velocity limits -->
-  <xacro:property name="arm_5_max_velocity" value="2.50" />
-  <xacro:property name="arm_6_max_velocity" value="2.50" />
-  <xacro:property name="arm_7_max_velocity" value="2.50" />
+  <xacro:property name="arm_5_max_velocity" value="3.95" />
+  <xacro:property name="arm_6_max_velocity" value="3.95" />
+  <xacro:property name="arm_7_max_velocity" value="3.95" />
 
   <!-- Effort limits -->
   <xacro:property name="arm_5_max_effort" value="26" />
