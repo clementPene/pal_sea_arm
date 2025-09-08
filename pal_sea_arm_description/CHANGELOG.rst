@@ -23,8 +23,8 @@ Changelog for package pal_sea_arm_description
 * Add arm model check in urdf
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
-Forthcoming
------------
+1.19.0 (2025-09-08)
+-------------------
 * Add missing sim_type xacro args
 * Fixed arm controller configuration file
 * fixed real time simulation command interface

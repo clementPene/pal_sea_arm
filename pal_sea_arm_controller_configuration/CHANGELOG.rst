@@ -15,8 +15,8 @@ Changelog for package pal_sea_arm_controller_configuration
 * Restructure launch files
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
-Forthcoming
------------
+1.19.0 (2025-09-08)
+-------------------
 * Fixed arm controller configuration file
 * restored to original version
 * Fixed arm_prefix in sea_state_broadcaster
