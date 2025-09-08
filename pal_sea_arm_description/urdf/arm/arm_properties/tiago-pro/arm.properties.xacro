@@ -1,6 +1,6 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
-    <xacro:macro name="inertial_base_link" params="reflect">
+    <xacro:macro name="inertial_arm_base_link" params="reflect">
         <inertial>
             <origin xyz="-0.00069237 0.00052761 -0.012575" rpy="0 0 0" />
             <mass value="0.76084" />
