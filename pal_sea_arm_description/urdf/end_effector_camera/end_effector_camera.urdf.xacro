@@ -14,8 +14,8 @@
 -->
 
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
-  <!--
-    Utiliy to create a tiago end effector camera (right or left).
+  <!--<xacro:macro name="pal_sea_arm_end_effector_camera" params="name parent type camera_position">
+    Utility to create a tiago end effector camera (right or left).
 
     Parameters:
     - name: End effector name. The created links and joints are prepended with 'name_'
@@ -84,18 +84,17 @@
       </link>
     </xacro:if>
 
-          <joint name="${name}_camera_joint" type="fixed">
-        <xacro:if value="${camera_position == 'up'}">
-          <origin xyz="0.0406 0 -0.003" rpy="3.1416 -1.5708 0" />
-        </xacro:if>
-        <xacro:if value="${camera_position == 'down'}">
-          <origin xyz="-0.0406 0 -0.003" rpy="0 -1.5708 0" />
-        </xacro:if>
-        <parent link="${parent}" />
-        <child link="${name}_camera_link" />
-        <axis xyz="0 0 0" />
-      </joint>    
-
+    <joint name="${name}_camera_joint" type="fixed">
+      <xacro:if value="${camera_position == 'up'}">
+        <origin xyz="0.0406 0 -0.003" rpy="3.1416 -1.5708 0" />
+      </xacro:if>
+      <xacro:if value="${camera_position == 'down'}">
+        <origin xyz="-0.0406 0 -0.003" rpy="0 -1.5708 0" />
+      </xacro:if>
+      <parent link="${parent}" />
+      <child link="${name}_camera_link" />
+      <axis xyz="0 0 0" />
+    </joint>    
 
   </xacro:macro>
 
