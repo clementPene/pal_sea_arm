@@ -119,9 +119,4 @@
     <xacro:macro name="origin_joint_4" params="reflect">
         <origin xyz="0.0199999999999993 -0.0371100000000008 0.15989" rpy="1.57079632679489 0 0" />
     </xacro:macro>
-
-    <xacro:macro name="origin_joint_tool_changer" params="reflect">
-        <origin xyz="0 0 0.017" rpy="0 0 0" />
-    </xacro:macro>
-
 </robot>

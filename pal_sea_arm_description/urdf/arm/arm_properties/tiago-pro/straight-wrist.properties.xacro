@@ -37,4 +37,7 @@
         <origin xyz="0 0.135 0.0354" rpy="-1.5708 0 0" />
     </xacro:macro>
 
+    <xacro:macro name="origin_joint_tool_changer" params="reflect">
+        <origin xyz="0 0 0.017" rpy="0 0 0" />
+    </xacro:macro>
 </robot>

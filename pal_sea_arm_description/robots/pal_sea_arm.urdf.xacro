@@ -68,7 +68,7 @@
   <xacro:if value="${end_effector not in ['no-end-effector', 'pal-pro-gripper', 'allegro-hand', 'custom']}">
     <xacro:wrong_end_effector/>
   </xacro:if>
-  <xacro:if value="${wrist_model not in ['straight-wrist', 'spherical-wrist']}">
+  <xacro:if value="${wrist_model not in ['straight-wrist', 'spherical-wrist', 'short-wrist']}">
     <xacro:wrong_wrist_model/>
   </xacro:if>
   <xacro:if value="${ft_sensor not in ['no-ft-sensor', 'rokubi', 'ati']}">
