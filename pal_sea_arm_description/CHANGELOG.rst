@@ -23,6 +23,25 @@ Changelog for package pal_sea_arm_description
 * Add arm model check in urdf
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
+Forthcoming
+-----------
+* Merge branch 'fix/condition_private_packages' into 'humble-devel'
+  Add PAL_DISTRO condition for non-public packages
+  See merge request robots/pal_sea_arm!94
+* Add PAL_DISTRO condition for non-public packages
+* Merge branch 'feature/add_end_effector_camera' into 'humble-devel'
+  Add the option of realsense d405
+  See merge request robots/pal_sea_arm!80
+* Fixing description end effector camera
+* Unifying joint in macro of cameras
+* Adding realsense 435
+* Add the option of realsense d405
+* Merge branch 'ipe/update-velocity-limits' into 'humble-devel'
+  update velocity limits for S+, S- and XS
+  See merge request robots/pal_sea_arm!92
+* update velocity limits for S+, S- and XS
+* Contributors: Noel Jimenez, ileniaperrella, thomaspeyrucain, vivianamorlando
+
 1.19.0 (2025-09-08)
 -------------------
 * Add missing sim_type xacro args

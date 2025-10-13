@@ -15,6 +15,18 @@ Changelog for package pal_sea_arm_controller_configuration
 * Restructure launch files
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
+Forthcoming
+-----------
+* Merge branch 'fix/condition_private_packages' into 'humble-devel'
+  Add PAL_DISTRO condition for non-public packages
+  See merge request robots/pal_sea_arm!94
+* Add PAL_DISTRO condition for non-public packages
+* Merge branch 'fix/tolerance_fix' into 'humble-devel'
+  tmp fix removing tolerance
+  See merge request robots/pal_sea_arm!81
+* Remove tolerance
+* Contributors: Aina, Noel Jimenez, ileniaperrella
+
 1.19.0 (2025-09-08)
 -------------------
 * Fixed arm controller configuration file
