@@ -17,7 +17,7 @@
 
   <exec_depend>controller_manager</exec_depend>
   <exec_depend>joint_trajectory_controller</exec_depend>
-  <exec_depend>sea_state_broadcaster</exec_depend>
+  <exec_depend condition="$PAL_DISTRO >= alum">sea_state_broadcaster</exec_depend>
   <exec_depend>pal_pro_gripper_controller_configuration</exec_depend>
   <exec_depend>launch</exec_depend>
   <exec_depend>launch_pal</exec_depend>
