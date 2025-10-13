@@ -23,8 +23,8 @@ Changelog for package pal_sea_arm_description
 * Add arm model check in urdf
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
-Forthcoming
------------
+1.19.1 (2025-10-13)
+-------------------
 * Merge branch 'fix/condition_private_packages' into 'humble-devel'
   Add PAL_DISTRO condition for non-public packages
   See merge request robots/pal_sea_arm!94
