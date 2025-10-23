@@ -23,6 +23,13 @@ Changelog for package pal_sea_arm_description
 * Add arm model check in urdf
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
+Forthcoming
+-----------
+* Add the new weight taking into account the cables and screws
+* Remove difference between S+ and S- motors
+* Update license
+* Contributors: Aina, thomaspeyrucain
+
 1.19.1 (2025-10-13)
 -------------------
 * Merge branch 'fix/condition_private_packages' into 'humble-devel'
