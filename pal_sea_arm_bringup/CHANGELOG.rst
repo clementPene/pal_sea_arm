@@ -11,8 +11,8 @@ Changelog for package pal_sea_arm_bringup
 * Restructure launch files pal-sea-arm-bringup
 * Contributors: David ter Kuile, davidterkuile
 
-Forthcoming
------------
+1.20.0 (2025-10-23)
+-------------------
 * Add play_motion2 cli dependency
 * Contributors: Isaac Acevedo
 
