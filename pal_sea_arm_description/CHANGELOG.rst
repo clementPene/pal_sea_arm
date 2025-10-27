@@ -23,6 +23,11 @@ Changelog for package pal_sea_arm_description
 * Add arm model check in urdf
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
+Forthcoming
+-----------
+* Add condition for allegro_hand dependencies
+* Contributors: Noel Jimenez
+
 1.20.0 (2025-10-23)
 -------------------
 * Add the new weight taking into account the cables and screws
