@@ -23,6 +23,11 @@ Changelog for package pal_sea_arm_description
 * Add arm model check in urdf
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
+Forthcoming
+-----------
+* Fix humble tests excluding allegro hand end-effector
+* Contributors: Noel Jimenez
+
 1.20.1 (2025-10-27)
 -------------------
 * Add condition for allegro_hand dependencies
