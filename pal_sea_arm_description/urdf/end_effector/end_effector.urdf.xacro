@@ -22,12 +22,12 @@
     - parent: Parent link
     - reflect: Set to 1 for a right end effector, or to -1 for a left end effector
   -->
-  <xacro:macro name="pal_sea_arm_end_effector" params="name parent type tool_changer reflect">
+  <xacro:macro name="pal_sea_arm_end_effector" params="name parent type tool_changer reflect calibration_tool:=False">
 
     <!-- PAL Pro Gripper -->
     <xacro:if value="${type == 'pal-pro-gripper'}">
       <xacro:include filename="$(find pal_pro_gripper_description)/urdf/gripper.urdf.xacro" />
-      <xacro:pal_pro_gripper name="${name}" parent="${parent}" tool_changer="${tool_changer}">
+      <xacro:pal_pro_gripper name="${name}" parent="${parent}" tool_changer="${tool_changer}" calibration_tool="${calibration_tool}">
         <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
       </xacro:pal_pro_gripper>
     </xacro:if>
