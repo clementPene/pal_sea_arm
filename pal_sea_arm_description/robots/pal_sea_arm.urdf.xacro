@@ -40,6 +40,7 @@
   <!-- Common args -->
   <xacro:arg name="use_sim_time" default="False"/>
   <xacro:arg name="namespace" default=""/>
+  <xacro:arg name="gazebo_version" default="classic"/>
 
   <!-- Mujoco args -->
   <xacro:arg name="sim_type" default="gazebo" />
@@ -54,6 +55,7 @@
   <xacro:property name="torque_estimation" value="$(arg torque_estimation)" />
   <xacro:property name="tool_changer" value="$(arg tool_changer)" />
   <xacro:property name="nsp" value="$(arg namespace)" />
+  <xacro:property name="gazebo_version" value="$(arg gazebo_version)"/>
 
   <xacro:property name="sim_type" value="$(arg sim_type)" /> 
   <xacro:property name="mj_control" value="$(arg mj_control)"/>
