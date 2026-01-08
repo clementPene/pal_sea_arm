@@ -15,6 +15,11 @@ Changelog for package pal_sea_arm_controller_configuration
 * Restructure launch files
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
+Forthcoming
+-----------
+* Add "Hardware Components Activity" module dependency
+* Contributors: Noel Jimenez
+
 1.22.0 (2025-12-05)
 -------------------
 
