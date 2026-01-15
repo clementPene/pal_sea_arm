@@ -47,6 +47,9 @@
   <xacro:arg name="mj_control" default="false" />
   <xacro:arg name="world_name" default="floor" />
 
+  <!-- Limits v2-->
+  <xacro:arg name="limits_v2" default="False"/>
+
   <!-- PROPERTIES -->
   <xacro:property name="end_effector" value="$(arg end_effector)" />
   <xacro:property name="wrist_model" value="$(arg wrist_model)" />
@@ -56,6 +59,7 @@
   <xacro:property name="tool_changer" value="$(arg tool_changer)" />
   <xacro:property name="nsp" value="$(arg namespace)" />
   <xacro:property name="gazebo_version" value="$(arg gazebo_version)"/>
+  <xacro:property name="limits_v2" value="$(arg limits_v2)"/>
 
   <xacro:property name="sim_type" value="$(arg sim_type)" /> 
   <xacro:property name="mj_control" value="$(arg mj_control)"/>
@@ -147,7 +151,7 @@
   </gazebo>
 
   <!-- ARM -->
-  <xacro:pal_sea_arm name="arm" parent="arm_root_link" arm_type="${arm_type}" tool_changer="${tool_changer}" wrist_model="${wrist_model}" reflect="1" arm_1_offset="0" arm_2_offset="0" arm_3_offset="0" arm_4_offset="0" arm_5_offset="0" arm_6_offset="0" arm_7_offset="0">
+  <xacro:pal_sea_arm name="arm" parent="arm_root_link" arm_type="${arm_type}" tool_changer="${tool_changer}" wrist_model="${wrist_model}" reflect="1" arm_1_offset="0" arm_2_offset="0" arm_3_offset="0" arm_4_offset="0" arm_5_offset="0" arm_6_offset="0" arm_7_offset="0" limits_v2="${limits_v2}">
     <origin xyz="0 0 0" rpy="0 0 3.1416" />
   </xacro:pal_sea_arm>
 
