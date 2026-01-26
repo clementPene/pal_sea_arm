@@ -28,11 +28,12 @@ from launch_pal.robot_arguments import CommonArgs
 @dataclass(frozen=True)
 class LaunchArguments(LaunchArgumentsBase):
     side: DeclareLaunchArgument = CommonArgs.side
-    
+
     root_link: DeclareLaunchArgument = DeclareLaunchArgument(
         name='root_link',
         default_value='torso_lift_link',
-        description='Root link for the gravity compensation controller. If empty, defaults to torso_lift_link.')
+        description='Root link for the gravity compensation controller.'
+        'If empty, defaults to torso_lift_link.')
 
     mode: DeclareLaunchArgument = DeclareLaunchArgument(
         name='mode',
@@ -61,7 +62,7 @@ def setup_controller_configuration(context: LaunchContext):
     side = read_launch_argument('side', context)
     mode = read_launch_argument('mode', context)
     root_link = read_launch_argument('root_link', context)
-    
+
     if not root_link:
         root_link = "torso_lift_link"
 
@@ -80,7 +81,8 @@ def setup_controller_configuration(context: LaunchContext):
         get_package_share_directory('pal_sea_arm_controller_configuration'),
         'config', f'arm_gravity_compensation_controller_{mode}.yaml')
 
-    parsed_yaml = parse_parametric_yaml(source_files=[param_file], param_rewrites=remappings)
+    parsed_yaml = parse_parametric_yaml(
+        source_files=[param_file], param_rewrites=remappings)
 
     return [SetLaunchConfiguration('controller_name', controller_name),
             SetLaunchConfiguration('controller_config', parsed_yaml)]
