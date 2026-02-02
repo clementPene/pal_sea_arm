@@ -15,6 +15,12 @@ Changelog for package pal_sea_arm_controller_configuration
 * Restructure launch files
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
+Forthcoming
+-----------
+* fix pipeline
+* add root_link instead of torso_lift_link to adapt teleop station
+* Contributors: ileniaperrella
+
 1.22.1 (2026-01-08)
 -------------------
 * Add "Hardware Components Activity" module dependency
