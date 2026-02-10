@@ -23,6 +23,11 @@ Changelog for package pal_sea_arm_description
 * Add arm model check in urdf
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
+Forthcoming
+-----------
+* adding calibration_tool param
+* Contributors: silviamasiello
+
 1.23.1 (2026-02-03)
 -------------------
 * update limit for straight wrist
