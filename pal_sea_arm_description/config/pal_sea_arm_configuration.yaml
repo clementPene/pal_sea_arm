@@ -22,3 +22,7 @@ torque_estimation:
   description: 'The arm has torque estimation'
   choices: ['False', 'True']
   default_value: 'False'
+limits_v2:
+  description: 'Use limits v2 for the arm joints'
+  choices: ['False', 'True']
+  default_value: 'False'

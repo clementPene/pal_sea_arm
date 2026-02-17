@@ -18,7 +18,7 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
   <!-- Transmissions file -->
-  <xacro:macro name="pal_sea_arm" params="name parent *origin arm_type tool_changer wrist_model reflect:=1 joint_reflect:=1 arm_1_offset arm_2_offset arm_3_offset arm_4_offset arm_5_offset arm_6_offset arm_7_offset no_safety_eps:=False">
+  <xacro:macro name="pal_sea_arm" params="name parent *origin arm_type tool_changer wrist_model reflect:=1 joint_reflect:=1 arm_1_offset arm_2_offset arm_3_offset arm_4_offset arm_5_offset arm_6_offset arm_7_offset no_safety_eps:=False limits_v2:=False">
 
     <!-- PROPERTIES -->
 
@@ -89,9 +89,15 @@
       <parent link="${parent}" />
       <child link="${name}_1_link" />
       <axis xyz="0 0 1" />
-      <limit lower="${arm_1_joint_lb * deg_to_rad}" upper="${arm_1_joint_ub * deg_to_rad}" effort="${arm_1_max_effort}" velocity="${arm_1_max_velocity}" />
+      <xacro:if value="${limits_v2}">
+        <limit lower="${arm_1_joint_lb_v2 * deg_to_rad}" upper="${arm_1_joint_ub_v2 * deg_to_rad}" effort="${arm_1_max_effort}" velocity="${arm_1_max_velocity}" />
+        <safety_controller k_position="${arm_k_position}" k_velocity="${arm_k_velocity}" soft_lower_limit="${arm_1_joint_lb_v2 * deg_to_rad  + arm_eps}" soft_upper_limit="${arm_1_joint_ub_v2 * deg_to_rad  - arm_eps}" />
+      </xacro:if>
+      <xacro:unless value="${limits_v2}">
+        <limit lower="${arm_1_joint_lb * deg_to_rad}" upper="${arm_1_joint_ub * deg_to_rad}" effort="${arm_1_max_effort}" velocity="${arm_1_max_velocity}" />
+        <safety_controller k_position="${arm_k_position}" k_velocity="${arm_k_velocity}" soft_lower_limit="${arm_1_joint_lb * deg_to_rad  + arm_eps}" soft_upper_limit="${arm_1_joint_ub * deg_to_rad  - arm_eps}" />
+      </xacro:unless>
       <dynamics friction="${arm_friction}" damping="${arm_damping}"/>
-      <safety_controller k_position="${arm_k_position}" k_velocity="${arm_k_velocity}" soft_lower_limit="${arm_1_joint_lb * deg_to_rad  + arm_eps}" soft_upper_limit="${arm_1_joint_ub * deg_to_rad  - arm_eps}" />
     </joint>
 
     <!-- ARM 2 LINK -->
@@ -147,9 +153,15 @@
       <parent link="${name}_2_link" />
       <child link="${name}_3_link" />
       <axis xyz="0 0 1" />
-      <limit lower="${arm_3_joint_lb * deg_to_rad}" upper="${arm_3_joint_ub * deg_to_rad}" effort="${arm_3_max_effort}" velocity="${arm_3_max_velocity}" />
+      <xacro:if value="${limits_v2}">
+        <limit lower="${arm_3_joint_lb_v2 * deg_to_rad}" upper="${arm_3_joint_ub_v2 * deg_to_rad}" effort="${arm_3_max_effort}" velocity="${arm_3_max_velocity}" />
+      <safety_controller k_position="${arm_k_position}" k_velocity="${arm_k_velocity}" soft_lower_limit="${arm_3_joint_lb_v2 * deg_to_rad  + arm_eps}" soft_upper_limit="${arm_3_joint_ub_v2 * deg_to_rad - arm_eps}" />
+      </xacro:if>
+      <xacro:unless value="${limits_v2}">
+        <limit lower="${arm_3_joint_lb * deg_to_rad}" upper="${arm_3_joint_ub * deg_to_rad}" effort="${arm_3_max_effort}" velocity="${arm_3_max_velocity}" />
+        <safety_controller k_position="${arm_k_position}" k_velocity="${arm_k_velocity}" soft_lower_limit="${arm_3_joint_lb * deg_to_rad  + arm_eps}" soft_upper_limit="${arm_3_joint_ub * deg_to_rad - arm_eps}" />
+      </xacro:unless>
       <dynamics friction="${arm_friction}" damping="${arm_damping}"/>
-      <safety_controller k_position="${arm_k_position}" k_velocity="${arm_k_velocity}" soft_lower_limit="${arm_3_joint_lb * deg_to_rad  + arm_eps}" soft_upper_limit="${arm_3_joint_ub * deg_to_rad - arm_eps}" />
     </joint>
 
     <!-- ARM 4 LINK -->
@@ -205,9 +217,15 @@
       <parent link="${name}_4_link" />
       <child link="${name}_5_link" />
       <axis xyz="0 0 1" />
-      <limit lower="${arm_5_joint_lb * deg_to_rad}" upper="${arm_5_joint_ub * deg_to_rad}" effort="${arm_5_max_effort}" velocity="${arm_5_max_velocity}" />
+      <xacro:if value="${limits_v2}">
+        <limit lower="${arm_5_joint_lb_v2 * deg_to_rad}" upper="${arm_5_joint_ub_v2 * deg_to_rad}" effort="${arm_5_max_effort}" velocity="${arm_5_max_velocity}" />
+        <safety_controller k_position="${arm_k_position}" k_velocity="${arm_k_velocity}" soft_lower_limit="${arm_5_joint_lb_v2 * deg_to_rad  + arm_eps}" soft_upper_limit="${arm_5_joint_ub_v2 * deg_to_rad - arm_eps}" />
+      </xacro:if>
+      <xacro:unless value="${limits_v2}">
+        <limit lower="${arm_5_joint_lb * deg_to_rad}" upper="${arm_5_joint_ub * deg_to_rad}" effort="${arm_5_max_effort}" velocity="${arm_5_max_velocity}" />
+        <safety_controller k_position="${arm_k_position}" k_velocity="${arm_k_velocity}" soft_lower_limit="${arm_5_joint_lb * deg_to_rad  + arm_eps}" soft_upper_limit="${arm_5_joint_ub * deg_to_rad - arm_eps}" />
+      </xacro:unless>     
       <dynamics friction="${arm_friction}" damping="${arm_damping}"/>
-      <safety_controller k_position="${arm_k_position}" k_velocity="${arm_k_velocity}" soft_lower_limit="${arm_5_joint_lb * deg_to_rad  + arm_eps}" soft_upper_limit="${arm_5_joint_ub * deg_to_rad - arm_eps}" />
     </joint>
 
     <!-- ARM 6 LINK -->

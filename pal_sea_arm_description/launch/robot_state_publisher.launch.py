@@ -42,6 +42,7 @@ class LaunchArguments(LaunchArgumentsBase):
     tool_changer: DeclareLaunchArgument = SEAArmArgs.tool_changer
     arm_type: DeclareLaunchArgument = SEAArmArgs.arm_type
     torque_estimation: DeclareLaunchArgument = SEAArmArgs.torque_estimation
+    limits_v2: DeclareLaunchArgument = SEAArmArgs.limits_v2
 
     use_sim_time: DeclareLaunchArgument = CommonArgs.use_sim_time
     namespace: DeclareLaunchArgument = CommonArgs.namespace
@@ -84,6 +85,7 @@ def create_robot_description_param(context, *args, **kwargs):
         'sim_type': read_launch_argument('sim_type', context),
         'mj_control': read_launch_argument('mj_control', context),
         'world_name': read_launch_argument('world_name', context),
+        'limits_v2': read_launch_argument('limits_v2', context),
     }
     robot_description = load_xacro(xacro_file_path, xacro_input_args)
 

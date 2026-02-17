@@ -34,6 +34,7 @@ class LaunchArguments(LaunchArgumentsBase):
     wrist_model: DeclareLaunchArgument = SEAArmArgs.wrist_model
     tool_changer: DeclareLaunchArgument = SEAArmArgs.tool_changer
     arm_type: DeclareLaunchArgument = SEAArmArgs.arm_type
+    limits_v2: DeclareLaunchArgument = SEAArmArgs.limits_v2
 
 
 def declare_actions(launch_description: LaunchDescription, launch_args: LaunchArguments):
@@ -49,6 +50,7 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
                           "wrist_model": launch_args.wrist_model,
                           "arm_type": launch_args.arm_type,
                           "tool_changer": launch_args.tool_changer,
+                          "limits_v2": launch_args.limits_v2,
                           "use_sim_time": LaunchConfiguration('use_sim_time')
                           })
 
