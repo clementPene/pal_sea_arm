@@ -67,7 +67,7 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
     sea_state_broadcaster = include_scoped_launch_py_description(
         pkg_name='pal_sea_arm_controller_configuration',
         paths=['launch', 'sea_state_broadcaster_controller.launch.py'],
-        launch_arguments={'side': 'arm'})
+        launch_arguments={'side': ''})
 
     launch_description.add_action(sea_state_broadcaster)
 
@@ -84,7 +84,8 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
 
     launch_description.add_action(ft_sensor_controller)
 
-    launch_description.add_action(OpaqueFunction(function=configure_end_effector_controller))
+    launch_description.add_action(OpaqueFunction(
+        function=configure_end_effector_controller))
 
     return
 
