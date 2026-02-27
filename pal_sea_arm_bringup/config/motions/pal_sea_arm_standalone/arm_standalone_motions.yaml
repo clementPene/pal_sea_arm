@@ -1,0 +1,22 @@
+/**:
+  ros__parameters:
+    motions:
+      home_arm:
+        joints: [arm_1_joint, arm_2_joint, arm_3_joint, arm_4_joint, arm_5_joint, arm_6_joint, arm_7_joint]
+        times_from_start: [0.0, 5.0]
+        positions: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                    -1.57, -2.3, 0.0, -2.1, -0.0, -1.20, 0.0]
+        meta:
+          name: Home arm
+          usage: demo
+          description: Go home arm
+
+      start_arm: 
+        joints: [arm_1_joint, arm_2_joint, arm_3_joint, arm_4_joint, arm_5_joint, arm_6_joint, arm_7_joint]
+        times_from_start: [0.0, 5.0]
+        positions: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                    -1.57, -0.9, 0.0, 0.65, 0.0, -1.20, 1.57]
+        meta:
+          name: Start arm
+          usage: demo
+          description: Start position arm

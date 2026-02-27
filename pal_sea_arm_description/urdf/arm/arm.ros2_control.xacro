@@ -15,7 +15,7 @@
   limitations under the License.
  -->
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
-  <xacro:macro name="ros2_control_arm" params="name reduction offset_value use_sea_transmission:=false">
+  <xacro:macro name="ros2_control_arm" params="name reduction offset_value use_sea_transmission:=false sim_type:=gazebo">
     <joint name="${name}_joint">
       <xacro:if value="${sim_type == 'mujoco-ros2-control'}">
         <param name="position_kp">700</param>

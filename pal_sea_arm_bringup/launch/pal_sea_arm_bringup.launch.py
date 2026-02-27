@@ -21,7 +21,11 @@ from launch_pal.arg_utils import LaunchArgumentsBase
 from launch_pal.robot_arguments import CommonArgs
 from pal_sea_arm_description.launch_arguments import SEAArmArgs
 
+from launch.conditions import IfCondition
+from launch.substitutions import LaunchConfiguration
+
 from dataclasses import dataclass
+from launch_ros.actions import Node
 
 
 @dataclass(frozen=True)
@@ -35,12 +39,15 @@ class LaunchArguments(LaunchArgumentsBase):
 
     arm_type: DeclareLaunchArgument = DeclareLaunchArgument(
         'arm_type', default_value='pal-sea-arm-standalone',
-        choices=['pal-sea-arm-standalone', 'tiago-pro', 'tiago-sea', 'tiago-sea-dual'],
+        choices=['pal-sea-arm-standalone', 'tiago-pro',
+                 'tiago-sea', 'tiago-sea-dual'],
         description='The arm model')
 
     sim_type: DeclareLaunchArgument = CommonArgs.sim_type
     mj_control: DeclareLaunchArgument = CommonArgs.mj_control
     world_name: DeclareLaunchArgument = CommonArgs.world_name
+
+    tuck_arm: DeclareLaunchArgument = CommonArgs.tuck_arm
 
 
 def declare_actions(launch_description: LaunchDescription, launch_args: LaunchArguments):
@@ -56,6 +63,13 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
                           })
 
     launch_description.add_action(default_controllers)
+
+    play_motion2 = include_scoped_launch_py_description(
+        pkg_name='pal_sea_arm_bringup',
+        paths=['launch', 'arm_standalone_play_motions2.launch.py'],
+        launch_arguments={"use_sim_time": launch_args.use_sim_time})
+
+    launch_description.add_action(play_motion2)
 
     robot_state_publisher = include_scoped_launch_py_description(
         pkg_name='pal_sea_arm_description',
@@ -73,6 +87,15 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
                           })
 
     launch_description.add_action(robot_state_publisher)
+
+    tuck_arm = Node(
+        package='pal_sea_arm_gazebo',
+        executable='tuck_arm.py',
+        emulate_tty=True,
+        output='both',
+        condition=IfCondition(LaunchConfiguration('tuck_arm'))
+    )
+    launch_description.add_action(tuck_arm)
 
     return
 
