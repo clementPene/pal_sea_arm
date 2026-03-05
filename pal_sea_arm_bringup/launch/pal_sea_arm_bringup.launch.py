@@ -21,11 +21,7 @@ from launch_pal.arg_utils import LaunchArgumentsBase
 from launch_pal.robot_arguments import CommonArgs
 from pal_sea_arm_description.launch_arguments import SEAArmArgs
 
-from launch.conditions import IfCondition
-from launch.substitutions import LaunchConfiguration
-
 from dataclasses import dataclass
-from launch_ros.actions import Node
 
 
 @dataclass(frozen=True)
@@ -36,6 +32,7 @@ class LaunchArguments(LaunchArgumentsBase):
     wrist_model: DeclareLaunchArgument = SEAArmArgs.wrist_model
     use_sim_time: DeclareLaunchArgument = CommonArgs.use_sim_time
     namespace: DeclareLaunchArgument = CommonArgs.namespace
+    camera_model: DeclareLaunchArgument = SEAArmArgs.camera_model
 
     arm_type: DeclareLaunchArgument = DeclareLaunchArgument(
         'arm_type', default_value='pal-sea-arm-standalone',
@@ -47,8 +44,6 @@ class LaunchArguments(LaunchArgumentsBase):
     mj_control: DeclareLaunchArgument = CommonArgs.mj_control
     world_name: DeclareLaunchArgument = CommonArgs.world_name
 
-    tuck_arm: DeclareLaunchArgument = CommonArgs.tuck_arm
-
 
 def declare_actions(launch_description: LaunchDescription, launch_args: LaunchArguments):
 
@@ -59,7 +54,7 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
                           "ft_sensor": launch_args.ft_sensor,
                           "torque_estimation": launch_args.torque_estimation,
                           "namespace": launch_args.namespace,
-                          "use_sim_time": launch_args.use_sim_time,
+                          "use_sim_time": launch_args.use_sim_time
                           })
 
     launch_description.add_action(default_controllers)
@@ -84,18 +79,10 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
                           "sim_type": launch_args.sim_type,
                           "mj_control": launch_args.mj_control,
                           "world_name": launch_args.world_name,
+                          "camera_model": launch_args.camera_model,
                           })
 
     launch_description.add_action(robot_state_publisher)
-
-    tuck_arm = Node(
-        package='pal_sea_arm_gazebo',
-        executable='tuck_arm.py',
-        emulate_tty=True,
-        output='both',
-        condition=IfCondition(LaunchConfiguration('tuck_arm'))
-    )
-    launch_description.add_action(tuck_arm)
 
     return
 
