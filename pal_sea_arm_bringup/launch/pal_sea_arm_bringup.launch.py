@@ -32,7 +32,6 @@ class LaunchArguments(LaunchArgumentsBase):
     wrist_model: DeclareLaunchArgument = SEAArmArgs.wrist_model
     use_sim_time: DeclareLaunchArgument = CommonArgs.use_sim_time
     namespace: DeclareLaunchArgument = CommonArgs.namespace
-    camera_model: DeclareLaunchArgument = SEAArmArgs.camera_model
 
     arm_type: DeclareLaunchArgument = DeclareLaunchArgument(
         'arm_type', default_value='pal-sea-arm-standalone',
@@ -79,7 +78,6 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
                           "sim_type": launch_args.sim_type,
                           "mj_control": launch_args.mj_control,
                           "world_name": launch_args.world_name,
-                          "camera_model": launch_args.camera_model,
                           })
 
     launch_description.add_action(robot_state_publisher)
