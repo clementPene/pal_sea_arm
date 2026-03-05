@@ -67,7 +67,9 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
     sea_state_broadcaster = include_scoped_launch_py_description(
         pkg_name='pal_sea_arm_controller_configuration',
         paths=['launch', 'sea_state_broadcaster_controller.launch.py'],
-        launch_arguments={'side': ''})
+        launch_arguments={'side': ''},
+        condition=IfCondition(LaunchConfiguration("torque_estimation"))
+    )
 
     launch_description.add_action(sea_state_broadcaster)
 
