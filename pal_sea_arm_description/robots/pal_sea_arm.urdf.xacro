@@ -57,7 +57,7 @@
   <xacro:property name="arm_type" value="$(arg arm_type)" />
   <xacro:property name="torque_estimation" value="$(arg torque_estimation)" />
   <xacro:property name="tool_changer" value="$(arg tool_changer)" />
-  <xacro:property name="nsp" value="$(arg namespace)" />
+  <xacro:property name="namespace" value="$(arg namespace)" />
   <xacro:property name="gazebo_version" value="$(arg gazebo_version)"/>
   <xacro:property name="limits_v2" value="$(arg limits_v2)"/>
 
