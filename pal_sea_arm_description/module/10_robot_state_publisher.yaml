@@ -4,4 +4,4 @@ robot_state_publisher:
            end_effector:=@end_effector@
            ft_sensor:=@ft_sensor@
            wrist_model:=@wrist_model@
-           torque_estimation:=@has_torque_estimation@"
+           torque_estimation:=@has_torque_estimation@
