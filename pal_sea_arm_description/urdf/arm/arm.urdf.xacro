@@ -91,6 +91,7 @@
       <parent link="${parent}" />
       <child link="${name}_1_link" />
       <axis xyz="0 0 1" />
+      <limit effort="${arm_1_max_effort}" velocity="${arm_1_max_velocity}"/>
       
       <xacro:if value="${joint_type == 'revolute'}">
         <xacro:if value="${limits_v2}">
