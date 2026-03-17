@@ -53,7 +53,7 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
     pkg_share_dir = get_package_share_directory('pal_sea_arm_bringup')
 
     motions_folder = os.path.join(
-        pkg_share_dir, 'config', 'motions', 'pal_sea_arm_standalone')
+        pkg_share_dir, 'config', 'motions')
 
     planner_motions_folder = os.path.join(
         pkg_share_dir, 'config', 'motion_planner')
