@@ -254,16 +254,16 @@
         </collision>
       </link>
 
-      <!-- ARM 6 JOINT -->
-      <joint name="${name}_6_joint" type="revolute">
-        <xacro:origin_joint_6 reflect="${reflect}"/>
-        <parent link="${name}_5_link" />
-        <child link="${name}_6_link" />
-        <axis xyz="0 0 ${-1 if wrist_model=='spherical-wrist' else 1}" />
-        <limit lower="${arm_6_joint_lb * deg_to_rad}" upper="${arm_6_joint_ub * deg_to_rad}" effort="${arm_6_max_effort}" velocity="${arm_6_max_velocity}" />
-        <dynamics friction="${arm_friction}" damping="${arm_damping}"/>
-        <safety_controller k_position="${arm_k_position}" k_velocity="${arm_k_velocity}" soft_lower_limit="${arm_6_joint_lb * deg_to_rad  + arm_eps}" soft_upper_limit="${arm_6_joint_ub * deg_to_rad - arm_eps}" />
-      </joint>
+    <!-- ARM 6 JOINT -->
+    <joint name="${name}_6_joint" type="revolute">
+      <xacro:origin_joint_6 reflect="${reflect}"/>
+      <parent link="${name}_5_link" />
+      <child link="${name}_6_link" />
+      <axis xyz="0 0 ${-1 if wrist_model=='spherical-wrist' else 1}" />
+      <limit lower="${arm_6_joint_lb * deg_to_rad}" upper="${arm_6_joint_ub * deg_to_rad}" effort="${arm_6_max_effort}" velocity="${arm_6_max_velocity}" />
+      <dynamics friction="${arm_friction}" damping="${arm_damping}"/>
+      <safety_controller k_position="${arm_k_position}" k_velocity="${arm_k_velocity}" soft_lower_limit="${arm_6_joint_lb * deg_to_rad  + arm_eps}" soft_upper_limit="${arm_6_joint_ub * deg_to_rad - arm_eps}" />
+    </joint>
 
     <!-- ARM 7 LINK -->
       <link name="${name}_7_link">
