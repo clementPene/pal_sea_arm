@@ -24,6 +24,7 @@ from launch.actions import DeclareLaunchArgument, SetLaunchConfiguration
 from launch.actions import OpaqueFunction, GroupAction
 from launch.substitutions import LaunchConfiguration
 from launch import LaunchDescription, LaunchContext
+from pal_sea_arm_description.launch_arguments import SEAArmArgs
 
 
 @dataclass(frozen=True)
@@ -32,6 +33,7 @@ class LaunchArguments(LaunchArgumentsBase):
         name='side',
         default_value='',
         description='side of the ft sensor')
+    wrist_model: DeclareLaunchArgument = SEAArmArgs.wrist_model
 
 
 def declare_actions(launch_description: LaunchDescription, launch_args: LaunchArguments):
@@ -51,6 +53,7 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
 def setup_controller_configuration(context: LaunchContext):
 
     side = read_launch_argument('side', context)
+    wrist_model = read_launch_argument('wrist_model', context)
 
     arm_prefix = "arm"
     if side:
@@ -59,9 +62,14 @@ def setup_controller_configuration(context: LaunchContext):
     controller_name = f"{arm_prefix}_controller"
     remappings = {"ARM_SIDE_PREFIX": arm_prefix}
 
+    if wrist_model == 'short-wrist':
+        filename = 'arm_controller_short_wrist.yaml'
+    else:
+        filename = 'arm_controller.yaml'
+
     param_file = os.path.join(
         get_package_share_directory('pal_sea_arm_controller_configuration'),
-        'config', 'arm_controller.yaml')
+        'config', filename)
 
     parsed_yaml = parse_parametric_yaml(source_files=[param_file], param_rewrites=remappings)
 
