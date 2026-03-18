@@ -15,6 +15,12 @@ Changelog for package pal_sea_arm_controller_configuration
 * Restructure launch files
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
+Forthcoming
+-----------
+* Raise on incompatibility of short-wrist and torque mode
+* Add support for short-wrist
+* Contributors: Noel Jimenez
+
 1.24.0 (2026-02-18)
 -------------------
 
