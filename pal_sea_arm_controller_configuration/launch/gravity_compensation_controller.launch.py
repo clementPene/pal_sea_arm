@@ -67,6 +67,9 @@ def setup_controller_configuration(context: LaunchContext):
     wrist_model = read_launch_argument('wrist_model', context)
     root_link = read_launch_argument('root_link', context)
 
+    if mode == "torque" and wrist_model == 'short-wrist':
+        raise RuntimeError("Torque mode is not compatible with short-wrist model.")
+
     if not root_link:
         root_link = "torso_lift_link"
 
