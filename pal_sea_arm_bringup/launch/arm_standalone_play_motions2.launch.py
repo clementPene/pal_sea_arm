@@ -30,22 +30,7 @@ import os
 
 @dataclass(frozen=True)
 class LaunchArguments(LaunchArgumentsBase):
-    end_effector: DeclareLaunchArgument = SEAArmArgs.end_effector
-    ft_sensor: DeclareLaunchArgument = SEAArmArgs.ft_sensor
-    torque_estimation: DeclareLaunchArgument = SEAArmArgs.torque_estimation
-    wrist_model: DeclareLaunchArgument = SEAArmArgs.wrist_model
     use_sim_time: DeclareLaunchArgument = CommonArgs.use_sim_time
-    namespace: DeclareLaunchArgument = CommonArgs.namespace
-
-    arm_type: DeclareLaunchArgument = DeclareLaunchArgument(
-        'arm_type', default_value='pal-sea-arm-standalone',
-        choices=['pal-sea-arm-standalone', 'tiago-pro',
-                 'tiago-sea', 'tiago-sea-dual'],
-        description='The arm model')
-
-    sim_type: DeclareLaunchArgument = CommonArgs.sim_type
-    mj_control: DeclareLaunchArgument = CommonArgs.mj_control
-    world_name: DeclareLaunchArgument = CommonArgs.world_name
 
 
 def declare_actions(launch_description: LaunchDescription, launch_args: LaunchArguments):
