@@ -121,7 +121,6 @@
     <child link="base_link"/>        
   </joint>
 
-
   <link name="base_link">
     <inertial>
       <origin xyz="0 0 -0.1" rpy="0 0 0"/>
