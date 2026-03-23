@@ -8,6 +8,11 @@
         </inertial>
     </xacro:macro>
 
+    <xacro:macro name="origin_joint_5" params="reflect">
+        <!-- Check new limits -->
+        <origin xyz="-0.0199999999999971 0.17011 -0.037110000000002" rpy="-1.5707963267949 3.14 0" />
+    </xacro:macro>
+
     <xacro:macro name="inertial_link_6" params="reflect">
         <inertial>
             <origin xyz="-0.016007 0.052767 3.7676E-05" rpy="0 0 0" />
@@ -17,7 +22,7 @@
     </xacro:macro>
 
     <xacro:macro name="origin_joint_6" params="reflect">
-        <origin xyz="0 0.0354 0.16489" rpy="1.5708 0 1.5708" />
+        <origin xyz="0 -0.0354 0.16489" rpy="1.57 0 3.14" />
     </xacro:macro>
 
     <xacro:macro name="inertial_link_7" params="reflect">
@@ -29,7 +34,10 @@
     </xacro:macro>
 
     <xacro:macro name="origin_joint_7" params="reflect">
-        <origin xyz="-0.0354 0.135 0" rpy="-1.5708 0 0" />
+        <origin xyz="0 0.135 0.0354" rpy="-1.5708 0 0" />
     </xacro:macro>
 
+    <xacro:macro name="origin_joint_tool_changer" params="reflect">
+        <origin xyz="0 0 0.017" rpy="0 0 0" />
+    </xacro:macro>
 </robot>

@@ -35,7 +35,8 @@ class LaunchArguments(LaunchArgumentsBase):
 
     arm_type: DeclareLaunchArgument = DeclareLaunchArgument(
         'arm_type', default_value='pal-sea-arm-standalone',
-        choices=['pal-sea-arm-standalone', 'tiago-pro', 'tiago-sea', 'tiago-sea-dual'],
+        choices=['pal-sea-arm-standalone', 'tiago-pro',
+                 'tiago-sea', 'tiago-sea-dual'],
         description='The arm model')
 
     sim_type: DeclareLaunchArgument = CommonArgs.sim_type
@@ -52,10 +53,17 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
                           "ft_sensor": launch_args.ft_sensor,
                           "torque_estimation": launch_args.torque_estimation,
                           "namespace": launch_args.namespace,
-                          "use_sim_time": launch_args.use_sim_time,
+                          "use_sim_time": launch_args.use_sim_time
                           })
 
     launch_description.add_action(default_controllers)
+
+    play_motion2 = include_scoped_launch_py_description(
+        pkg_name='pal_sea_arm_bringup',
+        paths=['launch', 'arm_standalone_play_motions2.launch.py'],
+        launch_arguments={"use_sim_time": launch_args.use_sim_time})
+
+    launch_description.add_action(play_motion2)
 
     robot_state_publisher = include_scoped_launch_py_description(
         pkg_name='pal_sea_arm_description',

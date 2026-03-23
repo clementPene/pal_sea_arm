@@ -71,7 +71,8 @@ def setup_controller_configuration(context: LaunchContext):
         get_package_share_directory('pal_sea_arm_controller_configuration'),
         'config', filename)
 
-    parsed_yaml = parse_parametric_yaml(source_files=[param_file], param_rewrites=remappings)
+    parsed_yaml = parse_parametric_yaml(
+        source_files=[param_file], param_rewrites=remappings)
 
     return [SetLaunchConfiguration('controller_name', controller_name),
             SetLaunchConfiguration('controller_config', parsed_yaml)]
