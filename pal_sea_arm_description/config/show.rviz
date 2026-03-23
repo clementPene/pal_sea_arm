@@ -7,9 +7,6 @@ Panels:
         - /Global Options1
         - /Status1
         - /RobotModel1
-        - /RobotModel1/Links1
-        - /RobotModel1/Links1/arm_1_link1
-        - /RobotModel1/Links1/arm_root_link1
       Splitter Ratio: 0.7117646932601929
     Tree Height: 752
   - Class: rviz_common/Selection
@@ -51,7 +48,7 @@ Visualization Manager:
       Plane Cell Count: 10
       Reference Frame: <Fixed Frame>
       Value: true
-    - Alpha: 0.5
+    - Alpha: 1
       Class: rviz_default_plugins/RobotModel
       Collision Enabled: false
       Description File: ""
@@ -106,10 +103,14 @@ Visualization Manager:
           Value: true
         arm_root_link:
           Alpha: 1
-          Show Axes: true
+          Show Axes: false
           Show Trail: false
           Value: true
         arm_tool_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        base_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -174,11 +175,6 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        base_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
       Mass Properties:
         Inertia: false
         Mass: false
@@ -233,16 +229,16 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 0.7705467343330383
+      Distance: 0.9665737748146057
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: -0.006263498216867447
-        Y: 0.11337833106517792
-        Z: 0.10541234165430069
+        X: -0.05398653820157051
+        Y: -0.1265006959438324
+        Z: 0.9066459536552429
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
