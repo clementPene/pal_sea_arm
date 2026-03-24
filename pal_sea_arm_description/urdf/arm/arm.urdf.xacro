@@ -47,14 +47,6 @@
       <xacro:property name="mesh_folder" value="arm_tiago_sea"/>
     </xacro:if>
 
-    <!-- Compatibility check with wrist model -->
-    <!-- <xacro:if value="${arm_type == 'tiago-sea' and wrist_model=='spherical-wrist'}">
-      <xacro:error_wrist_not_supported />
-    </xacro:if>
-    <xacro:if value="${arm_type == 'tiago-sea-dual' and wrist_model=='spherical-wrist'}">
-      <xacro:error_wrist_not_supported />
-    </xacro:if> -->
-
     <!-- INCLUDES -->
 
     <xacro:include filename="$(find pal_sea_arm_description)/urdf/arm/arm_limits/${arm_type}/arm.limits.xacro"/>
