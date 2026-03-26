@@ -20,7 +20,7 @@
   <exec_depend>play_motion2_cli</exec_depend>
   <exec_depend>joint_trajectory_controller</exec_depend>
   <exec_depend>joint_state_broadcaster</exec_depend>
-
+  <build_depend condition="$PAL_DISTRO >= alum">pal_module_cmake</build_depend>
 
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
