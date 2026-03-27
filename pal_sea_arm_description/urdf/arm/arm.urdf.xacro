@@ -47,14 +47,6 @@
       <xacro:property name="mesh_folder" value="arm_tiago_sea"/>
     </xacro:if>
 
-    <!-- Compatibility check with wrist model -->
-    <!-- <xacro:if value="${arm_type == 'tiago-sea' and wrist_model=='spherical-wrist'}">
-      <xacro:error_wrist_not_supported />
-    </xacro:if>
-    <xacro:if value="${arm_type == 'tiago-sea-dual' and wrist_model=='spherical-wrist'}">
-      <xacro:error_wrist_not_supported />
-    </xacro:if> -->
-
     <!-- INCLUDES -->
 
     <xacro:include filename="$(find pal_sea_arm_description)/urdf/arm/arm_limits/${arm_type}/arm.limits.xacro"/>
@@ -63,6 +55,8 @@
     <xacro:include filename="$(find pal_sea_arm_description)/urdf/arm/arm_properties/${arm_type}/${wrist_model}.properties.xacro"/>
 
     <!-- ARM DEFINITION -->
+    <xacro:property name="joint_type" value="${'continuous' if arm_type == 'pal-sea-arm-standalone' else 'revolute'}" />
+    
     <!-- ARM 1 LINK -->
     <link name="${name}_1_link">
       <xacro:inertial_link_1 reflect="${reflect}"/>
@@ -82,8 +76,6 @@
     </link>
 
     <!-- ARM 1 JOINT -->
-    <xacro:property name="joint_type" value="${'continuous' if arm_type == 'pal-sea-arm-standalone' else 'revolute'}" />
-
     <joint name="${name}_1_joint" type="${joint_type}">
       
       <xacro:insert_block name="origin"/>      
@@ -157,20 +149,29 @@
     </link>
 
     <!-- ARM 3 JOINT -->
-    <joint name="${name}_3_joint" type="revolute">
+    <joint name="${name}_3_joint" type="${joint_type}">
+
       <xacro:origin_joint_3 reflect="${reflect}"/>
       <parent link="${name}_2_link" />
       <child link="${name}_3_link" />
       <axis xyz="0 0 1" />
-      <xacro:if value="${limits_v2}">
-        <limit lower="${arm_3_joint_lb_v2 * deg_to_rad}" upper="${arm_3_joint_ub_v2 * deg_to_rad}" effort="${arm_3_max_effort}" velocity="${arm_3_max_velocity}" />
-      <safety_controller k_position="${arm_k_position}" k_velocity="${arm_k_velocity}" soft_lower_limit="${arm_3_joint_lb_v2 * deg_to_rad  + arm_eps}" soft_upper_limit="${arm_3_joint_ub_v2 * deg_to_rad - arm_eps}" />
+    
+      <xacro:if value="${joint_type == 'continuous'}">
+        <limit effort="${arm_3_max_effort}" velocity="${arm_3_max_velocity}" />
       </xacro:if>
-      <xacro:unless value="${limits_v2}">
-        <limit lower="${arm_3_joint_lb * deg_to_rad}" upper="${arm_3_joint_ub * deg_to_rad}" effort="${arm_3_max_effort}" velocity="${arm_3_max_velocity}" />
-        <safety_controller k_position="${arm_k_position}" k_velocity="${arm_k_velocity}" soft_lower_limit="${arm_3_joint_lb * deg_to_rad  + arm_eps}" soft_upper_limit="${arm_3_joint_ub * deg_to_rad - arm_eps}" />
-      </xacro:unless>
-      <dynamics friction="${arm_friction}" damping="${arm_damping}"/>
+
+      <xacro:if value="${joint_type == 'revolute'}">
+        <xacro:if value="${limits_v2}">
+          <limit lower="${arm_3_joint_lb_v2 * deg_to_rad}" upper="${arm_3_joint_ub_v2 * deg_to_rad}" effort="${arm_3_max_effort}" velocity="${arm_3_max_velocity}" />
+        <safety_controller k_position="${arm_k_position}" k_velocity="${arm_k_velocity}" soft_lower_limit="${arm_3_joint_lb_v2 * deg_to_rad  + arm_eps}" soft_upper_limit="${arm_3_joint_ub_v2 * deg_to_rad - arm_eps}" />
+        </xacro:if>
+        <xacro:unless value="${limits_v2}">
+          <limit lower="${arm_3_joint_lb * deg_to_rad}" upper="${arm_3_joint_ub * deg_to_rad}" effort="${arm_3_max_effort}" velocity="${arm_3_max_velocity}" />
+          <safety_controller k_position="${arm_k_position}" k_velocity="${arm_k_velocity}" soft_lower_limit="${arm_3_joint_lb * deg_to_rad  + arm_eps}" soft_upper_limit="${arm_3_joint_ub * deg_to_rad - arm_eps}" />
+        </xacro:unless>
+      </xacro:if>
+
+        <dynamics friction="${arm_friction}" damping="${arm_damping}"/>
     </joint>
 
     <!-- ARM 4 LINK -->
@@ -221,19 +222,28 @@
     </link>
 
     <!-- ARM 5 JOINT -->
-    <joint name="${name}_5_joint" type="revolute">
+    <joint name="${name}_5_joint" type="${joint_type}">
+
       <xacro:origin_joint_5 reflect="${reflect}"/>
       <parent link="${name}_4_link" />
       <child link="${name}_5_link" />
       <axis xyz="0 0 1" />
-      <xacro:if value="${limits_v2}">
-        <limit lower="${arm_5_joint_lb_v2 * deg_to_rad}" upper="${arm_5_joint_ub_v2 * deg_to_rad}" effort="${arm_5_max_effort}" velocity="${arm_5_max_velocity}" />
-        <safety_controller k_position="${arm_k_position}" k_velocity="${arm_k_velocity}" soft_lower_limit="${arm_5_joint_lb_v2 * deg_to_rad  + arm_eps}" soft_upper_limit="${arm_5_joint_ub_v2 * deg_to_rad - arm_eps}" />
+  
+      <xacro:if value="${joint_type == 'continuous'}">
+        <limit effort="${arm_5_max_effort}" velocity="${arm_5_max_velocity}" />
       </xacro:if>
-      <xacro:unless value="${limits_v2}">
-        <limit lower="${arm_5_joint_lb * deg_to_rad}" upper="${arm_5_joint_ub * deg_to_rad}" effort="${arm_5_max_effort}" velocity="${arm_5_max_velocity}" />
-        <safety_controller k_position="${arm_k_position}" k_velocity="${arm_k_velocity}" soft_lower_limit="${arm_5_joint_lb * deg_to_rad  + arm_eps}" soft_upper_limit="${arm_5_joint_ub * deg_to_rad - arm_eps}" />
-      </xacro:unless>     
+
+      <xacro:if value="${joint_type == 'revolute'}">
+        <xacro:if value="${limits_v2}">
+          <limit lower="${arm_5_joint_lb_v2 * deg_to_rad}" upper="${arm_5_joint_ub_v2 * deg_to_rad}" effort="${arm_5_max_effort}" velocity="${arm_5_max_velocity}" />
+          <safety_controller k_position="${arm_k_position}" k_velocity="${arm_k_velocity}" soft_lower_limit="${arm_5_joint_lb_v2 * deg_to_rad  + arm_eps}" soft_upper_limit="${arm_5_joint_ub_v2 * deg_to_rad - arm_eps}" />
+        </xacro:if>
+        <xacro:unless value="${limits_v2}">
+          <limit lower="${arm_5_joint_lb * deg_to_rad}" upper="${arm_5_joint_ub * deg_to_rad}" effort="${arm_5_max_effort}" velocity="${arm_5_max_velocity}" />
+          <safety_controller k_position="${arm_k_position}" k_velocity="${arm_k_velocity}" soft_lower_limit="${arm_5_joint_lb * deg_to_rad  + arm_eps}" soft_upper_limit="${arm_5_joint_ub * deg_to_rad - arm_eps}" />
+        </xacro:unless>
+      </xacro:if>
+  
       <dynamics friction="${arm_friction}" damping="${arm_damping}"/>
     </joint>
 
@@ -256,18 +266,18 @@
         </collision>
       </link>
 
-    <!-- ARM 6 JOINT -->
-    <joint name="${name}_6_joint" type="revolute">
-      <xacro:origin_joint_6 reflect="${reflect}"/>
-      <parent link="${name}_5_link" />
-      <child link="${name}_6_link" />
-      <axis xyz="0 0 ${-1 if wrist_model=='spherical-wrist' else 1}" />
-      <limit lower="${arm_6_joint_lb * deg_to_rad}" upper="${arm_6_joint_ub * deg_to_rad}" effort="${arm_6_max_effort}" velocity="${arm_6_max_velocity}" />
-      <dynamics friction="${arm_friction}" damping="${arm_damping}"/>
-      <safety_controller k_position="${arm_k_position}" k_velocity="${arm_k_velocity}" soft_lower_limit="${arm_6_joint_lb * deg_to_rad  + arm_eps}" soft_upper_limit="${arm_6_joint_ub * deg_to_rad - arm_eps}" />
-    </joint>
+      <!-- ARM 6 JOINT -->
+      <joint name="${name}_6_joint" type="revolute">
+        <xacro:origin_joint_6 reflect="${reflect}"/>
+        <parent link="${name}_5_link" />
+        <child link="${name}_6_link" />
+        <axis xyz="0 0 ${-1 if wrist_model=='spherical-wrist' else 1}" />
+        <limit lower="${arm_6_joint_lb * deg_to_rad}" upper="${arm_6_joint_ub * deg_to_rad}" effort="${arm_6_max_effort}" velocity="${arm_6_max_velocity}" />
+        <dynamics friction="${arm_friction}" damping="${arm_damping}"/>
+        <safety_controller k_position="${arm_k_position}" k_velocity="${arm_k_velocity}" soft_lower_limit="${arm_6_joint_lb * deg_to_rad  + arm_eps}" soft_upper_limit="${arm_6_joint_ub * deg_to_rad - arm_eps}" />
+      </joint>
 
-    <!-- ARM 7 LINK -->
+      <!-- ARM 7 LINK -->
       <link name="${name}_7_link">
         <xacro:inertial_link_7 reflect="${reflect}"/>
         <visual>
@@ -285,7 +295,7 @@
         </collision>
       </link>
 
-    <!-- ARM 7 JOINT -->
+      <!-- ARM 7 JOINT -->
       <joint name="${name}_7_joint" type="revolute">
         <xacro:origin_joint_7 reflect="${reflect}"/>
         <parent link="${name}_6_link" />
