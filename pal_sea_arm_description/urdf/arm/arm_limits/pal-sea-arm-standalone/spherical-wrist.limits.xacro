@@ -1,8 +1,8 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
   <!-- Joint limits -->
-  <xacro:property name="arm_6_joint_ub" value="114.59" />
-  <xacro:property name="arm_6_joint_lb" value="-114.59" />
+  <xacro:property name="arm_6_joint_ub" value="172" />
+  <xacro:property name="arm_6_joint_lb" value="-98" />
   <xacro:property name="arm_7_joint_ub" value="148.97" />
   <xacro:property name="arm_7_joint_lb" value="-148.97" />
 
