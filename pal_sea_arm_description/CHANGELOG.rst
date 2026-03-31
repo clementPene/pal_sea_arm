@@ -23,6 +23,34 @@ Changelog for package pal_sea_arm_description
 * Add arm model check in urdf
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
+Forthcoming
+-----------
+* delete comment
+* fix property joint_type
+* set 3th and 5th as infinite joints
+* fix collision arm 6th and 7th
+* fix 6th link standalone
+* add 7th link collision
+* delete comment
+* remove use_sim_time
+* delete whitespace
+* add 5th joint in short and straight wrist properties
+* Fix spherical wrist properties and origins
+* fix 1st joint
+* fix 7th joint
+* Fix rotate axe for joint 6
+* Fix module
+* adding limit j1
+* change limits j3
+* fix z\_ value of base_link
+* fix limits j1 and j3
+* add continuous joint and remove camera param
+* remove camera parameter from yaml file
+* include arm_7_link collision
+* update arm-standalone
+* fix simulation and 7-link-mesh
+* Contributors: Aina, susannamastromauro
+
 1.25.0 (2026-03-18)
 -------------------
 * Add missing limits_v2 for the arm_5_joint when using short-wrist
