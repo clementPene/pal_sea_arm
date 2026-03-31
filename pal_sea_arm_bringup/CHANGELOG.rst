@@ -11,8 +11,8 @@ Changelog for package pal_sea_arm_bringup
 * Restructure launch files pal-sea-arm-bringup
 * Contributors: David ter Kuile, davidterkuile
 
-Forthcoming
------------
+2.0.0 (2026-03-31)
+------------------
 * Add play_motion2 module
 * delete import not used
 * delete not necessary params

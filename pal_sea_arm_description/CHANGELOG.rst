@@ -23,8 +23,8 @@ Changelog for package pal_sea_arm_description
 * Add arm model check in urdf
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
-Forthcoming
------------
+2.0.0 (2026-03-31)
+------------------
 * delete comment
 * fix property joint_type
 * set 3th and 5th as infinite joints

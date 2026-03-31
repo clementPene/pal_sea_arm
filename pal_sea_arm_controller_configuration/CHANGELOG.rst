@@ -15,8 +15,8 @@ Changelog for package pal_sea_arm_controller_configuration
 * Restructure launch files
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
-Forthcoming
------------
+2.0.0 (2026-03-31)
+------------------
 * add torque_estimation condition
 * fix simulation and 7-link-mesh
 * Contributors: susannamastromauro
