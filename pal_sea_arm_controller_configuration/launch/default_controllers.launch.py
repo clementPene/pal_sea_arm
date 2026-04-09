@@ -35,6 +35,7 @@ class LaunchArguments(LaunchArgumentsBase):
     torque_estimation: DeclareLaunchArgument = SEAArmArgs.torque_estimation
     use_sim_time: DeclareLaunchArgument = CommonArgs.use_sim_time
     namespace: DeclareLaunchArgument = CommonArgs.namespace
+    wrist_model: DeclareLaunchArgument = SEAArmArgs.wrist_model
 
 
 def declare_actions(launch_description: LaunchDescription, launch_args: LaunchArguments):
@@ -78,6 +79,16 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
         paths=['launch', 'arm_controller.launch.py'])
 
     launch_description.add_action(arm_controller)
+
+    gravity_compensation_controller_effort = include_scoped_launch_py_description(
+        pkg_name='pal_sea_arm_controller_configuration',
+        paths=['launch', 'gravity_compensation_controller.launch.py'],
+        launch_arguments={"side": '',
+                          "root_link": 'arm_root_link',
+                          "wrist_model": LaunchConfiguration('wrist_model')
+                          })
+
+    launch_description.add_action(gravity_compensation_controller_effort)
 
     ft_sensor_controller = include_scoped_launch_py_description(
         pkg_name=pkg_name,

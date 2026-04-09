@@ -68,7 +68,8 @@ def setup_controller_configuration(context: LaunchContext):
     root_link = read_launch_argument('root_link', context)
 
     if mode == "torque" and wrist_model == 'short-wrist':
-        raise RuntimeError("Torque mode is not compatible with short-wrist model.")
+        raise RuntimeError(
+            "Torque mode is not compatible with short-wrist model.")
 
     if not root_link:
         root_link = "torso_lift_link"
@@ -76,6 +77,9 @@ def setup_controller_configuration(context: LaunchContext):
     arm_prefix = "arm"
     if side:
         arm_prefix = f"arm_{side}"
+
+    if side == '':
+        arm_prefix = "arm"
 
     controller_name = f"{arm_prefix}_gravity_compensation_controller"
     if mode == "torque":
