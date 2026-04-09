@@ -60,7 +60,7 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
 
     play_motion2 = include_scoped_launch_py_description(
         pkg_name='pal_sea_arm_bringup',
-        paths=['launch', 'arm_standalone_play_motions2.launch.py'],
+        paths=['launch', 'arm_standalone_play_motion2.launch.py'],
         launch_arguments={"use_sim_time": launch_args.use_sim_time})
 
     launch_description.add_action(play_motion2)
