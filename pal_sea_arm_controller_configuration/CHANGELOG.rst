@@ -15,8 +15,8 @@ Changelog for package pal_sea_arm_controller_configuration
 * Restructure launch files
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
-Forthcoming
------------
+2.0.1 (2026-04-10)
+------------------
 * Fixing open loop param
 * adding depend gravity_compensation_controller2
 * adding check side for standalone
