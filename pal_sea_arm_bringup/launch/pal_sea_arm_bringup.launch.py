@@ -42,6 +42,7 @@ class LaunchArguments(LaunchArgumentsBase):
     sim_type: DeclareLaunchArgument = CommonArgs.sim_type
     mj_control: DeclareLaunchArgument = CommonArgs.mj_control
     world_name: DeclareLaunchArgument = CommonArgs.world_name
+    gazebo_version: DeclareLaunchArgument = CommonArgs.gazebo_version
 
 
 def declare_actions(launch_description: LaunchDescription, launch_args: LaunchArguments):
@@ -78,6 +79,7 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
                           "sim_type": launch_args.sim_type,
                           "mj_control": launch_args.mj_control,
                           "world_name": launch_args.world_name,
+                          "gazebo_version": launch_args.gazebo_version,
                           })
 
     launch_description.add_action(robot_state_publisher)

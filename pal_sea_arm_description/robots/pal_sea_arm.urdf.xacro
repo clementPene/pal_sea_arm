@@ -219,6 +219,6 @@
   </xacro:if>
 
   <!-- ROS2 control -->
-  <xacro:pal_sea_arm_ros2_control use_sim_time="$(arg use_sim_time)" torque_estimation="${torque_estimation}"/>
+  <xacro:pal_sea_arm_ros2_control use_sim_time="$(arg use_sim_time)" torque_estimation="${torque_estimation}" gazebo_version="${gazebo_version}"/>
 
 </robot>
