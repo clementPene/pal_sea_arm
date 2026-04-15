@@ -14,11 +14,23 @@
 -->
 
 <robot name="pal_sea_arm" xmlns:xacro="http://ros.org/wiki/xacro">
-  <gazebo>
-    <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
-      <parameters>$(find pal_sea_arm_controller_configuration)/config/gazebo_controller_manager_cfg.yaml</parameters>
-    </plugin>
-  </gazebo>
+  <xacro:if value="${gazebo_version == 'classic'}">
+    <gazebo>
+      <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
+        <parameters>$(find pal_sea_arm_controller_configuration)/config/gazebo_controller_manager_cfg.yaml</parameters>
+      </plugin>
+    </gazebo>
+  </xacro:if>
+
+  <xacro:if value="${gazebo_version == 'gazebo'}">
+    <gazebo>
+      <plugin filename="gz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+        <robot_param>robot_description</robot_param>
+        <robot_param_node>robot_state_publisher</robot_param_node>
+        <parameters>$(find pal_sea_arm_controller_configuration)/config/gazebo_controller_manager_cfg.yaml</parameters>
+      </plugin>
+    </gazebo>
+  </xacro:if>
 
   <!-- define global properties -->
   <xacro:property name="M_PI" value="3.1415926535897931" />

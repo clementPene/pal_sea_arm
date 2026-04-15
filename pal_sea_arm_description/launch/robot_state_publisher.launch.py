@@ -50,6 +50,7 @@ class LaunchArguments(LaunchArgumentsBase):
     sim_type: DeclareLaunchArgument = CommonArgs.sim_type
     mj_control: DeclareLaunchArgument = CommonArgs.mj_control
     world_name: DeclareLaunchArgument = CommonArgs.world_name
+    gazebo_version: DeclareLaunchArgument = CommonArgs.gazebo_version
 
 
 def declare_actions(launch_description: LaunchDescription, launch_args: LaunchArguments):
@@ -85,6 +86,7 @@ def create_robot_description_param(context, *args, **kwargs):
         'sim_type': read_launch_argument('sim_type', context),
         'mj_control': read_launch_argument('mj_control', context),
         'world_name': read_launch_argument('world_name', context),
+        'gazebo_version': read_launch_argument('gazebo_version', context),
         'limits_v2': read_launch_argument('limits_v2', context),
     }
     robot_description = load_xacro(xacro_file_path, xacro_input_args)
