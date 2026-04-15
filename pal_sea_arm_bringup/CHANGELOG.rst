@@ -11,6 +11,11 @@ Changelog for package pal_sea_arm_bringup
 * Restructure launch files pal-sea-arm-bringup
 * Contributors: David ter Kuile, davidterkuile
 
+Forthcoming
+-----------
+* Add arguments to support the new gazebo
+* Contributors: thomas.peyrucain
+
 2.0.1 (2026-04-10)
 ------------------
 * fix typo

@@ -23,6 +23,11 @@ Changelog for package pal_sea_arm_description
 * Add arm model check in urdf
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
+Forthcoming
+-----------
+* Add arguments to support the new gazebo
+* Contributors: thomas.peyrucain
+
 2.0.1 (2026-04-10)
 ------------------
 
