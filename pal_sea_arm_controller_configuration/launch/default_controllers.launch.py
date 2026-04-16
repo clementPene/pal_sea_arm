@@ -93,6 +93,7 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
     ft_sensor_controller = include_scoped_launch_py_description(
         pkg_name=pkg_name,
         paths=['launch', 'ft_sensor_controller.launch.py'],
+        launch_arguments={"ft_sensor": LaunchConfiguration('ft_sensor')},
         condition=LaunchConfigurationNotEquals('ft_sensor', 'no-ft-sensor'))
 
     launch_description.add_action(ft_sensor_controller)
