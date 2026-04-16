@@ -23,8 +23,8 @@ Changelog for package pal_sea_arm_description
 * Add arm model check in urdf
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
-Forthcoming
------------
+2.1.1 (2026-04-16)
+------------------
 * Add error_protection and idle_mode_on_stop parameters to true
 * Contributors: Noel Jimenez
 
