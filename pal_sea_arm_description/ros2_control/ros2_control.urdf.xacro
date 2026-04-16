@@ -53,6 +53,8 @@
         </xacro:if> 
         <xacro:unless value="$(arg use_sim_time)">
           <plugin>robot_control/RobotControl</plugin>
+          <param name="error_protection">true</param>
+          <param name="idle_mode_on_stop">true</param>
         </xacro:unless>
 
       </hardware>
