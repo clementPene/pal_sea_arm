@@ -5,7 +5,7 @@
 
     <!-- 4DOF Arm -->
     <xacro:if value="${type in ['4dof', '5dof', '7dof']}">
-      <xacro:include filename="$(find kangaroo_description)/urdf/arm/4dof/4dof_arm.urdf.xacro" />
+      <xacro:include filename="$(find pal_sea_arm_description)/urdf/arm/arm_properties/humanoid/4dof_arm.urdf.xacro" />
 
       <xacro:kangaroo_4dof_arm name="${name}" side="${side}" reflect="${reflect}" parent="${parent}">
         <xacro:insert_block name="origin"/>
@@ -18,7 +18,7 @@
 
     <!-- 5DOF Arm -->
     <xacro:if value="${type in ['5dof', '7dof']}">
-      <xacro:include filename="$(find kangaroo_description)/urdf/arm/5dof/5dof_arm.urdf.xacro" />
+      <xacro:include filename="$(find pal_sea_arm_description)/urdf/arm/arm_properties/humanoid/5dof_arm.urdf.xacro" />
 
       <xacro:kangaroo_5dof_arm name="${name}" side="${side}" reflect="${reflect}" parent="${name}_${side}_3_link">
         <origin xyz="-0.03711 -0.02 -0.17011" rpy="0 -1.5708 0" />
@@ -31,7 +31,7 @@
 
     <!-- 7DOF Arm -->
     <xacro:if value="${type in ['7dof']}">
-      <xacro:include filename="$(find kangaroo_description)/urdf/arm/7dof/7dof_arm.urdf.xacro" />
+      <xacro:include filename="$(find pal_sea_arm_description)/urdf/arm/arm_properties/humanoid/7dof_arm.urdf.xacro" />
 
       <xacro:kangaroo_7dof_arm name="${name}" side="${side}" reflect="${reflect}" parent="${name}_${side}_4_link">
         <origin xyz="-0.17011 0.02 -0.03711" rpy="0 -1.5708 0" />

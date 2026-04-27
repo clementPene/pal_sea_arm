@@ -24,14 +24,14 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://kangaroo_description/meshes/arm_cover/arm_cover_link.stl" />
+          filename="package://pal_sea_arm_description/meshes/humanoid/arm_cover/arm_cover_link.stl" />
       </geometry>
       <material name="pal/DarkGrey"/>
     </visual>
     <xacro:link_collision 
       mujoco="${sim_type in ['mujoco-ros2-control', 'mujoco']}"
       collision_type="${collision_type}"
-      mesh_file="package://kangaroo_description/meshes/arm_cover/arm_cover_link_collision.stl"
+      mesh_file="package://pal_sea_arm_description/meshes/humanoid/arm_cover/arm_cover_link_collision.stl"
       scale="1 1 1">
       <properties>
         <xacro:origin xyz="0 0 0" rpy="0 0 0" condition="${collision_type == 'mesh'}"/>

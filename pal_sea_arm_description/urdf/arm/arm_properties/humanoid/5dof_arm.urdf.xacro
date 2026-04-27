@@ -25,14 +25,14 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://kangaroo_description/meshes/arm/arm4_link.STL" />
+          <mesh filename="package://pal_sea_arm_description/meshes/humanoid/arm/arm4_link.STL" />
         </geometry>
         <material name="pal/DarkGrey" />
       </visual>
       <xacro:link_collision 
         mujoco="${sim_type in ['mujoco-ros2-control', 'mujoco']}"
         collision_type="${collision_type}"
-        mesh_file="package://kangaroo_description/meshes/arm/arm4_link.STL"
+        mesh_file="package://pal_sea_arm_description/meshes/humanoid/arm/arm4_link.STL"
         scale="1 1 1"
         capsule_radius="0"
         capsule_length="0">
@@ -67,14 +67,14 @@
         <visual>
           <origin xyz="0 0 0" rpy="0 0 0" />
           <geometry>
-            <mesh filename="package://kangaroo_description/meshes/arm/arm5_tip_link.STL" />
+            <mesh filename="package://pal_sea_arm_description/meshes/humanoid/arm/arm5_tip_link.STL" />
           </geometry>
           <material name="pal/DarkGrey" />
         </visual>
         <xacro:link_collision 
           mujoco="${sim_type in ['mujoco-ros2-control', 'mujoco']}"
           collision_type="${collision_type}"
-          mesh_file="package://kangaroo_description/meshes/arm/arm5_tip_link.STL"
+          mesh_file="package://pal_sea_arm_description/meshes/humanoid/arm/arm5_tip_link.STL"
           scale="1 1 1"
           capsule_radius="0"
           capsule_length="0">

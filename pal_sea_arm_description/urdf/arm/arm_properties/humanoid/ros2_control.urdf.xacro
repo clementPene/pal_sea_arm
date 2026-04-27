@@ -19,7 +19,7 @@
 
   <!-- INCLUDES -->
   <xacro:include filename="$(find kangaroo_description)/ros2_control/joint.ros2_control.xacro" />
-  <xacro:include filename="$(find kangaroo_description)/ros2_control/transmissions.urdf.xacro" />
+  <xacro:include filename="$(find pal_sea_arm_description)/ros2_control/transmissions.urdf.xacro" />
 
   <!-- MACRO DEFINITION-->
   <xacro:macro name="arm_ros2_control" params="side arm_type">

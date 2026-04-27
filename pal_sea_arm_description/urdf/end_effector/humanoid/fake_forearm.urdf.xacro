@@ -20,14 +20,14 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pal_sea_arm_description/meshes/humanoid/fake_forearm_${side}_link.stl" scale="1 1 1"/>
+          <mesh filename="package://pal_sea_arm_description/meshes/humanoid/arm/fake_forearm_${side}_link.stl" scale="1 1 1"/>
         </geometry>
         <material name="pal/DarkGrey" />
       </visual>
       <xacro:link_collision 
         mujoco="${sim_type in ['mujoco-ros2-control', 'mujoco']}"
         collision_type="${collision_type}"
-        mesh_file="package://pal_sea_arm_description/meshes/humanoid/fake_forearm_${side}_link.stl"
+        mesh_file="package://pal_sea_arm_description/meshes/humanoid/arm/fake_forearm_${side}_link.stl"
         scale="1 1 1"
         capsule_radius="0.054849043041257713"
         capsule_length="0.43843343404800533">
