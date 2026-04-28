@@ -23,8 +23,8 @@ Changelog for package pal_sea_arm_description
 * Add arm model check in urdf
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
-Forthcoming
------------
+2.2.0 (2026-04-28)
+------------------
 * tmp remove dependency
 * Split end effectors into sides
 * Add kangaroo arms
