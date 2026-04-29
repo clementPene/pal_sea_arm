@@ -1,61 +1,6 @@
 /**:
   ros__parameters:
     motions:
-      motion_1:
-        joints: [arm_1_joint, arm_2_joint, arm_3_joint, arm_4_joint, arm_5_joint, arm_6_joint, arm_7_joint]
-        times_from_start: [0.0, 5.0, 10.0]
-        positions: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-                    -1.57, -2.3, -1.0, -2.1, -0.0, -1.20, 0.0,
-                    2.57, -0.9, 1.0, 0.65, 0.0, -1.20, 1.57]
-        meta:
-          name: Home arm
-          usage: demo
-          description: Go home arm
-      
-      motion_2:
-        joints: [arm_1_joint, arm_2_joint, arm_3_joint, arm_4_joint, arm_5_joint, arm_6_joint, arm_7_joint]
-        times_from_start: [0.0, 6.0, 12.0]
-        positions: [2.57, -0.9, 1.0, 0.65, 0.0, -1.20, 1.57,
-                    -1.57, -1.3, -3.0, -2.1, -3.0, 1.20, 0.0,
-                    2.57, -0.9, 0.0, 0.65, 0.0, -1.20, 1.57]
-        meta:
-          name: Home arm
-          usage: demo
-          description: Go home arm
-
-      motion_3:
-        joints: [arm_1_joint, arm_2_joint, arm_3_joint, arm_4_joint, arm_5_joint, arm_6_joint, arm_7_joint]
-        times_from_start: [0.0, 6.0, 12.0]
-        positions: [2.57, -0.9, 0.0, 0.65, 3.1, -1.20, 1.57,
-                    0.0, 0.9, -3.0, -2.1, 1.57, -0.20, 0.0,
-                    -3.0, -1.3, 1.57, 1.0, 2.57, -1.0, 1.57]
-        meta:
-          name: Home arm
-          usage: demo
-          description: Go home arm
-      
-      motion_4:
-        joints: [arm_1_joint, arm_2_joint, arm_3_joint, arm_4_joint, arm_5_joint, arm_6_joint, arm_7_joint]
-        times_from_start: [0.0, 6.0, 12.0]
-        positions: [2.57, 0.0, 0.0, 0.0, 0.0, 0.0, 1.57,
-                    0.0, 1.0, -3.0, 0.0, 2.9, 0.0, 0.0,
-                    -3.0, 1.0, 1.57, 1.0, -3.14, 0.0, 1.57]
-        meta:
-          name: Home arm
-          usage: demo
-          description: Go home arm
-      
-      motion_5:
-        joints: [arm_1_joint, arm_2_joint, arm_3_joint, arm_4_joint, arm_5_joint, arm_6_joint, arm_7_joint]
-        times_from_start: [0.0, 6.0, 12.0]
-        positions: [1.57, 0.0, 1.57, 0.0, 1.57, 0.0, 1.57,
-                    3.14, -1.0, 3.14, 0.0, 3.14, 0.0, 0.0,
-                    -2.0, -1.0, 0.0, 1.0, 0.0, 0.0, 1.57]
-        meta:
-          name: Home arm
-          usage: demo
-          description: Go home arm
-
       start_arm: 
         joints: [arm_1_joint, arm_2_joint, arm_3_joint, arm_4_joint, arm_5_joint, arm_6_joint, arm_7_joint]
         times_from_start: [0.0, 5.0]
@@ -70,18 +15,8 @@
         joints: [arm_1_joint, arm_2_joint, arm_3_joint, arm_4_joint, arm_5_joint, arm_6_joint, arm_7_joint]
         times_from_start: [0.0, 5.0]
         positions: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-                    -1.57, 0.49, 0.0, -2.06, 2.75, 0.35, 1.57]
+                    -0.062832, -0.635944, -3.14, -1.621959, 3.141, 0.831, 0.0174] 
         meta:
           name: First motion
           usage: demo
           description: First motion arm
-
-      second_motion: 
-        joints: [arm_1_joint, arm_2_joint, arm_3_joint, arm_4_joint, arm_5_joint, arm_6_joint, arm_7_joint]
-        times_from_start: [0.0, 5.0]
-        positions: [-1.57, 0.28, 0.0, -2.37, -0.023, -0.15, 1.57,
-                    -1.57, 0.615, 0.0, -1.75, -0.023, -0.15, 1.57]
-        meta:
-          name: Second motion
-          usage: demo
-          description: Second motion arm
