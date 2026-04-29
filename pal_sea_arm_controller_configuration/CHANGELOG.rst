@@ -15,6 +15,12 @@ Changelog for package pal_sea_arm_controller_configuration
 * Restructure launch files
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
+Forthcoming
+-----------
+* add launch_argument ft_sensor
+* fix errors
+* Contributors: susannamastromauro
+
 2.2.0 (2026-04-28)
 ------------------
 

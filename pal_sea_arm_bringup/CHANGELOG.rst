@@ -11,6 +11,15 @@ Changelog for package pal_sea_arm_bringup
 * Restructure launch files pal-sea-arm-bringup
 * Contributors: David ter Kuile, davidterkuile
 
+Forthcoming
+-----------
+* update motions
+* remove module from CMakeList
+* adding params for playmotion
+* delete file yaml
+* fix errors
+* Contributors: susannamastromauro
+
 2.2.0 (2026-04-28)
 ------------------
 
