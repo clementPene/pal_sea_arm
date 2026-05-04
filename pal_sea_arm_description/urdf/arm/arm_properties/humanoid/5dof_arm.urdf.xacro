@@ -8,6 +8,7 @@
   <xacro:property name="arm_5_max_effort"   value="43.0" />
 
   <xacro:macro name="kangaroo_5dof_arm" params="name side reflect parent *origin arm_1_offset:=0.0 arm_2_offset:=0.0 arm_3_offset:=0.0 arm_4_offset:=0.0">
+    <xacro:include filename="$(find pal_sea_arm_description)/urdf/arm/arm_properties/tiago-pro/short-wrist.properties.xacro"/>
 
     <!-- ARM 4 LINK -->
     <link name="${name}_${side}_4_link">
@@ -67,14 +68,14 @@
         <visual>
           <origin xyz="0 0 0" rpy="0 0 0" />
           <geometry>
-            <mesh filename="package://pal_sea_arm_description/meshes/humanoid/arm/arm5_tip_link.STL" />
+            <mesh filename="package://pal_sea_arm_description/meshes/arm_tiago_pro/short-wrist/arm_5_link.stl" scale="1 1 1" />
           </geometry>
           <material name="pal/DarkGrey" />
         </visual>
         <xacro:link_collision 
           mujoco="${sim_type in ['mujoco-ros2-control', 'mujoco']}"
           collision_type="${collision_type}"
-          mesh_file="package://pal_sea_arm_description/meshes/humanoid/arm/arm5_tip_link.STL"
+          mesh_file="package://pal_sea_arm_description/meshes/arm_tiago_pro/short-wrist/arm_5_link_collision.stl"
           scale="1 1 1"
           capsule_radius="0"
           capsule_length="0">
@@ -85,7 +86,7 @@
         </xacro:link_collision>
       </link>
       <joint name="${name}_${side}_5_joint" type="revolute">
-        <origin xyz="-0.17011 0.02 -0.03711" rpy="0 -1.5708 0" />
+        <origin xyz="-0.1999 0.02 -0.03711" rpy="0 -1.5708 0" />
         <parent link="${name}_${side}_4_link" />
         <child link="${name}_${side}_5_link" />
         <axis xyz="0 0 -1" />
