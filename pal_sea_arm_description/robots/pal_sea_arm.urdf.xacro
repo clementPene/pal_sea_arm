@@ -65,7 +65,7 @@
   <xacro:property name="mj_control" value="$(arg mj_control)"/>
   <xacro:property name="world_name" value="$(arg world_name)"/>
 
-  <xacro:if value="${end_effector not in ['no-end-effector', 'pal-pro-gripper', 'allegro-hand', 'custom']}">
+  <xacro:if value="${end_effector not in ['no-end-effector', 'pal-pro-gripper', 'allegro-hand', 'custom', 'pen-gripper']}">
     <xacro:wrong_end_effector/>
   </xacro:if>
   <xacro:if value="${wrist_model not in ['straight-wrist', 'spherical-wrist', 'short-wrist']}">
