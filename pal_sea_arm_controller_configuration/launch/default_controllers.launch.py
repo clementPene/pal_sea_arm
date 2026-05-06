@@ -117,7 +117,7 @@ def configure_end_effector_controller(context, *args, **kwargs):
     end_effector = read_launch_argument('end_effector', context)
     end_effector_underscore = end_effector.replace('-', '_')
 
-    if end_effector != "no-end-effector":
+    if end_effector not in ["no-end-effector", "pen-gripper"]:
         ee_pkg_name = f'{end_effector_underscore}_controller_configuration'
         ee_launch_file = f'{end_effector_underscore}_controller.launch.py'
 
