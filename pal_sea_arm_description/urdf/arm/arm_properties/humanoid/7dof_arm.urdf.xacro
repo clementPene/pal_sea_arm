@@ -10,37 +10,27 @@
   <xacro:property name="arm_7_max_effort"   value="43.0" />
 
   <xacro:macro name="kangaroo_7dof_arm" params="name side reflect parent *origin arm_1_offset:=0.0 arm_2_offset:=0.0 arm_3_offset:=0.0 arm_4_offset:=0.0">
-
+    <xacro:include filename="$(find pal_sea_arm_description)/urdf/arm/arm_properties/tiago-pro/spherical-wrist.properties.xacro"/>
     <!-- ARM 5 LINK -->
     <link name="${name}_${side}_5_link">
-      <inertial>
-        <origin xyz="0.026605861626657 -9.73533820055945E-06 0.0673256629496602" rpy="0 0 0" />
-        <mass value="0.348015259775155" />
-        <inertia
-          ixx="0.00145567099738605"
-          ixy="-8.58794618885963E-08"
-          ixz="-0.000334513248897972"
-          iyy="0.00146009867466947"
-          iyz="-3.31529250812567E-08"
-          izz="0.00040970269431174" />
-      </inertial>
+      <xacro:inertial_link_5 reflect="${reflect}"/>
       <visual>
-        <origin xyz="0 0 0" rpy="0 0 0" />
+        <origin xyz="0 0 0" rpy="0 0 -1.5708" />
         <geometry>
-          <mesh filename="package://pal_sea_arm_description/meshes/humanoid/arm/arm5_link.STL" />
+          <mesh filename="package://pal_sea_arm_description/meshes/arm_tiago_pro/spherical-wrist/arm_5_link.stl" scale="1 -1 1" />  
         </geometry>
         <material name="pal/DarkGrey" />
       </visual>
       <xacro:link_collision 
         mujoco="${sim_type in ['mujoco-ros2-control', 'mujoco']}"
         collision_type="${collision_type}"
-        mesh_file="package://pal_sea_arm_description/meshes/humanoid/arm/arm5_link.STL"
-        scale="1 1 1"
+        mesh_file="package://pal_sea_arm_description/meshes/arm_tiago_pro/spherical-wrist/arm_5_link_collision.stl"
+        scale="1 -1 1"
         capsule_radius="0"
         capsule_length="0">
           <properties>
-            <xacro:origin xyz="0 0 0" rpy="0 0 0" condition="${collision_type == 'mesh'}"/>
-            <xacro:origin xyz="0 0 0" rpy="0 0 0" condition="${collision_type == 'capsule'}"/>
+            <xacro:origin xyz="0 0 0" rpy="0 0 -1.5708" condition="${collision_type == 'mesh'}"/>
+            <xacro:origin xyz="0 0 0" rpy="0 0 -1.5708" condition="${collision_type == 'capsule'}"/>
           </properties>
       </xacro:link_collision>
     </link>
@@ -71,22 +61,22 @@
         izz="0.00122017664789509" />
     </inertial>
       <visual>
-        <origin xyz="0 0 0" rpy="0 0 0" />
+        <origin xyz="0 0 0" rpy="0 0 -1.5708" />
         <geometry>
-          <mesh filename="package://pal_sea_arm_description/meshes/humanoid/arm/arm6_link.STL" />
+          <mesh filename="package://pal_sea_arm_description/meshes/arm_tiago_pro/spherical-wrist/arm_6_link.stl" scale="1 1 1" />  
         </geometry>
         <material name="pal/DarkGrey" />
       </visual>
       <xacro:link_collision 
         mujoco="${sim_type in ['mujoco-ros2-control', 'mujoco']}"
         collision_type="${collision_type}"
-        mesh_file="package://pal_sea_arm_description/meshes/humanoid/arm/arm6_link.STL"
+        mesh_file="package://pal_sea_arm_description/meshes/arm_tiago_pro/spherical-wrist/arm_6_link_collision.stl"
         scale="1 1 1"
         capsule_radius="0"
         capsule_length="0">
           <properties>
-            <xacro:origin xyz="0 0 0" rpy="0 0 0" condition="${collision_type == 'mesh'}"/>
-            <xacro:origin xyz="0 0 0" rpy="0 0 0" condition="${collision_type == 'capsule'}"/>
+            <xacro:origin xyz="0 0 0" rpy="0 0 -1.5708" condition="${collision_type == 'mesh'}"/>
+            <xacro:origin xyz="0 0 0" rpy="0 0 -1.5708" condition="${collision_type == 'capsule'}"/>
           </properties>
       </xacro:link_collision>
     </link>
@@ -112,22 +102,22 @@
         izz="0.000102184151280542" />
     </inertial>
       <visual>
-        <origin xyz="0 0 0" rpy="0 0 0" />
+        <origin xyz="0 0 0" rpy="0 0 -1.5708" />
         <geometry>
-          <mesh filename="package://pal_sea_arm_description/meshes/humanoid/arm/arm7_link.STL" />
+          <mesh filename="package://pal_sea_arm_description/meshes/arm_tiago_pro/spherical-wrist/arm_7_link.stl" scale="1 1 1" />  
         </geometry>
         <material name="pal/DarkGrey" />
       </visual>
       <xacro:link_collision 
         mujoco="${sim_type in ['mujoco-ros2-control', 'mujoco']}"
         collision_type="${collision_type}"
-        mesh_file="package://pal_sea_arm_description/meshes/humanoid/arm/arm7_link.STL"
+        mesh_file="package://pal_sea_arm_description/meshes/arm_tiago_pro/spherical-wrist/arm_7_link_collision.stl"
         scale="1 1 1"
         capsule_radius="0"
         capsule_length="0">
           <properties>
-            <xacro:origin xyz="0 0 0" rpy="0 0 0" condition="${collision_type == 'mesh'}"/>
-            <xacro:origin xyz="0 0 0" rpy="0 0 0" condition="${collision_type == 'capsule'}"/>
+            <xacro:origin xyz="0 0 0" rpy="0 0 -1.5708" condition="${collision_type == 'mesh'}"/>
+            <xacro:origin xyz="0 0 0" rpy="0 0 -1.5708" condition="${collision_type == 'capsule'}"/>
           </properties>
       </xacro:link_collision>
     </link>
