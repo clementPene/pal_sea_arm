@@ -89,7 +89,7 @@
         <origin xyz="-0.1999 0.02 -0.03711" rpy="0 -1.5708 0" />
         <parent link="${name}_${side}_4_link" />
         <child link="${name}_${side}_5_link" />
-        <axis xyz="0 0 -1" />
+        <axis xyz="0 0 1" />
         <limit
           lower="-1.57"
           upper="1.57"
