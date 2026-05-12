@@ -5,8 +5,8 @@
   <xacro:property name="arm_5_joint_lb" value="${-90 if joint_reflect == 1 else -210}" />
   <xacro:property name="arm_6_joint_ub" value="172" />
   <xacro:property name="arm_6_joint_lb" value="-108" />
-  <xacro:property name="arm_7_joint_ub" value="150" />
-  <xacro:property name="arm_7_joint_lb" value="-150" />
+  <xacro:property name="arm_7_joint_ub" value="140" />
+  <xacro:property name="arm_7_joint_lb" value="-140" />
 
   <!-- Joint limtis v2 -->
   <xacro:property name="arm_5_joint_ub_v2" value="${220 if joint_reflect == 1 else 100}" />
