@@ -23,6 +23,14 @@ Changelog for package pal_sea_arm_description
 * Add arm model check in urdf
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
+Forthcoming
+-----------
+* Fix rotation direction
+* Remove unused meshes
+* Link 5 short wrist with the tiago pro one
+* Merge spherical wrist with the tiago pro one
+* Contributors: Aina
+
 2.2.1 (2026-04-29)
 ------------------
 * change values limits joint6

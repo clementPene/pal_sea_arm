@@ -11,6 +11,11 @@ Changelog for package pal_sea_arm_bringup
 * Restructure launch files pal-sea-arm-bringup
 * Contributors: David ter Kuile, davidterkuile
 
+Forthcoming
+-----------
+* fix name launch-file
+* Contributors: susannamastromauro
+
 2.2.1 (2026-04-29)
 ------------------
 * update motions
