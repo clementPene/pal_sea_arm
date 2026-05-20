@@ -23,6 +23,11 @@ Changelog for package pal_sea_arm_description
 * Add arm model check in urdf
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
+Forthcoming
+-----------
+* Update end_effector_camera.urdf.xacro
+* Contributors: martinaannicelli
+
 2.3.1 (2026-05-12)
 ------------------
 * reduce 7 limit for spherical and straight wrist
