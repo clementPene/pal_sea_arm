@@ -84,6 +84,35 @@
       </link>
     </xacro:if>
 
+    <xacro:if value="${type == 'realsense-d435i'}">
+      <link name="${name}_camera_link">
+        <inertial>
+          <origin xyz="-7.7517E-05 -0.00017089 0.003965" rpy="0 0 0"/>
+          <mass
+            value="0.05792613" />
+          <inertia
+            ixx="2.7273E-05" ixy="2.443E-07" ixz="-1.725E-09"
+            iyy="8.09E-06" iyz="-2.777E-09"
+            izz="2.73583E-05" />
+        </inertial>
+        <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+          <geometry>
+            <mesh filename="package://pal_sea_arm_description/meshes/arm_tiago_pro/end_effector_camera_realsense_d435.stl" />
+          </geometry>
+          <material name="">
+            <color rgba="0.75294 0.75294 0.75294 1" />
+          </material>
+        </visual>
+        <collision>
+          <origin xyz="0 0 0" rpy="0 0 0" />
+          <geometry>
+            <mesh filename="package://pal_sea_arm_description/meshes/arm_tiago_pro/end_effector_camera_realsense_d435.stl" />
+          </geometry>
+        </collision>
+      </link>
+    </xacro:if>
+
     <joint name="${name}_camera_joint" type="fixed">
       <xacro:if value="${camera_position == 'up'}">
         <origin xyz="0.0406 0 -0.003" rpy="3.1416 -1.5708 0" />
