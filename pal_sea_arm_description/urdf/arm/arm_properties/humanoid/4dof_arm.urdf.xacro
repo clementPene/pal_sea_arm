@@ -86,7 +86,7 @@
       <origin xyz="0 0 0" rpy="3.1416 0 3.1416" />
       <parent link="${name}_${side}_base_link" />
       <child link="${name}_${side}_1_link" />
-      <axis xyz="0 0 -1" />
+      <axis xyz="0 0 1" />
       <limit lower="${deg_to_rad * -150}" upper="${deg_to_rad * 150}" effort="${arm_1_max_effort}" velocity="${arm_1_max_velocity}" />
     </joint>
 
@@ -168,7 +168,7 @@
       <origin xyz="0.15989 -0.02 -0.03711" rpy="0 -1.5708 0" />
       <parent link="${name}_${side}_2_link" />
       <child link="${name}_${side}_3_link" />
-      <axis xyz="0 0 -1" />
+      <axis xyz="0 0 1" />
       <limit lower="${deg_to_rad * -150}" upper="${deg_to_rad * 150}" effort="${arm_3_max_effort}" velocity="${arm_3_max_velocity}" />
     </joint>
 
