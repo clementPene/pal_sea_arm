@@ -23,6 +23,11 @@ Changelog for package pal_sea_arm_description
 * Add arm model check in urdf
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
+Forthcoming
+-----------
+* Fix axis
+* Contributors: Aina
+
 2.4.0 (2026-05-20)
 ------------------
 * Update end_effector_camera.urdf.xacro
