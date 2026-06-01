@@ -35,6 +35,11 @@ class LaunchArguments(LaunchArgumentsBase):
         name='side',
         default_value='',
         description='side of the ft sensor')
+    is_ankle: DeclareLaunchArgument = DeclareLaunchArgument(
+        name='is_ankle',
+        default_value='False',
+        choices=['True', 'False'],
+        description='Set to true if configuring an ankle FT sensor instead of a wrist one')
 
 
 def declare_actions(launch_description: LaunchDescription, launch_args: LaunchArguments):
@@ -57,16 +62,23 @@ def setup_controller_configuration(context: LaunchContext):
 
     side = read_launch_argument('side', context)
     ft_sensor = read_launch_argument('ft_sensor', context)
+    is_ankle = read_launch_argument('is_ankle', context)
 
     ft_prefix = "ft_sensor"
-    wrist_prefix = "wrist"
+
+    ft_base_prefix = "ankle_ft" if is_ankle == 'True' else "ft_sensor"
+    link_base_prefix = "ankle" if is_ankle == 'True' else "wrist"
+
+    ft_prefix = ft_base_prefix
+    link_prefix = link_base_prefix
+
     if side:
-        ft_prefix = f"ft_sensor_{side}"
-        wrist_prefix = f"wrist_{side}"
+        ft_prefix = f"{ft_base_prefix}_{side}"
+        link_prefix = f"{link_base_prefix}_{side}"
 
     controller_name = f"{ft_prefix}_controller"
     remappings = {"FT_SIDE_PREFIX": ft_prefix,
-                  "WRIST_SIDE_PREFIX": wrist_prefix}
+                  "WRIST_SIDE_PREFIX": link_prefix}
 
     param_file = os.path.join(
         get_package_share_directory('pal_sea_arm_controller_configuration'),
