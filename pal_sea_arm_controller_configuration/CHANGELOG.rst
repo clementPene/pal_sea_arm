@@ -15,6 +15,12 @@ Changelog for package pal_sea_arm_controller_configuration
 * Restructure launch files
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
+Forthcoming
+-----------
+* Change is_ankle to location to better scalability
+* Add dynamic prefix to handle ankle ft
+* Contributors: Aina
+
 2.4.1 (2026-05-29)
 ------------------
 
