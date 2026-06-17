@@ -84,7 +84,7 @@
       <origin xyz="0.0422 0 0.1654" rpy="0 1.5708 0" />
       <parent link="${name}_${side}_5_link" />
       <child link="${name}_${side}_6_link" />
-      <axis xyz="0 0 1" />
+      <axis xyz="0 0 -1" />
       <limit lower="${deg_to_rad * -108}" upper="${deg_to_rad * 172}" effort="${arm_6_max_effort}" velocity="${arm_6_max_velocity}" />
     </joint>
 
