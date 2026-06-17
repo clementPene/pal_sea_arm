@@ -15,6 +15,9 @@ Changelog for package pal_sea_arm_controller_configuration
 * Restructure launch files
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
+Forthcoming
+-----------
+
 2.5.0 (2026-06-04)
 ------------------
 * Change is_ankle to location to better scalability
