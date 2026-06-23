@@ -11,7 +11,7 @@
   <xacro:property name="arm_3_max_effort"   value="43.0" />
   <xacro:property name="arm_4_max_effort"   value="43.0" />
 
-  <xacro:macro name="kangaroo_4dof_arm" params="name side reflect parent *origin arm_1_offset:=0.0 arm_2_offset:=0.0 arm_3_offset:=0.0 arm_4_offset:=0.0">
+  <xacro:macro name="kangaroo_4dof_arm" params="name side reflect parent *origin arm_type:='4dof' arm_1_offset:=0.0 arm_2_offset:=0.0 arm_3_offset:=0.0 arm_4_offset:=0.0">
     
     <link name="${name}_${side}_base_link">
       <inertial>
@@ -173,7 +173,8 @@
       <axis xyz="0 0 -1" />
       <limit lower="${deg_to_rad * -150}" upper="${deg_to_rad * 150}" effort="${arm_3_max_effort}" velocity="${arm_3_max_velocity}" />
     </joint>
-    <link name="${name}_${side}_4_link">
+    <xacro:if value="${arm_type == '4dof'}">
+      <link name="${name}_${side}_4_link">
         <inertial>
           <origin xyz="-0.03711 -0.02 -0.17011" rpy="3.14159 1.5708 0" />
           <mass value="1.4353488" />
@@ -223,6 +224,7 @@
           effort="${arm_4_max_effort}"
           velocity="${arm_4_max_velocity}" />
       </joint>
+    </xacro:if>
 
   </xacro:macro>
 </robot>
