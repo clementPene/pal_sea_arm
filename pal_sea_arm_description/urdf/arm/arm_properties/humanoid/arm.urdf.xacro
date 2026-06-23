@@ -25,7 +25,7 @@
       </xacro:kangaroo_5dof_arm>
 
       <xacro:property name="tip_link" value="5" />
-      <xacro:property name="tool_link_xyz" value="0 0 0.0303" />
+      <xacro:property name="tool_link_xyz" value="0 0 0" />
       <xacro:property name="tool_link_rpy" value="0 0 3.14159" />
     </xacro:if>
 
