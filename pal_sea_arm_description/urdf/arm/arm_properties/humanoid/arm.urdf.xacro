@@ -7,7 +7,7 @@
     <xacro:if value="${type in ['4dof', '5dof', '7dof']}">
       <xacro:include filename="$(find pal_sea_arm_description)/urdf/arm/arm_properties/humanoid/4dof_arm.urdf.xacro" />
 
-      <xacro:kangaroo_4dof_arm name="${name}" side="${side}" reflect="${reflect}" parent="${parent}">
+      <xacro:kangaroo_4dof_arm name="${name}" side="${side}" reflect="${reflect}" parent="${parent}" arm_type="${type}">
         <xacro:insert_block name="origin"/>
       </xacro:kangaroo_4dof_arm>
 
