@@ -23,8 +23,8 @@ Changelog for package pal_sea_arm_description
 * Add arm model check in urdf
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
-Forthcoming
------------
+2.6.0 (2026-06-25)
+------------------
 * Add condition for 4dof arm without ee
 * Change fakeforearm to 4dof without end effector
 * Removing incorrect tool offset in 5dof
