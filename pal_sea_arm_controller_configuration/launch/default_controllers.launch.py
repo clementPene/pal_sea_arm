@@ -90,6 +90,14 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
 
     launch_description.add_action(gravity_compensation_controller_effort)
 
+    input_state_broadcaster = include_scoped_launch_py_description(
+        pkg_name='input_state_broadcaster',
+        paths=['launch', 'input_state_broadcaster.launch.py'],
+        launch_arguments={"side": 'no-side'},
+    )
+
+    launch_description.add_action(input_state_broadcaster)
+
     ft_sensor_controller = include_scoped_launch_py_description(
         pkg_name=pkg_name,
         paths=['launch', 'ft_sensor_controller.launch.py'],
