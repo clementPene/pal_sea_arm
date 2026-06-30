@@ -176,7 +176,7 @@
     <xacro:if value="${arm_type == '4dof'}">
       <link name="${name}_${side}_4_link">
         <inertial>
-          <origin xyz="-0.03711 -0.02 -0.17011" rpy="3.14159 1.5708 0" />
+          <origin xyz="0.0752641 -0.0079317 -0.023427" rpy="0 0 0" />
           <mass value="1.4353488" />
           <inertia
             ixx="0.0012553"
