@@ -15,6 +15,16 @@ Changelog for package pal_sea_arm_controller_configuration
 * Restructure launch files
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
+Forthcoming
+-----------
+* Merge branch 'feat/add_input_broadcaster' into 'humble-devel'
+  Add input broadcaster by default
+  See merge request robots/pal_sea_arm!138
+* Add alum condition for dependency
+* Fix side
+* Add input broadcaster by default
+* Contributors: Aina, Aina Irisarri
+
 2.6.0 (2026-06-25)
 ------------------
 

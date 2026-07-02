@@ -23,6 +23,19 @@ Changelog for package pal_sea_arm_description
 * Add arm model check in urdf
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
+Forthcoming
+-----------
+* Merge branch 'fix_arm_4_inertia' into 'humble-devel'
+  Fix inertia rotation of arm 4 link
+  See merge request robots/pal_sea_arm!139
+* Arm link 4 : use same inertia origin as old fake-forearm link
+* Remove rotation from arm link 4 inertia
+* Merge branch 'rm/fake_forearm' into 'humble-devel'
+  Remove fake_forearm end effector
+  See merge request robots/pal_sea_arm!137
+* Remove fake_forearm end effector
+* Contributors: Aina, Aina Irisarri, Pierre Fernbach, Sai Kishor Kothakota
+
 2.6.0 (2026-06-25)
 ------------------
 * Add condition for 4dof arm without ee
