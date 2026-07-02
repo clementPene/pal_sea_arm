@@ -76,7 +76,7 @@ def setup_controller_configuration(context: LaunchContext):
 
     param_file = os.path.join(
         get_package_share_directory('pal_sea_arm_controller_configuration'),
-        'config', f'ft_broadcaster.yaml')
+        'config', 'ft_broadcaster.yaml')
 
     parsed_yaml = parse_parametric_yaml(source_files=[param_file], param_rewrites=remappings)
 

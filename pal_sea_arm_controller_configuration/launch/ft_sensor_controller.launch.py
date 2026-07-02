@@ -21,11 +21,16 @@ from controller_manager.launch_utils import generate_load_controller_launch_desc
 from launch_pal.param_utils import parse_parametric_yaml
 from launch_pal.arg_utils import LaunchArgumentsBase, read_launch_argument
 from launch.actions import DeclareLaunchArgument, SetLaunchConfiguration
-from launch.actions import OpaqueFunction, GroupAction
+from launch.actions import LogInfo, OpaqueFunction, GroupAction
 from launch.conditions import LaunchConfigurationNotEquals
 from launch.substitutions import LaunchConfiguration
 from launch import LaunchDescription, LaunchContext
 from pal_sea_arm_description.launch_arguments import SEAArmArgs
+
+DEPRECATION_WARNING = (
+    '[DEPRECATED] ft_sensor_controller.launch.py is deprecated and will be '
+    'removed in a future release. Please use ft_sensor_broadcaster.launch.py '
+    'instead.')
 
 
 @dataclass(frozen=True)
@@ -89,6 +94,8 @@ def generate_launch_description():
 
     # Create the launch description
     ld = LaunchDescription()
+
+    ld.add_action(LogInfo(msg=DEPRECATION_WARNING))
 
     launch_arguments = LaunchArguments()
 
