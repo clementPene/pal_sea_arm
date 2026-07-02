@@ -23,8 +23,8 @@ Changelog for package pal_sea_arm_description
 * Add arm model check in urdf
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
-Forthcoming
------------
+2.7.0 (2026-07-02)
+------------------
 * Merge branch 'fix_arm_4_inertia' into 'humble-devel'
   Fix inertia rotation of arm 4 link
   See merge request robots/pal_sea_arm!139
