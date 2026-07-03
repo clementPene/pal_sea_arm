@@ -1,4 +1,4 @@
-# Copyright (c) 2024 PAL Robotics S.L. All rights reserved.
+# Copyright (c) 2026 PAL Robotics S.L. All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -21,16 +21,11 @@ from controller_manager.launch_utils import generate_load_controller_launch_desc
 from launch_pal.param_utils import parse_parametric_yaml
 from launch_pal.arg_utils import LaunchArgumentsBase, read_launch_argument
 from launch.actions import DeclareLaunchArgument, SetLaunchConfiguration
-from launch.actions import LogInfo, OpaqueFunction, GroupAction
+from launch.actions import OpaqueFunction, GroupAction
 from launch.conditions import LaunchConfigurationNotEquals
 from launch.substitutions import LaunchConfiguration
 from launch import LaunchDescription, LaunchContext
 from pal_sea_arm_description.launch_arguments import SEAArmArgs
-
-DEPRECATION_WARNING = (
-    '[DEPRECATED] ft_sensor_controller.launch.py is deprecated and will be '
-    'removed in a future release. Please use ft_sensor_broadcaster.launch.py '
-    'instead.')
 
 
 @dataclass(frozen=True)
@@ -66,7 +61,6 @@ def declare_actions(launch_description: LaunchDescription, launch_args: LaunchAr
 def setup_controller_configuration(context: LaunchContext):
 
     side = read_launch_argument('side', context)
-    ft_sensor = read_launch_argument('ft_sensor', context)
     location = read_launch_argument('location', context)
 
     ft_prefix = "ankle_ft" if location == 'ankle' else "ft_sensor"
@@ -76,13 +70,13 @@ def setup_controller_configuration(context: LaunchContext):
         ft_prefix += f"_{side}"
         link_prefix += f"_{side}"
 
-    controller_name = f"{ft_prefix}_controller"
+    controller_name = f"{ft_prefix}_broadcaster"
     remappings = {"FT_SIDE_PREFIX": ft_prefix,
                   "LINK_SIDE_PREFIX": link_prefix}
 
     param_file = os.path.join(
         get_package_share_directory('pal_sea_arm_controller_configuration'),
-        'config', f'{ft_sensor}_controller.yaml')
+        'config', 'ft_broadcaster.yaml')
 
     parsed_yaml = parse_parametric_yaml(source_files=[param_file], param_rewrites=remappings)
 
@@ -94,8 +88,6 @@ def generate_launch_description():
 
     # Create the launch description
     ld = LaunchDescription()
-
-    ld.add_action(LogInfo(msg=DEPRECATION_WARNING))
 
     launch_arguments = LaunchArguments()
 
