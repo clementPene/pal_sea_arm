@@ -15,8 +15,8 @@ Changelog for package pal_sea_arm_controller_configuration
 * Restructure launch files
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
-Forthcoming
------------
+2.8.0 (2026-07-03)
+------------------
 * Merge branch 'use/ft_broadcaster' into 'humble-devel'
   Use ft broadcaster instead of ft_controller
   See merge request robots/pal_sea_arm!140
