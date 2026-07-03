@@ -32,7 +32,6 @@
       </xacro:pal_pro_gripper>
     </xacro:if>
 
-<<<<<<< HEAD
     <!--Pen Gripper-->
     <xacro:if value="${type == 'pen-gripper'}">
       <joint name="pen_gripper_joint" type="fixed">
@@ -79,7 +78,6 @@
       </link>
     </xacro:if>      
     
-=======
     <!-- PAL ATC -->
     <xacro:if value="${type == 'pal-atc'}">
       <xacro:include filename="$(find pal_atc_description)/urdf/gripper.urdf.xacro" />
@@ -87,7 +85,6 @@
         <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
       </xacro:pal_atc>
     </xacro:if>
->>>>>>> fe903b9 (add pal_atc package)
 
   <!--Allegro Hand-->
   <xacro:if value="${type == 'allegro-hand'}">
