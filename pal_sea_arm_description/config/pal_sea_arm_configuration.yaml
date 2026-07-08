@@ -4,7 +4,7 @@ arm_type:
   default_value: 'tiago-pro'
 end_effector:
   description: 'End effector model'
-  choices: ['custom', 'no-end-effector', 'pal-pro-gripper', 'allegro-hand']
+  choices: ['custom', 'no-end-effector', 'pal-pro-gripper', 'allegro-hand', 'pen-gripper']
   default_value: 'pal-pro-gripper'
 ft_sensor:
   description: 'FT sensor model'

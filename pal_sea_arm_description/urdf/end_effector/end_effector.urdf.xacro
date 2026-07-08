@@ -32,6 +32,53 @@
       </xacro:pal_pro_gripper>
     </xacro:if>
 
+    <!--Pen Gripper-->
+    <xacro:if value="${type == 'pen-gripper'}">
+      <joint name="pen_gripper_joint" type="fixed">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <parent link="arm_tool_link"/>
+        <child link="pen_gripper_base_link"/>
+      </joint>
+
+      <link name="pen_gripper_base_link">
+        <inertial>
+          <origin xyz="0.00031569 -2.3649E-05 0.022532" rpy="0 0 0"/>
+          <mass value="0.33922"/>
+          <inertia ixx="0.00019797" ixy="5.0773E-08" ixz="3.91E-07" iyy="0.00020508" iyz="-2.2918E-08" izz="0.0002014" />
+        </inertial>
+        <visual>
+          <origin xyz="0 0 0" rpy="0 0 0" />
+          <geometry>
+          <mesh filename="package://pal_sea_arm_description/meshes/pal_sea_arm_standalone/pen_gripper_link.stl" />
+          </geometry>
+          <material name="">
+            <color rgba="0.89412 0.91373 0.92941 1" />
+          </material>
+        </visual>
+        <collision>
+          <origin xyz="0 0 0" rpy="0 0 0" />
+          <geometry>
+            <mesh filename="package://pal_sea_arm_description/meshes/pal_sea_arm_standalone/pen_gripper_link.stl" />
+          </geometry>
+        </collision>
+      </link>
+
+      <joint name="pen_gripper_tip_joint" type="fixed">
+        <origin xyz="0 0 0.157" rpy="0 0 0"/>
+        <parent link="pen_gripper_base_link"/>
+        <child link="pen_gripper_tip_link"/>
+      </joint>
+
+      <link name="pen_gripper_tip_link">
+        <inertial>
+          <origin xyz="0 0 0.157" rpy="0 0 0"/>
+          <mass value="0.1"/>
+          <inertia ixx="3.91E-07" ixy="0" ixz="0" iyy="2.2918E-08" iyz="0" izz="2.2918E-08" />
+        </inertial>
+      </link>
+    </xacro:if>      
+    
+
   <!--Allegro Hand-->
   <xacro:if value="${type == 'allegro-hand'}">
     <xacro:include filename="$(find allegro_hand_description)/urdf/allegro_hand.urdf.xacro" />
