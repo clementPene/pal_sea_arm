@@ -10,40 +10,39 @@ ${ARM_SIDE_PREFIX}_controller:
       - ${ARM_SIDE_PREFIX}_6_joint
       - ${ARM_SIDE_PREFIX}_7_joint
     command_interfaces:
-      - effort
+      - position
     state_interfaces:
       - position
-      - velocity
 
     gains:
       ${ARM_SIDE_PREFIX}_1_joint:
-        p: 200.0
+        p: 0.0
         i: 0.0
-        d: 10.0
+        d: 0.0
       ${ARM_SIDE_PREFIX}_2_joint:
-        p: 500.0
+        p: 0.0
         i: 0.0
-        d: 10.0
+        d: 0.0
       ${ARM_SIDE_PREFIX}_3_joint:
-        p: 300.0
+        p: 0.0
         i: 0.0
-        d: 10.0
+        d: 0.0
       ${ARM_SIDE_PREFIX}_4_joint:
-        p: 300.0
+        p: 0.0
         i: 0.0
-        d: 10.0
+        d: 0.0
       ${ARM_SIDE_PREFIX}_5_joint:
-        p: 100.0
+        p: 0.0
         i: 0.0
-        d: 2.0
+        d: 0.0
       ${ARM_SIDE_PREFIX}_6_joint:
-        p: 50.0
+        p: 0.0
         i: 0.0
-        d: 2.0
+        d: 0.0
       ${ARM_SIDE_PREFIX}_7_joint:
-        p: 50.0
+        p: 0.0
         i: 0.0
-        d: 2.0
+        d: 0.0
 
     interpolate_from_desired_state: true
 
