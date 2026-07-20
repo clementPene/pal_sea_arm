@@ -15,6 +15,12 @@ Changelog for package pal_sea_arm_controller_configuration
 * Restructure launch files
 * Contributors: David ter Kuile, Noel Jimenez, davidterkuile
 
+Forthcoming
+-----------
+* Add prefix argument and change value for no side
+* Add no controller when ee is pen-gripper
+* Contributors: Aina
+
 2.8.1 (2026-07-06)
 ------------------
 * Merge branch 'change/publish_rate/ft_broadcaster' into 'humble-devel'
