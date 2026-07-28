@@ -196,7 +196,7 @@
       <joint name="${name}_3_link_sc_joint" type="fixed">
         <parent link="${name}_3_link"/>
         <child link="${name}_3_link_sc"/>
-        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <origin xyz="0 0 0" rpy="0 0.0873 0"/>
       </joint>
     </xacro:if>
 
@@ -292,7 +292,7 @@
       <joint name="${name}_5_link_sc_joint" type="fixed">
         <parent link="${name}_5_link"/>
         <child link="${name}_5_link_sc"/>
-        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <origin xyz="0 0 0" rpy="0.0524 0.0873 0"/>
       </joint>
     </xacro:if>
 
